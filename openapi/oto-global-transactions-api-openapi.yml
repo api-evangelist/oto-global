@@ -1,0 +1,236 @@
+openapi: 3.0.3
+info:
+  title: OTO API V2 Account Transactions API
+  version: 2.0.0
+  description: 'Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO''s platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you''re integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.'
+  contact:
+    name: OTO Support
+    url: https://help.tryoto.com/en/support/home
+  x-source: derived from published OTO API V2 Postman collection (apis.tryoto.com)
+servers:
+- url: https://api.tryoto.com/rest/v2
+  description: Production
+- url: https://staging-api.tryoto.com/rest/v2
+  description: Staging / sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Transactions
+  description: ''
+paths:
+  /rest/v2/getShippingPriceTransactionsList:
+    post:
+      operationId: getShippingPriceTransactionsList
+      summary: Get Shipping Price Transactions List
+      tags:
+      - Transactions
+      description: 'This API endpoint provides details of your Shipping Price Transactions, calculated based on your configured shipping price settings. By providing either the Order ID or Shipment ID, you can retrieve the shipping cost along with other transactional details. Important Note: The results from this API apply only to shipments created using your configured shipping price contracts. Shipping costs are calculated based on factors such as weight, destination, and other predefined configurations. Request '
+      requestBody:
+        content:
+          application/json:
+            example:
+              shipmentId: '2302416029'
+              orderId: OID-22700-1013
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200 Order ID and Shipmetn ID request example
+          content:
+            application/json:
+              example:
+                success: true
+                count: 1
+                shippingTransactions:
+                - amount: 11
+                  orderID: OID-9618-1062
+                  shipmentID: '290615409716'
+                  description: shipment created
+                  orderStatus: shipmentCreated
+                  ID: 1347
+                  transactionDate: 2023-12-06T16:18
+                  otoOrderID: 30798075
+                  deliveryName: smsav2-2
+                  transaction: shippingCost
+                  status: booked
+  /rest/v2/creditTransactions:
+    get:
+      operationId: creditTransactions
+      summary: Credit Transactions
+      tags:
+      - Transactions
+      description: 'This API endpoint provides a powerful way to retrieve credit transaction records from your system. This endpoint supports pagination for efficient data retrieval and allows filtering based on minimum and maximum dates. Additionally, if an orderId is provided, the maxDate and minDate parameters become optional, enabling direct access to transactions associated with the specified order. Request Parameters: Name Required Type Description perPage yes number Credit transaction count in the response. '
+      parameters:
+      - name: perPage
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: minDate
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: maxDate
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 200 OK
+          content:
+            application/json:
+              example:
+                success: true
+                transactions:
+                - amount: 19
+                  orderID: '41590739'
+                  deliveryCompanySettingsId: 5564
+                  description: Shipment canceled. Delivery fees will be credited back to your account.
+                  transactionDate: '2024-09-16T11:26:01'
+                  orderPaymentType: cod
+                  shipmentType: forward
+                  transactionType: dcFee
+                  remainingAmount: 85.9
+                  deliveryCompanyName: Deliver Now
+                  chargingType: charge
+                  langKey: dcFeeShipmentCanceledRevokedDescription
+                  shipmentID: DNL05000049328
+                  ID: 8294185
+                  otoOrderID: 10690509
+                  status: revoked
+                - amount: 18
+                  orderID: OID-20980-1092
+                  deliveryCompanySettingsId: 5551
+                  description: Canceled shipment. Delivery fee credited back to your account.
+                  transactionDate: '2024-09-24T10:40:43'
+                  orderPaymentType: paid
+                  shipmentType: forward
+                  transactionType: dcFee
+                  remainingAmount: 51.8
+                  deliveryCompanyName: Aramex
+                  chargingType: refund
+                  langKey: dcFeeShipmentCanceledDescription
+                  shipmentID: '50162082692'
+                  ID: 8430556
+                  otoOrderID: 10748485
+                  status: canceled
+                - amount: 0.9
+                  orderID: '1203'
+                  deliveryCompanySettingsId: 3022
+                  description: OTO Fee Booked on shipment created
+                  transactionDate: '2024-09-01T11:37:10'
+                  orderPaymentType: cod
+                  transactionType: otoFee
+                  remainingAmount: 111.2
+                  deliveryCompanyName: OTO FLEX
+                  langKey: otoFeeSearchingDriverDescription
+                  shipmentID: 0e073859
+                  ID: 8057956
+                  otoOrderID: 10248079
+                  status: booked
+        '400':
+          description: 400 Invalid Date
+          content:
+            application/json:
+              example:
+                success: false
+                otoErrorCode: '1107'
+                otoErrorMessage: minDate or maxDate is missing or invalid
+  /rest/v2/shipmentTransactions:
+    get:
+      operationId: shipmentTransactions
+      summary: Shipment Transactions
+      tags:
+      - Transactions
+      description: 'Shipment Transactions This API endpoint provides users with access to detailed information about shipment transactions. This API is designed to retrieve and display key transaction data, allowing users to monitor and review shipment-related activities.It retrieves shipment transactions with the option to paginate and filter by minimum and maximum dates. Note: If orderId exists maxDate and minDate are not required. If shipment number exists maxDate and minDate are not required. Request Parameters'
+      parameters:
+      - name: perPage
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: minDate
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: maxDate
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                success: true
+                shipments:
+                - shipmentNumber: 1231231AS
+                  orderId: '123123'
+                  shipmentCreationDate: '2023-12-05T06:47:46'
+                  deliveryCompanyName: deliveryCompany
+                  dcConnectionName: connectionName
+                  shipmentType: Forward Shipment
+                  dcCharge: 25
+                  currency: TRY
+                  originalWeight: 100
+                  dcUpdatedWeight: 50
+                  status: status
+                  dcInvoiceNumber: 15579456
+                - shipmentNumber: '12435356'
+                  orderId: '342324234'
+                  shipmentCreationDate: '2023-12-05T06:47:46'
+                  deliveryCompanyName: deliveryCompany
+                  dcConnectionName: connectionName
+                  shipmentType: Forward Shipment
+                  dcCharge: 40
+                  currency: TRY
+                  originalWeight: 40
+                  dcUpdatedWeight: 5
+                  status: status
+                  dcInvoiceNumber: 21626353729823
+                - shipmentNumber: '657567'
+                  orderId: '34534534'
+                  shipmentCreationDate: '2023-12-05T06:47:46'
+                  deliveryCompanyName: deliveryCompany
+                  dcConnectionName: connectionName
+                  shipmentType: Forward Shipment
+                  dcCharge: 60
+                  currency: TRY
+                  originalWeight: 80
+                  dcUpdatedWeight: 80
+                  status: status
+                  dcInvoiceNumber: 21626353729823123213
+                - shipmentNumber: '5423423'
+                  orderId: '14335213'
+                  shipmentCreationDate: '2023-12-05T06:47:46'
+                  deliveryCompanyName: deliveryCompany
+                  dcConnectionName: connectionName
+                  shipmentType: Forward Shipment
+                  dcCharge: 25
+                  currency: TRY
+                  originalWeight: 100
+                  dcUpdatedWeight: 50
+                  status: status
+                  dcInvoiceNumber: 2162635372
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Obtain an access_token by POSTing your refresh_token to /refreshToken, then send Authorization: Bearer <access_token>.'

@@ -1,0 +1,161 @@
+openapi: 3.0.3
+info:
+  title: OTO API V2 Account OTO FLEX API
+  version: 2.0.0
+  description: 'Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO''s platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you''re integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.'
+  contact:
+    name: OTO Support
+    url: https://help.tryoto.com/en/support/home
+  x-source: derived from published OTO API V2 Postman collection (apis.tryoto.com)
+servers:
+- url: https://api.tryoto.com/rest/v2
+  description: Production
+- url: https://staging-api.tryoto.com/rest/v2
+  description: Staging / sandbox
+security:
+- bearerAuth: []
+tags:
+- name: OTO FLEX
+  description: ''
+paths:
+  /rest/v2/assignDriver:
+    post:
+      operationId: assignDriver
+      summary: assignDriver
+      tags:
+      - OTO FLEX
+      description: 'This API endpoint enables clients to assign a specific driver to their shipments for the OTO Flex app. This endpoint streamlines the allocation process, allowing businesses to efficiently manage driver assignments and ensure smooth delivery operations. Either valid driverID or driverEmail is required. Request Paramaters: Name Required Type Description orderIDs yes array An array of orderIDs objects containing the order ids driverID yes (If driverEmail isn''t present) long ID of the driver driverE'
+      requestBody:
+        content:
+          application/json:
+            example:
+              orderIDs:
+              - 3079460
+              driverID: 8702
+              driverEmail: test@driver.com
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200 OK driverId
+          content:
+            application/json:
+              example:
+                '31071127':
+                  success: true
+                  otoId: 31071127
+  /rest/v2/trackDriver:
+    post:
+      operationId: trackDriver
+      summary: trackDriver
+      tags:
+      - OTO FLEX
+      description: This API endpoint provides real-time location updates for a specific order within the Oto Flex application and for the OTO Flex orders. By continuously tracking the active driver's GPS position, the endpoint returns a stream of latitude and longitude updates , allowing the client to monitor the order’s movement throughout the delivery journey. Name Required Type Description orderId yes string OrderId of the OTO flex shipment
+      requestBody:
+        content:
+          application/json:
+            example:
+              orderID: OID-9885-70000203806
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                lng: 29.285591158223777
+                data:
+                - createdDate: '2025-11-12T18:04:29.273Z'
+                  lng: 29.285591158223777
+                  onDuty: true
+                  lat: 40.96489515570657
+                - createdDate: '2025-11-12T18:04:08.171Z'
+                  lng: 29.286784231123974
+                  onDuty: true
+                  lat: 40.96497927896817
+                - createdDate: '2025-11-12T18:01:35.302Z'
+                  lng: 29.286580389904795
+                  onDuty: true
+                  lat: 40.96435106894622
+                - createdDate: '2025-11-12T18:00:52.093Z'
+                  lng: 29.28637669086292
+                  onDuty: true
+                  lat: 40.96449471804315
+                - createdDate: '2025-11-12T18:00:51.362Z'
+                  lng: 29.28637110062752
+                  onDuty: true
+                  lat: 40.964506384859355
+                - createdDate: '2025-11-12T17:56:40.196Z'
+                  lng: 29.294892153533794
+                  onDuty: true
+                  lat: 40.956111235680105
+                - createdDate: '2025-11-12T17:56:40.129Z'
+                  lng: 29.286636752864517
+                  onDuty: true
+                  lat: 40.96452744380308
+                - createdDate: '2025-11-12T17:56:40.109Z'
+                  lng: 29.286636752864517
+                  onDuty: true
+                  lat: 40.96452744380308
+                - createdDate: '2025-11-12T17:56:40.080Z'
+                  lng: 29.294892153533794
+                  onDuty: true
+                  lat: 40.956111235680105
+                - createdDate: '2025-11-12T17:56:40.037Z'
+                  lng: 29.294892153533794
+                  onDuty: true
+                  lat: 40.956111235680105
+                - createdDate: '2025-11-12T16:20:24.488Z'
+                  lng: 29.28652829734919
+                  onDuty: true
+                  lat: 40.96445449486164
+                - createdDate: '2025-11-12T16:20:23.556Z'
+                  lng: 29.28648490515261
+                  onDuty: true
+                  lat: 40.96453081227422
+                - createdDate: '2025-11-12T16:20:23.483Z'
+                  lng: 29.286484905143116
+                  onDuty: true
+                  lat: 40.96453081237234
+                - createdDate: '2025-11-12T14:33:53.009Z'
+                  lng: 29.28333783075058
+                  onDuty: true
+                  lat: 40.96393364160413
+                - createdDate: '2025-11-12T14:33:53.004Z'
+                  lng: 29.283292890084162
+                  onDuty: true
+                  lat: 40.963989271862516
+                - createdDate: '2025-11-12T14:33:52.986Z'
+                  lng: 29.28329548074905
+                  onDuty: true
+                  lat: 40.96400527320485
+                - createdDate: '2025-11-12T13:45:17.189Z'
+                  lng: 29.286636752864517
+                  onDuty: true
+                  lat: 40.96452744380308
+                - createdDate: '2025-11-12T13:45:17.185Z'
+                  lng: 29.286636752864517
+                  onDuty: true
+                  lat: 40.96452744380308
+                - createdDate: '2025-11-12T13:42:50.935Z'
+                  lng: 29.286636752864517
+                  onDuty: true
+                  lat: 40.96452744380308
+                - createdDate: '2025-11-12T13:42:50.796Z'
+                  lng: 29.286636752864517
+                  onDuty: true
+                  lat: 40.96452744380308
+                lastLatLonUpdated: '2025-11-12T18:04:29.273Z'
+                driverName: Cinar
+                id: 1028
+                userID: 12872
+                onDuty: true
+                lat: 40.96489515570657
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Obtain an access_token by POSTing your refresh_token to /refreshToken, then send Authorization: Bearer <access_token>.'

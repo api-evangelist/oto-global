@@ -1,0 +1,93 @@
+openapi: 3.0.3
+info:
+  title: OTO API V2 Account Marketplace API
+  version: 2.0.0
+  description: 'Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO''s platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you''re integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.'
+  contact:
+    name: OTO Support
+    url: https://help.tryoto.com/en/support/home
+  x-source: derived from published OTO API V2 Postman collection (apis.tryoto.com)
+servers:
+- url: https://api.tryoto.com/rest/v2
+  description: Production
+- url: https://staging-api.tryoto.com/rest/v2
+  description: Staging / sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Marketplace
+  description: ''
+paths:
+  /rest/v2/register:
+    post:
+      operationId: register
+      summary: Register
+      tags:
+      - Marketplace
+      description: 'This API endpoint is just for marketplaces with multiple vendors . Marketplaces can register their vendors to OTO with this endpoint. It requires a special kind of token provided by OTO. Regular refresh tokens will not work here. If you are a market place you can use register endpoint to create an OTO account for your vendors. Request Parameters: Field Name Type Required Description country string Yes Country tag (e.g., “TR”, “SA”). city string Yes City tag (must match OTO city tags). companyNam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200 OK
+          content:
+            application/json:
+              example:
+                success: true
+                activationLink: https://login.tryoto.com/XYZ
+                refreshToken: _refreshToken_
+      security: []
+  /rest/v2/clientInfo:
+    post:
+      operationId: clientInfo
+      summary: Client Info
+      tags:
+      - Marketplace
+      description: 'This API endpoint is just for marketplaces. Marketplaces can register their vendors to OTO with a special kind of token provided by OTO. Regular refresh tokens will not work here. If you are a marketplace and used register endpoint to create an OTO account for your vendors , you can get the information about the client you have registered. Request Parameters: Name Required Type Description email yes string registered email of client'
+      requestBody:
+        content:
+          application/json:
+            example:
+              email: test30@tryoto.com
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200 OK
+          content:
+            application/json:
+              example:
+                userActivated: 'false'
+                remainingCredit: 0
+                validityDate: 13-October-2028
+                success: true
+                refreshToken: _refreshToken_
+    get:
+      operationId: getClientInfo
+      summary: Client Info
+      tags:
+      - Marketplace
+      description: 'This API endpoint provides detailed information about a vendor''s account and its current status. This endpoint returns essential client-related data, including contact details, account balances, and service validity, enabling seamless integration for managing and monitoring client activities. Request Parameters: No request body parameters are required for this GET request. Response: { "remainingCredit": 10, "phone": "+966567130000", "validityDate": "11-01-2028", "success": true, "name": "test Co'
+      responses:
+        '200':
+          description: Client Info
+          content:
+            application/json:
+              example:
+                remainingCredit: 10
+                phone: '+966567130000'
+                validityDate: 11-01-2028
+                success: true
+                name: test Company
+                email: test@example.com
+                refreshToken: _refreshToken_
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Obtain an access_token by POSTing your refresh_token to /refreshToken, then send Authorization: Bearer <access_token>.'

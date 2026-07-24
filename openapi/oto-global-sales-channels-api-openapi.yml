@@ -1,0 +1,109 @@
+openapi: 3.0.3
+info:
+  title: OTO API V2 Account Sales Channels API
+  version: 2.0.0
+  description: 'Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO''s platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you''re integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.'
+  contact:
+    name: OTO Support
+    url: https://help.tryoto.com/en/support/home
+  x-source: derived from published OTO API V2 Postman collection (apis.tryoto.com)
+servers:
+- url: https://api.tryoto.com/rest/v2
+  description: Production
+- url: https://staging-api.tryoto.com/rest/v2
+  description: Staging / sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Sales Channels
+  description: ''
+paths:
+  /rest/v2/salesChannel/getSalesChannelsList:
+    get:
+      operationId: getSalesChannelsList
+      summary: Sales Channels List
+      tags:
+      - Sales Channels
+      description: This API endpoint provides a list of all sales channels integrated with OTO. If you have a store with any of these sales channels, you can connect your store to OTO. Use the sales channel's unique code to configure settings through the Sales Channels Config and Sales Channels Activation API endpoints.
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                salesChannelsList:
+                - name: Adobe Commerce
+                  code: adobeEcommerce
+                - name: WooCommerce
+                  code: wooCommerce
+                - name: Shopify
+                  code: shopify
+                - name: OpenCart
+                  code: opencart
+                - name: Store Hippo
+                  code: storehippo
+                - name: Foodics
+                  code: foodics
+                - name: Tsoft
+                  code: tsoft
+                - name: shahbandr
+                  code: shahbandr
+                - name: TrendyolInt
+                  code: TrendyolInt
+  /rest/v2/salesChannel/getSalesChannelConfig:
+    post:
+      operationId: getSalesChannelConfig
+      summary: Sales Channel Config
+      tags:
+      - Sales Channels
+      description: 'Available Packages : Starter Package, Scale Package, Enterprise Package, Marketplaces This API endpoint allows you to view the required store credentials and the template for the sales channels specified in the request, which are needed for the next step: Sales Channel Activation. Retrieve the sales channel configuration template. Use this template to create a valid configuration object, similar to the given exampleJson . This configuration object is then used to activate the sales channel with '
+      requestBody:
+        content:
+          application/json:
+            example:
+              code: shopify
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                code: shopify
+                storeURL: ''
+                adminApiAccessToken: ''
+                active: true
+                storeName: ''
+  /rest/v2/salesChannel/salesChannelActivation:
+    post:
+      operationId: salesChannelActivation
+      summary: Sales Channel Activation
+      tags:
+      - Sales Channels
+      description: 'This API endpoint is used to perform Sales Channels Activation. It enables you to activate a sales channel by providing the required configuration details. Request Parameters: Name Required Type Description code yes string The integration name obtained from the Sales Channels List'
+      requestBody:
+        content:
+          application/json:
+            example:
+              code: shopify
+              storeURL: https://shopifytest.myshopify.com
+              adminApiAccessToken: shopifytoken
+              active: true
+              storeName: Shopify Store
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                success: true
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Obtain an access_token by POSTing your refresh_token to /refreshToken, then send Authorization: Bearer <access_token>.'

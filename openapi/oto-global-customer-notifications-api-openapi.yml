@@ -1,0 +1,55 @@
+openapi: 3.0.3
+info:
+  title: OTO API V2 Account Customer Notifications API
+  version: 2.0.0
+  description: 'Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO''s platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you''re integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.'
+  contact:
+    name: OTO Support
+    url: https://help.tryoto.com/en/support/home
+  x-source: derived from published OTO API V2 Postman collection (apis.tryoto.com)
+servers:
+- url: https://api.tryoto.com/rest/v2
+  description: Production
+- url: https://staging-api.tryoto.com/rest/v2
+  description: Staging / sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Customer Notifications
+  description: ''
+paths:
+  /rest/v2/orders/{orderId}/customer-notifications:
+    get:
+      operationId: customernotifications
+      summary: Customer Notifications
+      tags:
+      - Customer Notifications
+      description: 'This endpoint allows you to retrieve all system-generated customer communication artifacts related to a specific order. It enables you to fully control your customer communication by consuming these artifacts and sending them through your own CRM, ERP, or communication platforms. The API endpoint provides the below customer notifications if generated and still valid. You can configure the actionTypes: Tracking Link Feedback (Rating) Link Undelivered Attempt Link Delivery Slot Selection Link Addr'
+      parameters:
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                orderId: '123456'
+                actions:
+                - type: trackingLink
+                  value: https://tracking-link...
+                - type: feedbackLink
+                  value: https://feedback-link...
+                - type: clickCollectOTP
+                  channel: OTP
+                  value: '458921'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Obtain an access_token by POSTing your refresh_token to /refreshToken, then send Authorization: Bearer <access_token>.'

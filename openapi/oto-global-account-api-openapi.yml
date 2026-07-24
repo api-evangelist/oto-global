@@ -1,0 +1,117 @@
+openapi: 3.0.3
+info:
+  title: OTO API V2 Account API
+  version: 2.0.0
+  description: 'Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO''s platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you''re integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.'
+  contact:
+    name: OTO Support
+    url: https://help.tryoto.com/en/support/home
+  x-source: derived from published OTO API V2 Postman collection (apis.tryoto.com)
+servers:
+- url: https://api.tryoto.com/rest/v2
+  description: Production
+- url: https://staging-api.tryoto.com/rest/v2
+  description: Staging / sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Account
+  description: ''
+paths:
+  /rest/v2/accountInfo:
+    get:
+      operationId: accountInfo
+      summary: Account Info
+      tags:
+      - Account
+      description: 'This API endpoint retrieves detailed information about the authenticated user''s account. This includes general profile details, current subscription and balance of the account. Note: You can only see the account information that your token belongs to. Response Body: name: full name of the account owner email: email address belong to the account mobileNumber: mobile number belong to the account packageName: current subscription package name( scalePackage, enterprisePackage etc.) remainingCredit: '
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                remainingCredit: 1578.46
+                remainingFreeShipments: '0'
+                mobileNumber: '9664564845222'
+                accountType: personal
+                CRDocStatus: NOT_UPLOADED
+                name: testUserEnterprise
+                packageName: EnterprisePackage
+                email: testEmail_enterprise@tryoto.com
+                freelanceDocStatus: INDIVIDUAL
+  /rest/v2/buyCredit:
+    post:
+      operationId: buyCredit
+      summary: Buy Credit
+      tags:
+      - Account
+      description: 'Provide amount of credit you wanted to buy, this will response a paymentURL and paymentID . Request Parameters: Name Required Type Description amount yes number the amount of credit wanted to buy'
+      requestBody:
+        content:
+          application/json:
+            example:
+              amount: 13.5
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                success: true
+                paymentID: chg_LV03G2920250933Jk9c2603152
+                paymentURL: https://checkout.tap.company/?mode=page&themeMode=&language=en&token=eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjY3ZTM5ZmI5OGE3Y2NkMWQwZGE1NzlhMSJ9.71AJo8AcbO96of1mbvGLZR7x2cnrcquiwJii0zOGLmE
+  /rest/v2/requestMobileVerification:
+    post:
+      operationId: requestMobileVerification
+      summary: Request Mobile Verification
+      tags:
+      - Account
+      description: 'This API endpoint allows you to use a phone number to request a verification token (OTP) for account/phone number verification. Marketplaces can also use this endpoint to verify their sellers’ phone numbers. Verification can be done in verifyMobileNumber. Request Parameters: Name Required Type Description phone yes string Phone number to be verified Response body includes success , errorMsg , otoErrorCode , otoErrorMessage when success is false.'
+      requestBody:
+        content:
+          application/json:
+            example:
+              phone: '+905365042516'
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                success: true
+                token: fa4f8d03-451c-44f7-9262-10fe193e854d
+  /rest/v2/verifyMobileNumber:
+    post:
+      operationId: verifyMobileNumber
+      summary: Verify Mobile Number
+      tags:
+      - Account
+      description: 'This API endpoint verifies a user’s mobile phone number by confirming the one-time password (OTP) sent via SMS. The endpoint requires the phone number, the OTP received, and the token obtained from the requestMobileVerification step. Once successfully verified, the phone number is confirmed for account or seller verification purposes. Request Parameters: Name Required Type Description phone yes string The phone number to verify (same as in step 1, in E.164 format). code yes string The OTP receiv'
+      requestBody:
+        content:
+          application/json:
+            example:
+              phone: '+905365042516'
+              code: '4739'
+              token: fa4f8d03-451c-44f7-9262-10fe193e854d
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                success: true
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Obtain an access_token by POSTing your refresh_token to /refreshToken, then send Authorization: Bearer <access_token>.'

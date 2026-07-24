@@ -1,0 +1,580 @@
+openapi: 3.0.3
+info:
+  title: OTO API V2 Account Orders API
+  version: 2.0.0
+  description: 'Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO''s platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you''re integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.'
+  contact:
+    name: OTO Support
+    url: https://help.tryoto.com/en/support/home
+  x-source: derived from published OTO API V2 Postman collection (apis.tryoto.com)
+servers:
+- url: https://api.tryoto.com/rest/v2
+  description: Production
+- url: https://staging-api.tryoto.com/rest/v2
+  description: Staging / sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Orders
+  description: ''
+paths:
+  /rest/v2/createOrder:
+    post:
+      operationId: createOrder
+      summary: Create Order
+      tags:
+      - Orders
+      description: 'This API endpoint is a critical component in e-commerce and logistics systems, enabling external applications to initiate and manage new orders seamlessly. This endpoint allows you to submit order details, such as customer information, product data, shipping preferences, and payment methods. For KSA Shipments: If you are providing the sender and receiver short address codes, there is no need to include the city and address information. Note: If you send the createShipment: true parameter and the'
+      requestBody:
+        content:
+          application/json:
+            example:
+              orderId: '1234'
+              pickupLocationCode: jdd_wh
+              createShipment: 'true'
+              deliveryOptionId: 564
+              payment_method: paid
+              amount: 100
+              amount_due: 0
+              currency: SAR
+              customsValue: '12'
+              customsCurrency: USD
+              packageCount: 2
+              packageWeight: 1
+              boxWidth: 10
+              boxLength: 10
+              boxHeight: 10
+              orderDate: 31/12/2022 15:45
+              deliverySlotDate: 31/12/2020
+              deliverySlotTo: 12pm
+              deliverySlotFrom: 2:30pm
+              senderName: Sender Company
+              customer:
+                name: عبدالله الغامدي
+                email: test@test.com
+                mobile: '546607389'
+                address: 6832, Abruq AR Rughamah District, Jeddah 22272 3330, Saudi Arabia
+                district: Al Hamra
+                city: Jeddah
+                country: SA
+                postcode: '12345'
+                lat: '40.706333'
+                lon: '29.888211'
+                refID: '1000012'
+              items:
+              - productId: 112
+                name: test product
+                price: 100
+                rowTotal: 100
+                taxAmount: 15
+                quantity: 1
+                sku: test-product
+                image: http://....
+              - name: test product 2
+                price: 100
+                quantity: 1
+                sku: test-product-2
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200- Sender Information
+          content:
+            application/json:
+              example:
+                success: true
+                otoId: 540789
+        '400':
+          description: 400- Split Order Wrong PickupLocationCode
+          content:
+            application/json:
+              example:
+                success: false
+                warnings:
+                - pickupLocation field exists in the items array, split order process begins
+                - 'Both the order pickupLocationCode and item''s pickupLocationCode do not exist. Split order process has been revoked '
+                otoErrorCode: OTO1071
+                otoErrorMessage: Item has pickupLocation array for split order process but the input is invalid in the array.
+  /rest/v2/updateOrder:
+    post:
+      operationId: updateOrder
+      summary: Update Order
+      tags:
+      - Orders
+      description: 'This API endpoint allows you update order info with this endpoint before shipment creation. If you created a shipment and need to update an information after that you have to cancel the shipment first then you can update. Request Parameters: Parameter Required Type Description orderId yes string Unique identifier of the Order deliveryOptionId no string Specifies the delivery option to be used for the shipment. customer yes object Customer Data( can not be used together with destinationLocationCo'
+      requestBody:
+        content:
+          application/json:
+            example:
+              orderId: '202111081227'
+              ref1: 1234ABCDE
+              pickupLocationCode: '12364'
+              deliveryOptionId: '12364'
+              storeName: Brand A English
+              payment_method: paid
+              amount: 100
+              amount_due: 0
+              shippingAmount: 20
+              subtotal: 100
+              currency: SAR
+              customsValue: '12'
+              customsCurrency: USD
+              shippingNotes: be careful. it is fragile
+              packageSize: small
+              packageCount: 2
+              packageWeight: 1
+              boxWidth: 10
+              boxLength: 10
+              boxHeight: 10
+              orderDate: 30/12/2022 15:45
+              deliverySlotDate: 31/12/2022
+              deliverySlotTo: 12pm
+              deliverySlotFrom: 2:30pm
+              customer:
+                name: عبدالله الغامدي
+                email: test@test.com
+                mobile: '546607389'
+                address: 6832, Abruq AR Rughamah District, Jeddah 22272 3330, Saudi Arabia
+                district: Al Hamra
+                city: Riyadh
+                country: SA
+                postcode: '12345'
+                lat: '40.706333'
+                lon: '29.888211'
+                refID: '1000012'
+                W3WAddress: alarmed.cards.stuffy
+              items:
+              - productId: 112
+                name: test product
+                price: 100
+                quantity: 1
+                sku: test-product
+                image: http://....
+              - name: test product 2
+                price: 100
+                quantity: 1
+                sku: test-product-2
+                image: http://....
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                success: true
+                message: Successfully updated
+  /rest/v2/updateOrderStatus:
+    post:
+      operationId: updateOrderStatus
+      summary: Update Order Status
+      tags:
+      - Orders
+      description: 'This API endpoint allows you to modify the current status of an order within the system. You can update the order status to "delivered," "returned," if the order does not have an associated shipment. For "picked up" there should be an associated shipment. However, if a shipment exists, only statuses for integrator-managed shipments can be updated. Request Parameters: Name Required Type Description orderIds yes string Id of the order/s status yes string status of the shipment(delivered, returned,'
+      requestBody:
+        content:
+          application/json:
+            example:
+              orderIds:
+              - 30846946
+              status: delivered
+              date: '2024-08-06T21:00:00.000Z'
+              description: aaaaaa
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200 OK
+          content:
+            application/json:
+              example:
+                result:
+                - {}
+                - success: true
+                  orderIds:
+                  - '30846946'
+  /rest/v2/cancelOrder:
+    post:
+      operationId: cancelOrder
+      summary: Cancel Order
+      tags:
+      - Orders
+      description: 'This API endpoint allows users to cancel an existing order under specific conditions. It ensures smooth and efficient handling of cancellations while maintaining the integrity of related processes. Important Note: If the order has an associated shipment, it cannot be canceled via this endpoint. Shipment-related restrictions ensure the system prevents conflicts or inconsistencies in ongoing fulfillment processes. Request Parameters: Name Required Type Description orderId yes(if there is no otoId)'
+      requestBody:
+        content:
+          application/json:
+            example:
+              orderId: '1234'
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200 OK
+          content:
+            application/json:
+              example:
+                success: true
+  /rest/v2/orders:
+    get:
+      operationId: orders
+      summary: Get Orders
+      tags:
+      - Orders
+      description: 'This API endpoint is designed to provide a comprehensive overview of orders in your system. This endpoint returns detailed information about each order, including pickup locations, order IDs, item details, and current statuses. It enables seamless tracking and management of orders, ensuring better visibility and control. Request Parameters: Name Required Type Description perPage no number Order count in the response. Max limit 100 page no number Pagination number. You can iterate this field to g'
+      parameters:
+      - name: perPage
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 200 OK-new
+          content:
+            application/json:
+              example:
+                perPage: 5
+                totalPage: 1
+                success: true
+                orders:
+                - skus: ''
+                  orderId: OID-2476-70000203527-1
+                  trackingURL: ''
+                  reverseShipment: 'false'
+                  totalDue: 0
+                  quantities: ''
+                  subTotal: 0
+                  totalCount: 2
+                  addressConfirm: notYet
+                  customerPhone: '4563731231'
+                  drivingDistance: 0
+                  originCity: Al Kharj
+                  currency: SAR
+                  modifiedBy: Demo Niceone
+                  customerReturnReason: test
+                  id: '30824696'
+                  deliveryDate: '2024-02-28 14:44:30'
+                  shipmentNumber: ''
+                  customerAddress: Unnamed Road 16464, Saudi Arabia
+                  isReturnShipment: 'no'
+                  amount: 700
+                  grandTotal: 700
+                  totalPage: 1
+                  weight: 0.0001
+                  destinationCountry: SA
+                  customerName: Zeynep Alakuş
+                  destinationCity: Al Kharj
+                  deliverySlot: ''
+                  district: Al Kharj
+                  modifiedDate: '2024-09-23 13:04:29'
+                  paymentMethod: paid
+                  packageCount: 1
+                  orderDate: '2024-02-01 11:19:55'
+                  items:
+                  - quantity: 5
+                    productId: 591478
+                    price: 80
+                    name: Raincoat
+                    taxAmount: 0
+                    sku: '5'
+                  - quantity: 3
+                    productId: 591475
+                    price: 100
+                    name: 'Black Tayt '
+                    taxAmount: 0
+                    sku: '2'
+                  status: delivered
+                  customer:
+                    country: SA
+                    address: 8089, Salam Ibn Salim, 4314, Al Mughaisilah Dist., 42315, Madinah, Kingdom of Saudi Arabia
+                    district: Al Mughaisilah Dist.
+                    city: Madinah
+                    buildingNo: '8089'
+                    street: Salam Ibn Salim
+                    secondaryAddressNumber: '4314'
+                    shortAddressCode: DMAJ8089
+                    postcode: '42315'
+                    name: Fatmanur Yavuz
+                    mobile: '4563731231'
+                    lon: 39.63739580725869
+                    id: 1
+                    state: Madinah Province
+                    lat: 24.0783327
+                - skus: '5'
+                  orderId: OID-2476-70000203528-2
+                  trackingURL: ''
+                  reverseShipment: 'false'
+                  totalDue: 0
+                  quantities: '1'
+                  pickupLocationCode: '10'
+                  subTotal: 0
+                  totalCount: 2
+                  addressConfirm: notYet
+                  customerPhone: '4563731231'
+                  drivingDistance: 0
+                  originCity: Al Kharj
+                  currency: SAR
+                  modifiedBy: Demo Niceone
+                  id: '30824710'
+                  deliveryDate: '2024-02-28 14:40:07'
+                  shipmentNumber: ''
+                  customerAddress: Unnamed Road 16464, Saudi Arabia
+                  isReturnShipment: 'no'
+                  amount: 80
+                  grandTotal: 80
+                  totalPage: 1
+                  weight: 0.0001
+                  pickupLocation: DefaultWH
+                  destinationCountry: SA
+                  customerName: Zeynep Alakuş
+                  destinationCity: Al Kharj
+                  deliverySlot: ''
+                  modifiedDate: '2024-12-08 16:15:23'
+                  paymentMethod: paid
+                  packageCount: 1
+                  orderDate: '2024-02-01 11:39:59'
+                  items:
+                  - quantity: 1
+                    price: 80
+                    name: Raincoat
+                    taxAmount: 0
+                    sku: '5'
+                  status: delivered
+                  customer:
+                    country: SA
+                    address: Unnamed Road 16464, Saudi Arabia
+                    city: Al Kharj
+                    name: ZeynepAlakuş
+                    mobile: '4563731231'
+                    lon: 47.5413839
+                    id: 1
+                    lat: 24.0783327
+                currentPage: 1
+                totalCount: 2
+        '400':
+          description: '400'
+          content:
+            application/json:
+              example:
+                success: false
+                otoErrorCode: OTO1107
+                otoErrorMessage: minDate or maxDate is missing or invalid
+  /rest/v2/holdOrder:
+    post:
+      operationId: holdOrder
+      summary: Hold Order
+      tags:
+      - Orders
+      description: 'This API endpoint allows you to place an order on hold, temporarily pausing its processing. This is useful for scenarios such as payment verification, inventory issues, or customer requests. Request Parameters: Name Required Type Description orderId yes string Id of the order that you will place on hold. onHoldReason yes string Reason for being an order on hold. onHoldReasonLang yes string Values can be: eng, tr, ar. onHoldComment no string Reason or note explaining why the order is placed on ho'
+      requestBody:
+        content:
+          application/json:
+            example:
+              orderId: OID-20980-1146
+              onHoldReason: Fraud
+              onHoldReasonLang: en
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                success: true
+        '400':
+          description: 400 missing reason config lang
+          content:
+            application/json:
+              example:
+                success: false
+                otoErrorCode: OTO110
+                otoErrorMessage: On Hold reason is is missing or invalid
+  /rest/v2/unHoldOrder:
+    post:
+      operationId: unHoldOrder
+      summary: Unhold Order
+      tags:
+      - Orders
+      description: 'This API endpoint allows users to release orders that are currently on hold. This endpoint is designed to resume the processing of held orders, making them available for fulfillment or further actions in the order management workflow. Request Parameters: Name Required Type Description orderId yes string The orderId you want to unhold.'
+      requestBody:
+        content:
+          application/json:
+            example:
+              orderId: OID-9616-98794
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                success: true
+        '409':
+          description: 400 not allowed status
+          content:
+            application/json:
+              example:
+                success: false
+                otoErrorCode: OTO1103
+                otoErrorMessage: Status of the order is not suitable for the action
+  /rest/v2/orderDetails:
+    get:
+      operationId: orderDetails
+      summary: Get Order Details
+      tags:
+      - Orders
+      description: 'This API endpoint provides detailed information about a specific order. By using this endpoint, you can retrieve comprehensive data about an order including status updates. Request Parameters: Name Required Type Description orderId yes(if there is no otoId or ref1) string Id of the Order. otoId yes(if there is no orderId or ref1) string A unique id of the order generated by OTO. ref1 yes(if there is no orderId or otoId) string ref1 provided while create order.'
+      parameters:
+      - name: orderId
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                orderId: OID-50919-4346-C-C
+                trackingURL: https://qa.tryoto.com/otoflex-tracking?enc=dXpMZTVNZCtMQStiOENERS83aVBYdHkwMFVPUDNnT21rM3VFbzRZbVREUGpRb3JZVXdpU1B3PT0=
+                packageWeight: 1
+                orderDocs: []
+                dcName: OTO Flex
+                originCity: Madinah
+                currency: SAR
+                id: 31078194
+                amount: 215
+                customsValue: 215
+                pickupLocation: WH - Madinah
+                deliveryOptionId: 55266
+                destinationCity: Madinah
+                amountDue: 0
+                statusHistory:
+                - date: '2026-02-18T12:15:31'
+                  description: Created by m.pisgin enter
+                  id: 55113452
+                  status: new
+                - date: '2026-02-18T12:15:31'
+                  description: Created by m.pisgin enter
+                  id: 55113453
+                  status: assignedToWarehouse
+                - date: '2026-02-18T12:16:05'
+                  description: Order has picked by 50919
+                  id: 55113456
+                  status: assignedToWarehouse
+                - date: '2026-02-18T12:16:05'
+                  description: Order has picked by 50919
+                  id: 55113457
+                  status: assignedToWarehouse
+                - date: '2026-02-18T12:16:05'
+                  description: Order has missing item(s) in picking process
+                  id: 55113458
+                  status: assignedToWarehouse
+                - date: '2026-02-18T12:18:00'
+                  shipmentId: B1B45E0C
+                  description: Shipment created by m.pisgin enter
+                  id: 55113466
+                  deliveryCompany: otoDriverApp
+                  status: searchingDriver
+                - date: '2026-02-23T11:37:11'
+                  shipmentId: B1B45E0C
+                  description: Order assigned to New_Driver_new by m.pisgin enter
+                  id: 55135729
+                  deliveryCompany: otoDriverApp
+                  status: shipmentCreated
+                shipmentId: B1B45E0C
+                success: true
+                customsCurrency: SAR
+                packingStatusHistory:
+                - date: 2026-04-07T11:09
+                  description: Order is shipped  within dispatching unit 193 by picker3
+                  packingStatus: shipped
+                - date: '2026-02-18T12:19:16'
+                  description: Order is packed by m.pisgin enter
+                  packingStatus: packed
+                paymentMethod: paid
+                packageCount: 1
+                orderDate: '2026-02-18 12:15:31'
+                items:
+                - quantity: 1
+                  hscode: '1268'
+                  rowTotal: 200
+                  price: 200
+                  id: 1
+                  sku: Lenovo
+                  taxAmount: 15
+                status: shipmentCreated
+                customer:
+                  country: SA
+                  address: DMGD2681, 2681, Abu Ammar Al Ghaesh, 6619, Al Barakah Dist., 42333, Madinah, Kingdom of Saudi Arabia
+                  city: Madinah
+                  postcode: '42333'
+                  mobile: '905459149187'
+                  lon: 39.57451279
+                  buildingNo: '2681'
+                  street: Abu Ammar Al Ghaesh
+                  secondaryAddressNumber: '6619'
+                  district: Al Barakah Dist.
+                  name: Muhammed PSGN
+                  id: 1
+                  state: Madinah Province
+                  lat: 24.51820876
+  /rest/v2/checkOrderAvailability:
+    post:
+      operationId: checkOrderAvailability
+      summary: Check Order Availability
+      tags:
+      - Orders
+      description: 'Check Order Availability This API endpoint allows you to check the availability of an order based on the provided orderId and associated ruleIds . Request Parameters Existing Order (with OrderID) The user provides an orderId (increment ID) that is already created in OTO. The system checks the availability of the order and returns the list of locations where it can be fulfilled. By default, the API considers all OMS rules while checking availability. Optionally, the user can provide specific OMS '
+      requestBody:
+        content:
+          application/json:
+            example:
+              orderId: extra-test-10
+              ruleIds:
+              - b781d9e6-36da-4cd1-bf7d-f8604561ca6a
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200- Order ID
+          content:
+            application/json:
+              example:
+                success: true
+                locations:
+                - locationName: Home - John Doe
+                  distance: 2510.18
+                  locationCoordinates:
+                    lon: 46.70160836
+                    lat: 24.7310685
+                  locationCode: '123452'
+                orderAvailability: 'Yes'
+        '404':
+          description: 404 Not Found
+          content:
+            application/json:
+              example:
+                success: false
+                orderAvailability: 'No'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Obtain an access_token by POSTing your refresh_token to /refreshToken, then send Authorization: Bearer <access_token>.'

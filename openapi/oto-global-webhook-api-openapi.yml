@@ -1,0 +1,119 @@
+openapi: 3.0.3
+info:
+  title: OTO API V2 Account Webhook API
+  version: 2.0.0
+  description: 'Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO''s platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you''re integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.'
+  contact:
+    name: OTO Support
+    url: https://help.tryoto.com/en/support/home
+  x-source: derived from published OTO API V2 Postman collection (apis.tryoto.com)
+servers:
+- url: https://api.tryoto.com/rest/v2
+  description: Production
+- url: https://staging-api.tryoto.com/rest/v2
+  description: Staging / sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Webhook
+  description: WEBHOOK for ORDER There are 3 types of webhook for now, newOrders, orderStatus , shipmentError and walletTransaction. OTO will push updates to the registered webhook endpoint for the orderStatus type whenever an order status changes. This includes statuses such as Processing, Delivered, Returned, an
+paths:
+  /rest/v2/webhook:
+    post:
+      operationId: webhook
+      summary: webhook
+      tags:
+      - Webhook
+      description: 'This endpoint enables OTO to send update payloads to the specified URL using the defined method. Optional security measures, such as token authentication and payload validation, can be configured for enhanced security. Request Parameters: Name Required Type Description method yes string POST or PUT url yes string Your endpoint listens to get OTO webhook payload, when order status changes. exp. https://webhook.site/3e53c98a-a089-4ca4-9bc4-df10e5a71e4b secretKey no string With this key message is '
+      requestBody:
+        content:
+          application/json:
+            example:
+              method: post
+              url: https://webhook.site/3e53c98a-a089-4ca4-9bc4-df10e5a71e4b
+              orderPrefix: fulfillment
+              timestampFormat: '2025-01-01 13:14:34'
+              secretKey: key1234
+              authorizationKey: authorizationkey123
+              webhookType: shipmentError
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200 webhook-order status
+          content:
+            application/json:
+              example:
+                success: true
+                id: '59'
+                message: webhook has been created
+    get:
+      operationId: getWebhook
+      summary: webhook
+      tags:
+      - Webhook
+      description: 'This endpoint allows you to retrieve a list of all registered webhook definitions. It provides detailed information about each webhook, including its configuration and associated event triggers, enabling you to manage and review your webhook integrations effectively. Note: You can filter by id if you know the id of the webhook. Request Parameters: Name Required Type Description id no string id of the webhook'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                webhooks:
+                - method: post
+                  secretKey: secret123
+                  authorizationKey: authorization123
+                  timestampFormat: '2025-01-01 10:10:10'
+                  id: 59
+                  url: https://webhook.site/3e53c98a-a089-4ca4-9bc4-df10e5a71e4b
+                  orderPrefix: fulfillment
+                success: true
+    put:
+      operationId: putWebhook
+      summary: webhook
+      tags:
+      - Webhook
+      description: 'This API endpoint allows updating an already registered webhook by providing its unique ID. This ensures you can modify existing webhook configurations, such as URL, secretKey, or other parameters, without needing to delete and recreate it. Request Parameters: Name Required Type Description id yes string Id of the webhook record. method yes string POST or PUT url yes string Your endpoint listens to get OTO webhook payload, when order status changes. exp. https://webhook.site/3e53c98a-a089-4ca4-9'
+      requestBody:
+        content:
+          application/json:
+            example:
+              id: 59
+              method: post
+              url: https://webhook.site/3e53c98a-a089-4ca4-9bc4-df10e5a71e4b
+              orderPrefix: test-2
+              timestampFormat: '2025-01-01 10:10:10'
+              secretKey: secret123
+              authorizationKey: authorizationkey123
+              webhookType: orderStatus
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                success: true
+                message: webhook has been updated
+    delete:
+      operationId: deleteWebhook
+      summary: webhook
+      tags:
+      - Webhook
+      description: 'This API endpoint enables the removal of a registered webhook from the system using its unique ID. This ensures you can effectively manage and clean up webhook configurations that are no longer needed. Request Parameters: Name Required Type Description id yes string Id of the webhook record.'
+      responses:
+        '200':
+          description: webhook
+          content:
+            application/json:
+              example:
+                success: true
+                message: webhook has been deleted
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Obtain an access_token by POSTing your refresh_token to /refreshToken, then send Authorization: Bearer <access_token>.'

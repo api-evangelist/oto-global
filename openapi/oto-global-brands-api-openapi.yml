@@ -1,0 +1,75 @@
+openapi: 3.0.3
+info:
+  title: OTO API V2 Account Brands API
+  version: 2.0.0
+  description: 'Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO''s platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you''re integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.'
+  contact:
+    name: OTO Support
+    url: https://help.tryoto.com/en/support/home
+  x-source: derived from published OTO API V2 Postman collection (apis.tryoto.com)
+servers:
+- url: https://api.tryoto.com/rest/v2
+  description: Production
+- url: https://staging-api.tryoto.com/rest/v2
+  description: Staging / sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Brands
+  description: ''
+paths:
+  /rest/v2/getBrandList:
+    get:
+      operationId: getBrandList
+      summary: Get List of Brands (Client Store)
+      tags:
+      - Brands
+      description: 'This API endpoint provides access to a comprehensive list of brand (client store) details. This endpoint enables users to retrieve information about brands associated with their account, including key attributes such as brand name, store identifiers, and other relevant metadata. Request Parameters: No request body parameters are required for this GET request. Response: Upon a successful execution, the server responds with a 200 status code and a JSON object containing the following fields: succe'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                success: true
+                clientStores:
+                - companyId: 24772
+                  storeName: test123
+                  ID: 1161
+                  wareHouseName: DefaultWH
+                  brandLogo: https://storage.googleapis.com/download/storage/v1/b/oto-files-stage/
+                  defaultWarehouseId: 16415
+  /rest/v2/createBrand:
+    post:
+      operationId: createBrand
+      summary: Create Brand (Client Store)
+      tags:
+      - Brands
+      description: 'This API endpoint allows you to add a new brand (client store) to the system. By using this endpoint, you can define and register a brand with essential details, enabling integration with various systems. Request Parameters: Name Required Type Description storeName yes string The name of the store logo no string The logo URL of the brand defaultWarehouseID no integer The ID of the default warehouse stores no array An array of store objects containing the following fields storeName no string The '
+      requestBody:
+        content:
+          application/json:
+            example:
+              storeName: Brand A
+              logo: https://storage.googleapis.com/download/storage/v1/b/oto-files-stage/o/files%2F24772%2Fimport%2Fb58b6d41-af83-492c-a416-d4bb0d076be1.png?generation=1721804238908930&alt=media
+              defaultWarehouseID: 16415
+              stores:
+              - storeName: store A
+                salesChannelCredentialsID: 4512
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                success: true
+                clientStoreId: 1193
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Obtain an access_token by POSTing your refresh_token to /refreshToken, then send Authorization: Bearer <access_token>.'

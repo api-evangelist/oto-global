@@ -1,0 +1,204 @@
+openapi: 3.0.3
+info:
+  title: OTO API V2 Account Pickup Locations API
+  version: 2.0.0
+  description: 'Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO''s platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you''re integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.'
+  contact:
+    name: OTO Support
+    url: https://help.tryoto.com/en/support/home
+  x-source: derived from published OTO API V2 Postman collection (apis.tryoto.com)
+servers:
+- url: https://api.tryoto.com/rest/v2
+  description: Production
+- url: https://staging-api.tryoto.com/rest/v2
+  description: Staging / sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Pickup Locations
+  description: ''
+paths:
+  /rest/v2/createPickupLocation:
+    post:
+      operationId: createPickupLocation
+      summary: Create Pickup Location
+      tags:
+      - Pickup Locations
+      description: 'This API endpoint allows you to define and register a new pickup location within the system. By specifying the location details, you can expand your network of pickup points, improving logistics and delivery workflows. Request Parameters: Name Required Type Description name yes string Name of the pickup location; should be unique. type no string You can enter these values: branch , warehouse . Branch can only be used by enterprise and marketplace packages code yes string Code of the pickup locat'
+      requestBody:
+        content:
+          application/json:
+            example:
+              type: branch
+              code: code-0211112
+              name: Location-02 Name11111
+              mobile: '555888777'
+              address: 3474, Abi Almahd, 7026, Al Olaya, 12221, Riyadh, Kingdom of Saudi Arabia
+              contactName: Test Contact
+              contactEmail: Test Email
+              lat: '26.001'
+              lon: '50.001'
+              city: Dammam
+              country: SA
+              street: Abi Almahd
+              district: Al Olaya
+              buildingNo: '3474'
+              secondaryAddressNumber: '7026'
+              postcode: '12221'
+              servingRadius: '10'
+              shortAddressCode: RHOD3474
+              brandName: Example Seller
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200 warehouse
+          content:
+            application/json:
+              example:
+                warhouseId: '123'
+                pickupLocationCode: code-01
+                success: true
+                message: warehouse has been created
+  /rest/v2/updatePickupLocation:
+    post:
+      operationId: updatePickupLocation
+      summary: Update Pickup Location
+      tags:
+      - Pickup Locations
+      description: 'This API endpoint allows you to modify the details of your existing pickup locations efficiently. This endpoint provides a streamlined way to ensure that your pickup location information remains accurate and up to date, enabling smooth and reliable operations. Request Parameters: Name Required Type Description name yes string Name of the pickup location type yes string You can enter these values: branch , warehouse . Branch can only be used by enterprise and marketplace packages code yes string '
+      requestBody:
+        content:
+          application/json:
+            example:
+              type: warehouse
+              code: code-02
+              name: Location-02 Name
+              mobile: '555888777'
+              address: Test warehouse 3539, Al Khalidiyyah Al Janubiyyah, Dammam 32225
+              contactName: Test Contact
+              contactEmail: Test Email
+              lat: '26.001'
+              lon: '50.001'
+              city: Dammam
+              district: Latifah Manaf
+              street: Long Street
+              state: Eastern Province
+              country: SA
+              postcode: '77777'
+              servingRadius: '10'
+              brandName: Example Seller 2
+              status: active
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200 OK
+          content:
+            application/json:
+              example:
+                branchId: '1878'
+                pickupLocationCode: code-02
+                success: true
+        '400':
+          description: 400 Bad Request
+          content:
+            application/json:
+              example:
+                success: false
+                errorCode: 5
+                errorMsg: Code, Mobile and Location must be provided
+        '404':
+          description: '404'
+          content:
+            application/json:
+              example:
+                success: false
+                otoErrorCode: OTO1070
+                otoErrorMessage: Pickup location code is missing or invalid
+  /rest/v2/getPickupLocationList:
+    get:
+      operationId: getPickupLocationList
+      summary: Get Pickup Location List
+      tags:
+      - Pickup Locations
+      description: 'This API endpoint enables you to retrieve a comprehensive list of pickup locations by specifying a date range and status. This endpoint provides an efficient way to filter and access relevant pickup location data, ensuring streamlined tracking and management. Request Parameters: Name Required Type Description minDate no date Starting Pickup location create date in "yyyy-mm-dd" format. (e.g. "2024-08-01") maxDate no date Ending Pickup location create date in "yyyy-mm-dd" format. (e.g. "2024-08-05'
+      parameters:
+      - name: minDate
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: maxDate
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 200 OK
+          content:
+            application/json:
+              example:
+                success: true
+                warehouses:
+                - code: code-999
+                  address: Test warehouse 3539, Al Khalidiyyah Al Janubiyyah, Dammam 32225
+                  contactEmail: Test Email
+                  city: Dammam
+                  country: SA
+                  street: Abi Almahd
+                  district: Al Olaya
+                  buildingNo: '3474'
+                  secondaryAddressNumber: '7026'
+                  postcode: '12221'
+                  name: Location Name
+                  contactPerson: Test Contact
+                  lon: 50.001
+                  id: 17051
+                  contactPhone: '555888777'
+                  lat: 26.001
+                branches:
+                - code: code-96
+                  address: Test warehouse 3539, Al Khalidiyyah Al Janubiyyah, Dammam 32225
+                  contactEmail: Test Email
+                  district: Al Mughaisilah Dist.
+                  city: Madinah
+                  buildingNo: '8089'
+                  street: Salam Ibn Salim
+                  secondaryAddressNumber: '4314'
+                  shortAddressCode: DMAJ8089
+                  postcode: '42315'
+                  name: Location-02 Name
+                  contactPerson: Test Contact
+                  lon: 50.001
+                  id: 18203
+                  contactPhone: '555888777'
+                  lat: 26.002
+        '400':
+          description: 400 Bad Request
+          content:
+            application/json:
+              example:
+                success: false
+                errorCode: 4
+                errorMsg: maxDate is invalid
+        '401':
+          description: 401 Unauthorized
+          content:
+            application/json:
+              example:
+                message: Jwt is expired
+                code: 401
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Obtain an access_token by POSTing your refresh_token to /refreshToken, then send Authorization: Bearer <access_token>.'

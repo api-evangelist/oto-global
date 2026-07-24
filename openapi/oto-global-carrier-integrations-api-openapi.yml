@@ -1,0 +1,1644 @@
+openapi: 3.0.3
+info:
+  title: OTO API V2 Account Carrier Integrations API
+  version: 2.0.0
+  description: 'Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO''s platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you''re integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.'
+  contact:
+    name: OTO Support
+    url: https://help.tryoto.com/en/support/home
+  x-source: derived from published OTO API V2 Postman collection (apis.tryoto.com)
+servers:
+- url: https://api.tryoto.com/rest/v2
+  description: Production
+- url: https://staging-api.tryoto.com/rest/v2
+  description: Staging / sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Carrier Integrations
+  description: ''
+paths:
+  /rest/v2/getDeliveryEstimation:
+    post:
+      operationId: getDeliveryEstimation
+      summary: Get Delivery Estimation
+      tags:
+      - Carrier Integrations
+      description: This API endpoint allows you to access estimated delivery dates, times, and other last-mile process details by utilizing the SLA configurations of your shipping partners. By providing key information such as the pickup and customer addresses, you can retrieve precise delivery and pickup date estimates. This capability enhances the accuracy of your shipping operations and proves invaluable for businesses and logistics providers aiming to streamline workflows and deliver reliable delivery timeline
+      requestBody:
+        content:
+          application/json:
+            example:
+              calculationData:
+                originAddress:
+                  city: Riyadh
+                  country: SA
+                  lat: 45
+                  lon: 45
+                  district: ''
+                destinationAddress:
+                  city: Riyadh
+                  country: SA
+                  lat: 45
+                  lon: 45
+                  district: ''
+              deliveryCompanySettingsId: 1233
+              slaMethodType: CITY_BASED
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                result:
+                - estimatedTransferDuration: 3
+                  shippingContract:
+                    agreementType: INTEGRATOR
+                    deliveryCompanySettingsId: 1233
+                    name: Smsa Ecom V2
+                    id: 117
+                    slaMethodType: TIER_BASED
+                    deliveryIntegrationName: secom
+                  estimatedPickupDate: '2024-01-15'
+                  cutOffSameDayPickup: '15:00'
+                  estimatedTransferCompletionDate: '2024-01-18'
+                  estimatedDeliveryDate: '2024-01-18'
+                  shipmentCreateDate: '2024-01-10'
+                success: true
+  /rest/v2/aiEstimatedDeliveryDates:
+    post:
+      operationId: aiEstimatedDeliveryDates
+      summary: AI Estimated Delivery Dates
+      tags:
+      - Carrier Integrations
+      description: 'This API endpoint allows you retrieve OTO’s AI-generated estimated pickup and delivery dates . The endpoint is designed solely for prediction purposes —it does not create or update any shipments. The prediction model uses all up-to-date operational data within OTO , including historical delivery patterns, courier performance, service types, regions, and peak-time behavior. Based on this data, it produces a reliable estimate for both pickup and delivery timelines. Request Parameters: Name Require'
+      requestBody:
+        content:
+          application/json:
+            example:
+              weight: '1'
+              originCity: Riyadh
+              destinationCity: Riyadh
+              height: 15
+              width: 10
+              length: 10
+              includeEstimatedDates: true
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                traceId: 63545-73855-176.88.141.22-04260af8-e9da-4597-b652-1d6f9f89554c
+                success: true
+                deliveryCompany:
+                - deliveryCompanyName: Deliver Now
+                  estimatedPickupDate: '2025-11-17'
+                  deliveryCompanySettingsId: 7109
+                  estimatedDeliveryDate: '2025-11-17'
+                - deliveryCompanyName: Omni Llama
+                  estimatedPickupDate: '2025-11-16'
+                  deliveryCompanySettingsId: 7252
+                  estimatedDeliveryDate: '2025-11-17'
+                - deliveryCompanyName: SPL PUDO
+                  estimatedPickupDate: '2025-11-17'
+                  deliveryCompanySettingsId: 7144
+                  estimatedDeliveryDate: '2025-11-18'
+                - deliveryCompanyName: Delivery Support
+                  estimatedPickupDate: '2025-11-17'
+                  deliveryCompanySettingsId: 7417
+                  estimatedDeliveryDate: '2025-11-18'
+                - deliveryCompanyName: Aramex PUDO
+                  estimatedPickupDate: '2025-11-17'
+                  deliveryCompanySettingsId: 7231
+                  estimatedDeliveryDate: '2025-11-21'
+                - deliveryCompanyName: Sent
+                  estimatedPickupDate: '2025-11-17'
+                  deliveryCompanySettingsId: 7490
+                  estimatedDeliveryDate: '2025-11-18'
+                - deliveryCompanyName: Roadlink Logistics
+                  estimatedPickupDate: '2025-11-17'
+                  deliveryCompanySettingsId: 7990
+                  estimatedDeliveryDate: '2025-11-18'
+                - deliveryCompanyName: SMSA PUDO
+                  estimatedPickupDate: '2025-11-16'
+                  deliveryCompanySettingsId: 7326
+                  estimatedDeliveryDate: '2025-11-17'
+                - deliveryCompanyName: iMile
+                  estimatedPickupDate: '2025-11-17'
+                  deliveryCompanySettingsId: 7147
+                  estimatedDeliveryDate: '2025-11-18'
+                - deliveryCompanyName: DELIVERIST Same Day
+                  estimatedPickupDate: '2025-11-17'
+                  deliveryCompanySettingsId: 7110
+                  estimatedDeliveryDate: '2025-11-20'
+                - deliveryCompanyName: Shipa Delivery
+                  estimatedPickupDate: '2025-11-17'
+                  deliveryCompanySettingsId: 7098
+                  estimatedDeliveryDate: '2025-11-20'
+                - deliveryCompanyName: J&T Express
+                  estimatedPickupDate: '2025-11-18'
+                  deliveryCompanySettingsId: 7100
+                  estimatedDeliveryDate: '2025-11-22'
+                - deliveryCompanyName: Yamamah
+                  estimatedPickupDate: '2025-11-17'
+                  deliveryCompanySettingsId: 8530
+                  estimatedDeliveryDate: '2025-11-18'
+                - deliveryCompanyName: Aymakan
+                  estimatedPickupDate: '2025-11-17'
+                  deliveryCompanySettingsId: 7102
+                  estimatedDeliveryDate: '2025-11-18'
+                - deliveryCompanyName: Thabit Logistics
+                  estimatedPickupDate: '2025-11-17'
+                  deliveryCompanySettingsId: 7099
+                  estimatedDeliveryDate: '2025-11-18'
+                - deliveryCompanyName: Delex
+                  estimatedPickupDate: '2025-11-17'
+                  deliveryCompanySettingsId: 7113
+                  estimatedDeliveryDate: '2025-11-18'
+                - deliveryCompanyName: Linkers Express
+                  estimatedPickupDate: '2025-11-17'
+                  deliveryCompanySettingsId: 7949
+                  estimatedDeliveryDate: '2025-11-18'
+                - deliveryCompanyName: Aramex
+                  estimatedPickupDate: '2025-11-17'
+                  deliveryCompanySettingsId: 7097
+                  estimatedDeliveryDate: '2025-11-22'
+                - deliveryCompanyName: Naqel Express
+                  estimatedPickupDate: '2025-11-17'
+                  deliveryCompanySettingsId: 7112
+                  estimatedDeliveryDate: '2025-11-22'
+                - deliveryCompanyName: SMSA
+                  estimatedPickupDate: '2025-11-16'
+                  deliveryCompanySettingsId: 7101
+                  estimatedDeliveryDate: '2025-11-18'
+                - deliveryCompanyName: UPS
+                  estimatedPickupDate: '2025-11-16'
+                  deliveryCompanySettingsId: 7136
+                  estimatedDeliveryDate: '2025-11-17'
+                - deliveryCompanyName: Adwar Cold
+                  estimatedPickupDate: '2025-11-17'
+                  deliveryCompanySettingsId: 7410
+                  estimatedDeliveryDate: '2025-11-18'
+                - deliveryCompanyName: Aramex Heavy & Bulky
+                  estimatedPickupDate: '2025-11-17'
+                  deliveryCompanySettingsId: 7898
+                  estimatedDeliveryDate: '2025-11-21'
+                - deliveryCompanyName: Flow PL
+                  estimatedPickupDate: '2025-11-17'
+                  deliveryCompanySettingsId: 7106
+                  estimatedDeliveryDate: '2025-11-18'
+  /rest/v2/checkCoverage:
+    post:
+      operationId: checkCoverage
+      summary: Check Coverage
+      tags:
+      - Carrier Integrations
+      description: 'This API endpoint allows you to verify whether the location provided in your request is within the coverage area defined by your OTO settings, including the coverage configurations for delivery companies and the branches. Request Parameters: Name Required Type Description city yes string City to check coverage lat yes long Latitude lon yes long Longitude pickupLocation no boolean If you pass true, it will list the covered and available pickup locations. pickupLocationCode no string Lists only th'
+      requestBody:
+        content:
+          application/json:
+            example:
+              lat: '24.28738403'
+              lon: '46.44305038'
+              city: Riyadh
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200 OK
+          content:
+            application/json:
+              example:
+                branchCoverage: true
+                courierDelivery: true
+                success: true
+                bulletDelivery: true
+        '401':
+          description: '401'
+          content:
+            application/json:
+              example:
+                message: Jwt is expired
+                code: 401
+        '400':
+          description: 400 Bad Request
+          content:
+            application/json:
+              example:
+                success: false
+                otoErrorCode: OTO1098
+                otoErrorMessage: Lat and Lon is missing or invalid
+  /rest/v2/availableCities:
+    post:
+      operationId: availableCities
+      summary: Available Cities
+      tags:
+      - Carrier Integrations
+      description: 'This API endpoint retrieves a list of cities available for delivery based on your coverage settings for active delivery companies you have contracts with. To obtain results, ensure that the delivery companies'' coverage areas are configured by adding cities through the OTO UI. Request Parameters: Name Required Type Description page no number Number of page, default is 1 limit no number Number of cities in a single page, default is 100'
+      requestBody:
+        content:
+          application/json:
+            example:
+              limit: 3
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                success: true
+                limit: 3
+                page: 1
+                orders:
+                - city: Riyadh
+                  city_ar: الرياض
+                - city: Dammam
+                  city_ar: الدمام
+                - city: Jeddah
+                  city_ar: جدة
+  /rest/v2/availableTimeslots:
+    post:
+      operationId: availableTimeslots
+      summary: Available Time Slots
+      tags:
+      - Carrier Integrations
+      description: 'This API endpoint retrieves the available delivery time slots for delivery companies based on their specified working hours. Request Parameters: Name Required Type Description lat no string Latitude lon no string Longitude serviceType yes string Possible values: bullet , courier packageSize no string'
+      requestBody:
+        content:
+          application/json:
+            example:
+              serviceType: bullet
+              packageSize: simCard
+              lat: '24.00'
+              lon: '46.00'
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                success: true
+                availableSlots:
+                - times:
+                  - 9:30AM-11:30AM
+                  - 11:30AM-1:30PM
+                  - 1:30PM-3:30PM
+                  - 3:30PM-5:30PM
+                  - 5:30PM-7:30PM
+                  - 7:30PM-9:30PM
+                  - 9:30PM-11:30PM
+                  day: 05/11/2020
+                - times:
+                  - 5:30PM-7:30PM
+                  - 7:30PM-9:30PM
+                  - 9:30PM-11:30PM
+                  day: 06/11/2020
+                - times:
+                  - 9:30AM-11:30AM
+                  - 11:30AM-1:30PM
+                  - 1:30PM-3:30PM
+                  - 3:30PM-5:30PM
+                  - 5:30PM-7:30PM
+                  - 7:30PM-9:30PM
+                  - 9:30PM-11:30PM
+                  day: 07/11/2020
+  /rest/v2/dcList:
+    post:
+      operationId: dcList
+      summary: DC List
+      tags:
+      - Carrier Integrations
+      description: This API endpoint provides a list of all delivery companies integrated with OTO. If you have a contract with any of these companies, you can connect your account to OTO. Use the company's unique code to configure settings through the DC Activation and DC Config API endpoints. If a delivery company you have a contract with is not listed, please notify us to initiate the integration process.
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                data:
+                - Name: 3speeds
+                  code: 3speeds
+                - Name: 4PL
+                  code: 4pl
+                - Name: 4U Express
+                  code: 4uexpress
+                - Name: 4U Logistics
+                  code: 4u
+                - Name: 9Cloud
+                  code: 9cloud
+                - Name: Adam Pharmacy
+                  code: adamPharmacy
+                - Name: Adwar Logistics
+                  code: adwar
+                - Name: Adwar Logistics (Logestechs)
+                  code: adwarLogestechs
+                - Name: AHOY
+                  code: ahoy
+                - Name: Ajalogistic
+                  code: ajalogistic
+                - Name: Ajeek
+                  code: ajeek
+                - Name: AJEX Logistics
+                  code: ajex
+                - Name: AJEX Türkiye
+                  code: ajex-tr
+                - Name: Ajoul
+                  code: ajoul
+                - Name: Ajwaa Afaq
+                  code: ajwa
+                - Name: Al Hajer Logistics
+                  code: alhajer
+                - Name: Al Saif Express
+                  code: alsaifexpress
+                - Name: Al Shouroq express
+                  code: alshouroq
+                - Name: Alam alkon
+                  code: alamalkon
+                - Name: Alamyal
+                  code: alamyal
+                - Name: Albabtain Logistic
+                  code: albabtainLogistic
+                - Name: Alma Express
+                  code: alma
+                - Name: Altariq App
+                  code: altariq
+                - Name: Anwan Express
+                  code: anwan
+                - Name: Araba Shipping Service
+                  code: araba
+                - Name: Aramex
+                  code: aramex
+                - Name: Aras Kargo
+                  code: araskargo
+                - Name: Asyad Express
+                  code: asyadV2
+                - Name: Atheryoun Express
+                  code: atheryoun
+                - Name: Awfar Express
+                  code: awfar
+                - Name: Awssal
+                  code: awssal
+                - Name: Aymakan
+                  code: aymakan
+                - Name: Banabikurye
+                  code: banabikurye
+                - Name: Barig Logistics
+                  code: barig
+                - Name: Barq Express
+                  code: barqexpress
+                - Name: Barq Fleet
+                  code: barq
+                - Name: Barq Jawhara
+                  code: barq-jawhara
+                - Name: Beebolt
+                  code: beebolt
+                - Name: BeeThere Delivery
+                  code: beethere
+                - Name: Beez
+                  code: beez
+                - Name: Beone
+                  code: beone
+                - Name: Beone Fulfillment V2
+                  code: beoneFfl
+                - Name: Beone Lastmile
+                  code: beoneLastmile
+                - Name: Best One
+                  code: bestone
+                - Name: Beyond Delivery
+                  code: beyondDelivery
+                - Name: BlueSky Express
+                  code: bskyexpress
+                - Name: Bolt Kargo
+                  code: boltkargo
+                - Name: Bosta
+                  code: bostaV2
+                - Name: Boxed Up
+                  code: boxedup
+                - Name: Boxex Express
+                  code: boxex
+                - Name: BTC Logistics
+                  code: btclogistic
+                - Name: Captain H
+                  code: captainh
+                - Name: Careem
+                  code: careem
+                - Name: Cigo
+                  code: cigo
+                - Name: Cloud Express
+                  code: cloudexpress
+                - Name: Cloud Shelf
+                  code: cloud-shelf
+                - Name: Coldt
+                  code: coldt
+                - Name: Collect+
+                  code: collectplus
+                - Name: Dal
+                  code: channels
+                - Name: Dal Cross City
+                  code: dalCrossCity
+                - Name: Dal Fulfillment
+                  code: channelsfulfillment
+                - Name: Dash Delivery
+                  code: dashSaudi
+                - Name: Dayer Logistics
+                  code: dayer
+                - Name: Dele Fast
+                  code: delefast
+                - Name: Delex
+                  code: delex
+                - Name: Delex (Logestechs)
+                  code: delexLogestechs
+                - Name: Delifast
+                  code: delifast
+                - Name: Deliver Now Logistics
+                  code: delivernow
+                - Name: Deliverist
+                  code: deliverist
+                - Name: Deliverist (Logestechs)
+                  code: deliveristLogestechs
+                - Name: Delivery Support
+                  code: deliverysupport
+                - Name: Delybell
+                  code: delybell
+                - Name: DHL Express MyDHL
+                  code: mydhl
+                - Name: DHL Türkiye
+                  code: dhlTr
+                - Name: DOS Express
+                  code: dosexpress
+                - Name: Drb Express
+                  code: drbexpress
+                - Name: Easy Delivery
+                  code: easyDelivery
+                - Name: Ejack
+                  code: ejack
+                - Name: Elite
+                  code: elite
+                - Name: Emdad
+                  code: emdad
+                - Name: Emirates Post
+                  code: emiratespost
+                - Name: EMX
+                  code: emx
+                - Name: Esal Parcel Transport Company
+                  code: esal
+                - Name: Esnad Express
+                  code: esnad
+                - Name: Eva Express
+                  code: evaexpress
+                - Name: Falcon Express
+                  code: falconExpress
+                - Name: Fareye
+                  code: fareye
+                - Name: Fast Move Express
+                  code: fastMove
+                - Name: Fastlo
+                  code: fastlo
+                - Name: Fawran Logistics
+                  code: fawran
+                - Name: Fazaah Logistics
+                  code: fazaahLogistics
+                - Name: Fedex
+                  code: fedex
+                - Name: FedEx Uluslararası (PTS)
+                  code: ptsv5FedEx
+                - Name: FedexGlobal
+                  code: fedexGlobal
+                - Name: Fenix Express
+                  code: fenix
+                - Name: Fenx Kuwait
+                  code: fenxKuwait
+                - Name: Flexe Express
+                  code: flexe
+                - Name: Flexible
+                  code: flexible
+                - Name: Flickapp
+                  code: flickapp
+                - Name: Flow Business - Flow LTD
+                  code: flowldt
+                - Name: Flow Express
+                  code: flowexpress
+                - Name: Flowpl
+                  code: flowpl
+                - Name: FODEL
+                  code: fodel
+                - Name: Fulfillment Bridge
+                  code: fulfillmentbridge
+                - Name: FULLex
+                  code: fullex
+                - Name: Galaxy Delivery
+                  code: galaxy
+                - Name: Gawamen
+                  code: gawamen
+                - Name: Genac
+                  code: genac
+                - Name: Getswift
+                  code: getswift
+                - Name: GFS Express
+                  code: gfsexpress
+                - Name: GLC
+                  code: glcLogestechs
+                - Name: GLT Express
+                  code: gltexpress
+                - Name: Happiness Gem
+                  code: happinessgem
+                - Name: Hawa Logistics
+                  code: hawa
+                - Name: Hejen Expresss
+                  code: hejen
+                - Name: HepsiJet
+                  code: hepsijet
+                - Name: HepsiJet Marketplace
+                  code: hepsijetmarketplace
+                - Name: Hiblocks
+                  code: hiblocks
+                - Name: Holol Al Diar
+                  code: holol-aldiar
+                - Name: Horizon Speed
+                  code: horizons
+                - Name: Horoz Lojistik
+                  code: horoz
+                - Name: Horoz Lojistik Pazaryeri
+                  code: horoz-marketplace
+                - Name: İletmen
+                  code: iletmen
+                - Name: iMile
+                  code: imile
+                - Name: IntercityXpress
+                  code: intercityxpress
+                - Name: J&T Express
+                  code: jtexpress
+                - Name: Jana Express
+                  code: janaExpress
+                - Name: Jeebly
+                  code: jeebly
+                - Name: Jeebly Now
+                  code: jeeblynow
+                - Name: Jeebly V2
+                  code: jeeblyV2
+                - Name: Jetizz
+                  code: jetizz
+                - Name: JFL Express
+                  code: jflexpress
+                - Name: Jones International Transportation Co.
+                  code: jonestco
+                - Name: Jumia Logistics
+                  code: jumia
+                - Name: KargoIst
+                  code: kargoist
+                - Name: Kargoist
+                  code: kargoistmarketplace
+                - Name: Kasib Express
+                  code: kasib
+                - Name: Kedan
+                  code: kedan
+                - Name: Kolay Gelsin
+                  code: kolaygelsin
+                - Name: Kolay Gelsin (OTO)
+                  code: kolaygelsin-marketplace
+                - Name: Kwick Box
+                  code: kwickbox
+                - Name: Labaih
+                  code: labaih
+                - Name: Lafasta
+                  code: lafasta
+                - Name: Lafasta V4
+                  code: lafastaV4
+                - Name: Lamha
+                  code: lamha
+                - Name: Last Step
+                  code: laststep
+                - Name: LastPoint
+                  code: lastpoint
+                - Name: Logistic Care
+                  code: logcare
+                - Name: Logistic Supplier
+                  code: logisticSupplier
+                - Name: Logistiq
+                  code: logistiq
+                - Name: Lyve
+                  code: lyve
+                - Name: Lyve Bullet
+                  code: lyve317
+                - Name: Macm
+                  code: macm
+                - Name: Madar Express
+                  code: madarexpress
+                - Name: Magic Delivery
+                  code: magicexpress
+                - Name: Mahmool
+                  code: mahmool
+                - Name: MajEx Express
+                  code: majex
+                - Name: MATP Logistics
+                  code: matp
+                - Name: Milenow
+                  code: milenow
+                - Name: Miles Speed
+                  code: milespeeds
+                - Name: Mina Excellence
+                  code: minaExcellence
+                - Name: Mkhdoom
+                  code: mkhdoom
+                - Name: Mlc Go
+                  code: mlcgo
+                - Name: MNG Kargo
+                  code: mngkargo
+                - Name: MNG Kargo (OTO)
+                  code: mngkargo-marketplace
+                - Name: 'Modern Support '
+                  code: msc
+                - Name: Moments Logistics Service
+                  code: momentsksa
+                - Name: Moovo Express
+                  code: moovo
+                - Name: Mosool
+                  code: mosool
+                - Name: Motqen
+                  code: motqen
+                - Name: Mowasalt
+                  code: mowasalt
+                - Name: MQ Express
+                  code: mqexpress
+                - Name: Mrsool
+                  code: mrsool
+                - Name: Munch On
+                  code: munchon
+                - Name: Mylerz
+                  code: mylerz
+                - Name: Najiz
+                  code: najiz
+                - Name: Najiz Express
+                  code: najizxpress
+                - Name: Naqel Bullet
+                  code: naqelbullet
+                - Name: Naqel express
+                  code: naqel
+                - Name: Naqel Fulfillment
+                  code: naqelfulfillment
+                - Name: Naql Express
+                  code: naql
+                - Name: Naseem Cold Delivery
+                  code: naseem
+                - Name: Nashmi
+                  code: nashmiLogestechs
+                - Name: Nasxpress
+                  code: nasxpress
+                - Name: nGage
+                  code: ngage
+                - Name: NiceOne Fleet
+                  code: niceOneFleet
+                - Name: Nizar Logistics
+                  code: nizar
+                - Name: Nord Logistics
+                  code: nordlogistics
+                - Name: NYAZIK Logistics
+                  code: nyazik
+                - Name: Octovan
+                  code: octovan
+                - Name: Okadoc
+                  code: okadoc
+                - Name: Omni Llama
+                  code: omnillama
+                - Name: One Click Delivery
+                  code: oneclick
+                - Name: Ontime Express
+                  code: ontime
+                - Name: Onway
+                  code: onway
+                - Name: OTO DMS
+                  code: OTODMS
+                - Name: OTO Flex
+                  code: otoDriverApp
+                - Name: PackUpp Delivery
+                  code: packupp
+                - Name: Paket Taxi
+                  code: pakettaxi
+                - Name: PDC
+                  code: pdc
+                - Name: Pharmaciaty
+                  code: pharmaciaty
+                - Name: Pharmaciaty TMS
+                  code: pharmaciatyTMS
+                - Name: Placer
+                  code: placer
+                - Name: Porter Express
+                  code: porterex
+                - Name: Posta Plus V2
+                  code: postaPlusV2
+                - Name: Postage Fulfillment
+                  code: postageFulfillment
+                - Name: Postagexp
+                  code: postagexp
+                - Name: PostaPlus
+                  code: postaplus
+                - Name: Premium Shipping
+                  code: premium-shipping
+                - Name: Pro Logistics
+                  code: prolo
+                - Name: PTL Logistics
+                  code: ptlLogistics
+                - Name: PTS Flex Uluslararası
+                  code: ptsv5Flex
+                - Name: PTT Kargo
+                  code: pttKargo
+                - Name: Qatar Post
+                  code: qatarpost
+                - Name: QDelivery
+                  code: qdelivery
+                - Name: QLS Express
+                  code: qlsexpress
+                - Name: Quick Ship
+                  code: quickship
+                - Name: Quick Silver
+                  code: quicksilver
+                - Name: Quiqup
+                  code: quiqup
+                - Name: R2 Express
+                  code: r2express
+                - Name: R2S Logistics
+                  code: r2slogistics
+                - Name: Rabbit Delivery
+                  code: rabbitsa
+                - Name: Rabel Express
+                  code: rabel
+                - Name: ReceiveHere
+                  code: receivehere
+                - Name: RedBox
+                  code: redbox
+                - Name: Redbox V2
+                  code: redboxv2
+                - Name: Reverse Delivery
+                  code: reverseDelivery
+                - Name: Road logistics
+                  code: roadlogistic
+                - Name: Roban AlQiadah
+                  code: robanAlQiadah
+                - Name: Roz Express
+                  code: rozexpress
+                - Name: Run-X Logistics
+                  code: runx
+                - Name: Runner
+                  code: runner
+                - Name: S:Mile
+                  code: smile
+                - Name: SaaSMile
+                  code: saasmile
+                - Name: SACO LM
+                  code: medscan
+                - Name: Saee
+                  code: saee
+                - Name: 'Safe Arrival '
+                  code: safearrival
+                - Name: Safe Box
+                  code: safebox
+                - Name: Sahab Express
+                  code: sahabexpress
+                - Name: Sahab Logistics
+                  code: sahabLogistics
+                - Name: Sahm
+                  code: sahm
+                - Name: Salasa (API Dog)
+                  code: salasaApiDog
+                - Name: Sarokh
+                  code: sarokh
+                - Name: Saudi Salam Logistics
+                  code: salam
+                - Name: Send
+                  code: send
+                - Name: Shgardi
+                  code: shgardi
+                - Name: Ship Hero
+                  code: shiphero
+                - Name: Shipa
+                  code: shipa
+                - Name: Shipa Delivery V2
+                  code: shipaV2
+                - Name: Shipa Fulfillment
+                  code: shipafulfillment
+                - Name: Shipco Transport
+                  code: shipco
+                - Name: ShipEntegra
+                  code: shipEntegra
+                - Name: Shipox
+                  code: shipox
+                - Name: Shuttle
+                  code: shuttle
+                - Name: Skip Express
+                  code: skipexpress
+                - Name: Skynet
+                  code: skynet
+                - Name: SLD (Saudi Logistics and Delivery)
+                  code: sld
+                - Name: SLS Express
+                  code: sls
+                - Name: SLSC Logistic
+                  code: slsclogsitic
+                - Name: Smart Point
+                  code: smartpoint
+                - Name: SMB Express
+                  code: smbexpress
+                - Name: SMI Express
+                  code: smiexpress
+                - Name: SMSA B2B
+                  code: smsab2b
+                - Name: Smsa Ecom V2
+                  code: secom
+                - Name: Smsa Express
+                  code: smsaV2
+                - Name: Smsa Omni
+                  code: smsaomni
+                - Name: SMSA SDM
+                  code: smsasdm
+                - Name: Soon Express
+                  code: soonexpress
+                - Name: Sor3a Express
+                  code: sor3aexpress
+                - Name: Speed Logistics
+                  code: speedLogistics
+                - Name: SPL
+                  code: saudiPost
+                - Name: SPL Fulfillment
+                  code: splfulfillment
+                - Name: SPL UPDS
+                  code: splUpds
+                - Name: SPL V2
+                  code: saudiPostV2
+                - Name: Sprint
+                  code: sprint
+                - Name: Sps Express
+                  code: spsexpress
+                - Name: Starlinks
+                  code: starlinks
+                - Name: Starlinks (New)
+                  code: starlinksNew
+                - Name: Styla Sewa
+                  code: stylasewa
+                - Name: Sundouq
+                  code: sundouq
+                - Name: Sürat Kargo (OTO)
+                  code: surat-kargo-marketplace
+                - Name: SWEX Express
+                  code: swex
+                - Name: Swift
+                  code: swift
+                - Name: Syaal
+                  code: syaal
+                - Name: Tabex
+                  code: tabex
+                - Name: Tal Delivery
+                  code: talDelivery
+                - Name: Tam
+                  code: tam
+                - Name: Tamex
+                  code: tamex
+                - Name: Tard Delivery
+                  code: tard
+                - Name: Tard Delivery 2
+                  code: tardV2
+                - Name: Tasawuq
+                  code: tasawuq
+                - Name: Tawsela
+                  code: tawsela
+                - Name: Tawzea Logistics
+                  code: tawzea
+                - Name: TD Logistics
+                  code: touchDown
+                - Name: TFM Express
+                  code: tfmexpress
+                - Name: Thabit Logistics
+                  code: thabit
+                - Name: The Arrow
+                  code: thearrow
+                - Name: Tookan
+                  code: tookan
+                - Name: Transcorp
+                  code: transcorp
+                - Name: UPS
+                  code: ups
+                - Name: UPS OAuth
+                  code: ups2
+                - Name: UPS Uluslararası (PTS)
+                  code: ptsv5Ups
+                - Name: Uruk Express
+                  code: uruk
+                - Name: USPS
+                  code: usps
+                - Name: uTrac
+                  code: utrac
+                - Name: Utrac Delivery
+                  code: utracDelivery
+                - Name: VAAL
+                  code: vaal
+                - Name: Wadha
+                  code: wadha
+                - Name: Waseel Logistics
+                  code: waseel
+                - Name: Waslnee
+                  code: waslnee
+                - Name: Way Express
+                  code: wayexpress
+                - Name: WeDeliver
+                  code: wedeliver
+                - Name: Weenk App
+                  code: weenkapp
+                - Name: Wepik Express
+                  code: wepikexpress
+                - Name: XTurbo
+                  code: xturbo
+                - Name: Yallow
+                  code: yallow
+                - Name: Yamamah Express
+                  code: yamamahexpress
+                - Name: Yamamah Express Logestechs
+                  code: yamamahLogestechs
+                - Name: Yango
+                  code: yango
+                - Name: Yango Next Day Delivery
+                  code: yangondd
+                - Name: Yeswa
+                  code: yeswa
+                - Name: Yurtiçi Kargo
+                  code: yurticiKargo
+                - Name: Yurtiçi Kargo
+                  code: yurtici-kargo-marketplace
+                - Name: Zajel
+                  code: zajel
+                - Name: Zajil
+                  code: zajil
+                success: true
+  /rest/v2/dcConfig:
+    post:
+      operationId: dcConfig
+      summary: DC Config
+      tags:
+      - Carrier Integrations
+      description: 'This API endpoint allows you to view the required account credentials and the template for the delivery company specified in the request, which are needed for the next step: DC activation. Retrieve the delivery company configuration template. Use this template to create a valid configuration object, similar to the given exampleJson . This configuration object is then used to activate the delivery company with the DC Activation API endpoint. Request Parameters: Name Required Type Description code'
+      requestBody:
+        content:
+          application/json:
+            example:
+              code: aramex
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                settings:
+                - fieldName: UserName
+                  parentJson: ClientInfo
+                  fieldType: string
+                - fieldName: Password
+                  parentJson: ClientInfo
+                  fieldType: string
+                - fieldName: Version
+                  parentJson: ClientInfo
+                  fieldType: string
+                - fieldName: AccountNumber
+                  parentJson: ClientInfo
+                  fieldType: string
+                - fieldName: AccountPin
+                  parentJson: ClientInfo
+                  fieldType: string
+                - fieldName: AccountEntity
+                  parentJson: ClientInfo
+                  fieldType: string
+                - fieldName: AccountCountryCode
+                  parentJson: ClientInfo
+                  fieldType: string
+                - fieldName: Source
+                  parentJson: ClientInfo
+                  fieldType: string
+                - fieldName: productType
+                  fieldType: enum
+                  enumValues: EPX,CDS,OND,GPX,GDX,DPX,DDX,PLX,PPX,PDX
+                success: true
+                exampleJSON:
+                  delivery_fee: 0
+                  rating: 0
+                  ClientInfo:
+                    UserName: ''
+                    Version: v1
+                    AccountPin: ''
+                    AccountCountryCode: SA
+                    AccountEntity: RUH
+                    Source: 24
+                    Password: ''
+                    AccountNumber: ''
+                  productType: CDS
+  /rest/v2/dcActivation:
+    post:
+      operationId: dcActivation
+      summary: DC Activation
+      tags:
+      - Carrier Integrations
+      description: 'This API endpoint is used to perform Delivery Company (DC) activation. It enables you to activate a delivery company by providing the required configuration details. Request Parameters: Name Required Type Description code yes string The integration name obtained from the DC List. deliveryOptionName yes string A name you assign to easily identify this configuration. brandID no number id of the brand created by Create Brand endpoint settings yes object A configuration object created based on the e'
+      requestBody:
+        content:
+          application/json:
+            example:
+              code: aramex
+              deliveryOptionName: api test aramex
+              settings:
+                ClientInfo:
+                  UserName: apitest@example.com
+                  Version: v1
+                  AccountPin: '123'
+                  AccountCountryCode: SA
+                  AccountEntity: RUH
+                  Source: 24
+                  Password: 123abc
+                  AccountNumber: '123456'
+                productType: CDS
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                success: true
+                deliveryOptionId: '123'
+  /rest/v2/getCities:
+    post:
+      operationId: getCities
+      summary: Get Cities
+      tags:
+      - Carrier Integrations
+      description: 'This API endpoint is used to retrieve a list of cities of a given country. Request Parameters: Name Required Type Description country yes string The country for which cities are to be retrieved. perPage no integer The number of cities to be displayed per page. Default value is 100, max value is 500. page no integer The page number for pagination. Example Response: { "getCities": { "totalCount": 1, "perPage": 1, "Cities": [ { "name": "Riyadh" } ] } }'
+      requestBody:
+        content:
+          application/json:
+            example:
+              country: SA
+              perPage: 10
+              page: 1
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200 OK
+          content:
+            application/json:
+              example:
+                getCities:
+                  totalCount: 704
+                  perPage: 400
+                  Cities:
+                  - name: Aba Alworood
+                  - name: Abayt
+                  - name: Abha
+                  - name: Abha Manhal
+                  - name: Abiar Al Mashi
+                  - name: Abil
+                  - name: Abu Ajram
+                  - name: Abu Al Arj
+                  - name: Abu Arish
+                  - name: Abu Arradeef
+                  - name: Abu Dhiba
+                  - name: Abu Hadriyah
+                  - name: Abu Hajar
+                  - name: Abu Muloh
+                  - name: Abu Rakah
+                  - name: Abu Rakh
+                  - name: Ad Dahinah
+                  - name: Ad Dalfaah
+                  - name: Ad Dilam
+                  - name: Ad Diriyah
+                  - name: Ad Dubaiyah
+                  - name: Ad Dumayriyah
+                  - name: Ad Duwadimi
+                  - name: Addayer
+                  - name: Adham
+                  - name: Afif
+                  - name: Afraa
+                  - name: Ahad Al Musarihah
+                  - name: Ahad Bani Zayd
+                  - name: Ahad Rifaydah
+                  - name: Ain Al Nakhal
+                  - name: Ain Dar
+                  - name: Airj
+                  - name: Al Aarid
+                  - name: Al Abar
+                  - name: Al Abyar
+                  - name: Al Adari
+                  - name: Al Adhiriyah
+                  - name: Al Aflaj (Layla)
+                  - name: Al Ahmar
+                  - name: Al Ahmar-Yanbu
+                  - name: Al Ahsaa
+                  - name: Al Ais
+                  - name: Al Aithmah
+                  - name: Al Ajfar
+                  - name: Al Ama ir
+                  - name: Al Amaaria
+                  - name: Al Amajiyah
+                  - name: Al Amar
+                  - name: Al Amlah
+                  - name: Al Ammarah
+                  - name: Al Amoah
+                  - name: AL Andalus
+                  - name: Al Aqiqah
+                  - name: Al Aqool
+                  - name: Al Aradiyah
+                  - name: Al Araq
+                  - name: Al Ardah
+                  - name: Al Ardiyat
+                  - name: 'Al Arfaa '
+                  - name: Al Arin
+                  - name: Al Arja
+                  - name: Al Aroos
+                  - name: Al Artawi
+                  - name: Al Asad
+                  - name: Al Aseelh
+                  - name: Al Ataya
+                  - name: Al Atheeb
+                  - name: Al Atif
+                  - name: Al Awamer
+                  - name: Al Bada
+                  - name: Al Badai
+                  - name: 'Al Badie Al Shamali '
+                  - name: Al Baha
+                  - name: Al Bahah Region
+                  - name: Al Baheem
+                  - name: Al Bashayer
+                  - name: AL BASR
+                  - name: Al Batra
+                  - name: Al Bijadyah
+                  - name: Al Bikreyah
+                  - name: Al Bir
+                  - name: Al Bukayriyah
+                  - name: Al Butayn
+                  - name: Al Dalemya
+                  - name: Al Dhabyah
+                  - name: Al Dhahreyah
+                  - name: Al Dheelah
+                  - name: AL DUGHAIMIYAH
+                  - name: Al Dulaymiyah
+                  - name: Al Fagali
+                  - name: Al Fara
+                  - name: Al Farshah
+                  - name: Al Fatiha
+                  - name: Al Fawwarah
+                  - name: Al Furaysh
+                  - name: Al Fuwaileq
+                  - name: Al Gafrat
+                  - name: Al Gamri
+                  - name: Al Gandla
+                  - name: 'Al Gharif '
+                  - name: Al Ghat
+                  - name: Al Habjeia
+                  - name: Al Haddar
+                  - name: Al Hadror
+                  - name: Al Haeer
+                  - name: Al Haith
+                  - name: Al Haqu
+                  - name: Al Harara
+                  - name: Al Hariq
+                  - name: Al Harth
+                  - name: Al Hayathem
+                  - name: Al Hayeet
+                  - name: Al Hazim
+                  - name: Al Hazmi
+                  - name: Al Henayah
+                  - name: Al Heno
+                  - name: Al Hifah
+                  - name: Al Hijf
+                  - name: Al Hilaliyah
+                  - name: Al Hinnah
+                  - name: Al huda
+                  - name: Al Hudud Al Shamaliyah
+                  - name: Al Hufayr
+                  - name: Al Hufayyirah
+                  - name: Al Hufuf
+                  - name: Al Hulayfah As Sufla
+                  - name: Al Hulwah
+                  - name: Al Husayni
+                  - name: Al Husayniyah
+                  - name: Al Husayy
+                  - name: Al Husima
+                  - name: Al Huwaya east
+                  - name: Al Idabi
+                  - name: Al JABRIYAH
+                  - name: Al Jafr
+                  - name: Al Jaradiyah
+                  - name: Al Jarf
+                  - name: Al Jarn
+                  - name: Al Jawf Region
+                  - name: Al Jawwah
+                  - name: Al Jifah
+                  - name: Al Jithamiyah
+                  - name: Al Jubail
+                  - name: Al Jubailah
+                  - name: Al Jumum
+                  - name: Al kadami
+                  - name: Al Kadarah
+                  - name: Al Kamil
+                  - name: Al Khafji
+                  - name: Al Khalaf
+                  - name: Al Khaniq
+                  - name: Al Kharj
+                  - name: Al Kharkhir
+                  - name: Al Khashabiyah
+                  - name: Al Khasiybahi
+                  - name: Al Khitah
+                  - name: Al khoba
+                  - name: Al Khubar
+                  - name: Al Khuffiyah
+                  - name: Al khuraybah
+                  - name: Al Khuraytah
+                  - name: Al Khurmah
+                  - name: Al Khushaybi
+                  - name: Al Lahien
+                  - name: Al Laqayit
+                  - name: Al Lsawiyah
+                  - name: Al Ma`ashabah
+                  - name: Al Mada
+                  - name: Al Madaya
+                  - name: Al Madha
+                  - name: Al Madinah Region
+                  - name: AL MAHANI
+                  - name: Al Mahd
+                  - name: Al Majardah
+                  - name: Al Majmaah
+                  - name: AL MALIDA
+                  - name: Al Marameh
+                  - name: Al Markaz
+                  - name: Al Marmuthah
+                  - name: Al Marooj
+                  - name: Al Masgi
+                  - name: Al Mayyah
+                  - name: Al Midhnab
+                  - name: Al Midrij
+                  - name: Al Mishaliah
+                  - name: Al Mothalath
+                  - name: Al Mozvin
+                  - name: Al Mubarakah
+                  - name: Al Mudayyih
+                  - name: Al Mukhwah
+                  - name: Al Mulaylih
+                  - name: Al Muntashar
+                  - name: Al Musayjid
+                  - name: Al Muwaylih
+                  - name: Al Muzahimiyah
+                  - name: Al Nabah
+                  - name: Al Nuzha
+                  - name: Al Ogam
+                  - name: Al Qaa
+                  - name: Al Qaid
+                  - name: Al Qaied
+                  - name: Al Qarin
+                  - name: Al Qarinah
+                  - name: Al Qassim Region
+                  - name: Al Qatif
+                  - name: Al Qeddeh
+                  - name: Al Qirawan
+                  - name: Al qowarah
+                  - name: Al Qulayyib
+                  - name: Al Qunfidhah
+                  - name: Al Qurainah
+                  - name: Al Qurayyat
+                  - name: AL QURESHIYAT
+                  - name: Al Rafaeya'a
+                  - name: Al Rafaie
+                  - name: Al Rathaya
+                  - name: Al Rayis
+                  - name: Al Reeth
+                  - name: Al Ruqi
+                  - name: Al Sahalil
+                  - name: Al Salamah
+                  - name: AL SAYL ALKHABIR
+                  - name: AL SAYL ALSAGHIR
+                  - name: Al Shatt
+                  - name: Al Shegrah
+                  - name: Al Shehiyah
+                  - name: Al Sheqiqah
+                  - name: Al Shlayil
+                  - name: Al Shoqiyah
+                  - name: Al Shuaba
+                  - name: Al Sih
+                  - name: Al Subaykhah
+                  - name: Al Sulaimi
+                  - name: Al tanumah
+                  - name: Al Taraf
+                  - name: Al Theniah
+                  - name: Al Torkiyah
+                  - name: Al Twaitheer
+                  - name: Al Udayd
+                  - name: Al Uferiah
+                  - name: Al Uwayqilah
+                  - name: Al Waddean
+                  - name: Al Wajh
+                  - name: Al Wannan
+                  - name: Al Wasayta
+                  - name: Al-Batna
+                  - name: Al-halaa
+                  - name: AL-JUAYMAH
+                  - name: Al-Matan
+                  - name: Al-MNSALA
+                  - name: Al-Nasifa
+                  - name: Al-Umran
+                  - name: Al-Wozeyh
+                  - name: Alabadilah
+                  - name: Alarjeen
+                  - name: Alasilan
+                  - name: Alearduh
+                  - name: Algayed
+                  - name: Alhada
+                  - name: Alhayma
+                  - name: Aliland
+                  - name: AlJanadria
+                  - name: Alkhazzan
+                  - name: AlKhhafah
+                  - name: Almazef
+                  - name: Almutayrifi
+                  - name: Almuzayri
+                  - name: Alnabhanya
+                  - name: Alqabil
+                  - name: Alquaba
+                  - name: AlQudaih
+                  - name: Alqurra
+                  - name: Alshahili
+                  - name: Alshihyah
+                  - name: Alshuqayri
+                  - name: Alshwaaq
+                  - name: Alsilaa
+                  - name: Alsulmania
+                  - name: Alturfiyah
+                  - name: Alwasqah
+                  - name: Alyutamah
+                  - name: Amaaer Ben Sana'a
+                  - name: Amaq
+                  - name: An Nabiyah
+                  - name: An Nabk Abu Qasr
+                  - name: An nabqiyyah
+                  - name: An Nafiah
+                  - name: An Nasiriyah
+                  - name: An Nawwariyyah
+                  - name: An Nazayim
+                  - name: An Nuayriyah
+                  - name: An Nuqrah
+                  - name: Aqiq
+                  - name: Ar Radifah
+                  - name: Ar Rafi'ah
+                  - name: Ar Rafiah
+                  - name: Ar Rass
+                  - name: 'Ar Rawdah '
+                  - name: AR RAYN
+                  - name: Ar Rishawiyah
+                  - name: Arafa
+                  - name: Arar
+                  - name: Artawiah
+                  - name: As Sahwah
+                  - name: As Sam'uriyah
+                  - name: As Shamli
+                  - name: As Sihaf
+                  - name: As Sulaimaniyah
+                  - name: As Sulayyil
+                  - name: As Sulubiayh
+                  - name: Asbtar
+                  - name: asdadadeaed
+                  - name: asdasd
+                  - name: asdasdrertyr
+                  - name: asdqtrawqew
+                  - name: Asfan
+                  - name: Ash Shaara
+                  - name: Ash Shananah
+                  - name: Ash Shimasiyah
+                  - name: Ash Shinan
+                  - name: Ash Shumaysi
+                  - name: Ash Shuqaiq
+                  - name: Ash Shuqrah
+                  - name: Asheerah Sudayer
+                  - name: Asir
+                  - name: Asir Region
+                  - name: Assadawi
+                  - name: Assalmanyah
+                  - name: Assiyah
+                  - name: Asuwayq
+                  - name: At Tan'Im
+                  - name: At Tiraq
+                  - name: At Tuwal
+                  - name: At Tuwayr
+                  - name: Atawleh
+                  - name: Ath Thamiriyah
+                  - name: Ath Thybiyah
+                  - name: Awamiah
+                  - name: Awdah Sudayer
+                  - name: Ayn Fuhayd
+                  - name: Az Zughayn
+                  - name: Az Zulfi
+                  - name: Badar Hunain
+                  - name: Badr
+                  - name: Badr Al Janoub
+                  - name: Bahara
+                  - name: Bahr Abu Sukaynah
+                  - name: Bahrain Causeway
+                  - name: Bahrat Al Moujoud
+                  - name: Balahmar
+                  - name: Baljurashi
+                  - name: Balqarn
+                  - name: Banban
+                  - name: Bani Hamim
+                  - name: Bani Hasan
+                  - name: Bani Malek
+                  - name: Baqa Ash Sharqiyah
+                  - name: Baqaa
+                  - name: Bareq
+                  - name: Batha
+                  - name: Bawathil
+                  - name: Baynah
+                  - name: Baysh
+                  - name: Billasmar
+                  - name: Bin Aqeel Palace
+                  - name: Bir Bin Harmas
+                  - name: Birk
+                  - name: Bishah
+                  - name: Buqayq
+                  - name: Buraydah
+                  - name: Daelim
+                  - name: Dahu
+                  - name: Damad
+                  - name: Dammam
+                  - name: Darb
+                  - name: Dariyah
+                  - name: Dawmat Al Jandal
+                  - name: dayida
+                  - name: Deraab
+                  - name: Dhahban
+                  - name: Dhahran
+                  - name: Dhahran Al Janoub
+                  - name: DHALAM
+                  - name: Dhurma
+                  - name: Duba
+                  - name: DUBAY'AH
+                  - name: Duhknah
+                  - name: Dulay Rashid
+                  - name: Dulayhan
+                  - name: dummy
+                  - name: Eaqabat shiear
+                  - name: Eastern Province
+                  - name: Eastern Region
+                  - name: Eayan dar aljadida
+                  - name: Eayan dar alqadima
+                  - name: Edadh
+                  - name: Either
+                  - name: El-Ebva
+                  - name: Eshirah
+        '409':
+          description: 409 country null
+          content:
+            application/json:
+              example:
+                success: false
+                errorMsg: country is null
+  /rest/v2/checkDCBranchList:
+    post:
+      operationId: checkDCBranchList
+      summary: Check DC Branch List
+      tags:
+      - Carrier Integrations
+      description: This API endpoint retrieves the available branch list, PUDO (Pick-Up/Drop-Off) points, parcel shops, lockers, and other supported service locations for the selected delivery company. It can be used to obtain the latest carrier location information required for branch deliveries, pickup point selection, return shipments, and other location-based shipping services. The response includes all available service points supported by the carrier based on the provided request parameters. Request Paramete
+      requestBody:
+        content:
+          application/json:
+            example:
+              deliveryCompanyName: acs
+              countryCode: GR
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200- Check DC Branch List
+          content:
+            application/json:
+              example:
+                pickupPoints:
+                - dcBranchName: Saudi Post Riyadh Olaya Branch
+                  country: SA
+                  address: King Fahd Road, Al Olaya District
+                  city: RIYADH
+                  codSupported: true
+                  branchEmail: olaya@splonline.com.sa
+                  lon: 46.675296
+                  paymentType: Cash, Mada, Visa, Mastercard
+                  branchCode: SPL1001
+                  phoneNumber: '+966112345678'
+                  postCode: '12214'
+                  state: RIYADH
+                  branchType: POST_OFFICE
+                  workingHours: 08:00-21:00
+                  weekendWorkingHours: 16:00-21:00
+                  lat: 24.713552
+                - dcBranchName: Saudi Post Smart Locker Riyadh Olaya
+                  country: SA
+                  address: Olaya Mall, King Fahd Road
+                  city: RIYADH
+                  codSupported: false
+                  branchEmail: lockers@splonline.com.sa
+                  lon: 46.679321
+                  paymentType: Not available
+                  branchCode: SPL5001
+                  postCode: '12214'
+                  state: RIYADH
+                  branchType: SMART_LOCKER
+                  workingHours: 24HOURS
+                  weekendWorkingHours: 24HOURS
+                  lat: 24.715021
+                - dcBranchName: Saudi Post Smart Locker Riyadh Al Malaz
+                  country: SA
+                  address: Salah Ad Din Al Ayyubi Road, Al Malaz
+                  city: RIYADH
+                  codSupported: false
+                  branchEmail: lockers@splonline.com.sa
+                  lon: 46.738591
+                  paymentType: Not available
+                  branchCode: SPL5002
+                  postCode: '12831'
+                  state: RIYADH
+                  branchType: SMART_LOCKER
+                  workingHours: 24HOURS
+                  weekendWorkingHours: 24HOURS
+                  lat: 24.666912
+                - dcBranchName: Saudi Post Jeddah Al Rawdah Branch
+                  country: SA
+                  address: Prince Sultan Road, Al Rawdah
+                  city: JEDDAH
+                  codSupported: true
+                  branchEmail: jeddah@splonline.com.sa
+                  lon: 39.174893
+                  paymentType: Cash, Mada, Visa, Mastercard
+                  branchCode: SPL1002
+                  phoneNumber: '+966126789012'
+                  postCode: '23432'
+                  state: MAKKAH
+                  branchType: POST_OFFICE
+                  workingHours: 08:00-21:00
+                  weekendWorkingHours: 16:00-21:00
+                  lat: 21.583333
+                - dcBranchName: Saudi Post Smart Locker Jeddah Mall
+                  country: SA
+                  address: Red Sea Mall, King Abdulaziz Road
+                  city: JEDDAH
+                  codSupported: false
+                  branchEmail: lockers@splonline.com.sa
+                  lon: 39.108922
+                  paymentType: Not available
+                  branchCode: SPL5003
+                  postCode: '23612'
+                  state: MAKKAH
+                  branchType: SMART_LOCKER
+                  workingHours: 24HOURS
+                  weekendWorkingHours: 24HOURS
+                  lat: 21.634017
+                - dcBranchName: Saudi Post Dammam Al Faisaliyah Branch
+                  country: SA
+                  address: King Saud Road, Al Faisaliyah
+                  city: DAMMAM
+                  codSupported: true
+                  branchEmail: dammam@splonline.com.sa
+                  lon: 50.103306
+                  paymentType: Cash, Mada, Visa, Mastercard
+                  branchCode: SPL1003
+                  phoneNumber: '+966138765432'
+                  postCode: '32272'
+                  state: EASTERN PROVINCE
+                  branchType: POST_OFFICE
+                  workingHours: 08:00-21:00
+                  weekendWorkingHours: 16:00-21:00
+                  lat: 26.420683
+                - dcBranchName: Saudi Post Smart Locker Dammam Corniche
+                  country: SA
+                  address: Corniche Road, Ash Shati District
+                  city: DAMMAM
+                  codSupported: false
+                  branchEmail: lockers@splonline.com.sa
+                  lon: 50.110912
+                  paymentType: Not available
+                  branchCode: SPL5004
+                  postCode: '32413'
+                  state: EASTERN PROVINCE
+                  branchType: SMART_LOCKER
+                  workingHours: 24HOURS
+                  weekendWorkingHours: 24HOURS
+                  lat: 26.451209
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Obtain an access_token by POSTing your refresh_token to /refreshToken, then send Authorization: Bearer <access_token>.'

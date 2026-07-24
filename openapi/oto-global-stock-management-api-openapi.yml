@@ -1,0 +1,321 @@
+openapi: 3.0.3
+info:
+  title: OTO API V2 Account Stock Management API
+  version: 2.0.0
+  description: 'Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO''s platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you''re integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.'
+  contact:
+    name: OTO Support
+    url: https://help.tryoto.com/en/support/home
+  x-source: derived from published OTO API V2 Postman collection (apis.tryoto.com)
+servers:
+- url: https://api.tryoto.com/rest/v2
+  description: Production
+- url: https://staging-api.tryoto.com/rest/v2
+  description: Staging / sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Stock Management
+  description: ''
+paths:
+  /rest/v2/updateStockQuantity:
+    post:
+      operationId: updateStockQuantity
+      summary: Update Stock Quantity
+      tags:
+      - Stock Management
+      description: 'This API endpoint enables efficient inventory management by allowing you to update the quantity of a SKU in two flexible ways: Adjust : Modify the existing quantity by adding or deducting a specified amount. To decrease the quantity, provide a negative value for qty . For example, setting qty to -5 will deduct 5 units from the current stock. Set : Directly set the quantity on hand to a specific value, replacing the current stock with the provided qty . Request Parameters: Name Required Type Desc'
+      requestBody:
+        content:
+          application/json:
+            example:
+              actionType: adjust
+              locationCode: ASDS
+              sku: '156487494561'
+              qty: '40'
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200 actionType "set"
+          content:
+            application/json:
+              example:
+                success: true
+                warnings:
+                - Inventory quantity set to the given qty according to the action type
+                transactionID: 591611
+        '400':
+          description: 400 invalid quantity
+          content:
+            application/json:
+              example:
+                success: false
+                otoErrorCode: OTO1132
+                otoErrorMessage: Quantity is missing or invalid
+  /rest/v2/checkInventoryStock:
+    get:
+      operationId: checkInventoryStock
+      summary: Check Inventory Stock
+      tags:
+      - Stock Management
+      description: 'This API endpoint allows you to retrieve real-time stock availability for products at specific locations. It provides detailed information on the quantity of items on hand and forecasted stock for each product at various pickup locations, offering a location-based view of inventory distribution. Request Parameters: Name Required Type Description sku yes string The product''s SKU identifier pickupLocationCode no string The code representing the specific location. Response: success : Indicates whet'
+      parameters:
+      - name: sku
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                success: true
+                stock:
+                  SG1:
+                  - pickupLocationCode: DMW
+                    sku: SG1
+                    quantityForecasted: 261
+                    quantityOnHand: 277
+                  - sku: SG1
+                    quantityForecasted: -16
+                    quantityOnHand: -7
+                  SG3:
+                  - pickupLocationCode: DMW
+                    sku: SG3
+                    quantityForecasted: 55
+                    quantityOnHand: 67
+                  - sku: SG3
+                    quantityForecasted: -7
+                    quantityOnHand: -6
+                  SG2:
+                  - pickupLocationCode: DMW
+                    sku: SG2
+                    quantityForecasted: 185
+                    quantityOnHand: 198
+                  - sku: SG2
+                    quantityForecasted: -20
+                    quantityOnHand: -12
+  /rest/v2/checkGlobalStock:
+    get:
+      operationId: checkGlobalStock
+      summary: Check Global Stock
+      tags:
+      - Stock Management
+      description: 'This API endpoint provides an overview of total stock availability for SKUs across all locations. This endpoint aggregates stock levels to display a global view, helping businesses understand their overall inventory status. Request Parameters: Name Required Type Description sku yes string The product''s SKU identifier Response: success : Indicates whether the request was successful ( true or false ). stock : A dictionary with SKUs as keys, containing global stock details for each product: sku : T'
+      parameters:
+      - name: sku
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                success: true
+                stock:
+                  '12':
+                  - minInventory: 50
+                    sku: '12'
+                    quantityForecasted: 122
+                    quantityOnHand: 39
+                  '123123':
+                  - sku: '123123'
+                    quantityOnHand: 14
+  /rest/v2/createInventoryOrder:
+    post:
+      operationId: createInventoryOrder
+      summary: Create Inventory Order
+      tags:
+      - Stock Management
+      description: 'This API endpoint creates inventory order as inbound or outbound for a warehouse or branch location. This API is used mostly to provide the incoming or outgoing bulk items from ERP systems to OTO. Once the order is created the status will be new for the warehouse or branch to accept and process the order. Request Parameters: Name Required Type Description action yes enum "inbound": Creates the order as purchase type and sets the ingoing location field "outbound": Creates the order as disposal an'
+      requestBody:
+        content:
+          application/json:
+            example:
+              action: inbound
+              locationCode: WHA
+              binLocationName: test
+              orderDate: 31/03/2022
+              deliveryDate: 31/03/2023
+              waybillNumber: '12345'
+              description: loc1
+              items:
+              - sku: '123123'
+                qty: '1'
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                success: true
+                otoId: 4026
+        '400':
+          description: 400 wrong location code
+          content:
+            application/json:
+              example:
+                success: false
+                otoErrorCode: OTO1133
+                otoErrorMessage: Location Code is missing or invalid
+  /rest/v2/updatePackingStatus:
+    post:
+      operationId: updatePackingStatus
+      summary: Update Packing Status
+      tags:
+      - Stock Management
+      description: 'This API endpoint allows you to update the packing status of an order during the fulfillment process. This endpoint is used to record and track the progress of orders as they move through the packing stage, ensuring accurate status updates for operational visibility. Request Parameters: Name Required Type Description orderId yes string Id of the order that you wanna update packing status packingStatus yes string Packing status value can be packed or picked'
+      requestBody:
+        content:
+          application/json:
+            example:
+              orderId: '123'
+              packingStatus: packed
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                success: true
+                message: Successfully updated
+  /rest/v2/getPackingOrders:
+    post:
+      operationId: getPackingOrders
+      summary: Get Orders Ready For Packing
+      tags:
+      - Stock Management
+      description: 'This API endpoint retrieves a list of orders that are ready for pick and pack operations. This endpoint is designed to streamline warehouse workflows by providing access to orders that have completed prior processes and are prepared for fulfillment. Request Parameters: Name Required Type Description warehouseCode yes String pickupLocationCode of the warehouse.'
+      requestBody:
+        content:
+          application/json:
+            example:
+              warehouseCode: WH123
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200 OK
+          content:
+            application/json:
+              example:
+                success: true
+                count: 2
+                orders:
+                - orderId: '11022'
+                  items:
+                  - productId: 112
+                    name: test product
+                    quantity: 1
+                    sku: test-product
+                  - name: test product 2
+                    quantity: 1
+                    sku: test-product-2
+                - orderId: '11051222'
+                  items:
+                  - productId: 12312
+                    name: test2 product
+                    quantity: 1
+                    sku: test-product
+                  - name: test3 product 3
+                    quantity: 2
+                    sku: test3-product-3
+        '401':
+          description: 401 Unauthorized
+          content:
+            application/json:
+              example:
+                message: Jwt is expired
+                code: 401
+  /rest/v2/availableStoresForPickup:
+    post:
+      operationId: availableStoresForPickup
+      summary: Check Available Stores For Pickup
+      tags:
+      - Stock Management
+      description: This API endpoint retrieves a list of physical stores where the requested items are currently available for customer pickup. By providing a list of SKUs with required quantities and a selected city, the endpoint validates stock availability and returns eligible stores that can fulfill the pickup request. The response includes detailed store information such as store name, location coordinates, address details, operating hours by day, and stock status. This endpoint is designed to support omnicha
+      requestBody:
+        content:
+          application/json:
+            example:
+              items:
+              - sku: Umberella-2
+                qty: 11
+              - sku: Umberella-1
+                qty: 11
+              selectedCity: Jeddah
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200 OK
+          content:
+            application/json:
+              example:
+                success: true
+                stores:
+                - streetName: M5M8+5M
+                  storeHours:
+                  - from: 00:00
+                    to: '23:30'
+                    day: monday
+                  - from: 00:00
+                    to: '23:30'
+                    day: tuesday
+                  - from: 00:00
+                    to: '23:30'
+                    day: wednesday
+                  - from: 00:00
+                    to: '23:30'
+                    day: thursday
+                  - from: 00:00
+                    to: '18:30'
+                    day: friday
+                  - from: 00:00
+                    to: '23:30'
+                    day: saturday
+                  - from: 00:00
+                    to: '23:30'
+                    day: sunday
+                  city: Jeddah
+                  district: King Abdulaziz International Airport
+                  storeName: BR-1
+                  lon: 39.1732665
+                  id: 17438
+                  stock: available
+                  lat: 21.6609297
+                  storeCode: br12
+  /rest/v2/availableCitiesForPickup:
+    post:
+      operationId: availableCitiesForPickup
+      summary: Available Cities For Pickup
+      tags:
+      - Stock Management
+      description: This API endpoint retrieves a list of cities where in-store pickup is currently supported. It allows marketplaces and merchants to identify eligible cities in which customers can select the pickup option during checkout or order creation. You can enable and disable it. from Warehouse/ Branch form. The response returns a simple list of city names where pickup-enabled stores are available, helping ensure that pickup options are only displayed for supported locations. This endpoint is designed to e
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                cities:
+                - Jeddah
+                - Aqiq
+                success: true
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Obtain an access_token by POSTing your refresh_token to /refreshToken, then send Authorization: Bearer <access_token>.'

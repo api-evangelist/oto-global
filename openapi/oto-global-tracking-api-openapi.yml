@@ -1,0 +1,273 @@
+openapi: 3.0.3
+info:
+  title: OTO API V2 Account Tracking API
+  version: 2.0.0
+  description: 'Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO''s platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you''re integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.'
+  contact:
+    name: OTO Support
+    url: https://help.tryoto.com/en/support/home
+  x-source: derived from published OTO API V2 Postman collection (apis.tryoto.com)
+servers:
+- url: https://api.tryoto.com/rest/v2
+  description: Production
+- url: https://staging-api.tryoto.com/rest/v2
+  description: Staging / sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Tracking
+  description: ''
+paths:
+  /rest/v2/orderStatus:
+    post:
+      operationId: orderStatus
+      summary: Order Tracking
+      tags:
+      - Tracking
+      description: 'This API endpoint enables you to track the real-time status and progress of an order. By using this endpoint, you can retrieve detailed tracking information, including: Current order status (e.g.,pickedUp, outForDelivery, delivered). Shipment details such as carrier, tracking number, and estimated delivery time, print AWB URL. Request Parameters: Name Required Type Description orderId yes (if there is no otoId) string Id of the order that you will track. otoId yes (if there is no orderId) string'
+      requestBody:
+        content:
+          application/json:
+            example:
+              orderId: '1234'
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200- PDF
+          content:
+            application/json:
+              example:
+                date: '2026-04-27 12:42:07'
+                customerAddress: Khayran Al Murrah
+                totalValue: 10
+                orderId: OID-23331-9749
+                trackingUrl: https://app.tryoto.com/otoflex-tracking?enc=dUszSFUzRDZRVnZYWU9LZTBPODV0MG1pWldrU3JSVnh6QWVEYXJCRWN4cz0=
+                dcTrackingNumber: ''
+                deliveryCompany: otoDriverApp
+                printAWBURL: https://app.tryoto.com/print/awb?enc=eyJjb21wYW55SWQiOiIxNzA2OCIsImlkcyI6WyIzMDUxNDI4MSJdLCJyZXZlcnNlIjp0cnVlfQ==
+                customerName: redcar  testing
+                shipmentId: DCA87E10
+                success: true
+                otoId: '30514281'
+                status: returnShipmentProcessing
+        '401':
+          description: 401 Unauthorized
+          content:
+            application/json:
+              example:
+                message: Jwt is expired
+                code: 401
+  /rest/v2/orderHistory:
+    post:
+      operationId: orderHistory
+      summary: Order History
+      tags:
+      - Tracking
+      description: 'This API endpoint allows you to retrieve the complete history of an order, providing detailed insights into its lifecycle. This includes: Status changes (e.g., pickedUp, arrivedTerminal, delivered). Timestamps for each status update. Actions taken during the order process, such as cancellations or modifications. Request Parameters: Name Required Type Description orderIds yes( if there is no otoIds or shipmentIds) array Ids of the order that you will track. otoIds yes( if there is no orderIds or '
+      requestBody:
+        content:
+          application/json:
+            example:
+              orderIds:
+              - '2414124'
+              - '3223523'
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200 OK
+          content:
+            application/json:
+              example:
+                success: true
+                items:
+                - amount: 1
+                  orderId: OID-23331-9743
+                  trackingURL: https://app.tryoto.com/otoflex-tracking?enc=MUZEMGdSVXNaTkxYWU9LZTBPODV0K1JSYzJYMXlHMnd6QWVEYXJCRWN4cz0=
+                  dcTrackingNumber: ''
+                  history:
+                  - date: '2025-11-30 08:09:54'
+                    description: Created by fatmanur yavuz asd
+                    status: new
+                    currentLocation: {}
+                  - date: '2025-11-30 08:09:54'
+                    description: Created by fatmanur yavuz asd
+                    status: assignedToWarehouse
+                    currentLocation: {}
+                  - date: '2025-11-30 08:11:47'
+                    description: Order status changed to Inter depot transfer by fatmanur yavuz asd
+                    status: interDepotTransfer
+                    currentLocation: {}
+                  - date: '2025-12-07 08:12:37'
+                    shipmentId: DERWI87150
+                    description: Shipment created automatically by fatmanur yavuz asd
+                    deliveryCompany: swftbox
+                    status: searchingDriver
+                    currentLocation: {}
+                  - date: '2025-12-07 08:12:42'
+                    shipmentId: DERWI87150
+                    description: REQUESTED - REQUESTED
+                    deliveryCompany: swftbox
+                    status: shipmentCreated
+                    currentLocation: {}
+                  - date: '2025-12-08 10:00:00'
+                    shipmentId: DERWI87150
+                    description: REQUESTED - REQUESTED
+                    deliveryCompany: swftbox
+                    status: shipmentCreated
+                    currentLocation: {}
+                  - date: '2025-12-09 10:03:17'
+                    shipmentId: DERWI87150
+                    description: Order status changed as Delivered by fatmanur yavuz asd
+                    deliveryCompany: swftbox
+                    status: delivered
+                    currentLocation: {}
+                  - date: '2025-12-24 08:50:19'
+                    shipmentId: F87E6F4E
+                    description: Return shipment created by fatmanur yavuz asd
+                    deliveryCompany: otoDriverApp
+                    status: returnShipmentProcessing
+                    currentLocation: {}
+                  deliveryCompany: Swftbox
+                  warehouseName: test123
+                  destinationCountry: SA
+                  destinationCity: Riyadh
+                  shipmentId: F87E6F4E
+                  otoId: '22255300'
+                  originCity: Madinah
+                  originCountry: SA
+                  returnOrderIds:
+                  - OID-23331-9743-R1
+                  amount_due: 0
+                  currency: SAR
+                  packageCount: 1
+                  items: []
+                  orderDate: 30/11/2025 08:09:07
+                  printAwbUrl: https://app.tryoto.com/print/awb?enc=eyJjb21wYW55SWQiOiIxNzA2OCIsImlkcyI6WyIyMjI1NTMwMCJdLCJyZXZlcnNlIjp0cnVlfQ==
+                  payment_method: paid
+                  status: returnShipmentProcessing
+                - amount: 12
+                  orderId: OID-23331-1037
+                  trackingURL: https://app.tryoto.com/otoflex-tracking?enc=UkJFVFJGZ3NFT1RYWU9LZTBPODV0N05IOVlLZmJBbTJ6QWVEYXJCRWN4cz0=
+                  history:
+                  - date: '2025-04-02 09:58:33'
+                    description: Created by fatmanur yavuz
+                    status: new
+                    currentLocation: {}
+                  - date: '2025-04-02 09:58:33'
+                    description: Created by fatmanur yavuz
+                    status: assignedToWarehouse
+                    currentLocation: {}
+                  - date: '2025-04-20 13:28:54'
+                    shipmentId: ''
+                    description: Order status changed as Delivered by fatmanur yavuz
+                    deliveryCompany: ''
+                    status: delivered
+                    currentLocation: {}
+                  - date: '2025-10-12 09:04:50'
+                    shipmentId: 765a9bdf
+                    description: Return shipment created automatically by fatmanur yavuz asd
+                    deliveryCompany: otoDriverApp
+                    status: returnShipmentProcessing
+                    currentLocation: {}
+                  warehouseName: DefaultWH
+                  destinationCountry: AE
+                  destinationCity: Dubai
+                  shipmentId: 765a9bdf
+                  otoId: '14965883'
+                  originCity: ABU DHABI CITY
+                  originCountry: AE
+                  amount_due: 12
+                  currency: SAR
+                  packageCount: 1
+                  items: []
+                  orderDate: 02/04/2025 09:58:24
+                  printAwbUrl: https://app.tryoto.com/print/awb?enc=eyJjb21wYW55SWQiOiIxNzA2OCIsImlkcyI6WyIxNDk2NTg4MyJdLCJyZXZlcnNlIjp0cnVlfQ==
+                  payment_method: cod
+                  status: returnShipmentProcessing
+  /rest/v2/trackShipment:
+    post:
+      operationId: trackShipment
+      summary: Track Shipment
+      tags:
+      - Tracking
+      description: 'This API endpoint enables you to track a shipment by providing the tracking number and delivery company name. Without requiring any authorization, it offers detailed shipment information, including tracking URL, real time status updates and status history. If you are a marketplace, you can track your sellers'' shipments without requiring additional authorization. Request Parameters: Name Required Type Description trackingNumber yes string The shipment/ tracking number that you wanna track. delive'
+      requestBody:
+        content:
+          application/json:
+            example:
+              trackingNumber: '290692134777'
+              deliveryCompanyName: smsaecom
+              statusHistory: true
+              brandName: test brand
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200 OK history
+          content:
+            application/json:
+              example:
+                trackingUrl: https://www.naqelexpress.com/en/sa/tracking/
+                success: true
+                items:
+                - dcStatus: '1'
+                  updateStatusDate: true
+                  shipmentId: '289812708'
+                  otoStatus: pickedUp
+                  success: true
+                  dcUpdateDate: '2024-08-15T11:36:00'
+                  dcDescription: '1 Picked up by Naqel at : JEDDAH'
+                  history:
+                  - dcStatus: '0'
+                    updateStatusDate: true
+                    shipmentId: '289812708'
+                    otoStatus: shipmentCreated
+                    dcUpdateDate: '2024-08-14T15:24:13'
+                    dcDescription: 0 Waybill created. Shipment has not been received from the retailer
+                  - dcStatus: '0'
+                    updateStatusDate: true
+                    shipmentId: '289812708'
+                    otoStatus: pickedUp
+                    dcUpdateDate: '2024-08-14T15:24:13'
+                    dcDescription: 0 Waybill created. Shipment has not been received from the retailer
+                    currentLocation:
+                      currentCountry: SA
+                      currentCity: Jeddah
+                      currentDistrict: Ar Rawdah
+                      currentBranch: Jeddah Warehouse
+                  - dcStatus: '1'
+                    updateStatusDate: true
+                    shipmentId: '289812708'
+                    otoStatus: delivered
+                    dcUpdateDate: '2024-08-15T11:36:00'
+                    dcDescription: 'Delivered: RIYADH'
+                    currentLocation:
+                      currentCountry: SA
+                      currentCity: Riyadh
+                      currentDistrict: As Salam
+                      currentBranch: Riyadh Warehouse
+        '400':
+          description: 400 invalid format
+          content:
+            application/json:
+              example:
+                success: false
+                otoErrorCode: OTO1075
+                otoErrorMessage: Invalid Json format
+        '409':
+          description: 409 No tracking config
+          content:
+            application/json:
+              example:
+                success: false
+                otoErrorCode: OTO1004
+                otoErrorMessage: There is no available delivery company setting
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Obtain an access_token by POSTing your refresh_token to /refreshToken, then send Authorization: Bearer <access_token>.'

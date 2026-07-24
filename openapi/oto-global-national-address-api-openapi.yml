@@ -1,0 +1,140 @@
+openapi: 3.0.3
+info:
+  title: OTO API V2 Account National Address API
+  version: 2.0.0
+  description: 'Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO''s platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you''re integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.'
+  contact:
+    name: OTO Support
+    url: https://help.tryoto.com/en/support/home
+  x-source: derived from published OTO API V2 Postman collection (apis.tryoto.com)
+servers:
+- url: https://api.tryoto.com/rest/v2
+  description: Production
+- url: https://staging-api.tryoto.com/rest/v2
+  description: Staging / sandbox
+security:
+- bearerAuth: []
+tags:
+- name: National Address
+  description: ''
+paths:
+  /rest/v2/getNationalAddressFromShortCode:
+    post:
+      operationId: getNationalAddressFromShortCode
+      summary: Get NationalAddress From ShortCode
+      tags:
+      - National Address
+      description: This API endpoint accepts a short address code (also called shortAddressCode or national address short code) and returns the complete national address details for the corresponding location in the Kingdom of Saudi Arabia. It allows you to quickly retrieve full address information from the abbreviated code.
+      requestBody:
+        content:
+          application/json:
+            example:
+              shortAddressCode: RGUC8214
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200 OK
+          content:
+            application/json:
+              example:
+                data:
+                  zipCode: '12325'
+                  country:
+                    unitOfMeasurement: metricSystem
+                    createdDate: '2020-11-12T08:38:46'
+                    nameAr: المملكة العربية السعودية
+                    dateFormat: dateFormat.type1
+                    name: Kingdom of Saudi Arabia
+                    modifiedDate: '2025-12-31T11:59:22'
+                    phoneCode: '966'
+                    currency: SAR
+                    id: 1
+                    shortCode: SA
+                    countrySettings:
+                      monetizedIntroVideoAmount: 10
+                      flag: Llq%2FIAM8asmOQzLTjHPCrUaI%2F3sqXwd9Hom6M6zcZsern0hyWdMhcWchHUGf0qEWsUBzL7dZWMHdygEgoEhmaA%3D%3D
+                      monetizedIntroVideoURL: '{"en":"https://www.youtube.com/watch?v=V-Ix9YgwO1s","ar":"https://www.youtube.com/watch?v=Wm9ihz01NO8"}'
+                      referralAvailable: true
+                      allowDistrictCustomValue: true
+                      otoFeePerOrder: 1.4
+                      allowCityCustomValue: false
+                      starterOtoFeePerOrder: 1.3
+                      refereeAmount: 25
+                      vatPercentage: 15
+                      refererAmount: 75
+                      featureBreakdownJSON: "[\n\t{\n\t\t\"title\": \"Upgrade.generalFeatures\",\n\t\t\"properties\": [\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.multipleUsers\",\n\t\t\t\t\"free\": \"Upgrade.multipleUsers.Free\",\n\t\t\t\t\"startUp\": \"Upgrade.multipleUsers.Startup\",\n\t\t\t\t\"scale\": \"Upgrade.multipleUsers.Scale\",\n\t\t\t\t\"enterprise\": \"Upgrade.multipleUsers.Enterprise\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.MultipleWarehouses\",\n\t\t\t\t\"free\": \"Upgrade.MultipleWarehouses.Free\",\n\t\t\t\t\"startUp\": \"Upgrade.MultipleWarehouses.Startup\",\n\t\t\t\t\"scale\": \"Upgrade.MultipleWarehouses.Scale\",\n\t\t\t\t\"enterprise\": \"Upgrade.MultipleWarehouses.Enterprise\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.SalesChannels\",\n\t\t\t\t\"free\": \"Upgrade.SalesChannels.Free\",\n\t\t\t\t\"startUp\": \"Upgrade.SalesChannels.Startup\",\n\t\t\t\t\"scale\": \"Upgrade.SalesChannels.Scale\",\n\t\t\t\t\"enterprise\": \"Upgrade.SalesChannels.Enterprise\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.BrandConfigurations\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": \"Upgrade.BrandConfigurations.Startup\",\n\t\t\t\t\"scale\": \"Upgrade.BrandConfigurations.Scale\",\n\t\t\t\t\"enterprise\": \"Upgrade.BrandConfigurations.Enterprise\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.Branches\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": false,\n\t\t\t\t\"scale\": false,\n\t\t\t\t\"enterprise\": \"Upgrade.Branches.Enterprise\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.CODTransfers\",\n\t\t\t\t\"free\": \"Upgrade.CODTransfers.Free\",\n\t\t\t\t\"startUp\": \"Upgrade.CODTransfers.Startup\",\n\t\t\t\t\"scale\": \"Upgrade.CODTransfers.Scale\",\n\t\t\t\t\"enterprise\": \"Upgrade.CODTransfers.Enterprise\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.CNS\",\n\t\t\t\t\"free\": \"Upgrade.CNS.Free\",\n\t\t\t\t\"startUp\": \"Upgrade.CNS.Startup\",\n\t\t\t\t\"scale\": \"Upgrade.CNS.Scale\",\n\t\t\t\t\"enterprise\": \"Upgrade.CNS.Enterprise\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.OTOPack\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": false,\n\t\t\t\t\"scale\": \"Upgrade.OTOPack.Scale\",\n\t\t\t\t\"enterprise\": \"Upgrade.OTOPack.Enterprise\"\n\t\t\t}\n\t\t]\n\t},\n\t{\n\t\t\"title\": \"Upgrade.OrderMangementSystem\",\n\t\t\"properties\": [\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.ManualOrderCreation\",\n\t\t\t\t\"free\": true,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.ImportingBulkorders\",\n\t\t\t\t\"free\": true,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.SynchronizeProducts\",\n\t\t\t\t\"free\": true,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.ImportingProducts\",\n\t\t\t\t\"free\": true,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.CityCorrector\",\n\t\t\t\t\"free\": true,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.OrderSplitting\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.AutomatedHoldOrders\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": false,\n\t\t\t\t\"scale\": false,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.AutomatedConfirmation\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": false,\n\t\t\t\t\"scale\": false,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.CodConfirmationProcess\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": false,\n\t\t\t\t\"scale\": false,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.ClickCollect\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": false,\n\t\t\t\t\"scale\": false,\n\t\t\t\t\"enterprise\": true\n\t\t\t}\n\t\t]\n\t},\n\t{\n\t\t\"title\": \"Upgrade.ReturnSystem\",\n\t\t\"properties\": [\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.ReturnLabels\",\n\t\t\t\t\"free\": true,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.returnLablesDifferentOrigin\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.ReturnPortal\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.CustomerSupportUser\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": false,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.ReturnPolicy\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": false,\n\t\t\t\t\"scale\": false,\n\t\t\t\t\"enterprise\": true\n\t\t\t}\n\t\t]\n\t},\n\t{\n\t\t\"title\": \"Upgrade.TrackingAndNotification\",\n\t\t\"properties\": [\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.CustomizableTracking\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.CustomerFeedback \",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n         {\n\t\t      \"label\": \"Upgrade.CustomizableReturn\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": false,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n         {\n\t\t    \"label\": \"Upgrade.CustomizableDeliverySlot\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": false,\n\t\t\t\t\"scale\": false,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n         {\n\t\t\t\t\"label\": \"Upgrade.AddressVerification\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": false,\n\t\t\t\t\"scale\": false,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.TrackingSms\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.FailedDeliverySms\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.FeedbackSms\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.adManagement\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.SMTPSettings\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": false,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.EmailTemplate\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": false,\n\t\t\t\t\"scale\": false,\n\t\t\t\t\"enterprise\": true\n\t\t\t}\n\t\t]\n\t},\n\t{\n\t\t\"title\": \"Upgrade.LastMile\",\n\t\t\"properties\": [\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.ShippingCalculator\",\n\t\t\t\t\"free\": true,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.OTORates\",\n\t\t\t\t\"free\": true,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.bulkAWBs\",\n\t\t\t\t\"free\": true,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.AWBwithInvoice\",\n\t\t\t\t\"free\": true,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.RealTimeTracking\",\n\t\t\t\t\"free\": true,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.YourOwnRates\",\n\t\t\t\t\"free\": \"Upgrade.YourOwnRates.Free\",\n\t\t\t\t\"startUp\": \"Upgrade.YourOwnRates.Startup\",\n\t\t\t\t\"scale\": \"Upgrade.YourOwnRates.Scale\",\n\t\t\t\t\"enterprise\": \"Upgrade.YourOwnRates.Enterprise\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.TransactionFees\",\n\t\t\t\t\"free\": \"Upgrade.TransactionFees.Free\",\n\t\t\t\t\"startUp\": \"Upgrade.TransactionFees.Startup\",\n\t\t\t\t\"scale\": \"Upgrade.TransactionFees.Scale\",\n\t\t\t\t\"enterprise\": \"Upgrade.TransactionFees.Enterprise\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.OTOFlex\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.ShippingAutomationRules\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": false,\n\t\t\t\t\"scale\": \"Upgrade.ShippingAutomationRules.Scale\",\n\t\t\t\t\"enterprise\": \"Upgrade.ShippingAutomationRules.Enterprise\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.PerformanceTracker\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": false,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t}\n\t\t]\n\t},\n\t{\n\t\t\"title\": \"Upgrade.Support\",\n\t\t\"properties\": [\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.SupportChannels\",\n\t\t\t\t\"free\": \"Upgrade.SupportChannels.free\",\n\t\t\t\t\"startUp\": \"Upgrade.SupportChannels.Startup\",\n\t\t\t\t\"scale\": \"Upgrade.SupportChannels.Scale\",\n\t\t\t\t\"enterprise\": \"Upgrade.SupportChannels.Enterprise\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.KnolwedgeBase \",\n\t\t\t\t\"free\": true,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t}\n\t\t]\n\t},\n\t{\n\t\t\"title\": \"Upgrade.ReportsAndAnalytics\",\n\t\t\"properties\": [\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.AnalyticsDashboard\",\n\t\t\t\t\"free\": true,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.CODReports \",\n\t\t\t\t\"free\": true,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.DCPerformance\",\n\t\t\t\t\"free\": true,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.CustomerAnalysis\",\n\t\t\t\t\"free\": true,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.DriversPerformance\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.BrandPerformance\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.WarehousePerformance\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": true,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.SLABreaches\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": false,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.BranchPerformance\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": false,\n\t\t\t\t\"scale\": true,\n\t\t\t\t\"enterprise\": true\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"label\": \"Upgrade.CustomReports\",\n\t\t\t\t\"free\": false,\n\t\t\t\t\"startUp\": false,\n\t\t\t\t\"scale\": false,\n\t\t\t\t\"enterprise\": true\n\t\t\t}\n\t\t]\n\t}\n]"
+                      id: 186
+                      minimumChargeAmount: 10
+                      mapSettings: null
+                      allowStateCustomValue: false
+                      configJSON: "{\n\t\"country\": {\n\t\t\"show\": true,\n\t\t\"label\": \"country\",\n\t\t\"required\": true,\n\t\t\"col\": 12\n\t},\n\t\"fullAddressLine\": {\n\t\t\"show\": true,\n\t\t\"label\": \"fullAddressLine\",\n\t\t\"placeholder\": \"fullAddressPlaceholder\",\n\t\t\"shortAddress\": true,\n\t\t\"autocomplete\": true,\n\t\t\"required\": true,\n\t\t\"col\": 12\n\t},\n\t\"building\": {\n\t\t\"show\": true,\n\t\t\"label\": \"building\",\n\t\t\"col\": 6\n\t},\n\t\"street\": {\n\t\t\"show\": true,\n\t\t\"label\": \"street\",\n\t\t\"col\": 6\n\t},\n\t\"secondary\": {\n\t\t\"show\": true,\n\t\t\"label\": \"secondaryAddressFieldLabel\",\n\t\t\"col\": 6\n\t},\n\t\"city\": {\n\t\t\"show\": true,\n\t\t\"complex\": true,\n\t\t\"label\": \"city\",\n\t\t\"required\": true,\n\t\t\"col\": 6\n\t},\n\t\"district\": {\n\t\t\"show\": true,\n\t\t\"label\": \"district\",\n\t\t\"allowCustomValue\": true,\n\t\t\"col\": 6\n\t},\n\t\"zipCode\": {\n\t\t\"show\": true,\n\t\t\"label\": \"zipCode\",\n\t\t\"col\": 6\n\t}\n}"
+                      hasShortAddress: true
+                      ecomPlusFee: null
+                      paymentGatewayType: TAP_PAYMENT
+                      hasNeighbourhood: false
+                      otoSMSProviderId: 11
+                      allowedCountries: SA,BH,AE,OM,QA,KW,CN,CA
+                      hasState: true
+                      minimumBankTransferLimit: 500
+                      createdDate: '2024-10-31T07:26:46'
+                      zipCodeRequired: false
+                      internationalDocRequirement: false
+                      bankTransferAvailable: true
+                      bankTransferReceiverAccount: '{"bankName":"BANK ALJAZIRA","ibanNumber":"SA8460100032095017958001","bankHolderName":"OTO Global Arabia IT Company"}'
+                      modifiedDate: '2025-12-31T11:59:22'
+                      scaleOtoFeePerOrder: 0.5
+                      useComplexCityComponent: true
+                      chargeCreditOptions: 100,500,1000,2000,4000
+                      status: active
+                  districtName: East Umm Al Hamam
+                  lng: '46.65533407'
+                  city:
+                    createdDate: '2019-10-22T15:40:45'
+                    stateID: 2777018
+                    name: Riyadh
+                    modifiedDate: '2025-12-30T00:49:31'
+                    id: 1
+                    countryName: SA
+                    countryID: 1
+                    defaultZipCode: '12251'
+                  stateID: 2777018
+                  cityID: 1
+                  countryID: 1
+                  secondary: '4593'
+                  buildingName: '8214'
+                  streetName: Wadi Samael
+                  districtID: 2783096
+                  shortAddressCode: RGUC8214
+                  cityName: Riyadh
+                  stateName: Riyadh Province
+                  neighbourhoodName: null
+                  neighbourhood: null
+                  district:
+                    createdDate: '2024-07-30T12:21:28'
+                    name: East Umm Al Hamam
+                    modifiedDate: '2024-07-30T12:21:28'
+                    id: 2783096
+                    cityID: 1
+                  countryShortCode: SA
+                  countryName: Kingdom of Saudi Arabia
+                  state:
+                    deliveryCompanies: null
+                    createdDate: null
+                    name: Riyadh Province
+                    modifiedDate: null
+                    id: 2777018
+                    countryName: null
+                    shortCode: RYD
+                    countryID: 1
+                  neighbourhoodID: null
+                  formattedFullAddress: 8214, Wadi Samael, 4593, East Umm Al Hamam, 12325, Riyadh, Kingdom of Saudi Arabia, RGUC8214
+                  lat: '24.69447065'
+                success: true
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Obtain an access_token by POSTing your refresh_token to /refreshToken, then send Authorization: Bearer <access_token>.'

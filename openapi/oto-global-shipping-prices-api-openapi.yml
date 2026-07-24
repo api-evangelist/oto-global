@@ -1,0 +1,1434 @@
+openapi: 3.0.3
+info:
+  title: OTO API V2 Account Shipping Prices API
+  version: 2.0.0
+  description: 'Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO''s platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you''re integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.'
+  contact:
+    name: OTO Support
+    url: https://help.tryoto.com/en/support/home
+  x-source: derived from published OTO API V2 Postman collection (apis.tryoto.com)
+servers:
+- url: https://api.tryoto.com/rest/v2
+  description: Production
+- url: https://staging-api.tryoto.com/rest/v2
+  description: Staging / sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Shipping Prices
+  description: ''
+paths:
+  /rest/v2/checkOTODeliveryFee:
+    post:
+      operationId: checkOTODeliveryFee
+      summary: Check OTO Delivery Fee
+      tags:
+      - Shipping Prices
+      description: 'This API endpoint calculates shipping prices offered by OTO rates. By providing the origin city, destination city, and package details (such as weight and dimensions), the API computes the price based on the provided request parameters. Important Note: The prices returned by this API are applicable only to shipping options available under OTO''s contracts. To calculate prices for your own custom contracts, please use the Check Delivery Fee API. You can see the shipping prices of delivery companie'
+      requestBody:
+        content:
+          application/json:
+            example:
+              weight: '3'
+              originCity: Riyadh
+              destinationCity: Jeddah
+              height: 30
+              width: 30
+              length: 30
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                traceId: 63545-73855-176.88.141.22-c4270220-89f8-4fe4-a645-2f82fb5c499d
+                success: true
+                deliveryCompany:
+                - serviceType: sameDay
+                  deliveryOptionName: Deliver Now
+                  trackingType: excellent
+                  score5: 4.9
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 3
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 3000
+                  deliveryOptionId: 7109
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-17'
+                  deliveryCompanyName: delivernow
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 16
+                  maxFreeWeight: 15
+                  avgDeliveryTime: Same Day of Pickup Date
+                  price: 16
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/delivery-now.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 3.0 SAR plus 0.0% of the amount to be collected
+                - serviceType: lockerDelivery
+                  deliveryOptionName: Omni Llama
+                  deliveryType: locker
+                  codCharge: 8
+                  maxOrderValue: 6000
+                  maxCODValue: 1000
+                  deliveryOptionId: 7252
+                  estimatedDeliveryDate: '2025-11-17'
+                  deliveryCompanyName: omnillama
+                  estimatedPickupDate: '2025-11-16'
+                  checkAllBranches: https://map.omnillama.net/
+                  returnFee: 8
+                  maxFreeWeight: 15
+                  avgDeliveryTime: 1to3WorkingDays
+                  price: 8
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/omni-llama.png
+                  currency: SAR
+                  pickupDropoff: lockerDropOff
+                - serviceType: pudo
+                  deliveryOptionName: SPL PUDO
+                  trackingType: excellent
+                  deliveryType: pickupByCustomer
+                  codCharge: 8
+                  maxOrderValue: 10000
+                  maxCODValue: 5000
+                  deliveryOptionId: 7144
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: splUpds
+                  estimatedPickupDate: '2025-11-17'
+                  checkAllBranches: https://splonline.com.sa/en/branches/
+                  returnFee: 13
+                  maxFreeWeight: 15
+                  avgDeliveryTime: 1 to 2 Working Days
+                  price: 13
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/spl.jpg
+                  currency: SAR
+                  pickupDropoff: dropoffOnly
+                  cardOnDeliveryPercentage: 8.0 SAR plus 1.75% of the amount to be collected
+                - serviceType: sameDay
+                  deliveryOptionName: Delivery Support
+                  score5: 4.4
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 3
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 5000
+                  deliveryOptionId: 7417
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: deliverysupport
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 13
+                  maxFreeWeight: 15
+                  avgDeliveryTime: sameDayPickUp
+                  price: 13
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/delivery-support.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                - serviceType: pudo
+                  deliveryOptionName: Aramex PUDO
+                  deliveryType: pickupByCustomer
+                  codCharge: 6
+                  maxOrderValue: 7000
+                  maxCODValue: 0
+                  deliveryOptionId: 7231
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-21'
+                  deliveryCompanyName: aramex
+                  estimatedPickupDate: '2025-11-17'
+                  checkAllBranches: https://www.aramex.com/sa/en/find-aramex-office
+                  returnFee: 15
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1to5WorkingDays
+                  price: 15
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/aramex.png
+                  currency: SAR
+                  pickupDropoff: dropoffOnly
+                  cardOnDeliveryPercentage: 6.0 SAR plus 1.75% of the amount to be collected
+                - serviceType: sameDay
+                  deliveryOptionName: Sent
+                  score5: 4
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 6
+                  pickupCutOffTime: '11:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 0
+                  deliveryOptionId: 7490
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: sent
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 16
+                  maxFreeWeight: 15
+                  avgDeliveryTime: sameDayPickUp
+                  price: 16
+                  logo: https://storage.googleapis.com/download/storage/v1/b/oto-v2-files/o/files%2F1%2Fimport%2F6ac47fcf-548c-407f-b474-6a241f459a1b.png?generation=1737624142402900&alt=media
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 6.0 SAR plus 2.0% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: Roadlink Logistics
+                  score5: 4.7
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 6
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 2500
+                  maxCODValue: 0
+                  deliveryOptionId: 7990
+                  extraWeightPerKg: 2
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: road-link
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 16
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1to3WorkingDays
+                  price: 16
+                  logo: https://storage.googleapis.com/download/storage/v1/b/oto-v2-files/o/files%2F1%2Fimport%2Fd8fb28f0-2825-472e-9723-57672328ff36.png?generation=1747140104143959&alt=media
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 6.0 SAR plus 2.0% of the amount to be collected
+                - serviceType: pudo
+                  deliveryOptionName: SMSA PUDO
+                  deliveryType: pickupByCustomer
+                  codCharge: 8
+                  maxOrderValue: 6000
+                  maxCODValue: 3750
+                  deliveryOptionId: 7326
+                  extraWeightPerKg: 2
+                  needToVerifyCrDocStatus: true
+                  estimatedDeliveryDate: '2025-11-17'
+                  deliveryCompanyName: smsaV2
+                  estimatedPickupDate: '2025-11-16'
+                  checkAllBranches: https://www.smsaexpress.com/map-location
+                  returnFee: 16.65
+                  maxFreeWeight: 15
+                  avgDeliveryTime: 1to5WorkingDays
+                  price: 16.65
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/smsa-logo.png
+                  currency: SAR
+                  pickupDropoff: dropoffOnly
+                  cardOnDeliveryPercentage: 8.0 SAR plus 4.0% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: iMile
+                  score5: 3.7
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 4
+                  pickupCutOffTime: '18:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 5000
+                  deliveryOptionId: 7147
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: imile
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 17
+                  maxFreeWeight: 15
+                  avgDeliveryTime: 2to3WorkingDays
+                  price: 17
+                  logo: https://storage.googleapis.com/download/storage/v1/b/oto-v2-files/o/files%2F1%2Fimport%2Fc1261774-f05c-4d74-a279-8dd22bbc4f5d.png?generation=1741461810060293&alt=media
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 4.0 SAR plus 1.0% of the amount to be collected
+                - serviceType: sameDay
+                  deliveryOptionName: DELIVERIST Same Day
+                  trackingType: excellent
+                  score5: 4.9
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 3
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 3750
+                  maxCODValue: 2500
+                  deliveryOptionId: 7110
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-20'
+                  deliveryCompanyName: deliveristLogestechs
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 17
+                  maxFreeWeight: 10
+                  avgDeliveryTime: sameDayPickUp
+                  price: 17
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/deliverist.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 3.0 SAR plus 2.5% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: Shipa Delivery
+                  trackingType: excellent
+                  score5: 3.5
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 3
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 3750
+                  maxCODValue: 3750
+                  deliveryOptionId: 7098
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-20'
+                  deliveryCompanyName: shipaV2
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 17
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1 to 3 Working Days
+                  price: 17
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/shipa.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 3.0 SAR plus 0.8% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: J&T Express
+                  trackingType: excellent
+                  score5: 5
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 8
+                  pickupCutOffTime: '16:00'
+                  maxOrderValue: 6000
+                  maxCODValue: 3000
+                  deliveryOptionId: 7100
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-22'
+                  deliveryCompanyName: jtexpress
+                  estimatedPickupDate: '2025-11-18'
+                  checkAllBranches: https://www.jtexpress.me/KSA/service-points
+                  returnFee: 18
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1 to 2 Working Days
+                  price: 18
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/jandt.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 8.0 SAR plus 0.9% of the amount to be collected
+                - serviceType: sameDay
+                  deliveryOptionName: Yamamah
+                  trackingType: excellent
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 3
+                  pickupCutOffTime: '11:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 5000
+                  deliveryOptionId: 8530
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: yamamahLogestechs
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 18
+                  maxFreeWeight: 15
+                  avgDeliveryTime: Same Day of Pickup Date
+                  price: 18
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/yamamah-express.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 3.0 SAR plus 2.5% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: Aymakan
+                  trackingType: excellent
+                  score5: 4.4
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 6
+                  pickupCutOffTime: '17:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 3000
+                  deliveryOptionId: 7102
+                  extraWeightPerKg: 2
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: aymakan
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 18.9
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1to3WorkingDays
+                  price: 18.9
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/aymakan.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 6.0 SAR plus 1.0% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: Thabit Logistics
+                  trackingType: excellent
+                  score5: 4.5
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 6
+                  pickupCutOffTime: '13:00'
+                  maxOrderValue: 3750
+                  maxCODValue: 0
+                  deliveryOptionId: 7099
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: thabit
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 19
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1to2WorkingDays
+                  price: 19
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/thabit.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 6.0 SAR plus 0.0% of the amount to be collected
+                - serviceType: coldDelivery
+                  deliveryOptionName: Delex
+                  trackingType: excellent
+                  score5: 3.8
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 8
+                  pickupCutOffTime: '10:00'
+                  maxOrderValue: 500
+                  maxCODValue: 500
+                  deliveryOptionId: 7113
+                  extraWeightPerKg: 2
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: delexLogestechs
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 19
+                  maxFreeWeight: 12
+                  avgDeliveryTime: 1to3WorkingDays
+                  price: 19
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/delex.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 8.0 SAR plus 0.0% of the amount to be collected
+                - serviceType: sameDay
+                  deliveryOptionName: Linkers Express
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 0
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 2500
+                  maxCODValue: 0
+                  deliveryOptionId: 7949
+                  extraWeightPerKg: 10
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: linkers-express
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 19
+                  maxFreeWeight: 2
+                  avgDeliveryTime: sameDayPickUp
+                  price: 19
+                  logo: https://storage.googleapis.com/download/storage/v1/b/oto-v2-files/o/files%2F1%2Fimport%2F6e03c097-102f-4716-a99a-c2834824385a.png?generation=1742721672764745&alt=media
+                  currency: SAR
+                  pickupDropoff: freePickup
+                - serviceType: express
+                  deliveryOptionName: Aramex
+                  trackingType: excellent
+                  score5: 4.7
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 6
+                  pickupCutOffTime: '14:00'
+                  maxOrderValue: 7000
+                  maxCODValue: 3750
+                  deliveryOptionId: 7097
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-22'
+                  deliveryCompanyName: aramex
+                  estimatedPickupDate: '2025-11-17'
+                  checkAllBranches: https://www.aramex.com/sa/en/find-aramex-office
+                  returnFee: 19.26
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1 to 2 Working Days
+                  price: 19.26
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/aramex.png
+                  currency: SAR
+                  pickupDropoff: freePickupDropoff
+                  cardOnDeliveryPercentage: 6.0 SAR plus 1.75% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: Naqel Express
+                  trackingType: excellent
+                  score5: 4.6
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 6
+                  pickupCutOffTime: '16:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 3500
+                  deliveryOptionId: 7112
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-22'
+                  deliveryCompanyName: naqel
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 19.8
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1to4WorkingDays
+                  price: 19.8
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/naqel.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 6.0 SAR plus 0.0% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: SMSA
+                  trackingType: excellent
+                  score5: 3.9
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 8
+                  maxOrderValue: 6000
+                  maxCODValue: 3750
+                  deliveryOptionId: 7101
+                  extraWeightPerKg: 1
+                  needToVerifyCrDocStatus: true
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: secom
+                  estimatedPickupDate: '2025-11-16'
+                  checkAllBranches: https://www.smsaexpress.com/map-location
+                  returnFee: 19.98
+                  maxFreeWeight: 15
+                  avgDeliveryTime: 1to5WorkingDays
+                  price: 19.98
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/smsa-logo.png
+                  currency: SAR
+                  pickupDropoff: dropoffOnly
+                  cardOnDeliveryPercentage: 8.0 SAR plus 4.0% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: UPS
+                  trackingType: excellent
+                  score5: 5
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 8
+                  pickupCutOffTime: '14:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 2000
+                  deliveryOptionId: 7136
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-17'
+                  deliveryCompanyName: ups2
+                  estimatedPickupDate: '2025-11-16'
+                  returnFee: 20
+                  maxFreeWeight: 15
+                  avgDeliveryTime: 1to5WorkingDays
+                  price: 20
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/ups.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 8.0 SAR plus 0.0% of the amount to be collected
+                - serviceType: coldDelivery
+                  deliveryOptionName: Adwar Cold
+                  score5: 5
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 6
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 1000
+                  maxCODValue: 1000
+                  deliveryOptionId: 7410
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: adwarLogestechs
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 21
+                  maxFreeWeight: 15
+                  avgDeliveryTime: 1to3WorkingDays
+                  price: 21
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/adwar.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                - serviceType: heavyAndBulky
+                  deliveryOptionName: Aramex Heavy & Bulky
+                  score5: 4.2
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 0
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 0
+                  deliveryOptionId: 7898
+                  estimatedDeliveryDate: '2025-11-21'
+                  deliveryCompanyName: aramex
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 27.26
+                  avgDeliveryTime: 1 to 2 Working Days
+                  price: 27.26
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/aramex.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                - serviceType: heavyAndBulky
+                  deliveryOptionName: Flow PL
+                  trackingType: excellent
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 0
+                  pickupCutOffTime: '13:00'
+                  maxOrderValue: 20000
+                  maxCODValue: 0
+                  deliveryOptionId: 7106
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: flowpl
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 52.2
+                  maxFreeWeight: 30
+                  avgDeliveryTime: 1to5WorkingDays
+                  price: 52.2
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/flow.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+  /rest/v2/checkDeliveryFee:
+    post:
+      operationId: checkDeliveryFee
+      summary: Check Delivery Fee
+      tags:
+      - Shipping Prices
+      description: 'This API endpoint calculates contract-based pricing using your own rates. By providing the origin city, destination city, and package details such as weight and dimensions, the API determines the price based on the supplied parameters. Important Note: The prices returned by this API apply exclusively to your own contracts. Request Parameters: Name Required Type Description originCity yes string pickup city destinationCity yes string destination city weight yes number weight of package(kg) totalD'
+      requestBody:
+        content:
+          application/json:
+            example:
+              weight: '50'
+              totalDue: 10
+              originCity: Riyadh
+              destinationCity: Jeddah
+              height: 170
+              width: 50
+              length: 50
+            schema:
+              type: object
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                traceId: 63545-73855-176.88.141.22-c4270220-89f8-4fe4-a645-2f82fb5c499d
+                success: true
+                deliveryCompany:
+                - serviceType: sameDay
+                  deliveryOptionName: Deliver Now
+                  trackingType: excellent
+                  score5: 4.9
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 3
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 3000
+                  deliveryOptionId: 7109
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-17'
+                  deliveryCompanyName: delivernow
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 16
+                  maxFreeWeight: 15
+                  avgDeliveryTime: Same Day of Pickup Date
+                  price: 16
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/delivery-now.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 3.0 SAR plus 0.0% of the amount to be collected
+                - serviceType: lockerDelivery
+                  deliveryOptionName: Omni Llama
+                  deliveryType: locker
+                  codCharge: 8
+                  maxOrderValue: 6000
+                  maxCODValue: 1000
+                  deliveryOptionId: 7252
+                  estimatedDeliveryDate: '2025-11-17'
+                  deliveryCompanyName: omnillama
+                  estimatedPickupDate: '2025-11-16'
+                  checkAllBranches: https://map.omnillama.net/
+                  returnFee: 8
+                  maxFreeWeight: 15
+                  avgDeliveryTime: 1to3WorkingDays
+                  price: 8
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/omni-llama.png
+                  currency: SAR
+                  pickupDropoff: lockerDropOff
+                - serviceType: pudo
+                  deliveryOptionName: SPL PUDO
+                  trackingType: excellent
+                  deliveryType: pickupByCustomer
+                  codCharge: 8
+                  maxOrderValue: 10000
+                  maxCODValue: 5000
+                  deliveryOptionId: 7144
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: splUpds
+                  estimatedPickupDate: '2025-11-17'
+                  checkAllBranches: https://splonline.com.sa/en/branches/
+                  returnFee: 13
+                  maxFreeWeight: 15
+                  avgDeliveryTime: 1 to 2 Working Days
+                  price: 13
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/spl.jpg
+                  currency: SAR
+                  pickupDropoff: dropoffOnly
+                  cardOnDeliveryPercentage: 8.0 SAR plus 1.75% of the amount to be collected
+                - serviceType: sameDay
+                  deliveryOptionName: Delivery Support
+                  score5: 4.4
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 3
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 5000
+                  deliveryOptionId: 7417
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: deliverysupport
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 13
+                  maxFreeWeight: 15
+                  avgDeliveryTime: sameDayPickUp
+                  price: 13
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/delivery-support.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                - serviceType: pudo
+                  deliveryOptionName: Aramex PUDO
+                  deliveryType: pickupByCustomer
+                  codCharge: 6
+                  maxOrderValue: 7000
+                  maxCODValue: 0
+                  deliveryOptionId: 7231
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-21'
+                  deliveryCompanyName: aramex
+                  estimatedPickupDate: '2025-11-17'
+                  checkAllBranches: https://www.aramex.com/sa/en/find-aramex-office
+                  returnFee: 15
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1to5WorkingDays
+                  price: 15
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/aramex.png
+                  currency: SAR
+                  pickupDropoff: dropoffOnly
+                  cardOnDeliveryPercentage: 6.0 SAR plus 1.75% of the amount to be collected
+                - serviceType: sameDay
+                  deliveryOptionName: Sent
+                  score5: 4
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 6
+                  pickupCutOffTime: '11:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 0
+                  deliveryOptionId: 7490
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: sent
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 16
+                  maxFreeWeight: 15
+                  avgDeliveryTime: sameDayPickUp
+                  price: 16
+                  logo: https://storage.googleapis.com/download/storage/v1/b/oto-v2-files/o/files%2F1%2Fimport%2F6ac47fcf-548c-407f-b474-6a241f459a1b.png?generation=1737624142402900&alt=media
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 6.0 SAR plus 2.0% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: Roadlink Logistics
+                  score5: 4.7
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 6
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 2500
+                  maxCODValue: 0
+                  deliveryOptionId: 7990
+                  extraWeightPerKg: 2
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: road-link
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 16
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1to3WorkingDays
+                  price: 16
+                  logo: https://storage.googleapis.com/download/storage/v1/b/oto-v2-files/o/files%2F1%2Fimport%2Fd8fb28f0-2825-472e-9723-57672328ff36.png?generation=1747140104143959&alt=media
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 6.0 SAR plus 2.0% of the amount to be collected
+                - serviceType: pudo
+                  deliveryOptionName: SMSA PUDO
+                  deliveryType: pickupByCustomer
+                  codCharge: 8
+                  maxOrderValue: 6000
+                  maxCODValue: 3750
+                  deliveryOptionId: 7326
+                  extraWeightPerKg: 2
+                  needToVerifyCrDocStatus: true
+                  estimatedDeliveryDate: '2025-11-17'
+                  deliveryCompanyName: smsaV2
+                  estimatedPickupDate: '2025-11-16'
+                  checkAllBranches: https://www.smsaexpress.com/map-location
+                  returnFee: 16.65
+                  maxFreeWeight: 15
+                  avgDeliveryTime: 1to5WorkingDays
+                  price: 16.65
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/smsa-logo.png
+                  currency: SAR
+                  pickupDropoff: dropoffOnly
+                  cardOnDeliveryPercentage: 8.0 SAR plus 4.0% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: iMile
+                  score5: 3.7
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 4
+                  pickupCutOffTime: '18:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 5000
+                  deliveryOptionId: 7147
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: imile
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 17
+                  maxFreeWeight: 15
+                  avgDeliveryTime: 2to3WorkingDays
+                  price: 17
+                  logo: https://storage.googleapis.com/download/storage/v1/b/oto-v2-files/o/files%2F1%2Fimport%2Fc1261774-f05c-4d74-a279-8dd22bbc4f5d.png?generation=1741461810060293&alt=media
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 4.0 SAR plus 1.0% of the amount to be collected
+                - serviceType: sameDay
+                  deliveryOptionName: DELIVERIST Same Day
+                  trackingType: excellent
+                  score5: 4.9
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 3
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 3750
+                  maxCODValue: 2500
+                  deliveryOptionId: 7110
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-20'
+                  deliveryCompanyName: deliveristLogestechs
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 17
+                  maxFreeWeight: 10
+                  avgDeliveryTime: sameDayPickUp
+                  price: 17
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/deliverist.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 3.0 SAR plus 2.5% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: Shipa Delivery
+                  trackingType: excellent
+                  score5: 3.5
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 3
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 3750
+                  maxCODValue: 3750
+                  deliveryOptionId: 7098
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-20'
+                  deliveryCompanyName: shipaV2
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 17
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1 to 3 Working Days
+                  price: 17
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/shipa.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 3.0 SAR plus 0.8% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: J&T Express
+                  trackingType: excellent
+                  score5: 5
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 8
+                  pickupCutOffTime: '16:00'
+                  maxOrderValue: 6000
+                  maxCODValue: 3000
+                  deliveryOptionId: 7100
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-22'
+                  deliveryCompanyName: jtexpress
+                  estimatedPickupDate: '2025-11-18'
+                  checkAllBranches: https://www.jtexpress.me/KSA/service-points
+                  returnFee: 18
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1 to 2 Working Days
+                  price: 18
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/jandt.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 8.0 SAR plus 0.9% of the amount to be collected
+                - serviceType: sameDay
+                  deliveryOptionName: Yamamah
+                  trackingType: excellent
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 3
+                  pickupCutOffTime: '11:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 5000
+                  deliveryOptionId: 8530
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: yamamahLogestechs
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 18
+                  maxFreeWeight: 15
+                  avgDeliveryTime: Same Day of Pickup Date
+                  price: 18
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/yamamah-express.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 3.0 SAR plus 2.5% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: Aymakan
+                  trackingType: excellent
+                  score5: 4.4
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 6
+                  pickupCutOffTime: '17:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 3000
+                  deliveryOptionId: 7102
+                  extraWeightPerKg: 2
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: aymakan
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 18.9
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1to3WorkingDays
+                  price: 18.9
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/aymakan.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 6.0 SAR plus 1.0% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: Thabit Logistics
+                  trackingType: excellent
+                  score5: 4.5
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 6
+                  pickupCutOffTime: '13:00'
+                  maxOrderValue: 3750
+                  maxCODValue: 0
+                  deliveryOptionId: 7099
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: thabit
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 19
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1to2WorkingDays
+                  price: 19
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/thabit.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 6.0 SAR plus 0.0% of the amount to be collected
+                - serviceType: coldDelivery
+                  deliveryOptionName: Delex
+                  trackingType: excellent
+                  score5: 3.8
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 8
+                  pickupCutOffTime: '10:00'
+                  maxOrderValue: 500
+                  maxCODValue: 500
+                  deliveryOptionId: 7113
+                  extraWeightPerKg: 2
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: delexLogestechs
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 19
+                  maxFreeWeight: 12
+                  avgDeliveryTime: 1to3WorkingDays
+                  price: 19
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/delex.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 8.0 SAR plus 0.0% of the amount to be collected
+                - serviceType: sameDay
+                  deliveryOptionName: Linkers Express
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 0
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 2500
+                  maxCODValue: 0
+                  deliveryOptionId: 7949
+                  extraWeightPerKg: 10
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: linkers-express
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 19
+                  maxFreeWeight: 2
+                  avgDeliveryTime: sameDayPickUp
+                  price: 19
+                  logo: https://storage.googleapis.com/download/storage/v1/b/oto-v2-files/o/files%2F1%2Fimport%2F6e03c097-102f-4716-a99a-c2834824385a.png?generation=1742721672764745&alt=media
+                  currency: SAR
+                  pickupDropoff: freePickup
+                - serviceType: express
+                  deliveryOptionName: Aramex
+                  trackingType: excellent
+                  score5: 4.7
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 6
+                  pickupCutOffTime: '14:00'
+                  maxOrderValue: 7000
+                  maxCODValue: 3750
+                  deliveryOptionId: 7097
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-22'
+                  deliveryCompanyName: aramex
+                  estimatedPickupDate: '2025-11-17'
+                  checkAllBranches: https://www.aramex.com/sa/en/find-aramex-office
+                  returnFee: 19.26
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1 to 2 Working Days
+                  price: 19.26
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/aramex.png
+                  currency: SAR
+                  pickupDropoff: freePickupDropoff
+                  cardOnDeliveryPercentage: 6.0 SAR plus 1.75% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: Naqel Express
+                  trackingType: excellent
+                  score5: 4.6
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 6
+                  pickupCutOffTime: '16:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 3500
+                  deliveryOptionId: 7112
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-22'
+                  deliveryCompanyName: naqel
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 19.8
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1to4WorkingDays
+                  price: 19.8
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/naqel.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 6.0 SAR plus 0.0% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: SMSA
+                  trackingType: excellent
+                  score5: 3.9
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 8
+                  maxOrderValue: 6000
+                  maxCODValue: 3750
+                  deliveryOptionId: 7101
+                  extraWeightPerKg: 1
+                  needToVerifyCrDocStatus: true
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: secom
+                  estimatedPickupDate: '2025-11-16'
+                  checkAllBranches: https://www.smsaexpress.com/map-location
+                  returnFee: 19.98
+                  maxFreeWeight: 15
+                  avgDeliveryTime: 1to5WorkingDays
+                  price: 19.98
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/smsa-logo.png
+                  currency: SAR
+                  pickupDropoff: dropoffOnly
+                  cardOnDeliveryPercentage: 8.0 SAR plus 4.0% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: UPS
+                  trackingType: excellent
+                  score5: 5
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 8
+                  pickupCutOffTime: '14:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 2000
+                  deliveryOptionId: 7136
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-17'
+                  deliveryCompanyName: ups2
+                  estimatedPickupDate: '2025-11-16'
+                  returnFee: 20
+                  maxFreeWeight: 15
+                  avgDeliveryTime: 1to5WorkingDays
+                  price: 20
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/ups.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 8.0 SAR plus 0.0% of the amount to be collected
+                - serviceType: coldDelivery
+                  deliveryOptionName: Adwar Cold
+                  score5: 5
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 6
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 1000
+                  maxCODValue: 1000
+                  deliveryOptionId: 7410
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: adwarLogestechs
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 21
+                  maxFreeWeight: 15
+                  avgDeliveryTime: 1to3WorkingDays
+                  price: 21
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/adwar.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                - serviceType: heavyAndBulky
+                  deliveryOptionName: Aramex Heavy & Bulky
+                  score5: 4.2
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 0
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 0
+                  deliveryOptionId: 7898
+                  estimatedDeliveryDate: '2025-11-21'
+                  deliveryCompanyName: aramex
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 27.26
+                  avgDeliveryTime: 1 to 2 Working Days
+                  price: 27.26
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/aramex.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                - serviceType: heavyAndBulky
+                  deliveryOptionName: Flow PL
+                  trackingType: excellent
+                  deliveryType: toCustomerDoorstep
+                  codCharge: 0
+                  pickupCutOffTime: '13:00'
+                  maxOrderValue: 20000
+                  maxCODValue: 0
+                  deliveryOptionId: 7106
+                  extraWeightPerKg: 1
+                  estimatedDeliveryDate: '2025-11-18'
+                  deliveryCompanyName: flowpl
+                  estimatedPickupDate: '2025-11-17'
+                  returnFee: 52.2
+                  maxFreeWeight: 30
+                  avgDeliveryTime: 1to5WorkingDays
+                  price: 52.2
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/flow.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+  /rest/v2/getDeliveryFee:
+    post:
+      operationId: getDeliveryFee
+      summary: Get Delivery Fee
+      tags:
+      - Shipping Prices
+      description: 'This API endpoint calculates the shipping fee for a specific order in OTO. It offers two methods for price calculation: By Order ID: Provide the orderId, and the API will return all possible shipping rates for each defined shipping company. By Delivery Option ID: Provide the deliveryOptionId to calculate the shipping fee for a specific shipping company. You can get this information from checkOTODeliveryFee or from checkDeliveryFee endpoints. Request Parameters: Name Required Type Description ord'
+      requestBody:
+        content:
+          application/json:
+            example:
+              orderId: OID-22700-1006
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 200 all options
+          content:
+            application/json:
+              example:
+                success: true
+                deliveryCompany:
+                - serviceType: pudo
+                  deliveryOptionName: SPL PUDO
+                  trackingType: excellent
+                  codCharge: 8
+                  maxOrderValue: 10000
+                  maxCODValue: 5000
+                  deliveryOptionId: 6927
+                  extraWeightPerKg: 1
+                  deliveryCompanyName: splUpds
+                  returnFee: 13
+                  maxFreeWeight: 15
+                  avgDeliveryTime: 1 to 2 Working Days
+                  price: 13
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/spl.jpg
+                  currency: SAR
+                  pickupDropoff: dropoffOnly
+                  cardOnDeliveryPercentage: 8.0 SAR plus 1.75% of the amount to be collected
+                - serviceType: pudo
+                  deliveryOptionName: SPL PUDO
+                  trackingType: excellent
+                  codCharge: 8
+                  maxOrderValue: 10000
+                  maxCODValue: 5000
+                  deliveryOptionId: 6925
+                  extraWeightPerKg: 1
+                  deliveryCompanyName: splUpds
+                  returnFee: 14
+                  maxFreeWeight: 15
+                  avgDeliveryTime: 1 to 2 Working Days
+                  price: 14
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/spl.jpg
+                  currency: SAR
+                  pickupDropoff: dropoffOnly
+                  cardOnDeliveryPercentage: 8.0 SAR plus 1.75% of the amount to be collected
+                - serviceType: pudo
+                  deliveryOptionName: SPL PUDO
+                  trackingType: excellent
+                  codCharge: 8
+                  maxOrderValue: 10000
+                  maxCODValue: 5000
+                  deliveryOptionId: 6926
+                  extraWeightPerKg: 1
+                  deliveryCompanyName: splUpds
+                  returnFee: 14
+                  maxFreeWeight: 15
+                  avgDeliveryTime: 1 to 2 Working Days
+                  price: 14
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/spl.jpg
+                  currency: SAR
+                  pickupDropoff: dropoffOnly
+                  cardOnDeliveryPercentage: 8.0 SAR plus 1.75% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: Shipa Delivery
+                  trackingType: excellent
+                  codCharge: 3
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 3750
+                  maxCODValue: 3750
+                  deliveryOptionId: 5552
+                  extraWeightPerKg: 1
+                  deliveryCompanyName: shipaV2
+                  returnFee: 17
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1 to 3 Working Days
+                  price: 17
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/shipa.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 3.0 SAR plus 0.8% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: Aramex
+                  trackingType: excellent
+                  codCharge: 6
+                  pickupCutOffTime: '14:00'
+                  maxOrderValue: 7000
+                  maxCODValue: 5000
+                  deliveryOptionId: 5551
+                  extraWeightPerKg: 1
+                  deliveryCompanyName: aramex
+                  returnFee: 18
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1 to 2 Working Days
+                  price: 18
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/aramex.png
+                  currency: SAR
+                  pickupDropoff: freePickupDropoff
+                  cardOnDeliveryPercentage: 6.0 SAR plus 1.75% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: Shipa Delivery
+                  trackingType: excellent
+                  codCharge: 3
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 3750
+                  maxCODValue: 3750
+                  deliveryOptionId: 5489
+                  extraWeightPerKg: 1
+                  deliveryCompanyName: shipaV2
+                  returnFee: 18
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1 to 3 Working Days
+                  price: 18
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/shipa.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 3.0 SAR plus 0.8% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: J&T Express
+                  trackingType: excellent
+                  codCharge: 8
+                  pickupCutOffTime: '16:00'
+                  maxOrderValue: 6000
+                  maxCODValue: 3000
+                  deliveryOptionId: 5555
+                  extraWeightPerKg: 1
+                  deliveryCompanyName: jtexpress
+                  returnFee: 18
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1 to 2 Working Days
+                  price: 18
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/jandt.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 8.0 SAR plus 0.9% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: Aymakan
+                  trackingType: excellent
+                  codCharge: 6
+                  pickupCutOffTime: '17:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 3000
+                  deliveryOptionId: 5557
+                  extraWeightPerKg: 2
+                  deliveryCompanyName: aymakan
+                  returnFee: 18
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1to3WorkingDays
+                  price: 18
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/aymakan.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 6.0 SAR plus 1.0% of the amount to be collected
+                - serviceType: sameDay
+                  deliveryOptionName: Deliver Now
+                  trackingType: excellent
+                  codCharge: 3
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 3000
+                  deliveryOptionId: 5564
+                  extraWeightPerKg: 1
+                  deliveryCompanyName: delivernow
+                  returnFee: 18
+                  maxFreeWeight: 15
+                  avgDeliveryTime: Same Day of Pickup Date
+                  price: 18
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/delivery-now.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 3.0 SAR plus 0.0% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: Thabit Logistics
+                  trackingType: excellent
+                  codCharge: 6
+                  pickupCutOffTime: '13:00'
+                  maxOrderValue: 3750
+                  maxCODValue: 3750
+                  deliveryOptionId: 5554
+                  extraWeightPerKg: 1
+                  deliveryCompanyName: thabit
+                  returnFee: 19
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1to2WorkingDays
+                  price: 19
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/thabit.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 6.0 SAR plus 0.0% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: Aymakan
+                  trackingType: excellent
+                  codCharge: 6
+                  pickupCutOffTime: '17:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 3000
+                  deliveryOptionId: 5494
+                  extraWeightPerKg: 2
+                  deliveryCompanyName: aymakan
+                  returnFee: 19
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1to3WorkingDays
+                  price: 19
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/aymakan.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 6.0 SAR plus 1.0% of the amount to be collected
+                - serviceType: coldDelivery
+                  deliveryOptionName: Delex
+                  trackingType: excellent
+                  codCharge: 7
+                  pickupCutOffTime: '10:00'
+                  maxOrderValue: 500
+                  maxCODValue: 500
+                  deliveryOptionId: 5568
+                  extraWeightPerKg: 2
+                  deliveryCompanyName: delexLogestechs
+                  returnFee: 19
+                  maxFreeWeight: 12
+                  avgDeliveryTime: 1to3WorkingDays
+                  price: 19
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/delex.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 7.0 SAR plus 0.0% of the amount to be collected
+                - serviceType: sameDay
+                  deliveryOptionName: Deliver Now
+                  trackingType: excellent
+                  codCharge: 3
+                  pickupCutOffTime: '12:00'
+                  maxOrderValue: 5000
+                  maxCODValue: 3000
+                  deliveryOptionId: 5501
+                  extraWeightPerKg: 1
+                  deliveryCompanyName: delivernow
+                  returnFee: 19
+                  maxFreeWeight: 15
+                  avgDeliveryTime: Same Day of Pickup Date
+                  price: 19
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/delivery-now.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 3.0 SAR plus 0.0% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: Thabit Logistics
+                  trackingType: excellent
+                  codCharge: 6
+                  pickupCutOffTime: '13:00'
+                  maxOrderValue: 3750
+                  maxCODValue: 3750
+                  deliveryOptionId: 5491
+                  extraWeightPerKg: 1
+                  deliveryCompanyName: thabit
+                  returnFee: 20
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1to2WorkingDays
+                  price: 20
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/thabit.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 6.0 SAR plus 0.0% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: J&T Express
+                  trackingType: excellent
+                  codCharge: 8
+                  pickupCutOffTime: '16:00'
+                  maxOrderValue: 6000
+                  maxCODValue: 3000
+                  deliveryOptionId: 5492
+                  extraWeightPerKg: 1
+                  deliveryCompanyName: jtexpress
+                  returnFee: 20
+                  maxFreeWeight: 10
+                  avgDeliveryTime: 1 to 2 Working Days
+                  price: 20
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/jandt.png
+                  currency: SAR
+                  pickupDropoff: freePickup
+                  cardOnDeliveryPercentage: 8.0 SAR plus 0.9% of the amount to be collected
+                - serviceType: express
+                  deliveryOptionName: SMSA
+                  trackingType: excellent
+                  codCharge: 8
+                  maxOrderValue: 6000
+                  maxCODValue: 3750
+                  deliveryOptionId: 5556
+                  extraWeightPerKg: 1
+                  deliveryCompanyName: secom
+                  returnFee: 20
+                  maxFreeWeight: 15
+                  avgDeliveryTime: 1to5WorkingDays
+                  price: 20
+                  logo: https://storage.googleapis.com/tryoto-public/delivery-logo/smsa-logo.png
+                  currency: SAR
+                  pickupDropoff: dropoffOnly
+                  cardOnDeliveryPercentage: 8.0 SAR plus 0.0% of the amount to be collected
+        '409':
+          description: 400 could not find an option with delivery company
+          content:
+            application/json:
+              example:
+                success: false
+                otoErrorCode: OTO1004
+                otoErrorMessage: There is no available delivery company setting
+  /rest/v2/getDeliveryOptions:
+    get:
+      operationId: getDeliveryOptions
+      summary: Get Delivery Options
+      tags:
+      - Shipping Prices
+      description: 'This API endpoint allows you to check coverage for your active delivery company contracts by providing either the orderId or the city details. Follow these guidelines: Important: Do not include both orderId and city in the same request, as this will result in an error. Ensure your request contains only one of these parameters to proceed successfully. Request Parameters: Name Required Type Description city no string Check coverage in the city. orderId no string Check coverage for that specific or'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              example:
+                success: true
+                options:
+                - name: Tam
+                  deliveryOptionId: 4
+                  integrationName: tam
+                - name: Aymakan
+                  deliveryOptionId: 20
+                  webhookUrl: https://login.tryoto.com/shipmentStatus?token=7NhG6Fhsk8MMoLYBMmMo&dc=aymakan
+                - name: Aramex
+                  deliveryOptionId: 22
+                  webhookUrl: https://login.tryoto.com/shipmentStatus?token=TMcFSCSFSD3ctGpIk7wX&dc=aramex
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'Obtain an access_token by POSTing your refresh_token to /refreshToken, then send Authorization: Bearer <access_token>.'
