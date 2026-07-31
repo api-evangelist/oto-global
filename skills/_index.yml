@@ -1,0 +1,15 @@
+generated: '2026-07-20'
+method: generated
+skills:
+  - file: oto-global-create-order-and-ship.md
+    name: Create an order and ship it with OTO
+    api: openapi/oto-global-openapi.yml
+    operations: [refreshToken, createOrder, getDeliveryOptions, checkDeliveryFee, createShipment, printAWB, trackShipment]
+  - file: oto-global-handle-return.md
+    name: Create and manage a return with OTO
+    api: openapi/oto-global-openapi.yml
+    operations: [refreshToken, createReturnShipment, getReturnLink, triggerReturnSms, getReturnDetails]
+  - file: oto-global-register-webhooks.md
+    name: Register OTO webhooks for order and wallet events
+    api: openapi/oto-global-openapi.yml
+    operations: [refreshToken, webhook, getWebhook, putWebhook, deleteWebhook]

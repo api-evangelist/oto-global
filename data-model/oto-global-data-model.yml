@@ -1,0 +1,63 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/oto-global-openapi.yml + postman/oto-global-postman.json
+entities:
+  - name: Order
+    id: orderId (e.g. OID-50919-4346)
+    notes: Core fulfillment object; carries items[], customer, pickupLocation, status.
+  - name: Shipment
+    id: shipmentId / shipmentNumber
+    notes: Physical dispatch created from an order via a carrier.
+  - name: ReturnShipment
+    id: returnOrderId (e.g. 1234-R1)
+  - name: Item
+    id: sku / productId
+  - name: Product
+    id: productId / sku
+  - name: Box
+    notes: Packaging definition used in stock/packing.
+  - name: PickupLocation
+    id: pickupLocationCode
+  - name: Brand
+    notes: Client store brand.
+  - name: SalesChannel
+    notes: Connected commerce platform (marketplace/store).
+  - name: Carrier
+    notes: Delivery company / distribution center (DC).
+  - name: Customer
+    id: customer.id
+  - name: WalletTransaction
+    notes: Credit usage, charges, refunds, balance.
+relationships:
+  - from: Order
+    to: Item
+    type: has_many
+    via: items
+  - from: Order
+    to: Customer
+    type: has_one
+    via: customer
+  - from: Order
+    to: PickupLocation
+    type: belongs_to
+    via: pickupLocationCode
+  - from: Shipment
+    to: Order
+    type: belongs_to
+    via: orderId
+  - from: ReturnShipment
+    to: Order
+    type: belongs_to
+    via: parentOrderId
+  - from: Order
+    to: Carrier
+    type: belongs_to
+    via: deliveryCompany
+  - from: Item
+    to: Product
+    type: belongs_to
+    via: sku
+  - from: WalletTransaction
+    to: Order
+    type: belongs_to
+    via: orderId

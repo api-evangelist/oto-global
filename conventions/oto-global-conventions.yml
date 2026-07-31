@@ -1,0 +1,43 @@
+generated: '2026-07-20'
+method: searched
+source: https://apis.tryoto.com/ (OTO API V2) + postman/oto-global-postman.json
+api: openapi/oto-global-openapi.yml
+authentication:
+  style: bearer-token
+  detail: 'Authorization: Bearer <access_token>; access_token minted from refresh_token via /refreshToken (1h TTL)'
+  ref: authentication/oto-global-authentication.yml
+base_url:
+  production: https://api.tryoto.com/rest/v2
+  staging: https://staging-api.tryoto.com/rest/v2
+versioning:
+  style: uri-path
+  current: v2
+  path_segment: /rest/v2
+pagination:
+  style: page-number
+  request_params:
+    perPage: items per page (e.g. 10, 50)
+    page: 1-based page index
+  response_fields: [totalPage, totalCount, currentPage]
+  seen_in: [orders, creditTransactions, shipmentTransactions, getPickupLocationList]
+date_filtering:
+  params: [minDate, maxDate]
+  format: 'YYYY-MM-DD'
+error_envelope:
+  shape: '{ "success": false, "otoErrorCode": "OTO1001", "otoErrorMessage": "..." }'
+  ref: errors/oto-global-error-codes.yml
+  http_statuses: [400, 401, 404, 409]
+success_envelope:
+  shape: '{ "success": true, ... }'
+idempotency:
+  supported: false
+  note: OTO API V2 does not document an idempotency-key header or parameter.
+webhooks:
+  supported: true
+  ref: asyncapi/oto-global-webhooks.yml
+  types: [newOrders, orderStatus, shipmentError, walletTransaction]
+localization:
+  languages: [en, ar, tr]
+  seen_in: [holdOrder onHoldReasonLang, triggerReturnSms]
+rate_limiting:
+  documented: false

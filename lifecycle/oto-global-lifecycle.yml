@@ -1,0 +1,19 @@
+generated: '2026-07-20'
+method: searched
+source: https://apis.tryoto.com/ + https://status.tryoto.com + postman/oto-global-postman.json
+versioning:
+  scheme: uri-path
+  current: v2
+  path_segment: /rest/v2
+  docs: https://apis.tryoto.com/
+status_page: https://status.tryoto.com
+sandbox:
+  base_url: https://staging-api.tryoto.com/rest/v2
+  ref: sandbox/oto-global-sandbox.yml
+deprecation:
+  policy_documented: false
+  sunset_header: false
+deprecated_operations: []
+notes:
+  - A v2 REST surface is the current published API; an earlier generation is implied by the /rest/v2 path but not documented.
+  - No formal deprecation/sunset-header policy is published.

@@ -1,0 +1,232 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/oto-global-openapi.yml
+note: No official OTO MCP server was found. This is a candidate tool list derived one-per-operation from
+  the OTO API V2 OpenAPI; not published by OTO.
+server:
+  name: oto-global
+  transport: http
+tools:
+- name: refreshToken
+  description: Refresh Token
+  source_operation: openapi/oto-global-openapi.yml#refreshToken
+- name: healthCheck
+  description: Health Check
+  source_operation: openapi/oto-global-openapi.yml#healthCheck
+- name: accountInfo
+  description: Account Info
+  source_operation: openapi/oto-global-openapi.yml#accountInfo
+- name: buyCredit
+  description: Buy Credit
+  source_operation: openapi/oto-global-openapi.yml#buyCredit
+- name: requestMobileVerification
+  description: Request Mobile Verification
+  source_operation: openapi/oto-global-openapi.yml#requestMobileVerification
+- name: verifyMobileNumber
+  description: Verify Mobile Number
+  source_operation: openapi/oto-global-openapi.yml#verifyMobileNumber
+- name: getShippingPriceTransactionsList
+  description: Get Shipping Price Transactions List
+  source_operation: openapi/oto-global-openapi.yml#getShippingPriceTransactionsList
+- name: creditTransactions
+  description: Credit Transactions
+  source_operation: openapi/oto-global-openapi.yml#creditTransactions
+- name: shipmentTransactions
+  description: Shipment Transactions
+  source_operation: openapi/oto-global-openapi.yml#shipmentTransactions
+- name: register
+  description: Register
+  source_operation: openapi/oto-global-openapi.yml#register
+- name: clientInfo
+  description: Client Info
+  source_operation: openapi/oto-global-openapi.yml#clientInfo
+- name: getClientInfo
+  description: Client Info
+  source_operation: openapi/oto-global-openapi.yml#getClientInfo
+- name: createOrder
+  description: Create Order
+  source_operation: openapi/oto-global-openapi.yml#createOrder
+- name: updateOrder
+  description: Update Order
+  source_operation: openapi/oto-global-openapi.yml#updateOrder
+- name: updateOrderStatus
+  description: Update Order Status
+  source_operation: openapi/oto-global-openapi.yml#updateOrderStatus
+- name: cancelOrder
+  description: Cancel Order
+  source_operation: openapi/oto-global-openapi.yml#cancelOrder
+- name: orders
+  description: Get Orders
+  source_operation: openapi/oto-global-openapi.yml#orders
+- name: holdOrder
+  description: Hold Order
+  source_operation: openapi/oto-global-openapi.yml#holdOrder
+- name: unHoldOrder
+  description: Unhold Order
+  source_operation: openapi/oto-global-openapi.yml#unHoldOrder
+- name: orderDetails
+  description: Get Order Details
+  source_operation: openapi/oto-global-openapi.yml#orderDetails
+- name: checkOrderAvailability
+  description: Check Order Availability
+  source_operation: openapi/oto-global-openapi.yml#checkOrderAvailability
+- name: checkOTODeliveryFee
+  description: Check OTO Delivery Fee
+  source_operation: openapi/oto-global-openapi.yml#checkOTODeliveryFee
+- name: checkDeliveryFee
+  description: Check Delivery Fee
+  source_operation: openapi/oto-global-openapi.yml#checkDeliveryFee
+- name: getDeliveryFee
+  description: Get Delivery Fee
+  source_operation: openapi/oto-global-openapi.yml#getDeliveryFee
+- name: getDeliveryOptions
+  description: Get Delivery Options
+  source_operation: openapi/oto-global-openapi.yml#getDeliveryOptions
+- name: createShipment
+  description: Create Shipment
+  source_operation: openapi/oto-global-openapi.yml#createShipment
+- name: cancelShipment
+  description: Cancel Shipment
+  source_operation: openapi/oto-global-openapi.yml#cancelShipment
+- name: createReturnShipment
+  description: Create Return Shipment
+  source_operation: openapi/oto-global-openapi.yml#createReturnShipment
+- name: getReturnLink
+  description: Get Return Link
+  source_operation: openapi/oto-global-openapi.yml#getReturnLink
+- name: getReturnDetails
+  description: Get Return Details
+  source_operation: openapi/oto-global-openapi.yml#getReturnDetails
+- name: triggerReturnSms
+  description: Trigger Return SMS
+  source_operation: openapi/oto-global-openapi.yml#triggerReturnSms
+- name: printAWB
+  description: Print AWB
+  source_operation: openapi/oto-global-openapi.yml#printAWB
+- name: orderStatus
+  description: Order Tracking
+  source_operation: openapi/oto-global-openapi.yml#orderStatus
+- name: orderHistory
+  description: Order History
+  source_operation: openapi/oto-global-openapi.yml#orderHistory
+- name: trackShipment
+  description: Track Shipment
+  source_operation: openapi/oto-global-openapi.yml#trackShipment
+- name: customernotifications
+  description: Customer Notifications
+  source_operation: openapi/oto-global-openapi.yml#customernotifications
+- name: getDeliveryEstimation
+  description: Get Delivery Estimation
+  source_operation: openapi/oto-global-openapi.yml#getDeliveryEstimation
+- name: aiEstimatedDeliveryDates
+  description: AI Estimated Delivery Dates
+  source_operation: openapi/oto-global-openapi.yml#aiEstimatedDeliveryDates
+- name: checkCoverage
+  description: Check Coverage
+  source_operation: openapi/oto-global-openapi.yml#checkCoverage
+- name: availableCities
+  description: Available Cities
+  source_operation: openapi/oto-global-openapi.yml#availableCities
+- name: availableTimeslots
+  description: Available Time Slots
+  source_operation: openapi/oto-global-openapi.yml#availableTimeslots
+- name: dcList
+  description: DC List
+  source_operation: openapi/oto-global-openapi.yml#dcList
+- name: dcConfig
+  description: DC Config
+  source_operation: openapi/oto-global-openapi.yml#dcConfig
+- name: dcActivation
+  description: DC Activation
+  source_operation: openapi/oto-global-openapi.yml#dcActivation
+- name: getCities
+  description: Get Cities
+  source_operation: openapi/oto-global-openapi.yml#getCities
+- name: checkDCBranchList
+  description: Check DC Branch List
+  source_operation: openapi/oto-global-openapi.yml#checkDCBranchList
+- name: createPickupLocation
+  description: Create Pickup Location
+  source_operation: openapi/oto-global-openapi.yml#createPickupLocation
+- name: updatePickupLocation
+  description: Update Pickup Location
+  source_operation: openapi/oto-global-openapi.yml#updatePickupLocation
+- name: getPickupLocationList
+  description: Get Pickup Location List
+  source_operation: openapi/oto-global-openapi.yml#getPickupLocationList
+- name: getBrandList
+  description: Get List of Brands (Client Store)
+  source_operation: openapi/oto-global-openapi.yml#getBrandList
+- name: createBrand
+  description: Create Brand (Client Store)
+  source_operation: openapi/oto-global-openapi.yml#createBrand
+- name: getSalesChannelsList
+  description: Sales Channels List
+  source_operation: openapi/oto-global-openapi.yml#getSalesChannelsList
+- name: getSalesChannelConfig
+  description: Sales Channel Config
+  source_operation: openapi/oto-global-openapi.yml#getSalesChannelConfig
+- name: salesChannelActivation
+  description: Sales Channel Activation
+  source_operation: openapi/oto-global-openapi.yml#salesChannelActivation
+- name: createProduct
+  description: Create Product
+  source_operation: openapi/oto-global-openapi.yml#createProduct
+- name: productList
+  description: Product List
+  source_operation: openapi/oto-global-openapi.yml#productList
+- name: addBox
+  description: Add Box
+  source_operation: openapi/oto-global-openapi.yml#addBox
+- name: updateBox
+  description: Update Box
+  source_operation: openapi/oto-global-openapi.yml#updateBox
+- name: getBox
+  description: Get Box
+  source_operation: openapi/oto-global-openapi.yml#getBox
+- name: updateStockQuantity
+  description: Update Stock Quantity
+  source_operation: openapi/oto-global-openapi.yml#updateStockQuantity
+- name: checkInventoryStock
+  description: Check Inventory Stock
+  source_operation: openapi/oto-global-openapi.yml#checkInventoryStock
+- name: checkGlobalStock
+  description: Check Global Stock
+  source_operation: openapi/oto-global-openapi.yml#checkGlobalStock
+- name: createInventoryOrder
+  description: Create Inventory Order
+  source_operation: openapi/oto-global-openapi.yml#createInventoryOrder
+- name: updatePackingStatus
+  description: Update Packing Status
+  source_operation: openapi/oto-global-openapi.yml#updatePackingStatus
+- name: getPackingOrders
+  description: Get Orders Ready For Packing
+  source_operation: openapi/oto-global-openapi.yml#getPackingOrders
+- name: availableStoresForPickup
+  description: Check Available Stores For Pickup
+  source_operation: openapi/oto-global-openapi.yml#availableStoresForPickup
+- name: availableCitiesForPickup
+  description: Available Cities For Pickup
+  source_operation: openapi/oto-global-openapi.yml#availableCitiesForPickup
+- name: getNationalAddressFromShortCode
+  description: Get NationalAddress From ShortCode
+  source_operation: openapi/oto-global-openapi.yml#getNationalAddressFromShortCode
+- name: webhook
+  description: webhook
+  source_operation: openapi/oto-global-openapi.yml#webhook
+- name: getWebhook
+  description: webhook
+  source_operation: openapi/oto-global-openapi.yml#getWebhook
+- name: putWebhook
+  description: webhook
+  source_operation: openapi/oto-global-openapi.yml#putWebhook
+- name: deleteWebhook
+  description: webhook
+  source_operation: openapi/oto-global-openapi.yml#deleteWebhook
+- name: assignDriver
+  description: assignDriver
+  source_operation: openapi/oto-global-openapi.yml#assignDriver
+- name: trackDriver
+  description: trackDriver
+  source_operation: openapi/oto-global-openapi.yml#trackDriver

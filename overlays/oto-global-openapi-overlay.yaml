@@ -1,0 +1,16 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for OTO API V2
+  version: 1.0.0
+extends: openapi/oto-global-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: '2026-07-20'
+    x-api-evangelist-source: derived from published OTO API V2 Postman collection
+    x-industry: shipping-logistics-fulfillment
+- target: $.components.securitySchemes
+  update:
+    bearerAuth:
+      x-token-endpoint: https://api.tryoto.com/rest/v2/refreshToken
+      x-token-ttl-seconds: 3600

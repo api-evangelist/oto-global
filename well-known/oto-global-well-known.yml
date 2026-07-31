@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: searched
+hosts:
+  - https://api.tryoto.com
+  - https://tryoto.com
+  - https://www.tryoto.com
+documents:
+  - path: /.well-known/security.txt
+    host: https://api.tryoto.com
+    status: 404
+  - path: /.well-known/security.txt
+    host: https://tryoto.com
+    status: 404
+  - path: /.well-known/security.txt
+    host: https://www.tryoto.com
+    status: 404
+  - path: /.well-known/openid-configuration
+    host: https://api.tryoto.com
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    host: https://api.tryoto.com
+    status: 404
+  - path: /.well-known/api-catalog
+    host: https://api.tryoto.com
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    host: https://tryoto.com
+    status: 404
+note: No /.well-known/ discovery documents are published on the OTO API or website hosts.

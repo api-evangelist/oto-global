@@ -1,0 +1,128 @@
+generated: '2026-07-20'
+method: derived
+source: postman/oto-global-postman.json (OTO API V2 published collection)
+format: custom
+envelope:
+  success: boolean (false on error)
+  otoErrorCode: string, e.g. OTO1001
+  otoErrorMessage: human-readable error description
+note: OTO returns errors as a JSON object with success:false and an otoErrorCode/otoErrorMessage pair;
+  not RFC 9457 problem+json. HTTP status is 400 (validation), 401 (auth), 404 (not found) or 409 (state
+  conflict).
+errors:
+- code: OTO1001
+  message: Invalid or missing order Id
+  http_status: 400
+  seen_in: Create Shipment
+- code: OTO1002
+  message: Order is not exist
+  http_status: 200
+  seen_in: Shipment Transactions
+- code: OTO1004
+  message: There is no available delivery company setting
+  http_status: 409
+  seen_in: Get Delivery Fee
+- code: OTO1006
+  message: Credit is not enough
+  http_status: 400
+  seen_in: Create Shipment
+- code: OTO1009
+  message: Something went wrong
+  http_status: 400
+  seen_in: Create Product
+- code: OTO1010
+  message: Check the missing details
+  http_status: null
+  seen_in: Verify Mobile Number
+- code: OTO1029
+  message: Recipient name is missing or invalid
+  http_status: 400
+  seen_in: Create Order
+- code: OTO1070
+  message: Pickup location code or name is missing, invalid or not unique
+  http_status: 200
+  seen_in: Create Pickup Location
+- code: OTO1071
+  message: Item has pickupLocation array for split order process but the input is invalid in the array.
+  http_status: 400
+  seen_in: Create Order
+- code: OTO1075
+  message: Invalid Json format
+  http_status: 400
+  seen_in: Track Shipment
+- code: OTO1079
+  message: Shipment id is required
+  http_status: 400
+  seen_in: Cancel Shipment
+- code: OTO1082
+  message: Order Status is not allowed for cancel shipment
+  http_status: 409
+  seen_in: Cancel Shipment
+- code: OTO1098
+  message: Lat and Lon is missing or invalid
+  http_status: 400
+  seen_in: Check Coverage
+- code: OTO110
+  message: On Hold reason is is missing or invalid
+  http_status: 400
+  seen_in: Hold Order
+- code: OTO1100
+  message: Brand is missing or invalid
+  http_status: 400
+  seen_in: Create Product
+- code: OTO1103
+  message: Status of the order is not suitable for the action
+  http_status: null
+  seen_in: Cancel Order
+- code: OTO1107
+  message: minDate or maxDate is missing or invalid
+  http_status: 400
+  seen_in: Credit Transactions
+- code: OTO1107
+  message: minDate or maxDate is missing or invalid
+  http_status: 400
+  seen_in: Get Orders
+- code: OTO1116
+  message: Delivery company couldn't respond properly.
+  http_status: 409
+  seen_in: Track Shipment
+- code: OTO1126
+  message: sku is missing or invalid
+  http_status: 400
+  seen_in: Update Stock Quantity
+- code: OTO1130
+  message: actionType is required
+  http_status: 400
+  seen_in: Update Stock Quantity
+- code: OTO1132
+  message: Quantity is missing or invalid
+  http_status: 400
+  seen_in: Update Stock Quantity
+- code: OTO1133
+  message: Location Code is missing or invalid
+  http_status: 400
+  seen_in: Update Stock Quantity
+- code: OTO1136
+  message: Action is missing or invalid
+  http_status: 400
+  seen_in: Create Inventory Order
+- code: OTO1147
+  message: Box already exists
+  http_status: 409
+  seen_in: Add Box
+- code: OTO1149
+  message: Box could not be found
+  http_status: 409
+  seen_in: Update Box
+- code: OTO1176
+  message: Phone number is not valid
+  http_status: null
+  seen_in: Request Mobile Verification
+- code: OTO1184
+  message: There is no store available for pickup from store
+  http_status: null
+  seen_in: Check Available Stores For Pickup
+- code: OTO1187
+  message: Item(s) have already been returned.
+  http_status: null
+  seen_in: Create Return Shipment

@@ -1,0 +1,23 @@
+# OTO API V2
+
+> OTO is a multi-carrier shipping and fulfillment platform for e-commerce. The OTO REST API (base https://api.tryoto.com/rest/v2) manages orders, shipments, returns, tracking, carrier integration across 450+ carriers, shipping rates, pickup locations, products, stock, and webhooks. Auth is a bearer access_token minted from a dashboard refresh_token via POST /refreshToken (1h TTL). A staging host (https://staging-api.tryoto.com/rest/v2) is available for testing.
+
+## APIs
+- [OTO API V2 docs](https://apis.tryoto.com/): Published Postman documentation for the full REST surface.
+- [API integration overview](https://www.tryoto.com/api-integration): Product overview of the 11 API families.
+
+## Specs
+- [OpenAPI (derived)](openapi/oto-global-openapi.yml): 74 operations across 26 tags, derived from the published Postman collection.
+- [Postman collection](postman/oto-global-postman.json): Verbatim OTO API V2 published collection.
+- [Webhooks](asyncapi/oto-global-webhooks.yml): orderStatus, newOrders, shipmentError, walletTransaction events.
+- [Error codes](errors/oto-global-error-codes.yml): OTO error-code registry (otoErrorCode/otoErrorMessage envelope).
+- [Authentication](authentication/oto-global-authentication.yml): refresh-token to bearer access_token flow.
+- [Conventions](conventions/oto-global-conventions.yml): pagination, versioning, error envelope, localization.
+- [Data model](data-model/oto-global-data-model.yml): Order/Shipment/Return/Product entity graph.
+
+## Docs
+- [Help center](https://help.tryoto.com/en/support/home)
+- [Status page](https://status.tryoto.com)
+- [Blog / OTOpedia](https://www.tryoto.com/otopedia/blog)
+- [Pricing](https://www.tryoto.com/plans-ksa)
+- [Sign up](https://app.tryoto.com/register/en_US)

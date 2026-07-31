@@ -1,0 +1,21 @@
+generated: '2026-07-20'
+method: searched
+source: https://apis.tryoto.com/ (OTO API V2 collection variables) + api-integration docs
+summary: >-
+  OTO publishes a dedicated staging environment for integration testing, selected by
+  swapping the API host. The same bearer-token auth model applies; a free API demo
+  account can be provisioned from the OTO dashboard.
+environments:
+  production:
+    base_url: https://api.tryoto.com/rest/v2
+  staging:
+    base_url: https://staging-api.tryoto.com/rest/v2
+    purpose: testing and validation before going live
+test_account:
+  how: Register a free OTO account, then Settings -> API Integrations -> Connect to mint a refresh_token.
+  demo: https://www.tryoto.com/book-a-demo
+test_values:
+  note: >-
+    OTO does not publish fixed magic test identifiers. Example orderIds, SKUs and national
+    address short codes appear in the docs (e.g. OID-50919-4346-C-C, sku SG1/SG2/SG3) but
+    are illustrative sample data, not guaranteed sandbox fixtures.

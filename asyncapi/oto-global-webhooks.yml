@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: searched
+source: https://apis.tryoto.com/ (OTO API V2 Webhook folder) + postman/oto-global-postman.json
+spec_type: Webhooks
+summary: >-
+  OTO pushes real-time updates to a merchant-registered HTTPS endpoint. Webhooks are
+  registered and managed through the /rest/v2/webhook endpoint (POST create, GET list,
+  PUT update, DELETE remove). All timestamps are UTC.
+management:
+  register: { method: POST, url: https://api.tryoto.com/rest/v2/webhook }
+  list: { method: GET, url: https://api.tryoto.com/rest/v2/webhook }
+  update: { method: PUT, url: https://api.tryoto.com/rest/v2/webhook }
+  delete: { method: DELETE, url: https://api.tryoto.com/rest/v2/webhook }
+events:
+  - type: orderStatus
+    description: Fired whenever an order status changes (Processing, Delivered, Returned, etc.).
+    sample_fields: [orderId, parentOrderId, returnOrderId, otoId, entityId, brandedTrackingURL, status, timestamp]
+  - type: shipmentError
+    description: Fired when an error occurs while creating/processing an order shipment; carries error detail.
+  - type: newOrders
+    description: Pushes full order details so an external WMS can create the order in its own system.
+  - type: walletTransaction
+    description: Pushes wallet transaction details (credit usage, charges, refunds, balance updates) for financial reconciliation.
+notes:
+  - timestamp values are in the UTC time zone.
+  - orderStatus payload includes a brandedTrackingURL for customer-facing tracking.

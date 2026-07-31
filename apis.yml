@@ -1,7 +1,15 @@
 aid: oto-global
 name: OTO Global
-description: OTO Global is a company surfaced as a portfolio company of 500-global and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  OTO is a multi-carrier shipping and fulfillment platform for e-commerce businesses,
+  headquartered in Saudi Arabia and serving 10,000+ merchants. It connects a single
+  integration to 450+ shipping carriers and provides order management, warehouse and
+  picking/packing automation, real-time tracking with customer notifications, returns
+  management, address validation, and omnichannel order synchronization. The OTO REST
+  API V2 (base https://api.tryoto.com/rest/v2, staging at staging-api.tryoto.com) exposes
+  74 operations across orders, shipments, returns, tracking, shipping rates, carrier
+  integrations, pickup locations, products, stock management, sales channels, and
+  webhooks. Authentication is a bearer access_token minted from a dashboard refresh_token.
 url: https://raw.githubusercontent.com/api-evangelist/oto-global/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,17 +17,348 @@ x-backed-by:
 - 500-global
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 18
+  pass: local-v1
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
+image: https://www.tryoto.com/favicon.ico
 tags:
 - Company
-apis: []
+- Shipping
+- Logistics
+- Fulfillment
+- E-commerce
+- Delivery
+- Carriers
+- Returns
+- Saudi Arabia
+apis:
+- aid: oto-global:oto-global-account-api
+  name: OTO Global Account API
+  description: The Account API from OTO Global — 4 operation(s) for account.
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - Account
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-account-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
+- aid: oto-global:oto-global-authorization-api
+  name: OTO Global Authorization API
+  description: >-
+    You need your refresh_token for authorization. You can obtain your token from the UI by following
+    these steps: Go to Settings → API Integrations . Click the Connect button to activate your Refresh
+    Token . The refresh_token can only be used to get a new access_token . Use the access_token to call
+    oth
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - Authorization
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-authorization-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
+- aid: oto-global:oto-global-brands-api
+  name: OTO Global Brands API
+  description: The Brands API from OTO Global — 2 operation(s) for brands.
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - Brands
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-brands-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
+- aid: oto-global:oto-global-carrier-integrations-api
+  name: OTO Global Carrier Integrations API
+  description: The Carrier Integrations API from OTO Global — 10 operation(s) for carrier integrations.
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - Carrier Integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-carrier-integrations-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
+- aid: oto-global:oto-global-customer-notifications-api
+  name: OTO Global Customer Notifications API
+  description: >-
+    The Customer Notifications API from OTO Global — 1 operation(s) for customer notifications.
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - Customer Notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-customer-notifications-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
+- aid: oto-global:oto-global-marketplace-api
+  name: OTO Global Marketplace API
+  description: The Marketplace API from OTO Global — 2 operation(s) for marketplace.
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - Marketplace
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-marketplace-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
+- aid: oto-global:oto-global-national-address-api
+  name: OTO Global National Address API
+  description: The National Address API from OTO Global — 1 operation(s) for national address.
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - National Address
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-national-address-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
+- aid: oto-global:oto-global-orders-api
+  name: OTO Global Orders API
+  description: The Orders API from OTO Global — 9 operation(s) for orders.
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-orders-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
+- aid: oto-global:oto-global-oto-flex-api
+  name: OTO Global OTO FLEX API
+  description: The OTO FLEX API from OTO Global — 2 operation(s) for oto flex.
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - OTO FLEX
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-oto-flex-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
+- aid: oto-global:oto-global-pickup-locations-api
+  name: OTO Global Pickup Locations API
+  description: The Pickup Locations API from OTO Global — 3 operation(s) for pickup locations.
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - Pickup Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-pickup-locations-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
+- aid: oto-global:oto-global-products-api
+  name: OTO Global Products API
+  description: The Products API from OTO Global — 5 operation(s) for products.
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-products-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
+- aid: oto-global:oto-global-return-shipments-api
+  name: OTO Global Return Shipments API
+  description: The Return Shipments API from OTO Global — 4 operation(s) for return shipments.
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - Return Shipments
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-return-shipments-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
+- aid: oto-global:oto-global-sales-channels-api
+  name: OTO Global Sales Channels API
+  description: The Sales Channels API from OTO Global — 3 operation(s) for sales channels.
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - Sales Channels
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-sales-channels-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
+- aid: oto-global:oto-global-shipments-api
+  name: OTO Global Shipments API
+  description: The Shipments API from OTO Global — 2 operation(s) for shipments.
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - Shipments
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-shipments-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
+- aid: oto-global:oto-global-shipping-label-awb-api
+  name: OTO Global Shipping Label(AWB) API
+  description: The Shipping Label(AWB) API from OTO Global — 1 operation(s) for shipping label(awb).
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - Shipping Label(AWB)
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-shipping-label-awb-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
+- aid: oto-global:oto-global-shipping-prices-api
+  name: OTO Global Shipping Prices API
+  description: The Shipping Prices API from OTO Global — 4 operation(s) for shipping prices.
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - Shipping Prices
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-shipping-prices-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
+- aid: oto-global:oto-global-stock-management-api
+  name: OTO Global Stock Management API
+  description: The Stock Management API from OTO Global — 8 operation(s) for stock management.
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - Stock Management
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-stock-management-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
+- aid: oto-global:oto-global-tracking-api
+  name: OTO Global Tracking API
+  description: The Tracking API from OTO Global — 3 operation(s) for tracking.
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - Tracking
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-tracking-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
+- aid: oto-global:oto-global-transactions-api
+  name: OTO Global Transactions API
+  description: The Transactions API from OTO Global — 3 operation(s) for transactions.
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-transactions-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
+- aid: oto-global:oto-global-webhook-api
+  name: OTO Global Webhook API
+  description: >-
+    WEBHOOK for ORDER There are 3 types of webhook for now, newOrders, orderStatus , shipmentError and
+    walletTransaction. OTO will push updates to the registered webhook endpoint for the orderStatus type
+    whenever an order status changes. This includes statuses such as Processing, Delivered, Returned,
+    an
+  humanURL: https://apis.tryoto.com/
+  baseURL: https://api.tryoto.com/rest/v2
+  tags:
+  - Webhook
+  properties:
+  - type: OpenAPI
+    url: openapi/oto-global-webhook-api-openapi.yml
+  - type: Postman
+    url: postman/oto-global-postman.json
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/oto-global-domain-security.yml
 - type: Website
   url: https://tryoto.com
+- type: DeveloperPortal
+  url: https://apis.tryoto.com/
+- type: Documentation
+  url: https://apis.tryoto.com/
+- type: APIReference
+  url: https://apis.tryoto.com/
+- type: GettingStarted
+  url: https://www.tryoto.com/api-integration
+- type: Support
+  url: https://help.tryoto.com/en/support/home
+- type: Blog
+  url: https://www.tryoto.com/otopedia/blog
+- type: Pricing
+  url: https://www.tryoto.com/plans-ksa
+- type: SignUp
+  url: https://app.tryoto.com/register/en_US
+- type: Login
+  url: https://app.tryoto.com/
+- type: TermsOfService
+  url: https://www.tryoto.com/terms-and-conditions
+- type: PrivacyPolicy
+  url: https://www.tryoto.com/privacy-policy
+- type: StatusPage
+  url: https://status.tryoto.com
+- type: OpenAPI
+  url: openapi/oto-global-openapi.yml
+- type: Postman
+  url: postman/oto-global-postman.json
+- type: Authentication
+  url: authentication/oto-global-authentication.yml
+- type: Conventions
+  url: conventions/oto-global-conventions.yml
+- type: ErrorCatalog
+  url: errors/oto-global-error-codes.yml
+- type: Lifecycle
+  url: lifecycle/oto-global-lifecycle.yml
+- type: Sandbox
+  url: sandbox/oto-global-sandbox.yml
+- type: Conformance
+  url: conformance/oto-global-conformance.yml
+- type: DataModel
+  url: data-model/oto-global-data-model.yml
+- type: WellKnown
+  url: well-known/oto-global-well-known.yml
+- type: MCPServer
+  url: mcp/oto-global-mcp.yml
+- type: LLMsTxt
+  url: llms/oto-global-llms.txt
+- type: Overlay
+  url: overlays/oto-global-openapi-overlay.yaml
+- type: Webhooks
+  url: asyncapi/oto-global-webhooks.yml
+- type: AgentSkill
+  url: skills/_index.yml

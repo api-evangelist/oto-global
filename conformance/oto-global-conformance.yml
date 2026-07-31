@@ -1,0 +1,27 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/oto-global-openapi.yml + postman/oto-global-postman.json
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: Auth is a bearer refresh-token exchange, not an OAuth 2.0 authorization-server flow.
+  - id: openid-connect
+    conforms: false
+  - id: bearer-token-auth
+    conforms: true
+    evidence: HTTP bearer scheme (JWT access_token) applied to all protected operations.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a custom { success, otoErrorCode, otoErrorMessage } envelope, not application/problem+json.
+  - id: rest-json
+    conforms: true
+    evidence: JSON request/response bodies over HTTPS REST with /rest/v2 versioned paths.
+  - id: webhooks
+    conforms: true
+    evidence: Registerable HTTPS webhooks for orderStatus/newOrders/shipmentError/walletTransaction events.
+  - id: pagination
+    conforms: true
+    evidence: page/perPage request params with totalPage/totalCount/currentPage response fields.
+  - id: idempotency
+    conforms: false
+    evidence: No idempotency-key header or parameter documented.
