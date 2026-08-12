@@ -333,7 +333,7 @@ common:
 - type: StatusPage
   url: https://status.tryoto.com
 - type: OpenAPI
-  url: openapi/oto-global-openapi.yml
+  url: openapi/_original/oto-global-openapi.yml
 - type: Postman
   url: postman/oto-global-postman.json
 - type: Authentication
