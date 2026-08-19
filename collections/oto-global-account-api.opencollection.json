@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OTO API V2 Account API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Account Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/accountInfo"
+          },
+          "docs": "This API endpoint retrieves detailed information about the authenticated user's account. This includes general profile details, current subscription and balance of the account. Note: You can only see the account information that your token belongs to. Response Body: name: full name of the account owner email: email address belong to the account mobileNumber: mobile number belong to the account packageName: current subscription package name( scalePackage, enterprisePackage etc.) remainingCredit: "
+        },
+        {
+          "info": {
+            "name": "Buy Credit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/buyCredit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Provide amount of credit you wanted to buy, this will response a paymentURL and paymentID . Request Parameters: Name Required Type Description amount yes number the amount of credit wanted to buy"
+        },
+        {
+          "info": {
+            "name": "Request Mobile Verification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/requestMobileVerification",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows you to use a phone number to request a verification token (OTP) for account/phone number verification. Marketplaces can also use this endpoint to verify their sellers’ phone numbers. Verification can be done in verifyMobileNumber. Request Parameters: Name Required Type Description phone yes string Phone number to be verified Response body includes success , errorMsg , otoErrorCode , otoErrorMessage when success is false."
+        },
+        {
+          "info": {
+            "name": "Verify Mobile Number",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/verifyMobileNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint verifies a user’s mobile phone number by confirming the one-time password (OTP) sent via SMS. The endpoint requires the phone number, the OTP received, and the token obtained from the requestMobileVerification step. Once successfully verified, the phone number is confirmed for account or seller verification purposes. Request Parameters: Name Required Type Description phone yes string The phone number to verify (same as in step 1, in E.164 format). code yes string The OTP receiv"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

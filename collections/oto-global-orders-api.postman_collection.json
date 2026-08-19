@@ -1,0 +1,1236 @@
+{
+  "item": [
+    {
+      "id": "d8d6d57f-56ef-4d69-9d51-2ff24dc6c22c",
+      "name": "Orders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "de076219-9299-4c2d-896a-80ef9016869d",
+          "name": "Create Order",
+          "request": {
+            "name": "Create Order",
+            "description": {
+              "content": "This API endpoint is a critical component in e-commerce and logistics systems, enabling external applications to initiate and manage new orders seamlessly. This endpoint allows you to submit order details, such as customer information, product data, shipping preferences, and payment methods. For KSA Shipments: If you are providing the sender and receiver short address codes, there is no need to include the city and address information. Note: If you send the createShipment: true parameter and the",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "createOrder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9b730287-4465-4183-8760-b18728e7db59",
+              "name": "200- Sender Information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "createOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"1234\",\n  \"pickupLocationCode\": \"jdd_wh\",\n  \"createShipment\": \"true\",\n  \"deliveryOptionId\": 564,\n  \"payment_method\": \"paid\",\n  \"amount\": 100,\n  \"amount_due\": 0,\n  \"currency\": \"SAR\",\n  \"customsValue\": \"12\",\n  \"customsCurrency\": \"USD\",\n  \"packageCount\": 2,\n  \"packageWeight\": 1,\n  \"boxWidth\": 10,\n  \"boxLength\": 10,\n  \"boxHeight\": 10,\n  \"orderDate\": \"31/12/2022 15:45\",\n  \"deliverySlotDate\": \"31/12/2020\",\n  \"deliverySlotTo\": \"12pm\",\n  \"deliverySlotFrom\": \"2:30pm\",\n  \"senderName\": \"Sender Company\",\n  \"customer\": {\n    \"name\": \"عبدالله الغامدي\",\n    \"email\": \"test@test.com\",\n    \"mobile\": \"546607389\",\n    \"address\": \"6832, Abruq AR Rughamah District, Jeddah 22272 3330, Saudi Arabia\",\n    \"district\": \"Al Hamra\",\n    \"city\": \"Jeddah\",\n    \"country\": \"SA\",\n    \"postcode\": \"12345\",\n    \"lat\": \"40.706333\",\n    \"lon\": \"29.888211\",\n    \"refID\": \"1000012\"\n  },\n  \"items\": [\n    {\n      \"productId\": 112,\n      \"name\": \"test product\",\n      \"price\": 100,\n      \"rowTotal\": 100,\n      \"taxAmount\": 15,\n      \"quantity\": 1,\n      \"sku\": \"test-product\",\n      \"image\": \"http://....\"\n    },\n    {\n      \"name\": \"test product 2\",\n      \"price\": 100,\n      \"quantity\": 1,\n      \"sku\": \"test-product-2\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"otoId\": 540789\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99c251be-389c-4697-bd85-4b62e3c326d6",
+              "name": "400- Split Order Wrong PickupLocationCode",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "createOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"1234\",\n  \"pickupLocationCode\": \"jdd_wh\",\n  \"createShipment\": \"true\",\n  \"deliveryOptionId\": 564,\n  \"payment_method\": \"paid\",\n  \"amount\": 100,\n  \"amount_due\": 0,\n  \"currency\": \"SAR\",\n  \"customsValue\": \"12\",\n  \"customsCurrency\": \"USD\",\n  \"packageCount\": 2,\n  \"packageWeight\": 1,\n  \"boxWidth\": 10,\n  \"boxLength\": 10,\n  \"boxHeight\": 10,\n  \"orderDate\": \"31/12/2022 15:45\",\n  \"deliverySlotDate\": \"31/12/2020\",\n  \"deliverySlotTo\": \"12pm\",\n  \"deliverySlotFrom\": \"2:30pm\",\n  \"senderName\": \"Sender Company\",\n  \"customer\": {\n    \"name\": \"عبدالله الغامدي\",\n    \"email\": \"test@test.com\",\n    \"mobile\": \"546607389\",\n    \"address\": \"6832, Abruq AR Rughamah District, Jeddah 22272 3330, Saudi Arabia\",\n    \"district\": \"Al Hamra\",\n    \"city\": \"Jeddah\",\n    \"country\": \"SA\",\n    \"postcode\": \"12345\",\n    \"lat\": \"40.706333\",\n    \"lon\": \"29.888211\",\n    \"refID\": \"1000012\"\n  },\n  \"items\": [\n    {\n      \"productId\": 112,\n      \"name\": \"test product\",\n      \"price\": 100,\n      \"rowTotal\": 100,\n      \"taxAmount\": 15,\n      \"quantity\": 1,\n      \"sku\": \"test-product\",\n      \"image\": \"http://....\"\n    },\n    {\n      \"name\": \"test product 2\",\n      \"price\": 100,\n      \"quantity\": 1,\n      \"sku\": \"test-product-2\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"warnings\": [\n    \"pickupLocation field exists in the items array, split order process begins\",\n    \"Both the order pickupLocationCode and item's pickupLocationCode do not exist. Split order process has been revoked \"\n  ],\n  \"otoErrorCode\": \"OTO1071\",\n  \"otoErrorMessage\": \"Item has pickupLocation array for split order process but the input is invalid in the array.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d92f35b7-2775-4a81-95f8-14e364ecf715",
+          "name": "Update Order",
+          "request": {
+            "name": "Update Order",
+            "description": {
+              "content": "This API endpoint allows you update order info with this endpoint before shipment creation. If you created a shipment and need to update an information after that you have to cancel the shipment first then you can update. Request Parameters: Parameter Required Type Description orderId yes string Unique identifier of the Order deliveryOptionId no string Specifies the delivery option to be used for the shipment. customer yes object Customer Data( can not be used together with destinationLocationCo",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "updateOrder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d13103d7-0e2e-4b3c-8cd3-3cccb7751df2",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "updateOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"202111081227\",\n  \"ref1\": \"1234ABCDE\",\n  \"pickupLocationCode\": \"12364\",\n  \"deliveryOptionId\": \"12364\",\n  \"storeName\": \"Brand A English\",\n  \"payment_method\": \"paid\",\n  \"amount\": 100,\n  \"amount_due\": 0,\n  \"shippingAmount\": 20,\n  \"subtotal\": 100,\n  \"currency\": \"SAR\",\n  \"customsValue\": \"12\",\n  \"customsCurrency\": \"USD\",\n  \"shippingNotes\": \"be careful. it is fragile\",\n  \"packageSize\": \"small\",\n  \"packageCount\": 2,\n  \"packageWeight\": 1,\n  \"boxWidth\": 10,\n  \"boxLength\": 10,\n  \"boxHeight\": 10,\n  \"orderDate\": \"30/12/2022 15:45\",\n  \"deliverySlotDate\": \"31/12/2022\",\n  \"deliverySlotTo\": \"12pm\",\n  \"deliverySlotFrom\": \"2:30pm\",\n  \"customer\": {\n    \"name\": \"عبدالله الغامدي\",\n    \"email\": \"test@test.com\",\n    \"mobile\": \"546607389\",\n    \"address\": \"6832, Abruq AR Rughamah District, Jeddah 22272 3330, Saudi Arabia\",\n    \"district\": \"Al Hamra\",\n    \"city\": \"Riyadh\",\n    \"country\": \"SA\",\n    \"postcode\": \"12345\",\n    \"lat\": \"40.706333\",\n    \"lon\": \"29.888211\",\n    \"refID\": \"1000012\",\n    \"W3WAddress\": \"alarmed.cards.stuffy\"\n  },\n  \"items\": [\n    {\n      \"productId\": 112,\n      \"name\": \"test product\",\n      \"price\": 100,\n      \"quantity\": 1,\n      \"sku\": \"test-product\",\n      \"image\": \"http://....\"\n    },\n    {\n      \"name\": \"test product 2\",\n      \"price\": 100,\n      \"quantity\": 1,\n      \"sku\": \"test-product-2\",\n      \"image\": \"http://....\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Successfully updated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "535c92ec-cf67-4ad4-8d31-1a14374db0b6",
+          "name": "Update Order Status",
+          "request": {
+            "name": "Update Order Status",
+            "description": {
+              "content": "This API endpoint allows you to modify the current status of an order within the system. You can update the order status to \"delivered,\" \"returned,\" if the order does not have an associated shipment. For \"picked up\" there should be an associated shipment. However, if a shipment exists, only statuses for integrator-managed shipments can be updated. Request Parameters: Name Required Type Description orderIds yes string Id of the order/s status yes string status of the shipment(delivered, returned,",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "updateOrderStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "09e84e02-a1d2-4eb2-9db8-31ffd7678267",
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "updateOrderStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderIds\": [\n    30846946\n  ],\n  \"status\": \"delivered\",\n  \"date\": \"2024-08-06T21:00:00.000Z\",\n  \"description\": \"aaaaaa\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": [\n    {},\n    {\n      \"success\": true,\n      \"orderIds\": [\n        \"30846946\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "975d7ff1-9ee5-4f33-88ff-3573d97a26ea",
+          "name": "Cancel Order",
+          "request": {
+            "name": "Cancel Order",
+            "description": {
+              "content": "This API endpoint allows users to cancel an existing order under specific conditions. It ensures smooth and efficient handling of cancellations while maintaining the integrity of related processes. Important Note: If the order has an associated shipment, it cannot be canceled via this endpoint. Shipment-related restrictions ensure the system prevents conflicts or inconsistencies in ongoing fulfillment processes. Request Parameters: Name Required Type Description orderId yes(if there is no otoId)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "cancelOrder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ea507afc-e388-4099-8ea9-8697d1c3cd54",
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "cancelOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"1234\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "15f57a10-6259-4dcc-89d0-fbc55aeeec57",
+          "name": "Get Orders",
+          "request": {
+            "name": "Get Orders",
+            "description": {
+              "content": "This API endpoint is designed to provide a comprehensive overview of orders in your system. This endpoint returns detailed information about each order, including pickup locations, order IDs, item details, and current statuses. It enables seamless tracking and management of orders, ensuring better visibility and control. Request Parameters: Name Required Type Description perPage no number Order count in the response. Max limit 100 page no number Pagination number. You can iterate this field to g",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "perPage",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "984451ad-ecde-4d0e-a70e-291ca1a13694",
+              "name": "200 OK-new",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "perPage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"perPage\": 5,\n  \"totalPage\": 1,\n  \"success\": true,\n  \"orders\": [\n    {\n      \"skus\": \"\",\n      \"orderId\": \"OID-2476-70000203527-1\",\n      \"trackingURL\": \"\",\n      \"reverseShipment\": \"false\",\n      \"totalDue\": 0,\n      \"quantities\": \"\",\n      \"subTotal\": 0,\n      \"totalCount\": 2,\n      \"addressConfirm\": \"notYet\",\n      \"customerPhone\": \"4563731231\",\n      \"drivingDistance\": 0,\n      \"originCity\": \"Al Kharj\",\n      \"currency\": \"SAR\",\n      \"modifiedBy\": \"Demo Niceone\",\n      \"customerReturnReason\": \"test\",\n      \"id\": \"30824696\",\n      \"deliveryDate\": \"2024-02-28 14:44:30\",\n      \"shipmentNumber\": \"\",\n      \"customerAddress\": \"Unnamed Road 16464, Saudi Arabia\",\n      \"isReturnShipment\": \"no\",\n      \"amount\": 700,\n      \"grandTotal\": 700,\n      \"totalPage\": 1,\n      \"weight\": 0.0001,\n      \"destinationCountry\": \"SA\",\n      \"customerName\": \"Zeynep Alakuş\",\n      \"destinationCity\": \"Al Kharj\",\n      \"deliverySlot\": \"\",\n      \"district\": \"Al Kharj\",\n      \"modifiedDate\": \"2024-09-23 13:04:29\",\n      \"paymentMethod\": \"paid\",\n      \"packageCount\": 1,\n      \"orderDate\": \"2024-02-01 11:19:55\",\n      \"items\": [\n        {\n          \"quantity\": 5,\n          \"productId\": 591478,\n          \"price\": 80,\n          \"name\": \"Raincoat\",\n          \"taxAmount\": 0,\n          \"sku\": \"5\"\n        },\n        {\n          \"quantity\": 3,\n          \"productId\": 591475,\n          \"price\": 100,\n          \"name\": \"Black Tayt \",\n          \"taxAmount\": 0,\n          \"sku\": \"2\"\n        }\n      ],\n      \"status\": \"delivered\",\n      \"customer\": {\n        \"country\": \"SA\",\n        \"address\": \"8089, Salam Ibn Salim, 4314, Al Mughaisilah Dist., 42315, Madinah, Kingdom of Saudi Arabia\",\n        \"district\": \"Al Mughaisilah Dist.\",\n        \"city\": \"Madinah\",\n        \"buildingNo\": \"8089\",\n        \"street\": \"Salam Ibn Salim\",\n        \"secondaryAddressNumber\": \"4314\",\n        \"shortAddressCode\": \"DMAJ8089\",\n        \"postcode\": \"42315\",\n        \"name\": \"Fatmanur Yavuz\",\n        \"mobile\": \"4563731231\",\n        \"lon\": 39.63739580725869,\n        \"id\": 1,\n        \"state\": \"Madinah Province\",\n        \"lat\": 24.0783327\n      }\n    },\n    {\n      \"skus\": \"5\",\n      \"orderId\": \"OID-2476-70000203528-2\",\n      \"trackingURL\": \"\",\n      \"reverseShipment\": \"false\",\n      \"totalDue\": 0,\n      \"quantities\": \"1\",\n      \"pickupLocationCode\": \"10\",\n      \"subTotal\": 0,\n      \"totalCount\": 2,\n      \"addressConfirm\": \"notYet\",\n      \"customerPhone\": \"4563731231\",\n      \"drivingDistance\": 0,\n      \"originCity\": \"Al Kharj\",\n      \"currency\": \"SAR\",\n      \"modifiedBy\": \"Demo Niceone\",\n      \"id\": \"30824710\",\n      \"deliveryDate\": \"2024-02-28 14:40:07\",\n      \"shipmentNumber\": \"\",\n      \"customerAddress\": \"Unnamed Road 16464, Saudi Arabia\",\n      \"isReturnShipment\": \"no\",\n      \"amount\": 80,\n      \"grandTotal\": 80,\n      \"totalPage\": 1,\n      \"weight\": 0.0001,\n      \"pickupLocation\": \"DefaultWH\",\n      \"destinationCountry\": \"SA\",\n      \"customerName\": \"Zeynep Alakuş\",\n      \"destinationCity\": \"Al Kharj\",\n      \"deliverySlot\": \"\",\n      \"modifiedDate\": \"2024-12-08 16:15:23\",\n      \"paymentMethod\": \"paid\",\n      \"packageCount\": 1,\n      \"orderDate\": \"2024-02-01 11:39:59\",\n      \"items\": [\n        {\n          \"quantity\": 1,\n          \"price\": 80,\n          \"name\": \"Raincoat\",\n          \"taxAmount\": 0,\n          \"sku\": \"5\"\n        }\n      ],\n      \"status\": \"delivered\",\n      \"customer\": {\n        \"country\": \"SA\",\n        \"address\": \"Unnamed Road 16464, Saudi Arabia\",\n        \"city\": \"Al Kharj\",\n        \"name\": \"ZeynepAlakuş\",\n        \"mobile\": \"4563731231\",\n        \"lon\": 47.5413839,\n        \"id\": 1,\n        \"lat\": 24.0783327\n      }\n    }\n  ],\n  \"currentPage\": 1,\n  \"totalCount\": 2\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ccc04218-ff5e-4c74-afcb-09068debde2d",
+              "name": "400",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "perPage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"otoErrorCode\": \"OTO1107\",\n  \"otoErrorMessage\": \"minDate or maxDate is missing or invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f235c07c-c2af-4d0a-a135-ed04e4fd1b12",
+          "name": "Hold Order",
+          "request": {
+            "name": "Hold Order",
+            "description": {
+              "content": "This API endpoint allows you to place an order on hold, temporarily pausing its processing. This is useful for scenarios such as payment verification, inventory issues, or customer requests. Request Parameters: Name Required Type Description orderId yes string Id of the order that you will place on hold. onHoldReason yes string Reason for being an order on hold. onHoldReasonLang yes string Values can be: eng, tr, ar. onHoldComment no string Reason or note explaining why the order is placed on ho",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "holdOrder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e359d893-4af4-4af6-81d1-9c3ff4e108a9",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "holdOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"OID-20980-1146\",\n  \"onHoldReason\": \"Fraud\",\n  \"onHoldReasonLang\": \"en\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "563ed049-5c63-4028-837c-d571e18ab8bc",
+              "name": "400 missing reason config lang",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "holdOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"OID-20980-1146\",\n  \"onHoldReason\": \"Fraud\",\n  \"onHoldReasonLang\": \"en\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"otoErrorCode\": \"OTO110\",\n  \"otoErrorMessage\": \"On Hold reason is is missing or invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d605e082-14a8-4181-9f42-d3dee00c1333",
+          "name": "Unhold Order",
+          "request": {
+            "name": "Unhold Order",
+            "description": {
+              "content": "This API endpoint allows users to release orders that are currently on hold. This endpoint is designed to resume the processing of held orders, making them available for fulfillment or further actions in the order management workflow. Request Parameters: Name Required Type Description orderId yes string The orderId you want to unhold.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "unHoldOrder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "57991594-ec16-4cf3-8488-204ef34001a2",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "unHoldOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"OID-9616-98794\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b08a80a8-ad85-4dbe-9959-174490a28d75",
+              "name": "400 not allowed status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "unHoldOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"OID-9616-98794\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"otoErrorCode\": \"OTO1103\",\n  \"otoErrorMessage\": \"Status of the order is not suitable for the action\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04f823a2-f2ba-458d-80b9-adba41a81a89",
+          "name": "Get Order Details",
+          "request": {
+            "name": "Get Order Details",
+            "description": {
+              "content": "This API endpoint provides detailed information about a specific order. By using this endpoint, you can retrieve comprehensive data about an order including status updates. Request Parameters: Name Required Type Description orderId yes(if there is no otoId or ref1) string Id of the Order. otoId yes(if there is no orderId or ref1) string A unique id of the order generated by OTO. ref1 yes(if there is no orderId or otoId) string ref1 provided while create order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "orderDetails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "orderId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "267f1df3-4820-42d0-b65c-0ea716f196f1",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "orderDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orderId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"OID-50919-4346-C-C\",\n  \"trackingURL\": \"https://qa.tryoto.com/otoflex-tracking?enc=dXpMZTVNZCtMQStiOENERS83aVBYdHkwMFVPUDNnT21rM3VFbzRZbVREUGpRb3JZVXdpU1B3PT0=\",\n  \"packageWeight\": 1,\n  \"orderDocs\": [],\n  \"dcName\": \"OTO Flex\",\n  \"originCity\": \"Madinah\",\n  \"currency\": \"SAR\",\n  \"id\": 31078194,\n  \"amount\": 215,\n  \"customsValue\": 215,\n  \"pickupLocation\": \"WH - Madinah\",\n  \"deliveryOptionId\": 55266,\n  \"destinationCity\": \"Madinah\",\n  \"amountDue\": 0,\n  \"statusHistory\": [\n    {\n      \"date\": \"2026-02-18T12:15:31\",\n      \"description\": \"Created by m.pisgin enter\",\n      \"id\": 55113452,\n      \"status\": \"new\"\n    },\n    {\n      \"date\": \"2026-02-18T12:15:31\",\n      \"description\": \"Created by m.pisgin enter\",\n      \"id\": 55113453,\n      \"status\": \"assignedToWarehouse\"\n    },\n    {\n      \"date\": \"2026-02-18T12:16:05\",\n      \"description\": \"Order has picked by 50919\",\n      \"id\": 55113456,\n      \"status\": \"assignedToWarehouse\"\n    },\n    {\n      \"date\": \"2026-02-18T12:16:05\",\n      \"description\": \"Order has picked by 50919\",\n      \"id\": 55113457,\n      \"status\": \"assignedToWarehouse\"\n    },\n    {\n      \"date\": \"2026-02-18T12:16:05\",\n      \"description\": \"Order has missing item(s) in picking process\",\n      \"id\": 55113458,\n      \"status\": \"assignedToWarehouse\"\n    },\n    {\n      \"date\": \"2026-02-18T12:18:00\",\n      \"shipmentId\": \"B1B45E0C\",\n      \"description\": \"Shipment created by m.pisgin enter\",\n      \"id\": 55113466,\n      \"deliveryCompany\": \"otoDriverApp\",\n      \"status\": \"searchingDriver\"\n    },\n    {\n      \"date\": \"2026-02-23T11:37:11\",\n      \"shipmentId\": \"B1B45E0C\",\n      \"description\": \"Order assigned to New_Driver_new by m.pisgin enter\",\n      \"id\": 55135729,\n      \"deliveryCompany\": \"otoDriverApp\",\n      \"status\": \"shipmentCreated\"\n    }\n  ],\n  \"shipmentId\": \"B1B45E0C\",\n  \"success\": true,\n  \"customsCurrency\": \"SAR\",\n  \"packingStatusHistory\": [\n    {\n      \"date\": \"2026-04-07T11:09\",\n      \"description\": \"Order is shipped  within dispatching unit 193 by picker3\",\n      \"packingStatus\": \"shipped\"\n    },\n    {\n      \"date\": \"2026-02-18T12:19:16\",\n      \"description\": \"Order is packed by m.pisgin enter\",\n      \"packingStatus\": \"packed\"\n    }\n  ],\n  \"paymentMethod\": \"paid\",\n  \"packageCount\": 1,\n  \"orderDate\": \"2026-02-18 12:15:31\",\n  \"items\": [\n    {\n      \"quantity\": 1,\n      \"hscode\": \"1268\",\n      \"rowTotal\": 200,\n      \"price\": 200,\n      \"id\": 1,\n      \"sku\": \"Lenovo\",\n      \"taxAmount\": 15\n    }\n  ],\n  \"status\": \"shipmentCreated\",\n  \"customer\": {\n    \"country\": \"SA\",\n    \"address\": \"DMGD2681, 2681, Abu Ammar Al Ghaesh, 6619, Al Barakah Dist., 42333, Madinah, Kingdom of Saudi Arabia\",\n    \"city\": \"Madinah\",\n    \"postcode\": \"42333\",\n    \"mobile\": \"905459149187\",\n    \"lon\": 39.57451279,\n    \"buildingNo\": \"2681\",\n    \"street\": \"Abu Ammar Al Ghaesh\",\n    \"secondaryAddressNumber\": \"6619\",\n    \"district\": \"Al Barakah Dist.\",\n    \"name\": \"Muhammed PSGN\",\n    \"id\": 1,\n    \"state\": \"Madinah Province\",\n    \"lat\": 24.51820876\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4393f233-2158-4a70-961c-61bd6d01f77f",
+          "name": "Check Order Availability",
+          "request": {
+            "name": "Check Order Availability",
+            "description": {
+              "content": "Check Order Availability This API endpoint allows you to check the availability of an order based on the provided orderId and associated ruleIds . Request Parameters Existing Order (with OrderID) The user provides an orderId (increment ID) that is already created in OTO. The system checks the availability of the order and returns the list of locations where it can be fulfilled. By default, the API considers all OMS rules while checking availability. Optionally, the user can provide specific OMS ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "checkOrderAvailability"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ffd3f450-ee36-4dad-9ccb-e9ac29cf1871",
+              "name": "200- Order ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "checkOrderAvailability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"extra-test-10\",\n  \"ruleIds\": [\n    \"b781d9e6-36da-4cd1-bf7d-f8604561ca6a\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"locations\": [\n    {\n      \"locationName\": \"Home - John Doe\",\n      \"distance\": 2510.18,\n      \"locationCoordinates\": {\n        \"lon\": 46.70160836,\n        \"lat\": 24.7310685\n      },\n      \"locationCode\": \"123452\"\n    }\n  ],\n  \"orderAvailability\": \"Yes\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0adec5df-b859-455c-b79f-296370348b74",
+              "name": "404 Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "checkOrderAvailability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"extra-test-10\",\n  \"ruleIds\": [\n    \"b781d9e6-36da-4cd1-bf7d-f8604561ca6a\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"orderAvailability\": \"No\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tryoto.com/rest/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a0c59d62-54f8-43da-a1c8-fd2e6a3b5369",
+    "name": "OTO API V2 Account Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO's platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you're integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.\n\nContact Support:\n Name: OTO Support",
+      "type": "text/plain"
+    }
+  }
+}

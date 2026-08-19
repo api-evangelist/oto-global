@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OTO API V2 Account Shipping Prices API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shipping Prices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check OTO Delivery Fee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/checkOTODeliveryFee",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint calculates shipping prices offered by OTO rates. By providing the origin city, destination city, and package details (such as weight and dimensions), the API computes the price based on the provided request parameters. Important Note: The prices returned by this API are applicable only to shipping options available under OTO's contracts. To calculate prices for your own custom contracts, please use the Check Delivery Fee API. You can see the shipping prices of delivery companie"
+        },
+        {
+          "info": {
+            "name": "Check Delivery Fee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/checkDeliveryFee",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint calculates contract-based pricing using your own rates. By providing the origin city, destination city, and package details such as weight and dimensions, the API determines the price based on the supplied parameters. Important Note: The prices returned by this API apply exclusively to your own contracts. Request Parameters: Name Required Type Description originCity yes string pickup city destinationCity yes string destination city weight yes number weight of package(kg) totalD"
+        },
+        {
+          "info": {
+            "name": "Get Delivery Fee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/getDeliveryFee",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint calculates the shipping fee for a specific order in OTO. It offers two methods for price calculation: By Order ID: Provide the orderId, and the API will return all possible shipping rates for each defined shipping company. By Delivery Option ID: Provide the deliveryOptionId to calculate the shipping fee for a specific shipping company. You can get this information from checkOTODeliveryFee or from checkDeliveryFee endpoints. Request Parameters: Name Required Type Description ord"
+        },
+        {
+          "info": {
+            "name": "Get Delivery Options",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/getDeliveryOptions"
+          },
+          "docs": "This API endpoint allows you to check coverage for your active delivery company contracts by providing either the orderId or the city details. Follow these guidelines: Important: Do not include both orderId and city in the same request, as this will result in an error. Ensure your request contains only one of these parameters to proceed successfully. Request Parameters: Name Required Type Description city no string Check coverage in the city. orderId no string Check coverage for that specific or"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

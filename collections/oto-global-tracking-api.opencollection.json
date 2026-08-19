@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OTO API V2 Account Tracking API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tracking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Order Tracking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/orderStatus",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint enables you to track the real-time status and progress of an order. By using this endpoint, you can retrieve detailed tracking information, including: Current order status (e.g.,pickedUp, outForDelivery, delivered). Shipment details such as carrier, tracking number, and estimated delivery time, print AWB URL. Request Parameters: Name Required Type Description orderId yes (if there is no otoId) string Id of the order that you will track. otoId yes (if there is no orderId) string"
+        },
+        {
+          "info": {
+            "name": "Order History",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/orderHistory",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows you to retrieve the complete history of an order, providing detailed insights into its lifecycle. This includes: Status changes (e.g., pickedUp, arrivedTerminal, delivered). Timestamps for each status update. Actions taken during the order process, such as cancellations or modifications. Request Parameters: Name Required Type Description orderIds yes( if there is no otoIds or shipmentIds) array Ids of the order that you will track. otoIds yes( if there is no orderIds or "
+        },
+        {
+          "info": {
+            "name": "Track Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/trackShipment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint enables you to track a shipment by providing the tracking number and delivery company name. Without requiring any authorization, it offers detailed shipment information, including tracking URL, real time status updates and status history. If you are a marketplace, you can track your sellers' shipments without requiring additional authorization. Request Parameters: Name Required Type Description trackingNumber yes string The shipment/ tracking number that you wanna track. delive"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

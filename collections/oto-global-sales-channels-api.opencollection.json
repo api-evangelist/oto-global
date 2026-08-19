@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OTO API V2 Account Sales Channels API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sales Channels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Sales Channels List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/salesChannel/getSalesChannelsList"
+          },
+          "docs": "This API endpoint provides a list of all sales channels integrated with OTO. If you have a store with any of these sales channels, you can connect your store to OTO. Use the sales channel's unique code to configure settings through the Sales Channels Config and Sales Channels Activation API endpoints."
+        },
+        {
+          "info": {
+            "name": "Sales Channel Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/salesChannel/getSalesChannelConfig",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Available Packages : Starter Package, Scale Package, Enterprise Package, Marketplaces This API endpoint allows you to view the required store credentials and the template for the sales channels specified in the request, which are needed for the next step: Sales Channel Activation. Retrieve the sales channel configuration template. Use this template to create a valid configuration object, similar to the given exampleJson . This configuration object is then used to activate the sales channel with "
+        },
+        {
+          "info": {
+            "name": "Sales Channel Activation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/salesChannel/salesChannelActivation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint is used to perform Sales Channels Activation. It enables you to activate a sales channel by providing the required configuration details. Request Parameters: Name Required Type Description code yes string The integration name obtained from the Sales Channels List"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

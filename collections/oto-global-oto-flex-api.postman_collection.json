@@ -1,0 +1,247 @@
+{
+  "item": [
+    {
+      "id": "8b09efc2-48b3-43e4-b430-59c3a35e998d",
+      "name": "OTO FLEX",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d38bd1d1-c197-42a6-b063-a9b8a8dcf57b",
+          "name": "assignDriver",
+          "request": {
+            "name": "assignDriver",
+            "description": {
+              "content": "This API endpoint enables clients to assign a specific driver to their shipments for the OTO Flex app. This endpoint streamlines the allocation process, allowing businesses to efficiently manage driver assignments and ensure smooth delivery operations. Either valid driverID or driverEmail is required. Request Paramaters: Name Required Type Description orderIDs yes array An array of orderIDs objects containing the order ids driverID yes (If driverEmail isn't present) long ID of the driver driverE",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "assignDriver"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2ae98afa-9cc4-4996-846a-bb5647611d3f",
+              "name": "200 OK driverId",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "assignDriver"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderIDs\": [\n    3079460\n  ],\n  \"driverID\": 8702,\n  \"driverEmail\": \"test@driver.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"31071127\": {\n    \"success\": true,\n    \"otoId\": 31071127\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f96d4ddd-b53d-402d-af99-49bc4e68c7bd",
+          "name": "trackDriver",
+          "request": {
+            "name": "trackDriver",
+            "description": {
+              "content": "This API endpoint provides real-time location updates for a specific order within the Oto Flex application and for the OTO Flex orders. By continuously tracking the active driver's GPS position, the endpoint returns a stream of latitude and longitude updates , allowing the client to monitor the order’s movement throughout the delivery journey. Name Required Type Description orderId yes string OrderId of the OTO flex shipment",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "trackDriver"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3628efeb-ecaf-4eb0-935c-356263175319",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "trackDriver"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderID\": \"OID-9885-70000203806\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"lng\": 29.285591158223777,\n  \"data\": [\n    {\n      \"createdDate\": \"2025-11-12T18:04:29.273Z\",\n      \"lng\": 29.285591158223777,\n      \"onDuty\": true,\n      \"lat\": 40.96489515570657\n    },\n    {\n      \"createdDate\": \"2025-11-12T18:04:08.171Z\",\n      \"lng\": 29.286784231123974,\n      \"onDuty\": true,\n      \"lat\": 40.96497927896817\n    },\n    {\n      \"createdDate\": \"2025-11-12T18:01:35.302Z\",\n      \"lng\": 29.286580389904795,\n      \"onDuty\": true,\n      \"lat\": 40.96435106894622\n    },\n    {\n      \"createdDate\": \"2025-11-12T18:00:52.093Z\",\n      \"lng\": 29.28637669086292,\n      \"onDuty\": true,\n      \"lat\": 40.96449471804315\n    },\n    {\n      \"createdDate\": \"2025-11-12T18:00:51.362Z\",\n      \"lng\": 29.28637110062752,\n      \"onDuty\": true,\n      \"lat\": 40.964506384859355\n    },\n    {\n      \"createdDate\": \"2025-11-12T17:56:40.196Z\",\n      \"lng\": 29.294892153533794,\n      \"onDuty\": true,\n      \"lat\": 40.956111235680105\n    },\n    {\n      \"createdDate\": \"2025-11-12T17:56:40.129Z\",\n      \"lng\": 29.286636752864517,\n      \"onDuty\": true,\n      \"lat\": 40.96452744380308\n    },\n    {\n      \"createdDate\": \"2025-11-12T17:56:40.109Z\",\n      \"lng\": 29.286636752864517,\n      \"onDuty\": true,\n      \"lat\": 40.96452744380308\n    },\n    {\n      \"createdDate\": \"2025-11-12T17:56:40.080Z\",\n      \"lng\": 29.294892153533794,\n      \"onDuty\": true,\n      \"lat\": 40.956111235680105\n    },\n    {\n      \"createdDate\": \"2025-11-12T17:56:40.037Z\",\n      \"lng\": 29.294892153533794,\n      \"onDuty\": true,\n      \"lat\": 40.956111235680105\n    },\n    {\n      \"createdDate\": \"2025-11-12T16:20:24.488Z\",\n      \"lng\": 29.28652829734919,\n      \"onDuty\": true,\n      \"lat\": 40.96445449486164\n    },\n    {\n      \"createdDate\": \"2025-11-12T16:20:23.556Z\",\n      \"lng\": 29.28648490515261,\n      \"onDuty\": true,\n      \"lat\": 40.96453081227422\n    },\n    {\n      \"createdDate\": \"2025-11-12T16:20:23.483Z\",\n      \"lng\": 29.286484905143116,\n      \"onDuty\": true,\n      \"lat\": 40.96453081237234\n    },\n    {\n      \"createdDate\": \"2025-11-12T14:33:53.009Z\",\n      \"lng\": 29.28333783075058,\n      \"onDuty\": true,\n      \"lat\": 40.96393364160413\n    },\n    {\n      \"createdDate\": \"2025-11-12T14:33:53.004Z\",\n      \"lng\": 29.283292890084162,\n      \"onDuty\": true,\n      \"lat\": 40.963989271862516\n    },\n    {\n      \"createdDate\": \"2025-11-12T14:33:52.986Z\",\n      \"lng\": 29.28329548074905,\n      \"onDuty\": true,\n      \"lat\": 40.96400527320485\n    },\n    {\n      \"createdDate\": \"2025-11-12T13:45:17.189Z\",\n      \"lng\": 29.286636752864517,\n      \"onDuty\": true,\n      \"lat\": 40.96452744380308\n    },\n    {\n      \"createdDate\": \"2025-11-12T13:45:17.185Z\",\n      \"lng\": 29.286636752864517,\n      \"onDuty\": true,\n      \"lat\": 40.96452744380308\n    },\n    {\n      \"createdDate\": \"2025-11-12T13:42:50.935Z\",\n      \"lng\": 29.286636752864517,\n      \"onDuty\": true,\n      \"lat\": 40.96452744380308\n    },\n    {\n      \"createdDate\": \"2025-11-12T13:42:50.796Z\",\n      \"lng\": 29.286636752864517,\n      \"onDuty\": true,\n      \"lat\": 40.96452744380308\n    }\n  ],\n  \"lastLatLonUpdated\": \"2025-11-12T18:04:29.273Z\",\n  \"driverName\": \"Cinar\",\n  \"id\": 1028,\n  \"userID\": 12872,\n  \"onDuty\": true,\n  \"lat\": 40.96489515570657\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tryoto.com/rest/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f6c449ab-2cc8-438a-ac10-24abae4243f5",
+    "name": "OTO API V2 Account OTO FLEX API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO's platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you're integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.\n\nContact Support:\n Name: OTO Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OTO API V2 Account Pickup Locations API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pickup Locations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Pickup Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/createPickupLocation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows you to define and register a new pickup location within the system. By specifying the location details, you can expand your network of pickup points, improving logistics and delivery workflows. Request Parameters: Name Required Type Description name yes string Name of the pickup location; should be unique. type no string You can enter these values: branch , warehouse . Branch can only be used by enterprise and marketplace packages code yes string Code of the pickup locat"
+        },
+        {
+          "info": {
+            "name": "Update Pickup Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/updatePickupLocation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows you to modify the details of your existing pickup locations efficiently. This endpoint provides a streamlined way to ensure that your pickup location information remains accurate and up to date, enabling smooth and reliable operations. Request Parameters: Name Required Type Description name yes string Name of the pickup location type yes string You can enter these values: branch , warehouse . Branch can only be used by enterprise and marketplace packages code yes string "
+        },
+        {
+          "info": {
+            "name": "Get Pickup Location List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/getPickupLocationList",
+            "params": [
+              {
+                "name": "minDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "This API endpoint enables you to retrieve a comprehensive list of pickup locations by specifying a date range and status. This endpoint provides an efficient way to filter and access relevant pickup location data, ensuring streamlined tracking and management. Request Parameters: Name Required Type Description minDate no date Starting Pickup location create date in \"yyyy-mm-dd\" format. (e.g. \"2024-08-01\") maxDate no date Ending Pickup location create date in \"yyyy-mm-dd\" format. (e.g. \"2024-08-05"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

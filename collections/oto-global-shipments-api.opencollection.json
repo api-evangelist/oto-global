@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OTO API V2 Account Shipments API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shipments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/createShipment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows you create shipment for orders, while creating shipments need a valid delivery option id. You can get valid delivery options in two ways: Delivery Options with OTO rates : No contracted delivery companies or activation is required. OTO offers a range of delivery company options, which are available for use. You can view these options and their associated fees by using the Check OTO Delivery Fee endpoint. Delivery Options with your own rates: In this case, you already hav"
+        },
+        {
+          "info": {
+            "name": "Cancel Shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/cancelShipment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API initiates the cancellation process with the shipping company. Shipments cannot be canceled once they have reached the \" picked up \" status. Some shipping companies do not support shipment cancellations, which may result in a failure response indicating the shipment could not be canceled. Request Parameters: Name Required Type Description orderId yes( if there is no otoId) string orderId from which shipment was created otoId yes( if there is no orderId) string Unique id created by OTO. s"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OTO API V2 Account Shipping Label(AWB) API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shipping Label(AWB)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Print AWB",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/print/orderId"
+          },
+          "docs": "This API endpointallows you to access print URL for generated Air Waybill (AWB) for shipments. An AWB is a crucial document used in air delivery transport that contains essential shipping information. Request Parameters: Name Required Type Description orderId yes string Order id of the order to be printed internationalProforma no boolean If set to true, the response will include the International Proforma for international shipments. printReverseShipment no boolean Generates the AWB for a revers"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

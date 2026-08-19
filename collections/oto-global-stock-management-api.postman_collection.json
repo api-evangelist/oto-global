@@ -1,0 +1,983 @@
+{
+  "item": [
+    {
+      "id": "f67a7205-ff2f-4f80-845f-1672bbdad8e5",
+      "name": "Stock Management",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "93884779-b0d3-44e0-a07d-e8cef7c125ea",
+          "name": "Update Stock Quantity",
+          "request": {
+            "name": "Update Stock Quantity",
+            "description": {
+              "content": "This API endpoint enables efficient inventory management by allowing you to update the quantity of a SKU in two flexible ways: Adjust : Modify the existing quantity by adding or deducting a specified amount. To decrease the quantity, provide a negative value for qty . For example, setting qty to -5 will deduct 5 units from the current stock. Set : Directly set the quantity on hand to a specific value, replacing the current stock with the provided qty . Request Parameters: Name Required Type Desc",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "updateStockQuantity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0e9bfa07-153a-4793-9a41-a88d0c6183e6",
+              "name": "200 actionType \"set\"",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "updateStockQuantity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actionType\": \"adjust\",\n  \"locationCode\": \"ASDS\",\n  \"sku\": \"156487494561\",\n  \"qty\": \"40\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"warnings\": [\n    \"Inventory quantity set to the given qty according to the action type\"\n  ],\n  \"transactionID\": 591611\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ff5ab51-def3-41a2-82d6-42f4086487c7",
+              "name": "400 invalid quantity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "updateStockQuantity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actionType\": \"adjust\",\n  \"locationCode\": \"ASDS\",\n  \"sku\": \"156487494561\",\n  \"qty\": \"40\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"otoErrorCode\": \"OTO1132\",\n  \"otoErrorMessage\": \"Quantity is missing or invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac3d7ab8-52f4-45bb-8191-0940043b3e19",
+          "name": "Check Inventory Stock",
+          "request": {
+            "name": "Check Inventory Stock",
+            "description": {
+              "content": "This API endpoint allows you to retrieve real-time stock availability for products at specific locations. It provides detailed information on the quantity of items on hand and forecasted stock for each product at various pickup locations, offering a location-based view of inventory distribution. Request Parameters: Name Required Type Description sku yes string The product's SKU identifier pickupLocationCode no string The code representing the specific location. Response: success : Indicates whet",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "checkInventoryStock"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sku",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57bfa2fa-a193-4451-b454-76d26710d4f3",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "checkInventoryStock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sku",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"stock\": {\n    \"SG1\": [\n      {\n        \"pickupLocationCode\": \"DMW\",\n        \"sku\": \"SG1\",\n        \"quantityForecasted\": 261,\n        \"quantityOnHand\": 277\n      },\n      {\n        \"sku\": \"SG1\",\n        \"quantityForecasted\": -16,\n        \"quantityOnHand\": -7\n      }\n    ],\n    \"SG3\": [\n      {\n        \"pickupLocationCode\": \"DMW\",\n        \"sku\": \"SG3\",\n        \"quantityForecasted\": 55,\n        \"quantityOnHand\": 67\n      },\n      {\n        \"sku\": \"SG3\",\n        \"quantityForecasted\": -7,\n        \"quantityOnHand\": -6\n      }\n    ],\n    \"SG2\": [\n      {\n        \"pickupLocationCode\": \"DMW\",\n        \"sku\": \"SG2\",\n        \"quantityForecasted\": 185,\n        \"quantityOnHand\": 198\n      },\n      {\n        \"sku\": \"SG2\",\n        \"quantityForecasted\": -20,\n        \"quantityOnHand\": -12\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e8d2f1bc-8095-40cb-bccd-ada4f35f624e",
+          "name": "Check Global Stock",
+          "request": {
+            "name": "Check Global Stock",
+            "description": {
+              "content": "This API endpoint provides an overview of total stock availability for SKUs across all locations. This endpoint aggregates stock levels to display a global view, helping businesses understand their overall inventory status. Request Parameters: Name Required Type Description sku yes string The product's SKU identifier Response: success : Indicates whether the request was successful ( true or false ). stock : A dictionary with SKUs as keys, containing global stock details for each product: sku : T",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "checkGlobalStock"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "sku",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aabfb502-4d27-46dc-a37d-ef0a9d00ae3c",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "checkGlobalStock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "sku",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"stock\": {\n    \"12\": [\n      {\n        \"minInventory\": 50,\n        \"sku\": \"12\",\n        \"quantityForecasted\": 122,\n        \"quantityOnHand\": 39\n      }\n    ],\n    \"123123\": [\n      {\n        \"sku\": \"123123\",\n        \"quantityOnHand\": 14\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c3a39dc-d064-42d3-8bea-89e88ea1216b",
+          "name": "Create Inventory Order",
+          "request": {
+            "name": "Create Inventory Order",
+            "description": {
+              "content": "This API endpoint creates inventory order as inbound or outbound for a warehouse or branch location. This API is used mostly to provide the incoming or outgoing bulk items from ERP systems to OTO. Once the order is created the status will be new for the warehouse or branch to accept and process the order. Request Parameters: Name Required Type Description action yes enum \"inbound\": Creates the order as purchase type and sets the ingoing location field \"outbound\": Creates the order as disposal an",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "createInventoryOrder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6f8b1dbb-0e08-443a-9f87-d7930a17068c",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "createInventoryOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"inbound\",\n  \"locationCode\": \"WHA\",\n  \"binLocationName\": \"test\",\n  \"orderDate\": \"31/03/2022\",\n  \"deliveryDate\": \"31/03/2023\",\n  \"waybillNumber\": \"12345\",\n  \"description\": \"loc1\",\n  \"items\": [\n    {\n      \"sku\": \"123123\",\n      \"qty\": \"1\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"otoId\": 4026\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e203d47d-bd84-4833-aee3-bdef9572ec81",
+              "name": "400 wrong location code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "createInventoryOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"inbound\",\n  \"locationCode\": \"WHA\",\n  \"binLocationName\": \"test\",\n  \"orderDate\": \"31/03/2022\",\n  \"deliveryDate\": \"31/03/2023\",\n  \"waybillNumber\": \"12345\",\n  \"description\": \"loc1\",\n  \"items\": [\n    {\n      \"sku\": \"123123\",\n      \"qty\": \"1\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"otoErrorCode\": \"OTO1133\",\n  \"otoErrorMessage\": \"Location Code is missing or invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f377d381-d079-41a3-888e-c51b8e4a76e7",
+          "name": "Update Packing Status",
+          "request": {
+            "name": "Update Packing Status",
+            "description": {
+              "content": "This API endpoint allows you to update the packing status of an order during the fulfillment process. This endpoint is used to record and track the progress of orders as they move through the packing stage, ensuring accurate status updates for operational visibility. Request Parameters: Name Required Type Description orderId yes string Id of the order that you wanna update packing status packingStatus yes string Packing status value can be packed or picked",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "updatePackingStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a1f1ffbe-71f3-4a00-8dcf-2d12692b673a",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "updatePackingStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"123\",\n  \"packingStatus\": \"packed\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Successfully updated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08c68208-e6dd-4c2b-b307-483676d51ffe",
+          "name": "Get Orders Ready For Packing",
+          "request": {
+            "name": "Get Orders Ready For Packing",
+            "description": {
+              "content": "This API endpoint retrieves a list of orders that are ready for pick and pack operations. This endpoint is designed to streamline warehouse workflows by providing access to orders that have completed prior processes and are prepared for fulfillment. Request Parameters: Name Required Type Description warehouseCode yes String pickupLocationCode of the warehouse.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "getPackingOrders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d4c61bc5-7a9b-4bbe-8b31-c8b3ece5f96c",
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "getPackingOrders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"warehouseCode\": \"WH123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"count\": 2,\n  \"orders\": [\n    {\n      \"orderId\": \"11022\",\n      \"items\": [\n        {\n          \"productId\": 112,\n          \"name\": \"test product\",\n          \"quantity\": 1,\n          \"sku\": \"test-product\"\n        },\n        {\n          \"name\": \"test product 2\",\n          \"quantity\": 1,\n          \"sku\": \"test-product-2\"\n        }\n      ]\n    },\n    {\n      \"orderId\": \"11051222\",\n      \"items\": [\n        {\n          \"productId\": 12312,\n          \"name\": \"test2 product\",\n          \"quantity\": 1,\n          \"sku\": \"test-product\"\n        },\n        {\n          \"name\": \"test3 product 3\",\n          \"quantity\": 2,\n          \"sku\": \"test3-product-3\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db027262-1d2b-4a88-88d9-4454e12f7a8d",
+              "name": "401 Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "getPackingOrders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"warehouseCode\": \"WH123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Jwt is expired\",\n  \"code\": 401\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5fa06682-4340-40d1-aae5-2f17821e2770",
+          "name": "Check Available Stores For Pickup",
+          "request": {
+            "name": "Check Available Stores For Pickup",
+            "description": {
+              "content": "This API endpoint retrieves a list of physical stores where the requested items are currently available for customer pickup. By providing a list of SKUs with required quantities and a selected city, the endpoint validates stock availability and returns eligible stores that can fulfill the pickup request. The response includes detailed store information such as store name, location coordinates, address details, operating hours by day, and stock status. This endpoint is designed to support omnicha",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "availableStoresForPickup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "01edacc0-37f7-48bc-b7e6-9da012632142",
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "availableStoresForPickup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"items\": [\n    {\n      \"sku\": \"Umberella-2\",\n      \"qty\": 11\n    },\n    {\n      \"sku\": \"Umberella-1\",\n      \"qty\": 11\n    }\n  ],\n  \"selectedCity\": \"Jeddah\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"stores\": [\n    {\n      \"streetName\": \"M5M8+5M\",\n      \"storeHours\": [\n        {\n          \"from\": \"00:00\",\n          \"to\": \"23:30\",\n          \"day\": \"monday\"\n        },\n        {\n          \"from\": \"00:00\",\n          \"to\": \"23:30\",\n          \"day\": \"tuesday\"\n        },\n        {\n          \"from\": \"00:00\",\n          \"to\": \"23:30\",\n          \"day\": \"wednesday\"\n        },\n        {\n          \"from\": \"00:00\",\n          \"to\": \"23:30\",\n          \"day\": \"thursday\"\n        },\n        {\n          \"from\": \"00:00\",\n          \"to\": \"18:30\",\n          \"day\": \"friday\"\n        },\n        {\n          \"from\": \"00:00\",\n          \"to\": \"23:30\",\n          \"day\": \"saturday\"\n        },\n        {\n          \"from\": \"00:00\",\n          \"to\": \"23:30\",\n          \"day\": \"sunday\"\n        }\n      ],\n      \"city\": \"Jeddah\",\n      \"district\": \"King Abdulaziz International Airport\",\n      \"storeName\": \"BR-1\",\n      \"lon\": 39.1732665,\n      \"id\": 17438,\n      \"stock\": \"available\",\n      \"lat\": 21.6609297,\n      \"storeCode\": \"br12\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18cda6b3-0cee-4587-84cf-8b71abd3e954",
+          "name": "Available Cities For Pickup",
+          "request": {
+            "name": "Available Cities For Pickup",
+            "description": {
+              "content": "This API endpoint retrieves a list of cities where in-store pickup is currently supported. It allows marketplaces and merchants to identify eligible cities in which customers can select the pickup option during checkout or order creation. You can enable and disable it. from Warehouse/ Branch form. The response returns a simple list of city names where pickup-enabled stores are available, helping ensure that pickup options are only displayed for supported locations. This endpoint is designed to e",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "availableCitiesForPickup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "90c0d6cb-7226-4468-bbf3-ac66e7fd8890",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "availableCitiesForPickup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cities\": [\n    \"Jeddah\",\n    \"Aqiq\"\n  ],\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tryoto.com/rest/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f286f157-6326-4060-a0f2-3fa10ca87009",
+    "name": "OTO API V2 Account Stock Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO's platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you're integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.\n\nContact Support:\n Name: OTO Support",
+      "type": "text/plain"
+    }
+  }
+}

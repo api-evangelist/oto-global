@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OTO API V2 Account OTO FLEX API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OTO FLEX",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "assignDriver",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/assignDriver",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint enables clients to assign a specific driver to their shipments for the OTO Flex app. This endpoint streamlines the allocation process, allowing businesses to efficiently manage driver assignments and ensure smooth delivery operations. Either valid driverID or driverEmail is required. Request Paramaters: Name Required Type Description orderIDs yes array An array of orderIDs objects containing the order ids driverID yes (If driverEmail isn't present) long ID of the driver driverE"
+        },
+        {
+          "info": {
+            "name": "trackDriver",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/trackDriver",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint provides real-time location updates for a specific order within the Oto Flex application and for the OTO Flex orders. By continuously tracking the active driver's GPS position, the endpoint returns a stream of latitude and longitude updates , allowing the client to monitor the order’s movement throughout the delivery journey. Name Required Type Description orderId yes string OrderId of the OTO flex shipment"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

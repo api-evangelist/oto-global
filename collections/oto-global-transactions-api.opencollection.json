@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OTO API V2 Account Transactions API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Shipping Price Transactions List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/getShippingPriceTransactionsList",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint provides details of your Shipping Price Transactions, calculated based on your configured shipping price settings. By providing either the Order ID or Shipment ID, you can retrieve the shipping cost along with other transactional details. Important Note: The results from this API apply only to shipments created using your configured shipping price contracts. Shipping costs are calculated based on factors such as weight, destination, and other predefined configurations. Request "
+        },
+        {
+          "info": {
+            "name": "Credit Transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/creditTransactions",
+            "params": [
+              {
+                "name": "perPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "minDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxDate",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "This API endpoint provides a powerful way to retrieve credit transaction records from your system. This endpoint supports pagination for efficient data retrieval and allows filtering based on minimum and maximum dates. Additionally, if an orderId is provided, the maxDate and minDate parameters become optional, enabling direct access to transactions associated with the specified order. Request Parameters: Name Required Type Description perPage yes number Credit transaction count in the response. "
+        },
+        {
+          "info": {
+            "name": "Shipment Transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/shipmentTransactions",
+            "params": [
+              {
+                "name": "perPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "minDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "maxDate",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Shipment Transactions This API endpoint provides users with access to detailed information about shipment transactions. This API is designed to retrieve and display key transaction data, allowing users to monitor and review shipment-related activities.It retrieves shipment transactions with the option to paginate and filter by minimum and maximum dates. Note: If orderId exists maxDate and minDate are not required. If shipment number exists maxDate and minDate are not required. Request Parameters"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

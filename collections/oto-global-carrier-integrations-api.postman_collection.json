@@ -1,0 +1,1209 @@
+{
+  "item": [
+    {
+      "id": "8491896e-4219-4be9-ac21-c22f8cb1e7db",
+      "name": "Carrier Integrations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e62abe85-6739-43bf-9ea9-9387e70561e7",
+          "name": "Get Delivery Estimation",
+          "request": {
+            "name": "Get Delivery Estimation",
+            "description": {
+              "content": "This API endpoint allows you to access estimated delivery dates, times, and other last-mile process details by utilizing the SLA configurations of your shipping partners. By providing key information such as the pickup and customer addresses, you can retrieve precise delivery and pickup date estimates. This capability enhances the accuracy of your shipping operations and proves invaluable for businesses and logistics providers aiming to streamline workflows and deliver reliable delivery timeline",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "getDeliveryEstimation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c8e7e99e-9e60-4225-8499-80655e962d6a",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "getDeliveryEstimation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"calculationData\": {\n    \"originAddress\": {\n      \"city\": \"Riyadh\",\n      \"country\": \"SA\",\n      \"lat\": 45,\n      \"lon\": 45,\n      \"district\": \"\"\n    },\n    \"destinationAddress\": {\n      \"city\": \"Riyadh\",\n      \"country\": \"SA\",\n      \"lat\": 45,\n      \"lon\": 45,\n      \"district\": \"\"\n    }\n  },\n  \"deliveryCompanySettingsId\": 1233,\n  \"slaMethodType\": \"CITY_BASED\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": [\n    {\n      \"estimatedTransferDuration\": 3,\n      \"shippingContract\": {\n        \"agreementType\": \"INTEGRATOR\",\n        \"deliveryCompanySettingsId\": 1233,\n        \"name\": \"Smsa Ecom V2\",\n        \"id\": 117,\n        \"slaMethodType\": \"TIER_BASED\",\n        \"deliveryIntegrationName\": \"secom\"\n      },\n      \"estimatedPickupDate\": \"2024-01-15\",\n      \"cutOffSameDayPickup\": \"15:00\",\n      \"estimatedTransferCompletionDate\": \"2024-01-18\",\n      \"estimatedDeliveryDate\": \"2024-01-18\",\n      \"shipmentCreateDate\": \"2024-01-10\"\n    }\n  ],\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "79ae1811-0e8f-401c-82e7-c49fcce0e9da",
+          "name": "AI Estimated Delivery Dates",
+          "request": {
+            "name": "AI Estimated Delivery Dates",
+            "description": {
+              "content": "This API endpoint allows you retrieve OTO’s AI-generated estimated pickup and delivery dates . The endpoint is designed solely for prediction purposes —it does not create or update any shipments. The prediction model uses all up-to-date operational data within OTO , including historical delivery patterns, courier performance, service types, regions, and peak-time behavior. Based on this data, it produces a reliable estimate for both pickup and delivery timelines. Request Parameters: Name Require",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "aiEstimatedDeliveryDates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e9d3700c-4122-44e6-bb09-b4861ec71701",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "aiEstimatedDeliveryDates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"weight\": \"1\",\n  \"originCity\": \"Riyadh\",\n  \"destinationCity\": \"Riyadh\",\n  \"height\": 15,\n  \"width\": 10,\n  \"length\": 10,\n  \"includeEstimatedDates\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"traceId\": \"63545-73855-176.88.141.22-04260af8-e9da-4597-b652-1d6f9f89554c\",\n  \"success\": true,\n  \"deliveryCompany\": [\n    {\n      \"deliveryCompanyName\": \"Deliver Now\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"deliveryCompanySettingsId\": 7109,\n      \"estimatedDeliveryDate\": \"2025-11-17\"\n    },\n    {\n      \"deliveryCompanyName\": \"Omni Llama\",\n      \"estimatedPickupDate\": \"2025-11-16\",\n      \"deliveryCompanySettingsId\": 7252,\n      \"estimatedDeliveryDate\": \"2025-11-17\"\n    },\n    {\n      \"deliveryCompanyName\": \"SPL PUDO\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"deliveryCompanySettingsId\": 7144,\n      \"estimatedDeliveryDate\": \"2025-11-18\"\n    },\n    {\n      \"deliveryCompanyName\": \"Delivery Support\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"deliveryCompanySettingsId\": 7417,\n      \"estimatedDeliveryDate\": \"2025-11-18\"\n    },\n    {\n      \"deliveryCompanyName\": \"Aramex PUDO\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"deliveryCompanySettingsId\": 7231,\n      \"estimatedDeliveryDate\": \"2025-11-21\"\n    },\n    {\n      \"deliveryCompanyName\": \"Sent\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"deliveryCompanySettingsId\": 7490,\n      \"estimatedDeliveryDate\": \"2025-11-18\"\n    },\n    {\n      \"deliveryCompanyName\": \"Roadlink Logistics\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"deliveryCompanySettingsId\": 7990,\n      \"estimatedDeliveryDate\": \"2025-11-18\"\n    },\n    {\n      \"deliveryCompanyName\": \"SMSA PUDO\",\n      \"estimatedPickupDate\": \"2025-11-16\",\n      \"deliveryCompanySettingsId\": 7326,\n      \"estimatedDeliveryDate\": \"2025-11-17\"\n    },\n    {\n      \"deliveryCompanyName\": \"iMile\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"deliveryCompanySettingsId\": 7147,\n      \"estimatedDeliveryDate\": \"2025-11-18\"\n    },\n    {\n      \"deliveryCompanyName\": \"DELIVERIST Same Day\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"deliveryCompanySettingsId\": 7110,\n      \"estimatedDeliveryDate\": \"2025-11-20\"\n    },\n    {\n      \"deliveryCompanyName\": \"Shipa Delivery\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"deliveryCompanySettingsId\": 7098,\n      \"estimatedDeliveryDate\": \"2025-11-20\"\n    },\n    {\n      \"deliveryCompanyName\": \"J&T Express\",\n      \"estimatedPickupDate\": \"2025-11-18\",\n      \"deliveryCompanySettingsId\": 7100,\n      \"estimatedDeliveryDate\": \"2025-11-22\"\n    },\n    {\n      \"deliveryCompanyName\": \"Yamamah\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"deliveryCompanySettingsId\": 8530,\n      \"estimatedDeliveryDate\": \"2025-11-18\"\n    },\n    {\n      \"deliveryCompanyName\": \"Aymakan\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"deliveryCompanySettingsId\": 7102,\n      \"estimatedDeliveryDate\": \"2025-11-18\"\n    },\n    {\n      \"deliveryCompanyName\": \"Thabit Logistics\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"deliveryCompanySettingsId\": 7099,\n      \"estimatedDeliveryDate\": \"2025-11-18\"\n    },\n    {\n      \"deliveryCompanyName\": \"Delex\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"deliveryCompanySettingsId\": 7113,\n      \"estimatedDeliveryDate\": \"2025-11-18\"\n    },\n    {\n      \"deliveryCompanyName\": \"Linkers Express\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"deliveryCompanySettingsId\": 7949,\n      \"estimatedDeliveryDate\": \"2025-11-18\"\n    },\n    {\n      \"deliveryCompanyName\": \"Aramex\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"deliveryCompanySettingsId\": 7097,\n      \"estimatedDeliveryDate\": \"2025-11-22\"\n    },\n    {\n      \"deliveryCompanyName\": \"Naqel Express\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"deliveryCompanySettingsId\": 7112,\n      \"estimatedDeliveryDate\": \"2025-11-22\"\n    },\n    {\n      \"deliveryCompanyName\": \"SMSA\",\n      \"estimatedPickupDate\": \"2025-11-16\",\n      \"deliveryCompanySettingsId\": 7101,\n      \"estimatedDeliveryDate\": \"2025-11-18\"\n    },\n    {\n      \"deliveryCompanyName\": \"UPS\",\n      \"estimatedPickupDate\": \"2025-11-16\",\n      \"deliveryCompanySettingsId\": 7136,\n      \"estimatedDeliveryDate\": \"2025-11-17\"\n    },\n    {\n      \"deliveryCompanyName\": \"Adwar Cold\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"deliveryCompanySettingsId\": 7410,\n      \"estimatedDeliveryDate\": \"2025-11-18\"\n    },\n    {\n      \"deliveryCompanyName\": \"Aramex Heavy & Bulky\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"deliveryCompanySettingsId\": 7898,\n      \"estimatedDeliveryDate\": \"2025-11-21\"\n    },\n    {\n      \"deliveryCompanyName\": \"Flow PL\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"deliveryCompanySettingsId\": 7106,\n      \"estimatedDeliveryDate\": \"2025-11-18\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49130978-e9c9-452a-974e-204067f885c4",
+          "name": "Check Coverage",
+          "request": {
+            "name": "Check Coverage",
+            "description": {
+              "content": "This API endpoint allows you to verify whether the location provided in your request is within the coverage area defined by your OTO settings, including the coverage configurations for delivery companies and the branches. Request Parameters: Name Required Type Description city yes string City to check coverage lat yes long Latitude lon yes long Longitude pickupLocation no boolean If you pass true, it will list the covered and available pickup locations. pickupLocationCode no string Lists only th",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "checkCoverage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2b478f7d-53f3-445e-8f36-2dcd94dc256c",
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "checkCoverage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lat\": \"24.28738403\",\n  \"lon\": \"46.44305038\",\n  \"city\": \"Riyadh\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"branchCoverage\": true,\n  \"courierDelivery\": true,\n  \"success\": true,\n  \"bulletDelivery\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8191359a-57b3-40c9-bce9-53f7b675cf6c",
+              "name": "400 Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "checkCoverage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lat\": \"24.28738403\",\n  \"lon\": \"46.44305038\",\n  \"city\": \"Riyadh\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"otoErrorCode\": \"OTO1098\",\n  \"otoErrorMessage\": \"Lat and Lon is missing or invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83b03cee-25c1-4b30-8c12-997f690bcfed",
+              "name": "401",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "checkCoverage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lat\": \"24.28738403\",\n  \"lon\": \"46.44305038\",\n  \"city\": \"Riyadh\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Jwt is expired\",\n  \"code\": 401\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3422accd-ab49-4466-ae75-24514b9dbf75",
+          "name": "Available Cities",
+          "request": {
+            "name": "Available Cities",
+            "description": {
+              "content": "This API endpoint retrieves a list of cities available for delivery based on your coverage settings for active delivery companies you have contracts with. To obtain results, ensure that the delivery companies' coverage areas are configured by adding cities through the OTO UI. Request Parameters: Name Required Type Description page no number Number of page, default is 1 limit no number Number of cities in a single page, default is 100",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "availableCities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cdccab8a-c1fc-4758-92fb-f658bf3e4297",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "availableCities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"limit\": 3\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"limit\": 3,\n  \"page\": 1,\n  \"orders\": [\n    {\n      \"city\": \"Riyadh\",\n      \"city_ar\": \"الرياض\"\n    },\n    {\n      \"city\": \"Dammam\",\n      \"city_ar\": \"الدمام\"\n    },\n    {\n      \"city\": \"Jeddah\",\n      \"city_ar\": \"جدة\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e7efb25-a117-4e1d-ad9e-96569d88a657",
+          "name": "Available Time Slots",
+          "request": {
+            "name": "Available Time Slots",
+            "description": {
+              "content": "This API endpoint retrieves the available delivery time slots for delivery companies based on their specified working hours. Request Parameters: Name Required Type Description lat no string Latitude lon no string Longitude serviceType yes string Possible values: bullet , courier packageSize no string",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "availableTimeslots"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e737f5ea-d726-4d04-863e-600077d5d655",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "availableTimeslots"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"serviceType\": \"bullet\",\n  \"packageSize\": \"simCard\",\n  \"lat\": \"24.00\",\n  \"lon\": \"46.00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"availableSlots\": [\n    {\n      \"times\": [\n        \"9:30AM-11:30AM\",\n        \"11:30AM-1:30PM\",\n        \"1:30PM-3:30PM\",\n        \"3:30PM-5:30PM\",\n        \"5:30PM-7:30PM\",\n        \"7:30PM-9:30PM\",\n        \"9:30PM-11:30PM\"\n      ],\n      \"day\": \"05/11/2020\"\n    },\n    {\n      \"times\": [\n        \"5:30PM-7:30PM\",\n        \"7:30PM-9:30PM\",\n        \"9:30PM-11:30PM\"\n      ],\n      \"day\": \"06/11/2020\"\n    },\n    {\n      \"times\": [\n        \"9:30AM-11:30AM\",\n        \"11:30AM-1:30PM\",\n        \"1:30PM-3:30PM\",\n        \"3:30PM-5:30PM\",\n        \"5:30PM-7:30PM\",\n        \"7:30PM-9:30PM\",\n        \"9:30PM-11:30PM\"\n      ],\n      \"day\": \"07/11/2020\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a7933bf-80d1-4a53-affe-ea4b9d2670e7",
+          "name": "DC List",
+          "request": {
+            "name": "DC List",
+            "description": {
+              "content": "This API endpoint provides a list of all delivery companies integrated with OTO. If you have a contract with any of these companies, you can connect your account to OTO. Use the company's unique code to configure settings through the DC Activation and DC Config API endpoints. If a delivery company you have a contract with is not listed, please notify us to initiate the integration process.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "dcList"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f47ff468-fdf6-4d47-a30d-1dabe43057a4",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "dcList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"Name\": \"3speeds\",\n      \"code\": \"3speeds\"\n    },\n    {\n      \"Name\": \"4PL\",\n      \"code\": \"4pl\"\n    },\n    {\n      \"Name\": \"4U Express\",\n      \"code\": \"4uexpress\"\n    },\n    {\n      \"Name\": \"4U Logistics\",\n      \"code\": \"4u\"\n    },\n    {\n      \"Name\": \"9Cloud\",\n      \"code\": \"9cloud\"\n    },\n    {\n      \"Name\": \"Adam Pharmacy\",\n      \"code\": \"adamPharmacy\"\n    },\n    {\n      \"Name\": \"Adwar Logistics\",\n      \"code\": \"adwar\"\n    },\n    {\n      \"Name\": \"Adwar Logistics (Logestechs)\",\n      \"code\": \"adwarLogestechs\"\n    },\n    {\n      \"Name\": \"AHOY\",\n      \"code\": \"ahoy\"\n    },\n    {\n      \"Name\": \"Ajalogistic\",\n      \"code\": \"ajalogistic\"\n    },\n    {\n      \"Name\": \"Ajeek\",\n      \"code\": \"ajeek\"\n    },\n    {\n      \"Name\": \"AJEX Logistics\",\n      \"code\": \"ajex\"\n    },\n    {\n      \"Name\": \"AJEX Türkiye\",\n      \"code\": \"ajex-tr\"\n    },\n    {\n      \"Name\": \"Ajoul\",\n      \"code\": \"ajoul\"\n    },\n    {\n      \"Name\": \"Ajwaa Afaq\",\n      \"code\": \"ajwa\"\n    },\n    {\n      \"Name\": \"Al Hajer Logistics\",\n      \"code\": \"alhajer\"\n    },\n    {\n      \"Name\": \"Al Saif Express\",\n      \"code\": \"alsaifexpress\"\n    },\n    {\n      \"Name\": \"Al Shouroq express\",\n      \"code\": \"alshouroq\"\n    },\n    {\n      \"Name\": \"Alam alkon\",\n      \"code\": \"alamalkon\"\n    },\n    {\n      \"Name\": \"Alamyal\",\n      \"code\": \"alamyal\"\n    },\n    {\n      \"Name\": \"Albabtain Logistic\",\n      \"code\": \"albabtainLogistic\"\n    },\n    {\n      \"Name\": \"Alma Express\",\n      \"code\": \"alma\"\n    },\n    {\n      \"Name\": \"Altariq App\",\n      \"code\": \"altariq\"\n    },\n    {\n      \"Name\": \"Anwan Express\",\n      \"code\": \"anwan\"\n    },\n    {\n      \"Name\": \"Araba Shipping Service\",\n      \"code\": \"araba\"\n    },\n    {\n      \"Name\": \"Aramex\",\n      \"code\": \"aramex\"\n    },\n    {\n      \"Name\": \"Aras Kargo\",\n      \"code\": \"araskargo\"\n    },\n    {\n      \"Name\": \"Asyad Express\",\n      \"code\": \"asyadV2\"\n    },\n    {\n      \"Name\": \"Atheryoun Express\",\n      \"code\": \"atheryoun\"\n    },\n    {\n      \"Name\": \"Awfar Express\",\n      \"code\": \"awfar\"\n    },\n    {\n      \"Name\": \"Awssal\",\n      \"code\": \"awssal\"\n    },\n    {\n      \"Name\": \"Aymakan\",\n      \"code\": \"aymakan\"\n    },\n    {\n      \"Name\": \"Banabikurye\",\n      \"code\": \"banabikurye\"\n    },\n    {\n      \"Name\": \"Barig Logistics\",\n      \"code\": \"barig\"\n    },\n    {\n      \"Name\": \"Barq Express\",\n      \"code\": \"barqexpress\"\n    },\n    {\n      \"Name\": \"Barq Fleet\",\n      \"code\": \"barq\"\n    },\n    {\n      \"Name\": \"Barq Jawhara\",\n      \"code\": \"barq-jawhara\"\n    },\n    {\n      \"Name\": \"Beebolt\",\n      \"code\": \"beebolt\"\n    },\n    {\n      \"Name\": \"BeeThere Delivery\",\n      \"code\": \"beethere\"\n    },\n    {\n      \"Name\": \"Beez\",\n      \"code\": \"beez\"\n    },\n    {\n      \"Name\": \"Beone\",\n      \"code\": \"beone\"\n    },\n    {\n      \"Name\": \"Beone Fulfillment V2\",\n      \"code\": \"beoneFfl\"\n    },\n    {\n      \"Name\": \"Beone Lastmile\",\n      \"code\": \"beoneLastmile\"\n    },\n    {\n      \"Name\": \"Best One\",\n      \"code\": \"bestone\"\n    },\n    {\n      \"Name\": \"Beyond Delivery\",\n      \"code\": \"beyondDelivery\"\n    },\n    {\n      \"Name\": \"BlueSky Express\",\n      \"code\": \"bskyexpress\"\n    },\n    {\n      \"Name\": \"Bolt Kargo\",\n      \"code\": \"boltkargo\"\n    },\n    {\n      \"Name\": \"Bosta\",\n      \"code\": \"bostaV2\"\n    },\n    {\n      \"Name\": \"Boxed Up\",\n      \"code\": \"boxedup\"\n    },\n    {\n      \"Name\": \"Boxex Express\",\n      \"code\": \"boxex\"\n    },\n    {\n      \"Name\": \"BTC Logistics\",\n      \"code\": \"btclogistic\"\n    },\n    {\n      \"Name\": \"Captain H\",\n      \"code\": \"captainh\"\n    },\n    {\n      \"Name\": \"Careem\",\n      \"code\": \"careem\"\n    },\n    {\n      \"Name\": \"Cigo\",\n      \"code\": \"cigo\"\n    },\n    {\n      \"Name\": \"Cloud Express\",\n      \"code\": \"cloudexpress\"\n    },\n    {\n      \"Name\": \"Cloud Shelf\",\n      \"code\": \"cloud-shelf\"\n    },\n    {\n      \"Name\": \"Coldt\",\n      \"code\": \"coldt\"\n    },\n    {\n      \"Name\": \"Collect+\",\n      \"code\": \"collectplus\"\n    },\n    {\n      \"Name\": \"Dal\",\n      \"code\": \"channels\"\n    },\n    {\n      \"Name\": \"Dal Cross City\",\n      \"code\": \"dalCrossCity\"\n    },\n    {\n      \"Name\": \"Dal Fulfillment\",\n      \"code\": \"channelsfulfillment\"\n    },\n    {\n      \"Name\": \"Dash Delivery\",\n      \"code\": \"dashSaudi\"\n    },\n    {\n      \"Name\": \"Dayer Logistics\",\n      \"code\": \"dayer\"\n    },\n    {\n      \"Name\": \"Dele Fast\",\n      \"code\": \"delefast\"\n    },\n    {\n      \"Name\": \"Delex\",\n      \"code\": \"delex\"\n    },\n    {\n      \"Name\": \"Delex (Logestechs)\",\n      \"code\": \"delexLogestechs\"\n    },\n    {\n      \"Name\": \"Delifast\",\n      \"code\": \"delifast\"\n    },\n    {\n      \"Name\": \"Deliver Now Logistics\",\n      \"code\": \"delivernow\"\n    },\n    {\n      \"Name\": \"Deliverist\",\n      \"code\": \"deliverist\"\n    },\n    {\n      \"Name\": \"Deliverist (Logestechs)\",\n      \"code\": \"deliveristLogestechs\"\n    },\n    {\n      \"Name\": \"Delivery Support\",\n      \"code\": \"deliverysupport\"\n    },\n    {\n      \"Name\": \"Delybell\",\n      \"code\": \"delybell\"\n    },\n    {\n      \"Name\": \"DHL Express MyDHL\",\n      \"code\": \"mydhl\"\n    },\n    {\n      \"Name\": \"DHL Türkiye\",\n      \"code\": \"dhlTr\"\n    },\n    {\n      \"Name\": \"DOS Express\",\n      \"code\": \"dosexpress\"\n    },\n    {\n      \"Name\": \"Drb Express\",\n      \"code\": \"drbexpress\"\n    },\n    {\n      \"Name\": \"Easy Delivery\",\n      \"code\": \"easyDelivery\"\n    },\n    {\n      \"Name\": \"Ejack\",\n      \"code\": \"ejack\"\n    },\n    {\n      \"Name\": \"Elite\",\n      \"code\": \"elite\"\n    },\n    {\n      \"Name\": \"Emdad\",\n      \"code\": \"emdad\"\n    },\n    {\n      \"Name\": \"Emirates Post\",\n      \"code\": \"emiratespost\"\n    },\n    {\n      \"Name\": \"EMX\",\n      \"code\": \"emx\"\n    },\n    {\n      \"Name\": \"Esal Parcel Transport Company\",\n      \"code\": \"esal\"\n    },\n    {\n      \"Name\": \"Esnad Express\",\n      \"code\": \"esnad\"\n    },\n    {\n      \"Name\": \"Eva Express\",\n      \"code\": \"evaexpress\"\n    },\n    {\n      \"Name\": \"Falcon Express\",\n      \"code\": \"falconExpress\"\n    },\n    {\n      \"Name\": \"Fareye\",\n      \"code\": \"fareye\"\n    },\n    {\n      \"Name\": \"Fast Move Express\",\n      \"code\": \"fastMove\"\n    },\n    {\n      \"Name\": \"Fastlo\",\n      \"code\": \"fastlo\"\n    },\n    {\n      \"Name\": \"Fawran Logistics\",\n      \"code\": \"fawran\"\n    },\n    {\n      \"Name\": \"Fazaah Logistics\",\n      \"code\": \"fazaahLogistics\"\n    },\n    {\n      \"Name\": \"Fedex\",\n      \"code\": \"fedex\"\n    },\n    {\n      \"Name\": \"FedEx Uluslararası (PTS)\",\n      \"code\": \"ptsv5FedEx\"\n    },\n    {\n      \"Name\": \"FedexGlobal\",\n      \"code\": \"fedexGlobal\"\n    },\n    {\n      \"Name\": \"Fenix Express\",\n      \"code\": \"fenix\"\n    },\n    {\n      \"Name\": \"Fenx Kuwait\",\n      \"code\": \"fenxKuwait\"\n    },\n    {\n      \"Name\": \"Flexe Express\",\n      \"code\": \"flexe\"\n    },\n    {\n      \"Name\": \"Flexible\",\n      \"code\": \"flexible\"\n    },\n    {\n      \"Name\": \"Flickapp\",\n      \"code\": \"flickapp\"\n    },\n    {\n      \"Name\": \"Flow Business - Flow LTD\",\n      \"code\": \"flowldt\"\n    },\n    {\n      \"Name\": \"Flow Express\",\n      \"code\": \"flowexpress\"\n    },\n    {\n      \"Name\": \"Flowpl\",\n      \"code\": \"flowpl\"\n    },\n    {\n      \"Name\": \"FODEL\",\n      \"code\": \"fodel\"\n    },\n    {\n      \"Name\": \"Fulfillment Bridge\",\n      \"code\": \"fulfillmentbridge\"\n    },\n    {\n      \"Name\": \"FULLex\",\n      \"code\": \"fullex\"\n    },\n    {\n      \"Name\": \"Galaxy Delivery\",\n      \"code\": \"galaxy\"\n    },\n    {\n      \"Name\": \"Gawamen\",\n      \"code\": \"gawamen\"\n    },\n    {\n      \"Name\": \"Genac\",\n      \"code\": \"genac\"\n    },\n    {\n      \"Name\": \"Getswift\",\n      \"code\": \"getswift\"\n    },\n    {\n      \"Name\": \"GFS Express\",\n      \"code\": \"gfsexpress\"\n    },\n    {\n      \"Name\": \"GLC\",\n      \"code\": \"glcLogestechs\"\n    },\n    {\n      \"Name\": \"GLT Express\",\n      \"code\": \"gltexpress\"\n    },\n    {\n      \"Name\": \"Happiness Gem\",\n      \"code\": \"happinessgem\"\n    },\n    {\n      \"Name\": \"Hawa Logistics\",\n      \"code\": \"hawa\"\n    },\n    {\n      \"Name\": \"Hejen Expresss\",\n      \"code\": \"hejen\"\n    },\n    {\n      \"Name\": \"HepsiJet\",\n      \"code\": \"hepsijet\"\n    },\n    {\n      \"Name\": \"HepsiJet Marketplace\",\n      \"code\": \"hepsijetmarketplace\"\n    },\n    {\n      \"Name\": \"Hiblocks\",\n      \"code\": \"hiblocks\"\n    },\n    {\n      \"Name\": \"Holol Al Diar\",\n      \"code\": \"holol-aldiar\"\n    },\n    {\n      \"Name\": \"Horizon Speed\",\n      \"code\": \"horizons\"\n    },\n    {\n      \"Name\": \"Horoz Lojistik\",\n      \"code\": \"horoz\"\n    },\n    {\n      \"Name\": \"Horoz Lojistik Pazaryeri\",\n      \"code\": \"horoz-marketplace\"\n    },\n    {\n      \"Name\": \"İletmen\",\n      \"code\": \"iletmen\"\n    },\n    {\n      \"Name\": \"iMile\",\n      \"code\": \"imile\"\n    },\n    {\n      \"Name\": \"IntercityXpress\",\n      \"code\": \"intercityxpress\"\n    },\n    {\n      \"Name\": \"J&T Express\",\n      \"code\": \"jtexpress\"\n    },\n    {\n      \"Name\": \"Jana Express\",\n      \"code\": \"janaExpress\"\n    },\n    {\n      \"Name\": \"Jeebly\",\n      \"code\": \"jeebly\"\n    },\n    {\n      \"Name\": \"Jeebly Now\",\n      \"code\": \"jeeblynow\"\n    },\n    {\n      \"Name\": \"Jeebly V2\",\n      \"code\": \"jeeblyV2\"\n    },\n    {\n      \"Name\": \"Jetizz\",\n      \"code\": \"jetizz\"\n    },\n    {\n      \"Name\": \"JFL Express\",\n      \"code\": \"jflexpress\"\n    },\n    {\n      \"Name\": \"Jones International Transportation Co.\",\n      \"code\": \"jonestco\"\n    },\n    {\n      \"Name\": \"Jumia Logistics\",\n      \"code\": \"jumia\"\n    },\n    {\n      \"Name\": \"KargoIst\",\n      \"code\": \"kargoist\"\n    },\n    {\n      \"Name\": \"Kargoist\",\n      \"code\": \"kargoistmarketplace\"\n    },\n    {\n      \"Name\": \"Kasib Express\",\n      \"code\": \"kasib\"\n    },\n    {\n      \"Name\": \"Kedan\",\n      \"code\": \"kedan\"\n    },\n    {\n      \"Name\": \"Kolay Gelsin\",\n      \"code\": \"kolaygelsin\"\n    },\n    {\n      \"Name\": \"Kolay Gelsin (OTO)\",\n      \"code\": \"kolaygelsin-marketplace\"\n    },\n    {\n      \"Name\": \"Kwick Box\",\n      \"code\": \"kwickbox\"\n    },\n    {\n      \"Name\": \"Labaih\",\n      \"code\": \"labaih\"\n    },\n    {\n      \"Name\": \"Lafasta\",\n      \"code\": \"lafasta\"\n    },\n    {\n      \"Name\": \"Lafasta V4\",\n      \"code\": \"lafastaV4\"\n    },\n    {\n      \"Name\": \"Lamha\",\n      \"code\": \"lamha\"\n    },\n    {\n      \"Name\": \"Last Step\",\n      \"code\": \"laststep\"\n    },\n    {\n      \"Name\": \"LastPoint\",\n      \"code\": \"lastpoint\"\n    },\n    {\n      \"Name\": \"Logistic Care\",\n      \"code\": \"logcare\"\n    },\n    {\n      \"Name\": \"Logistic Supplier\",\n      \"code\": \"logisticSupplier\"\n    },\n    {\n      \"Name\": \"Logistiq\",\n      \"code\": \"logistiq\"\n    },\n    {\n      \"Name\": \"Lyve\",\n      \"code\": \"lyve\"\n    },\n    {\n      \"Name\": \"Lyve Bullet\",\n      \"code\": \"lyve317\"\n    },\n    {\n      \"Name\": \"Macm\",\n      \"code\": \"macm\"\n    },\n    {\n      \"Name\": \"Madar Express\",\n      \"code\": \"madarexpress\"\n    },\n    {\n      \"Name\": \"Magic Delivery\",\n      \"code\": \"magicexpress\"\n    },\n    {\n      \"Name\": \"Mahmool\",\n      \"code\": \"mahmool\"\n    },\n    {\n      \"Name\": \"MajEx Express\",\n      \"code\": \"majex\"\n    },\n    {\n      \"Name\": \"MATP Logistics\",\n      \"code\": \"matp\"\n    },\n    {\n      \"Name\": \"Milenow\",\n      \"code\": \"milenow\"\n    },\n    {\n      \"Name\": \"Miles Speed\",\n      \"code\": \"milespeeds\"\n    },\n    {\n      \"Name\": \"Mina Excellence\",\n      \"code\": \"minaExcellence\"\n    },\n    {\n      \"Name\": \"Mkhdoom\",\n      \"code\": \"mkhdoom\"\n    },\n    {\n      \"Name\": \"Mlc Go\",\n      \"code\": \"mlcgo\"\n    },\n    {\n      \"Name\": \"MNG Kargo\",\n      \"code\": \"mngkargo\"\n    },\n    {\n      \"Name\": \"MNG Kargo (OTO)\",\n      \"code\": \"mngkargo-marketplace\"\n    },\n    {\n      \"Name\": \"Modern Support \",\n      \"code\": \"msc\"\n    },\n    {\n      \"Name\": \"Moments Logistics Service\",\n      \"code\": \"momentsksa\"\n    },\n    {\n      \"Name\": \"Moovo Express\",\n      \"code\": \"moovo\"\n    },\n    {\n      \"Name\": \"Mosool\",\n      \"code\": \"mosool\"\n    },\n    {\n      \"Name\": \"Motqen\",\n      \"code\": \"motqen\"\n    },\n    {\n      \"Name\": \"Mowasalt\",\n      \"code\": \"mowasalt\"\n    },\n    {\n      \"Name\": \"MQ Express\",\n      \"code\": \"mqexpress\"\n    },\n    {\n      \"Name\": \"Mrsool\",\n      \"code\": \"mrsool\"\n    },\n    {\n      \"Name\": \"Munch On\",\n      \"code\": \"munchon\"\n    },\n    {\n      \"Name\": \"Mylerz\",\n      \"code\": \"mylerz\"\n    },\n    {\n      \"Name\": \"Najiz\",\n      \"code\": \"najiz\"\n    },\n    {\n      \"Name\": \"Najiz Express\",\n      \"code\": \"najizxpress\"\n    },\n    {\n      \"Name\": \"Naqel Bullet\",\n      \"code\": \"naqelbullet\"\n    },\n    {\n      \"Name\": \"Naqel express\",\n      \"code\": \"naqel\"\n    },\n    {\n      \"Name\": \"Naqel Fulfillment\",\n      \"code\": \"naqelfulfillment\"\n    },\n    {\n      \"Name\": \"Naql Express\",\n      \"code\": \"naql\"\n    },\n    {\n      \"Name\": \"Naseem Cold Delivery\",\n      \"code\": \"naseem\"\n    },\n    {\n      \"Name\": \"Nashmi\",\n      \"code\": \"nashmiLogestechs\"\n    },\n    {\n      \"Name\": \"Nasxpress\",\n      \"code\": \"nasxpress\"\n    },\n    {\n      \"Name\": \"nGage\",\n      \"code\": \"ngage\"\n    },\n    {\n      \"Name\": \"NiceOne Fleet\",\n      \"code\": \"niceOneFleet\"\n    },\n    {\n      \"Name\": \"Nizar Logistics\",\n      \"code\": \"nizar\"\n    },\n    {\n      \"Name\": \"Nord Logistics\",\n      \"code\": \"nordlogistics\"\n    },\n    {\n      \"Name\": \"NYAZIK Logistics\",\n      \"code\": \"nyazik\"\n    },\n    {\n      \"Name\": \"Octovan\",\n      \"code\": \"octovan\"\n    },\n    {\n      \"Name\": \"Okadoc\",\n      \"code\": \"okadoc\"\n    },\n    {\n      \"Name\": \"Omni Llama\",\n      \"code\": \"omnillama\"\n    },\n    {\n      \"Name\": \"One Click Delivery\",\n      \"code\": \"oneclick\"\n    },\n    {\n      \"Name\": \"Ontime Express\",\n      \"code\": \"ontime\"\n    },\n    {\n      \"Name\": \"Onway\",\n      \"code\": \"onway\"\n    },\n    {\n      \"Name\": \"OTO DMS\",\n      \"code\": \"OTODMS\"\n    },\n    {\n      \"Name\": \"OTO Flex\",\n      \"code\": \"otoDriverApp\"\n    },\n    {\n      \"Name\": \"PackUpp Delivery\",\n      \"code\": \"packupp\"\n    },\n    {\n      \"Name\": \"Paket Taxi\",\n      \"code\": \"pakettaxi\"\n    },\n    {\n      \"Name\": \"PDC\",\n      \"code\": \"pdc\"\n    },\n    {\n      \"Name\": \"Pharmaciaty\",\n      \"code\": \"pharmaciaty\"\n    },\n    {\n      \"Name\": \"Pharmaciaty TMS\",\n      \"code\": \"pharmaciatyTMS\"\n    },\n    {\n      \"Name\": \"Placer\",\n      \"code\": \"placer\"\n    },\n    {\n      \"Name\": \"Porter Express\",\n      \"code\": \"porterex\"\n    },\n    {\n      \"Name\": \"Posta Plus V2\",\n      \"code\": \"postaPlusV2\"\n    },\n    {\n      \"Name\": \"Postage Fulfillment\",\n      \"code\": \"postageFulfillment\"\n    },\n    {\n      \"Name\": \"Postagexp\",\n      \"code\": \"postagexp\"\n    },\n    {\n      \"Name\": \"PostaPlus\",\n      \"code\": \"postaplus\"\n    },\n    {\n      \"Name\": \"Premium Shipping\",\n      \"code\": \"premium-shipping\"\n    },\n    {\n      \"Name\": \"Pro Logistics\",\n      \"code\": \"prolo\"\n    },\n    {\n      \"Name\": \"PTL Logistics\",\n      \"code\": \"ptlLogistics\"\n    },\n    {\n      \"Name\": \"PTS Flex Uluslararası\",\n      \"code\": \"ptsv5Flex\"\n    },\n    {\n      \"Name\": \"PTT Kargo\",\n      \"code\": \"pttKargo\"\n    },\n    {\n      \"Name\": \"Qatar Post\",\n      \"code\": \"qatarpost\"\n    },\n    {\n      \"Name\": \"QDelivery\",\n      \"code\": \"qdelivery\"\n    },\n    {\n      \"Name\": \"QLS Express\",\n      \"code\": \"qlsexpress\"\n    },\n    {\n      \"Name\": \"Quick Ship\",\n      \"code\": \"quickship\"\n    },\n    {\n      \"Name\": \"Quick Silver\",\n      \"code\": \"quicksilver\"\n    },\n    {\n      \"Name\": \"Quiqup\",\n      \"code\": \"quiqup\"\n    },\n    {\n      \"Name\": \"R2 Express\",\n      \"code\": \"r2express\"\n    },\n    {\n      \"Name\": \"R2S Logistics\",\n      \"code\": \"r2slogistics\"\n    },\n    {\n      \"Name\": \"Rabbit Delivery\",\n      \"code\": \"rabbitsa\"\n    },\n    {\n      \"Name\": \"Rabel Express\",\n      \"code\": \"rabel\"\n    },\n    {\n      \"Name\": \"ReceiveHere\",\n      \"code\": \"receivehere\"\n    },\n    {\n      \"Name\": \"RedBox\",\n      \"code\": \"redbox\"\n    },\n    {\n      \"Name\": \"Redbox V2\",\n      \"code\": \"redboxv2\"\n    },\n    {\n      \"Name\": \"Reverse Delivery\",\n      \"code\": \"reverseDelivery\"\n    },\n    {\n      \"Name\": \"Road logistics\",\n      \"code\": \"roadlogistic\"\n    },\n    {\n      \"Name\": \"Roban AlQiadah\",\n      \"code\": \"robanAlQiadah\"\n    },\n    {\n      \"Name\": \"Roz Express\",\n      \"code\": \"rozexpress\"\n    },\n    {\n      \"Name\": \"Run-X Logistics\",\n      \"code\": \"runx\"\n    },\n    {\n      \"Name\": \"Runner\",\n      \"code\": \"runner\"\n    },\n    {\n      \"Name\": \"S:Mile\",\n      \"code\": \"smile\"\n    },\n    {\n      \"Name\": \"SaaSMile\",\n      \"code\": \"saasmile\"\n    },\n    {\n      \"Name\": \"SACO LM\",\n      \"code\": \"medscan\"\n    },\n    {\n      \"Name\": \"Saee\",\n      \"code\": \"saee\"\n    },\n    {\n      \"Name\": \"Safe Arrival \",\n      \"code\": \"safearrival\"\n    },\n    {\n      \"Name\": \"Safe Box\",\n      \"code\": \"safebox\"\n    },\n    {\n      \"Name\": \"Sahab Express\",\n      \"code\": \"sahabexpress\"\n    },\n    {\n      \"Name\": \"Sahab Logistics\",\n      \"code\": \"sahabLogistics\"\n    },\n    {\n      \"Name\": \"Sahm\",\n      \"code\": \"sahm\"\n    },\n    {\n      \"Name\": \"Salasa (API Dog)\",\n      \"code\": \"salasaApiDog\"\n    },\n    {\n      \"Name\": \"Sarokh\",\n      \"code\": \"sarokh\"\n    },\n    {\n      \"Name\": \"Saudi Salam Logistics\",\n      \"code\": \"salam\"\n    },\n    {\n      \"Name\": \"Send\",\n      \"code\": \"send\"\n    },\n    {\n      \"Name\": \"Shgardi\",\n      \"code\": \"shgardi\"\n    },\n    {\n      \"Name\": \"Ship Hero\",\n      \"code\": \"shiphero\"\n    },\n    {\n      \"Name\": \"Shipa\",\n      \"code\": \"shipa\"\n    },\n    {\n      \"Name\": \"Shipa Delivery V2\",\n      \"code\": \"shipaV2\"\n    },\n    {\n      \"Name\": \"Shipa Fulfillment\",\n      \"code\": \"shipafulfillment\"\n    },\n    {\n      \"Name\": \"Shipco Transport\",\n      \"code\": \"shipco\"\n    },\n    {\n      \"Name\": \"ShipEntegra\",\n      \"code\": \"shipEntegra\"\n    },\n    {\n      \"Name\": \"Shipox\",\n      \"code\": \"shipox\"\n    },\n    {\n      \"Name\": \"Shuttle\",\n      \"code\": \"shuttle\"\n    },\n    {\n      \"Name\": \"Skip Express\",\n      \"code\": \"skipexpress\"\n    },\n    {\n      \"Name\": \"Skynet\",\n      \"code\": \"skynet\"\n    },\n    {\n      \"Name\": \"SLD (Saudi Logistics and Delivery)\",\n      \"code\": \"sld\"\n    },\n    {\n      \"Name\": \"SLS Express\",\n      \"code\": \"sls\"\n    },\n    {\n      \"Name\": \"SLSC Logistic\",\n      \"code\": \"slsclogsitic\"\n    },\n    {\n      \"Name\": \"Smart Point\",\n      \"code\": \"smartpoint\"\n    },\n    {\n      \"Name\": \"SMB Express\",\n      \"code\": \"smbexpress\"\n    },\n    {\n      \"Name\": \"SMI Express\",\n      \"code\": \"smiexpress\"\n    },\n    {\n      \"Name\": \"SMSA B2B\",\n      \"code\": \"smsab2b\"\n    },\n    {\n      \"Name\": \"Smsa Ecom V2\",\n      \"code\": \"secom\"\n    },\n    {\n      \"Name\": \"Smsa Express\",\n      \"code\": \"smsaV2\"\n    },\n    {\n      \"Name\": \"Smsa Omni\",\n      \"code\": \"smsaomni\"\n    },\n    {\n      \"Name\": \"SMSA SDM\",\n      \"code\": \"smsasdm\"\n    },\n    {\n      \"Name\": \"Soon Express\",\n      \"code\": \"soonexpress\"\n    },\n    {\n      \"Name\": \"Sor3a Express\",\n      \"code\": \"sor3aexpress\"\n    },\n    {\n      \"Name\": \"Speed Logistics\",\n      \"code\": \"speedLogistics\"\n    },\n    {\n      \"Name\": \"SPL\",\n      \"code\": \"saudiPost\"\n    },\n    {\n      \"Name\": \"SPL Fulfillment\",\n      \"code\": \"splfulfillment\"\n    },\n    {\n      \"Name\": \"SPL UPDS\",\n      \"code\": \"splUpds\"\n    },\n    {\n      \"Name\": \"SPL V2\",\n      \"code\": \"saudiPostV2\"\n    },\n    {\n      \"Name\": \"Sprint\",\n      \"code\": \"sprint\"\n    },\n    {\n      \"Name\": \"Sps Express\",\n      \"code\": \"spsexpress\"\n    },\n    {\n      \"Name\": \"Starlinks\",\n      \"code\": \"starlinks\"\n    },\n    {\n      \"Name\": \"Starlinks (New)\",\n      \"code\": \"starlinksNew\"\n    },\n    {\n      \"Name\": \"Styla Sewa\",\n      \"code\": \"stylasewa\"\n    },\n    {\n      \"Name\": \"Sundouq\",\n      \"code\": \"sundouq\"\n    },\n    {\n      \"Name\": \"Sürat Kargo (OTO)\",\n      \"code\": \"surat-kargo-marketplace\"\n    },\n    {\n      \"Name\": \"SWEX Express\",\n      \"code\": \"swex\"\n    },\n    {\n      \"Name\": \"Swift\",\n      \"code\": \"swift\"\n    },\n    {\n      \"Name\": \"Syaal\",\n      \"code\": \"syaal\"\n    },\n    {\n      \"Name\": \"Tabex\",\n      \"code\": \"tabex\"\n    },\n    {\n      \"Name\": \"Tal Delivery\",\n      \"code\": \"talDelivery\"\n    },\n    {\n      \"Name\": \"Tam\",\n      \"code\": \"tam\"\n    },\n    {\n      \"Name\": \"Tamex\",\n      \"code\": \"tamex\"\n    },\n    {\n      \"Name\": \"Tard Delivery\",\n      \"code\": \"tard\"\n    },\n    {\n      \"Name\": \"Tard Delivery 2\",\n      \"code\": \"tardV2\"\n    },\n    {\n      \"Name\": \"Tasawuq\",\n      \"code\": \"tasawuq\"\n    },\n    {\n      \"Name\": \"Tawsela\",\n      \"code\": \"tawsela\"\n    },\n    {\n      \"Name\": \"Tawzea Logistics\",\n      \"code\": \"tawzea\"\n    },\n    {\n      \"Name\": \"TD Logistics\",\n      \"code\": \"touchDown\"\n    },\n    {\n      \"Name\": \"TFM Express\",\n      \"code\": \"tfmexpress\"\n    },\n    {\n      \"Name\": \"Thabit Logistics\",\n      \"code\": \"thabit\"\n    },\n    {\n      \"Name\": \"The Arrow\",\n      \"code\": \"thearrow\"\n    },\n    {\n      \"Name\": \"Tookan\",\n      \"code\": \"tookan\"\n    },\n    {\n      \"Name\": \"Transcorp\",\n      \"code\": \"transcorp\"\n    },\n    {\n      \"Name\": \"UPS\",\n      \"code\": \"ups\"\n    },\n    {\n      \"Name\": \"UPS OAuth\",\n      \"code\": \"ups2\"\n    },\n    {\n      \"Name\": \"UPS Uluslararası (PTS)\",\n      \"code\": \"ptsv5Ups\"\n    },\n    {\n      \"Name\": \"Uruk Express\",\n      \"code\": \"uruk\"\n    },\n    {\n      \"Name\": \"USPS\",\n      \"code\": \"usps\"\n    },\n    {\n      \"Name\": \"uTrac\",\n      \"code\": \"utrac\"\n    },\n    {\n      \"Name\": \"Utrac Delivery\",\n      \"code\": \"utracDelivery\"\n    },\n    {\n      \"Name\": \"VAAL\",\n      \"code\": \"vaal\"\n    },\n    {\n      \"Name\": \"Wadha\",\n      \"code\": \"wadha\"\n    },\n    {\n      \"Name\": \"Waseel Logistics\",\n      \"code\": \"waseel\"\n    },\n    {\n      \"Name\": \"Waslnee\",\n      \"code\": \"waslnee\"\n    },\n    {\n      \"Name\": \"Way Express\",\n      \"code\": \"wayexpress\"\n    },\n    {\n      \"Name\": \"WeDeliver\",\n      \"code\": \"wedeliver\"\n    },\n    {\n      \"Name\": \"Weenk App\",\n      \"code\": \"weenkapp\"\n    },\n    {\n      \"Name\": \"Wepik Express\",\n      \"code\": \"wepikexpress\"\n    },\n    {\n      \"Name\": \"XTurbo\",\n      \"code\": \"xturbo\"\n    },\n    {\n      \"Name\": \"Yallow\",\n      \"code\": \"yallow\"\n    },\n    {\n      \"Name\": \"Yamamah Express\",\n      \"code\": \"yamamahexpress\"\n    },\n    {\n      \"Name\": \"Yamamah Express Logestechs\",\n      \"code\": \"yamamahLogestechs\"\n    },\n    {\n      \"Name\": \"Yango\",\n      \"code\": \"yango\"\n    },\n    {\n      \"Name\": \"Yango Next Day Delivery\",\n      \"code\": \"yangondd\"\n    },\n    {\n      \"Name\": \"Yeswa\",\n      \"code\": \"yeswa\"\n    },\n    {\n      \"Name\": \"Yurtiçi Kargo\",\n      \"code\": \"yurticiKargo\"\n    },\n    {\n      \"Name\": \"Yurtiçi Kargo\",\n      \"code\": \"yurtici-kargo-marketplace\"\n    },\n    {\n      \"Name\": \"Zajel\",\n      \"code\": \"zajel\"\n    },\n    {\n      \"Name\": \"Zajil\",\n      \"code\": \"zajil\"\n    }\n  ],\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b5b7812-3876-4247-a2e9-dc7c76200eaa",
+          "name": "DC Config",
+          "request": {
+            "name": "DC Config",
+            "description": {
+              "content": "This API endpoint allows you to view the required account credentials and the template for the delivery company specified in the request, which are needed for the next step: DC activation. Retrieve the delivery company configuration template. Use this template to create a valid configuration object, similar to the given exampleJson . This configuration object is then used to activate the delivery company with the DC Activation API endpoint. Request Parameters: Name Required Type Description code",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "dcConfig"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "08ddf825-a255-4d61-a856-655184c51099",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "dcConfig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"aramex\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"settings\": [\n    {\n      \"fieldName\": \"UserName\",\n      \"parentJson\": \"ClientInfo\",\n      \"fieldType\": \"string\"\n    },\n    {\n      \"fieldName\": \"Password\",\n      \"parentJson\": \"ClientInfo\",\n      \"fieldType\": \"string\"\n    },\n    {\n      \"fieldName\": \"Version\",\n      \"parentJson\": \"ClientInfo\",\n      \"fieldType\": \"string\"\n    },\n    {\n      \"fieldName\": \"AccountNumber\",\n      \"parentJson\": \"ClientInfo\",\n      \"fieldType\": \"string\"\n    },\n    {\n      \"fieldName\": \"AccountPin\",\n      \"parentJson\": \"ClientInfo\",\n      \"fieldType\": \"string\"\n    },\n    {\n      \"fieldName\": \"AccountEntity\",\n      \"parentJson\": \"ClientInfo\",\n      \"fieldType\": \"string\"\n    },\n    {\n      \"fieldName\": \"AccountCountryCode\",\n      \"parentJson\": \"ClientInfo\",\n      \"fieldType\": \"string\"\n    },\n    {\n      \"fieldName\": \"Source\",\n      \"parentJson\": \"ClientInfo\",\n      \"fieldType\": \"string\"\n    },\n    {\n      \"fieldName\": \"productType\",\n      \"fieldType\": \"enum\",\n      \"enumValues\": \"EPX,CDS,OND,GPX,GDX,DPX,DDX,PLX,PPX,PDX\"\n    }\n  ],\n  \"success\": true,\n  \"exampleJSON\": {\n    \"delivery_fee\": 0,\n    \"rating\": 0,\n    \"ClientInfo\": {\n      \"UserName\": \"\",\n      \"Version\": \"v1\",\n      \"AccountPin\": \"\",\n      \"AccountCountryCode\": \"SA\",\n      \"AccountEntity\": \"RUH\",\n      \"Source\": 24,\n      \"Password\": \"\",\n      \"AccountNumber\": \"\"\n    },\n    \"productType\": \"CDS\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "26546cee-9d1f-46ac-a679-9397873cdad7",
+          "name": "DC Activation",
+          "request": {
+            "name": "DC Activation",
+            "description": {
+              "content": "This API endpoint is used to perform Delivery Company (DC) activation. It enables you to activate a delivery company by providing the required configuration details. Request Parameters: Name Required Type Description code yes string The integration name obtained from the DC List. deliveryOptionName yes string A name you assign to easily identify this configuration. brandID no number id of the brand created by Create Brand endpoint settings yes object A configuration object created based on the e",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "dcActivation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3d480680-4ac0-4b13-a912-5c324d7a3cb5",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "dcActivation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"aramex\",\n  \"deliveryOptionName\": \"api test aramex\",\n  \"settings\": {\n    \"ClientInfo\": {\n      \"UserName\": \"apitest@example.com\",\n      \"Version\": \"v1\",\n      \"AccountPin\": \"123\",\n      \"AccountCountryCode\": \"SA\",\n      \"AccountEntity\": \"RUH\",\n      \"Source\": 24,\n      \"Password\": \"123abc\",\n      \"AccountNumber\": \"123456\"\n    },\n    \"productType\": \"CDS\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"deliveryOptionId\": \"123\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5cbaf7ef-d2d2-4d1f-9d90-bdf2d7a65573",
+          "name": "Get Cities",
+          "request": {
+            "name": "Get Cities",
+            "description": {
+              "content": "This API endpoint is used to retrieve a list of cities of a given country. Request Parameters: Name Required Type Description country yes string The country for which cities are to be retrieved. perPage no integer The number of cities to be displayed per page. Default value is 100, max value is 500. page no integer The page number for pagination. Example Response: { \"getCities\": { \"totalCount\": 1, \"perPage\": 1, \"Cities\": [ { \"name\": \"Riyadh\" } ] } }",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "getCities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fd2c3260-db07-4de3-b106-a7b53a838b1f",
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "getCities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"country\": \"SA\",\n  \"perPage\": 10,\n  \"page\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"getCities\": {\n    \"totalCount\": 704,\n    \"perPage\": 400,\n    \"Cities\": [\n      {\n        \"name\": \"Aba Alworood\"\n      },\n      {\n        \"name\": \"Abayt\"\n      },\n      {\n        \"name\": \"Abha\"\n      },\n      {\n        \"name\": \"Abha Manhal\"\n      },\n      {\n        \"name\": \"Abiar Al Mashi\"\n      },\n      {\n        \"name\": \"Abil\"\n      },\n      {\n        \"name\": \"Abu Ajram\"\n      },\n      {\n        \"name\": \"Abu Al Arj\"\n      },\n      {\n        \"name\": \"Abu Arish\"\n      },\n      {\n        \"name\": \"Abu Arradeef\"\n      },\n      {\n        \"name\": \"Abu Dhiba\"\n      },\n      {\n        \"name\": \"Abu Hadriyah\"\n      },\n      {\n        \"name\": \"Abu Hajar\"\n      },\n      {\n        \"name\": \"Abu Muloh\"\n      },\n      {\n        \"name\": \"Abu Rakah\"\n      },\n      {\n        \"name\": \"Abu Rakh\"\n      },\n      {\n        \"name\": \"Ad Dahinah\"\n      },\n      {\n        \"name\": \"Ad Dalfaah\"\n      },\n      {\n        \"name\": \"Ad Dilam\"\n      },\n      {\n        \"name\": \"Ad Diriyah\"\n      },\n      {\n        \"name\": \"Ad Dubaiyah\"\n      },\n      {\n        \"name\": \"Ad Dumayriyah\"\n      },\n      {\n        \"name\": \"Ad Duwadimi\"\n      },\n      {\n        \"name\": \"Addayer\"\n      },\n      {\n        \"name\": \"Adham\"\n      },\n      {\n        \"name\": \"Afif\"\n      },\n      {\n        \"name\": \"Afraa\"\n      },\n      {\n        \"name\": \"Ahad Al Musarihah\"\n      },\n      {\n        \"name\": \"Ahad Bani Zayd\"\n      },\n      {\n        \"name\": \"Ahad Rifaydah\"\n      },\n      {\n        \"name\": \"Ain Al Nakhal\"\n      },\n      {\n        \"name\": \"Ain Dar\"\n      },\n      {\n        \"name\": \"Airj\"\n      },\n      {\n        \"name\": \"Al Aarid\"\n      },\n      {\n        \"name\": \"Al Abar\"\n      },\n      {\n        \"name\": \"Al Abyar\"\n      },\n      {\n        \"name\": \"Al Adari\"\n      },\n      {\n        \"name\": \"Al Adhiriyah\"\n      },\n      {\n        \"name\": \"Al Aflaj (Layla)\"\n      },\n      {\n        \"name\": \"Al Ahmar\"\n      },\n      {\n        \"name\": \"Al Ahmar-Yanbu\"\n      },\n      {\n        \"name\": \"Al Ahsaa\"\n      },\n      {\n        \"name\": \"Al Ais\"\n      },\n      {\n        \"name\": \"Al Aithmah\"\n      },\n      {\n        \"name\": \"Al Ajfar\"\n      },\n      {\n        \"name\": \"Al Ama ir\"\n      },\n      {\n        \"name\": \"Al Amaaria\"\n      },\n      {\n        \"name\": \"Al Amajiyah\"\n      },\n      {\n        \"name\": \"Al Amar\"\n      },\n      {\n        \"name\": \"Al Amlah\"\n      },\n      {\n        \"name\": \"Al Ammarah\"\n      },\n      {\n        \"name\": \"Al Amoah\"\n      },\n      {\n        \"name\": \"AL Andalus\"\n      },\n      {\n        \"name\": \"Al Aqiqah\"\n      },\n      {\n        \"name\": \"Al Aqool\"\n      },\n      {\n        \"name\": \"Al Aradiyah\"\n      },\n      {\n        \"name\": \"Al Araq\"\n      },\n      {\n        \"name\": \"Al Ardah\"\n      },\n      {\n        \"name\": \"Al Ardiyat\"\n      },\n      {\n        \"name\": \"Al Arfaa \"\n      },\n      {\n        \"name\": \"Al Arin\"\n      },\n      {\n        \"name\": \"Al Arja\"\n      },\n      {\n        \"name\": \"Al Aroos\"\n      },\n      {\n        \"name\": \"Al Artawi\"\n      },\n      {\n        \"name\": \"Al Asad\"\n      },\n      {\n        \"name\": \"Al Aseelh\"\n      },\n      {\n        \"name\": \"Al Ataya\"\n      },\n      {\n        \"name\": \"Al Atheeb\"\n      },\n      {\n        \"name\": \"Al Atif\"\n      },\n      {\n        \"name\": \"Al Awamer\"\n      },\n      {\n        \"name\": \"Al Bada\"\n      },\n      {\n        \"name\": \"Al Badai\"\n      },\n      {\n        \"name\": \"Al Badie Al Shamali \"\n      },\n      {\n        \"name\": \"Al Baha\"\n      },\n      {\n        \"name\": \"Al Bahah Region\"\n      },\n      {\n        \"name\": \"Al Baheem\"\n      },\n      {\n        \"name\": \"Al Bashayer\"\n      },\n      {\n        \"name\": \"AL BASR\"\n      },\n      {\n        \"name\": \"Al Batra\"\n      },\n      {\n        \"name\": \"Al Bijadyah\"\n      },\n      {\n        \"name\": \"Al Bikreyah\"\n      },\n      {\n        \"name\": \"Al Bir\"\n      },\n      {\n        \"name\": \"Al Bukayriyah\"\n      },\n      {\n        \"name\": \"Al Butayn\"\n      },\n      {\n        \"name\": \"Al Dalemya\"\n      },\n      {\n        \"name\": \"Al Dhabyah\"\n      },\n      {\n        \"name\": \"Al Dhahreyah\"\n      },\n      {\n        \"name\": \"Al Dheelah\"\n      },\n      {\n        \"name\": \"AL DUGHAIMIYAH\"\n      },\n      {\n        \"name\": \"Al Dulaymiyah\"\n      },\n      {\n        \"name\": \"Al Fagali\"\n      },\n      {\n        \"name\": \"Al Fara\"\n      },\n      {\n        \"name\": \"Al Farshah\"\n      },\n      {\n        \"name\": \"Al Fatiha\"\n      },\n      {\n        \"name\": \"Al Fawwarah\"\n      },\n      {\n        \"name\": \"Al Furaysh\"\n      },\n      {\n        \"name\": \"Al Fuwaileq\"\n      },\n      {\n        \"name\": \"Al Gafrat\"\n      },\n      {\n        \"name\": \"Al Gamri\"\n      },\n      {\n        \"name\": \"Al Gandla\"\n      },\n      {\n        \"name\": \"Al Gharif \"\n      },\n      {\n        \"name\": \"Al Ghat\"\n      },\n      {\n        \"name\": \"Al Habjeia\"\n      },\n      {\n        \"name\": \"Al Haddar\"\n      },\n      {\n        \"name\": \"Al Hadror\"\n      },\n      {\n        \"name\": \"Al Haeer\"\n      },\n      {\n        \"name\": \"Al Haith\"\n      },\n      {\n        \"name\": \"Al Haqu\"\n      },\n      {\n        \"name\": \"Al Harara\"\n      },\n      {\n        \"name\": \"Al Hariq\"\n      },\n      {\n        \"name\": \"Al Harth\"\n      },\n      {\n        \"name\": \"Al Hayathem\"\n      },\n      {\n        \"name\": \"Al Hayeet\"\n      },\n      {\n        \"name\": \"Al Hazim\"\n      },\n      {\n        \"name\": \"Al Hazmi\"\n      },\n      {\n        \"name\": \"Al Henayah\"\n      },\n      {\n        \"name\": \"Al Heno\"\n      },\n      {\n        \"name\": \"Al Hifah\"\n      },\n      {\n        \"name\": \"Al Hijf\"\n      },\n      {\n        \"name\": \"Al Hilaliyah\"\n      },\n      {\n        \"name\": \"Al Hinnah\"\n      },\n      {\n        \"name\": \"Al huda\"\n      },\n      {\n        \"name\": \"Al Hudud Al Shamaliyah\"\n      },\n      {\n        \"name\": \"Al Hufayr\"\n      },\n      {\n        \"name\": \"Al Hufayyirah\"\n      },\n      {\n        \"name\": \"Al Hufuf\"\n      },\n      {\n        \"name\": \"Al Hulayfah As Sufla\"\n      },\n      {\n        \"name\": \"Al Hulwah\"\n      },\n      {\n        \"name\": \"Al Husayni\"\n      },\n      {\n        \"name\": \"Al Husayniyah\"\n      },\n      {\n        \"name\": \"Al Husayy\"\n      },\n      {\n        \"name\": \"Al Husima\"\n      },\n      {\n        \"name\": \"Al Huwaya east\"\n      },\n      {\n        \"name\": \"Al Idabi\"\n      },\n      {\n        \"name\": \"Al JABRIYAH\"\n      },\n      {\n        \"name\": \"Al Jafr\"\n      },\n      {\n        \"name\": \"Al Jaradiyah\"\n      },\n      {\n        \"name\": \"Al Jarf\"\n      },\n      {\n        \"name\": \"Al Jarn\"\n      },\n      {\n        \"name\": \"Al Jawf Region\"\n      },\n      {\n        \"name\": \"Al Jawwah\"\n      },\n      {\n        \"name\": \"Al Jifah\"\n      },\n      {\n        \"name\": \"Al Jithamiyah\"\n      },\n      {\n        \"name\": \"Al Jubail\"\n      },\n      {\n        \"name\": \"Al Jubailah\"\n      },\n      {\n        \"name\": \"Al Jumum\"\n      },\n      {\n        \"name\": \"Al kadami\"\n      },\n      {\n        \"name\": \"Al Kadarah\"\n      },\n      {\n        \"name\": \"Al Kamil\"\n      },\n      {\n        \"name\": \"Al Khafji\"\n      },\n      {\n        \"name\": \"Al Khalaf\"\n      },\n      {\n        \"name\": \"Al Khaniq\"\n      },\n      {\n        \"name\": \"Al Kharj\"\n      },\n      {\n        \"name\": \"Al Kharkhir\"\n      },\n      {\n        \"name\": \"Al Khashabiyah\"\n      },\n      {\n        \"name\": \"Al Khasiybahi\"\n      },\n      {\n        \"name\": \"Al Khitah\"\n      },\n      {\n        \"name\": \"Al khoba\"\n      },\n      {\n        \"name\": \"Al Khubar\"\n      },\n      {\n        \"name\": \"Al Khuffiyah\"\n      },\n      {\n        \"name\": \"Al khuraybah\"\n      },\n      {\n        \"name\": \"Al Khuraytah\"\n      },\n      {\n        \"name\": \"Al Khurmah\"\n      },\n      {\n        \"name\": \"Al Khushaybi\"\n      },\n      {\n        \"name\": \"Al Lahien\"\n      },\n      {\n        \"name\": \"Al Laqayit\"\n      },\n      {\n        \"name\": \"Al Lsawiyah\"\n      },\n      {\n        \"name\": \"Al Ma`ashabah\"\n      },\n      {\n        \"name\": \"Al Mada\"\n      },\n      {\n        \"name\": \"Al Madaya\"\n      },\n      {\n        \"name\": \"Al Madha\"\n      },\n      {\n        \"name\": \"Al Madinah Region\"\n      },\n      {\n        \"name\": \"AL MAHANI\"\n      },\n      {\n        \"name\": \"Al Mahd\"\n      },\n      {\n        \"name\": \"Al Majardah\"\n      },\n      {\n        \"name\": \"Al Majmaah\"\n      },\n      {\n        \"name\": \"AL MALIDA\"\n      },\n      {\n        \"name\": \"Al Marameh\"\n      },\n      {\n        \"name\": \"Al Markaz\"\n      },\n      {\n        \"name\": \"Al Marmuthah\"\n      },\n      {\n        \"name\": \"Al Marooj\"\n      },\n      {\n        \"name\": \"Al Masgi\"\n      },\n      {\n        \"name\": \"Al Mayyah\"\n      },\n      {\n        \"name\": \"Al Midhnab\"\n      },\n      {\n        \"name\": \"Al Midrij\"\n      },\n      {\n        \"name\": \"Al Mishaliah\"\n      },\n      {\n        \"name\": \"Al Mothalath\"\n      },\n      {\n        \"name\": \"Al Mozvin\"\n      },\n      {\n        \"name\": \"Al Mubarakah\"\n      },\n      {\n        \"name\": \"Al Mudayyih\"\n      },\n      {\n        \"name\": \"Al Mukhwah\"\n      },\n      {\n        \"name\": \"Al Mulaylih\"\n      },\n      {\n        \"name\": \"Al Muntashar\"\n      },\n      {\n        \"name\": \"Al Musayjid\"\n      },\n      {\n        \"name\": \"Al Muwaylih\"\n      },\n      {\n        \"name\": \"Al Muzahimiyah\"\n      },\n      {\n        \"name\": \"Al Nabah\"\n      },\n      {\n        \"name\": \"Al Nuzha\"\n      },\n      {\n        \"name\": \"Al Ogam\"\n      },\n      {\n        \"name\": \"Al Qaa\"\n      },\n      {\n        \"name\": \"Al Qaid\"\n      },\n      {\n        \"name\": \"Al Qaied\"\n      },\n      {\n        \"name\": \"Al Qarin\"\n      },\n      {\n        \"name\": \"Al Qarinah\"\n      },\n      {\n        \"name\": \"Al Qassim Region\"\n      },\n      {\n        \"name\": \"Al Qatif\"\n      },\n      {\n        \"name\": \"Al Qeddeh\"\n      },\n      {\n        \"name\": \"Al Qirawan\"\n      },\n      {\n        \"name\": \"Al qowarah\"\n      },\n      {\n        \"name\": \"Al Qulayyib\"\n      },\n      {\n        \"name\": \"Al Qunfidhah\"\n      },\n      {\n        \"name\": \"Al Qurainah\"\n      },\n      {\n        \"name\": \"Al Qurayyat\"\n      },\n      {\n        \"name\": \"AL QURESHIYAT\"\n      },\n      {\n        \"name\": \"Al Rafaeya'a\"\n      },\n      {\n        \"name\": \"Al Rafaie\"\n      },\n      {\n        \"name\": \"Al Rathaya\"\n      },\n      {\n        \"name\": \"Al Rayis\"\n      },\n      {\n        \"name\": \"Al Reeth\"\n      },\n      {\n        \"name\": \"Al Ruqi\"\n      },\n      {\n        \"name\": \"Al Sahalil\"\n      },\n      {\n        \"name\": \"Al Salamah\"\n      },\n      {\n        \"name\": \"AL SAYL ALKHABIR\"\n      },\n      {\n        \"name\": \"AL SAYL ALSAGHIR\"\n      },\n      {\n        \"name\": \"Al Shatt\"\n      },\n      {\n        \"name\": \"Al Shegrah\"\n      },\n      {\n        \"name\": \"Al Shehiyah\"\n      },\n      {\n        \"name\": \"Al Sheqiqah\"\n      },\n      {\n        \"name\": \"Al Shlayil\"\n      },\n      {\n        \"name\": \"Al Shoqiyah\"\n      },\n      {\n        \"name\": \"Al Shuaba\"\n      },\n      {\n        \"name\": \"Al Sih\"\n      },\n      {\n        \"name\": \"Al Subaykhah\"\n      },\n      {\n        \"name\": \"Al Sulaimi\"\n      },\n      {\n        \"name\": \"Al tanumah\"\n      },\n      {\n        \"name\": \"Al Taraf\"\n      },\n      {\n        \"name\": \"Al Theniah\"\n      },\n      {\n        \"name\": \"Al Torkiyah\"\n      },\n      {\n        \"name\": \"Al Twaitheer\"\n      },\n      {\n        \"name\": \"Al Udayd\"\n      },\n      {\n        \"name\": \"Al Uferiah\"\n      },\n      {\n        \"name\": \"Al Uwayqilah\"\n      },\n      {\n        \"name\": \"Al Waddean\"\n      },\n      {\n        \"name\": \"Al Wajh\"\n      },\n      {\n        \"name\": \"Al Wannan\"\n      },\n      {\n        \"name\": \"Al Wasayta\"\n      },\n      {\n        \"name\": \"Al-Batna\"\n      },\n      {\n        \"name\": \"Al-halaa\"\n      },\n      {\n        \"name\": \"AL-JUAYMAH\"\n      },\n      {\n        \"name\": \"Al-Matan\"\n      },\n      {\n        \"name\": \"Al-MNSALA\"\n      },\n      {\n        \"name\": \"Al-Nasifa\"\n      },\n      {\n        \"name\": \"Al-Umran\"\n      },\n      {\n        \"name\": \"Al-Wozeyh\"\n      },\n      {\n        \"name\": \"Alabadilah\"\n      },\n      {\n        \"name\": \"Alarjeen\"\n      },\n      {\n        \"name\": \"Alasilan\"\n      },\n      {\n        \"name\": \"Alearduh\"\n      },\n      {\n        \"name\": \"Algayed\"\n      },\n      {\n        \"name\": \"Alhada\"\n      },\n      {\n        \"name\": \"Alhayma\"\n      },\n      {\n        \"name\": \"Aliland\"\n      },\n      {\n        \"name\": \"AlJanadria\"\n      },\n      {\n        \"name\": \"Alkhazzan\"\n      },\n      {\n        \"name\": \"AlKhhafah\"\n      },\n      {\n        \"name\": \"Almazef\"\n      },\n      {\n        \"name\": \"Almutayrifi\"\n      },\n      {\n        \"name\": \"Almuzayri\"\n      },\n      {\n        \"name\": \"Alnabhanya\"\n      },\n      {\n        \"name\": \"Alqabil\"\n      },\n      {\n        \"name\": \"Alquaba\"\n      },\n      {\n        \"name\": \"AlQudaih\"\n      },\n      {\n        \"name\": \"Alqurra\"\n      },\n      {\n        \"name\": \"Alshahili\"\n      },\n      {\n        \"name\": \"Alshihyah\"\n      },\n      {\n        \"name\": \"Alshuqayri\"\n      },\n      {\n        \"name\": \"Alshwaaq\"\n      },\n      {\n        \"name\": \"Alsilaa\"\n      },\n      {\n        \"name\": \"Alsulmania\"\n      },\n      {\n        \"name\": \"Alturfiyah\"\n      },\n      {\n        \"name\": \"Alwasqah\"\n      },\n      {\n        \"name\": \"Alyutamah\"\n      },\n      {\n        \"name\": \"Amaaer Ben Sana'a\"\n      },\n      {\n        \"name\": \"Amaq\"\n      },\n      {\n        \"name\": \"An Nabiyah\"\n      },\n      {\n        \"name\": \"An Nabk Abu Qasr\"\n      },\n      {\n        \"name\": \"An nabqiyyah\"\n      },\n      {\n        \"name\": \"An Nafiah\"\n      },\n      {\n        \"name\": \"An Nasiriyah\"\n      },\n      {\n        \"name\": \"An Nawwariyyah\"\n      },\n      {\n        \"name\": \"An Nazayim\"\n      },\n      {\n        \"name\": \"An Nuayriyah\"\n      },\n      {\n        \"name\": \"An Nuqrah\"\n      },\n      {\n        \"name\": \"Aqiq\"\n      },\n      {\n        \"name\": \"Ar Radifah\"\n      },\n      {\n        \"name\": \"Ar Rafi'ah\"\n      },\n      {\n        \"name\": \"Ar Rafiah\"\n      },\n      {\n        \"name\": \"Ar Rass\"\n      },\n      {\n        \"name\": \"Ar Rawdah \"\n      },\n      {\n        \"name\": \"AR RAYN\"\n      },\n      {\n        \"name\": \"Ar Rishawiyah\"\n      },\n      {\n        \"name\": \"Arafa\"\n      },\n      {\n        \"name\": \"Arar\"\n      },\n      {\n        \"name\": \"Artawiah\"\n      },\n      {\n        \"name\": \"As Sahwah\"\n      },\n      {\n        \"name\": \"As Sam'uriyah\"\n      },\n      {\n        \"name\": \"As Shamli\"\n      },\n      {\n        \"name\": \"As Sihaf\"\n      },\n      {\n        \"name\": \"As Sulaimaniyah\"\n      },\n      {\n        \"name\": \"As Sulayyil\"\n      },\n      {\n        \"name\": \"As Sulubiayh\"\n      },\n      {\n        \"name\": \"Asbtar\"\n      },\n      {\n        \"name\": \"asdadadeaed\"\n      },\n      {\n        \"name\": \"asdasd\"\n      },\n      {\n        \"name\": \"asdasdrertyr\"\n      },\n      {\n        \"name\": \"asdqtrawqew\"\n      },\n      {\n        \"name\": \"Asfan\"\n      },\n      {\n        \"name\": \"Ash Shaara\"\n      },\n      {\n        \"name\": \"Ash Shananah\"\n      },\n      {\n        \"name\": \"Ash Shimasiyah\"\n      },\n      {\n        \"name\": \"Ash Shinan\"\n      },\n      {\n        \"name\": \"Ash Shumaysi\"\n      },\n      {\n        \"name\": \"Ash Shuqaiq\"\n      },\n      {\n        \"name\": \"Ash Shuqrah\"\n      },\n      {\n        \"name\": \"Asheerah Sudayer\"\n      },\n      {\n        \"name\": \"Asir\"\n      },\n      {\n        \"name\": \"Asir Region\"\n      },\n      {\n        \"name\": \"Assadawi\"\n      },\n      {\n        \"name\": \"Assalmanyah\"\n      },\n      {\n        \"name\": \"Assiyah\"\n      },\n      {\n        \"name\": \"Asuwayq\"\n      },\n      {\n        \"name\": \"At Tan'Im\"\n      },\n      {\n        \"name\": \"At Tiraq\"\n      },\n      {\n        \"name\": \"At Tuwal\"\n      },\n      {\n        \"name\": \"At Tuwayr\"\n      },\n      {\n        \"name\": \"Atawleh\"\n      },\n      {\n        \"name\": \"Ath Thamiriyah\"\n      },\n      {\n        \"name\": \"Ath Thybiyah\"\n      },\n      {\n        \"name\": \"Awamiah\"\n      },\n      {\n        \"name\": \"Awdah Sudayer\"\n      },\n      {\n        \"name\": \"Ayn Fuhayd\"\n      },\n      {\n        \"name\": \"Az Zughayn\"\n      },\n      {\n        \"name\": \"Az Zulfi\"\n      },\n      {\n        \"name\": \"Badar Hunain\"\n      },\n      {\n        \"name\": \"Badr\"\n      },\n      {\n        \"name\": \"Badr Al Janoub\"\n      },\n      {\n        \"name\": \"Bahara\"\n      },\n      {\n        \"name\": \"Bahr Abu Sukaynah\"\n      },\n      {\n        \"name\": \"Bahrain Causeway\"\n      },\n      {\n        \"name\": \"Bahrat Al Moujoud\"\n      },\n      {\n        \"name\": \"Balahmar\"\n      },\n      {\n        \"name\": \"Baljurashi\"\n      },\n      {\n        \"name\": \"Balqarn\"\n      },\n      {\n        \"name\": \"Banban\"\n      },\n      {\n        \"name\": \"Bani Hamim\"\n      },\n      {\n        \"name\": \"Bani Hasan\"\n      },\n      {\n        \"name\": \"Bani Malek\"\n      },\n      {\n        \"name\": \"Baqa Ash Sharqiyah\"\n      },\n      {\n        \"name\": \"Baqaa\"\n      },\n      {\n        \"name\": \"Bareq\"\n      },\n      {\n        \"name\": \"Batha\"\n      },\n      {\n        \"name\": \"Bawathil\"\n      },\n      {\n        \"name\": \"Baynah\"\n      },\n      {\n        \"name\": \"Baysh\"\n      },\n      {\n        \"name\": \"Billasmar\"\n      },\n      {\n        \"name\": \"Bin Aqeel Palace\"\n      },\n      {\n        \"name\": \"Bir Bin Harmas\"\n      },\n      {\n        \"name\": \"Birk\"\n      },\n      {\n        \"name\": \"Bishah\"\n      },\n      {\n        \"name\": \"Buqayq\"\n      },\n      {\n        \"name\": \"Buraydah\"\n      },\n      {\n        \"name\": \"Daelim\"\n      },\n      {\n        \"name\": \"Dahu\"\n      },\n      {\n        \"name\": \"Damad\"\n      },\n      {\n        \"name\": \"Dammam\"\n      },\n      {\n        \"name\": \"Darb\"\n      },\n      {\n        \"name\": \"Dariyah\"\n      },\n      {\n        \"name\": \"Dawmat Al Jandal\"\n      },\n      {\n        \"name\": \"dayida\"\n      },\n      {\n        \"name\": \"Deraab\"\n      },\n      {\n        \"name\": \"Dhahban\"\n      },\n      {\n        \"name\": \"Dhahran\"\n      },\n      {\n        \"name\": \"Dhahran Al Janoub\"\n      },\n      {\n        \"name\": \"DHALAM\"\n      },\n      {\n        \"name\": \"Dhurma\"\n      },\n      {\n        \"name\": \"Duba\"\n      },\n      {\n        \"name\": \"DUBAY'AH\"\n      },\n      {\n        \"name\": \"Duhknah\"\n      },\n      {\n        \"name\": \"Dulay Rashid\"\n      },\n      {\n        \"name\": \"Dulayhan\"\n      },\n      {\n        \"name\": \"dummy\"\n      },\n      {\n        \"name\": \"Eaqabat shiear\"\n      },\n      {\n        \"name\": \"Eastern Province\"\n      },\n      {\n        \"name\": \"Eastern Region\"\n      },\n      {\n        \"name\": \"Eayan dar aljadida\"\n      },\n      {\n        \"name\": \"Eayan dar alqadima\"\n      },\n      {\n        \"name\": \"Edadh\"\n      },\n      {\n        \"name\": \"Either\"\n      },\n      {\n        \"name\": \"El-Ebva\"\n      },\n      {\n        \"name\": \"Eshirah\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "226de708-01c3-49b6-b9fe-a02d5a626332",
+              "name": "409 country null",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "getCities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"country\": \"SA\",\n  \"perPage\": 10,\n  \"page\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"errorMsg\": \"country is null\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1fb4153-d33b-46f6-81ec-763f9d612422",
+          "name": "Check DC Branch List",
+          "request": {
+            "name": "Check DC Branch List",
+            "description": {
+              "content": "This API endpoint retrieves the available branch list, PUDO (Pick-Up/Drop-Off) points, parcel shops, lockers, and other supported service locations for the selected delivery company. It can be used to obtain the latest carrier location information required for branch deliveries, pickup point selection, return shipments, and other location-based shipping services. The response includes all available service points supported by the carrier based on the provided request parameters. Request Paramete",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "checkDCBranchList"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ef5fbb0e-c2dd-467a-8a74-6471b2d15954",
+              "name": "200- Check DC Branch List",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "checkDCBranchList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deliveryCompanyName\": \"acs\",\n  \"countryCode\": \"GR\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pickupPoints\": [\n    {\n      \"dcBranchName\": \"Saudi Post Riyadh Olaya Branch\",\n      \"country\": \"SA\",\n      \"address\": \"King Fahd Road, Al Olaya District\",\n      \"city\": \"RIYADH\",\n      \"codSupported\": true,\n      \"branchEmail\": \"olaya@splonline.com.sa\",\n      \"lon\": 46.675296,\n      \"paymentType\": \"Cash, Mada, Visa, Mastercard\",\n      \"branchCode\": \"SPL1001\",\n      \"phoneNumber\": \"+966112345678\",\n      \"postCode\": \"12214\",\n      \"state\": \"RIYADH\",\n      \"branchType\": \"POST_OFFICE\",\n      \"workingHours\": \"08:00-21:00\",\n      \"weekendWorkingHours\": \"16:00-21:00\",\n      \"lat\": 24.713552\n    },\n    {\n      \"dcBranchName\": \"Saudi Post Smart Locker Riyadh Olaya\",\n      \"country\": \"SA\",\n      \"address\": \"Olaya Mall, King Fahd Road\",\n      \"city\": \"RIYADH\",\n      \"codSupported\": false,\n      \"branchEmail\": \"lockers@splonline.com.sa\",\n      \"lon\": 46.679321,\n      \"paymentType\": \"Not available\",\n      \"branchCode\": \"SPL5001\",\n      \"postCode\": \"12214\",\n      \"state\": \"RIYADH\",\n      \"branchType\": \"SMART_LOCKER\",\n      \"workingHours\": \"24HOURS\",\n      \"weekendWorkingHours\": \"24HOURS\",\n      \"lat\": 24.715021\n    },\n    {\n      \"dcBranchName\": \"Saudi Post Smart Locker Riyadh Al Malaz\",\n      \"country\": \"SA\",\n      \"address\": \"Salah Ad Din Al Ayyubi Road, Al Malaz\",\n      \"city\": \"RIYADH\",\n      \"codSupported\": false,\n      \"branchEmail\": \"lockers@splonline.com.sa\",\n      \"lon\": 46.738591,\n      \"paymentType\": \"Not available\",\n      \"branchCode\": \"SPL5002\",\n      \"postCode\": \"12831\",\n      \"state\": \"RIYADH\",\n      \"branchType\": \"SMART_LOCKER\",\n      \"workingHours\": \"24HOURS\",\n      \"weekendWorkingHours\": \"24HOURS\",\n      \"lat\": 24.666912\n    },\n    {\n      \"dcBranchName\": \"Saudi Post Jeddah Al Rawdah Branch\",\n      \"country\": \"SA\",\n      \"address\": \"Prince Sultan Road, Al Rawdah\",\n      \"city\": \"JEDDAH\",\n      \"codSupported\": true,\n      \"branchEmail\": \"jeddah@splonline.com.sa\",\n      \"lon\": 39.174893,\n      \"paymentType\": \"Cash, Mada, Visa, Mastercard\",\n      \"branchCode\": \"SPL1002\",\n      \"phoneNumber\": \"+966126789012\",\n      \"postCode\": \"23432\",\n      \"state\": \"MAKKAH\",\n      \"branchType\": \"POST_OFFICE\",\n      \"workingHours\": \"08:00-21:00\",\n      \"weekendWorkingHours\": \"16:00-21:00\",\n      \"lat\": 21.583333\n    },\n    {\n      \"dcBranchName\": \"Saudi Post Smart Locker Jeddah Mall\",\n      \"country\": \"SA\",\n      \"address\": \"Red Sea Mall, King Abdulaziz Road\",\n      \"city\": \"JEDDAH\",\n      \"codSupported\": false,\n      \"branchEmail\": \"lockers@splonline.com.sa\",\n      \"lon\": 39.108922,\n      \"paymentType\": \"Not available\",\n      \"branchCode\": \"SPL5003\",\n      \"postCode\": \"23612\",\n      \"state\": \"MAKKAH\",\n      \"branchType\": \"SMART_LOCKER\",\n      \"workingHours\": \"24HOURS\",\n      \"weekendWorkingHours\": \"24HOURS\",\n      \"lat\": 21.634017\n    },\n    {\n      \"dcBranchName\": \"Saudi Post Dammam Al Faisaliyah Branch\",\n      \"country\": \"SA\",\n      \"address\": \"King Saud Road, Al Faisaliyah\",\n      \"city\": \"DAMMAM\",\n      \"codSupported\": true,\n      \"branchEmail\": \"dammam@splonline.com.sa\",\n      \"lon\": 50.103306,\n      \"paymentType\": \"Cash, Mada, Visa, Mastercard\",\n      \"branchCode\": \"SPL1003\",\n      \"phoneNumber\": \"+966138765432\",\n      \"postCode\": \"32272\",\n      \"state\": \"EASTERN PROVINCE\",\n      \"branchType\": \"POST_OFFICE\",\n      \"workingHours\": \"08:00-21:00\",\n      \"weekendWorkingHours\": \"16:00-21:00\",\n      \"lat\": 26.420683\n    },\n    {\n      \"dcBranchName\": \"Saudi Post Smart Locker Dammam Corniche\",\n      \"country\": \"SA\",\n      \"address\": \"Corniche Road, Ash Shati District\",\n      \"city\": \"DAMMAM\",\n      \"codSupported\": false,\n      \"branchEmail\": \"lockers@splonline.com.sa\",\n      \"lon\": 50.110912,\n      \"paymentType\": \"Not available\",\n      \"branchCode\": \"SPL5004\",\n      \"postCode\": \"32413\",\n      \"state\": \"EASTERN PROVINCE\",\n      \"branchType\": \"SMART_LOCKER\",\n      \"workingHours\": \"24HOURS\",\n      \"weekendWorkingHours\": \"24HOURS\",\n      \"lat\": 26.451209\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tryoto.com/rest/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0b625c68-76b5-44e2-ac17-b7f14716b138",
+    "name": "OTO API V2 Account Carrier Integrations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO's platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you're integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.\n\nContact Support:\n Name: OTO Support",
+      "type": "text/plain"
+    }
+  }
+}

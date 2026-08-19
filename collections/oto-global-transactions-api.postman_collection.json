@@ -1,0 +1,446 @@
+{
+  "item": [
+    {
+      "id": "dc2397e5-1c31-471d-ac67-b8b8f87cc95b",
+      "name": "Transactions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cb596df3-c085-4dd2-8a83-0eb84a9e6fc9",
+          "name": "Get Shipping Price Transactions List",
+          "request": {
+            "name": "Get Shipping Price Transactions List",
+            "description": {
+              "content": "This API endpoint provides details of your Shipping Price Transactions, calculated based on your configured shipping price settings. By providing either the Order ID or Shipment ID, you can retrieve the shipping cost along with other transactional details. Important Note: The results from this API apply only to shipments created using your configured shipping price contracts. Shipping costs are calculated based on factors such as weight, destination, and other predefined configurations. Request ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "getShippingPriceTransactionsList"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "df4e3c6c-3860-48d2-8203-91b1ae8f8921",
+              "name": "200 Order ID and Shipmetn ID request example",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "getShippingPriceTransactionsList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shipmentId\": \"2302416029\",\n  \"orderId\": \"OID-22700-1013\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"count\": 1,\n  \"shippingTransactions\": [\n    {\n      \"amount\": 11,\n      \"orderID\": \"OID-9618-1062\",\n      \"shipmentID\": \"290615409716\",\n      \"description\": \"shipment created\",\n      \"orderStatus\": \"shipmentCreated\",\n      \"ID\": 1347,\n      \"transactionDate\": \"2023-12-06T16:18\",\n      \"otoOrderID\": 30798075,\n      \"deliveryName\": \"smsav2-2\",\n      \"transaction\": \"shippingCost\",\n      \"status\": \"booked\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "127ff322-daf2-4a73-92f1-1aa04e476022",
+          "name": "Credit Transactions",
+          "request": {
+            "name": "Credit Transactions",
+            "description": {
+              "content": "This API endpoint provides a powerful way to retrieve credit transaction records from your system. This endpoint supports pagination for efficient data retrieval and allows filtering based on minimum and maximum dates. Additionally, if an orderId is provided, the maxDate and minDate parameters become optional, enabling direct access to transactions associated with the specified order. Request Parameters: Name Required Type Description perPage yes number Credit transaction count in the response. ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "creditTransactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "perPage",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "minDate",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "maxDate",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ad5eac25-f37d-4ce3-89d8-ed7b63ec9dfe",
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "creditTransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "perPage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "minDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"transactions\": [\n    {\n      \"amount\": 19,\n      \"orderID\": \"41590739\",\n      \"deliveryCompanySettingsId\": 5564,\n      \"description\": \"Shipment canceled. Delivery fees will be credited back to your account.\",\n      \"transactionDate\": \"2024-09-16T11:26:01\",\n      \"orderPaymentType\": \"cod\",\n      \"shipmentType\": \"forward\",\n      \"transactionType\": \"dcFee\",\n      \"remainingAmount\": 85.9,\n      \"deliveryCompanyName\": \"Deliver Now\",\n      \"chargingType\": \"charge\",\n      \"langKey\": \"dcFeeShipmentCanceledRevokedDescription\",\n      \"shipmentID\": \"DNL05000049328\",\n      \"ID\": 8294185,\n      \"otoOrderID\": 10690509,\n      \"status\": \"revoked\"\n    },\n    {\n      \"amount\": 18,\n      \"orderID\": \"OID-20980-1092\",\n      \"deliveryCompanySettingsId\": 5551,\n      \"description\": \"Canceled shipment. Delivery fee credited back to your account.\",\n      \"transactionDate\": \"2024-09-24T10:40:43\",\n      \"orderPaymentType\": \"paid\",\n      \"shipmentType\": \"forward\",\n      \"transactionType\": \"dcFee\",\n      \"remainingAmount\": 51.8,\n      \"deliveryCompanyName\": \"Aramex\",\n      \"chargingType\": \"refund\",\n      \"langKey\": \"dcFeeShipmentCanceledDescription\",\n      \"shipmentID\": \"50162082692\",\n      \"ID\": 8430556,\n      \"otoOrderID\": 10748485,\n      \"status\": \"canceled\"\n    },\n    {\n      \"amount\": 0.9,\n      \"orderID\": \"1203\",\n      \"deliveryCompanySettingsId\": 3022,\n      \"description\": \"OTO Fee Booked on shipment created\",\n      \"transactionDate\": \"2024-09-01T11:37:10\",\n      \"orderPaymentType\": \"cod\",\n      \"transactionType\": \"otoFee\",\n      \"remainingAmount\": 111.2,\n      \"deliveryCompanyName\": \"OTO FLEX\",\n      \"langKey\": \"otoFeeSearchingDriverDescription\",\n      \"shipmentID\": 0,\n      \"ID\": 8057956,\n      \"otoOrderID\": 10248079,\n      \"status\": \"booked\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30b6e46f-5587-433a-bd48-06e8aa59db5d",
+              "name": "400 Invalid Date",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "creditTransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "perPage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "minDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"otoErrorCode\": \"1107\",\n  \"otoErrorMessage\": \"minDate or maxDate is missing or invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cec11f33-7433-4b01-80ed-30d3a0d09697",
+          "name": "Shipment Transactions",
+          "request": {
+            "name": "Shipment Transactions",
+            "description": {
+              "content": "Shipment Transactions This API endpoint provides users with access to detailed information about shipment transactions. This API is designed to retrieve and display key transaction data, allowing users to monitor and review shipment-related activities.It retrieves shipment transactions with the option to paginate and filter by minimum and maximum dates. Note: If orderId exists maxDate and minDate are not required. If shipment number exists maxDate and minDate are not required. Request Parameters",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "shipmentTransactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "perPage",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "minDate",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "maxDate",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a458fce-496a-4fc1-ae6d-20d325005e7f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "shipmentTransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "perPage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "minDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"shipments\": [\n    {\n      \"shipmentNumber\": \"1231231AS\",\n      \"orderId\": \"123123\",\n      \"shipmentCreationDate\": \"2023-12-05T06:47:46\",\n      \"deliveryCompanyName\": \"deliveryCompany\",\n      \"dcConnectionName\": \"connectionName\",\n      \"shipmentType\": \"Forward Shipment\",\n      \"dcCharge\": 25,\n      \"currency\": \"TRY\",\n      \"originalWeight\": 100,\n      \"dcUpdatedWeight\": 50,\n      \"status\": \"status\",\n      \"dcInvoiceNumber\": 15579456\n    },\n    {\n      \"shipmentNumber\": \"12435356\",\n      \"orderId\": \"342324234\",\n      \"shipmentCreationDate\": \"2023-12-05T06:47:46\",\n      \"deliveryCompanyName\": \"deliveryCompany\",\n      \"dcConnectionName\": \"connectionName\",\n      \"shipmentType\": \"Forward Shipment\",\n      \"dcCharge\": 40,\n      \"currency\": \"TRY\",\n      \"originalWeight\": 40,\n      \"dcUpdatedWeight\": 5,\n      \"status\": \"status\",\n      \"dcInvoiceNumber\": 21626353729823\n    },\n    {\n      \"shipmentNumber\": \"657567\",\n      \"orderId\": \"34534534\",\n      \"shipmentCreationDate\": \"2023-12-05T06:47:46\",\n      \"deliveryCompanyName\": \"deliveryCompany\",\n      \"dcConnectionName\": \"connectionName\",\n      \"shipmentType\": \"Forward Shipment\",\n      \"dcCharge\": 60,\n      \"currency\": \"TRY\",\n      \"originalWeight\": 80,\n      \"dcUpdatedWeight\": 80,\n      \"status\": \"status\",\n      \"dcInvoiceNumber\": 21626353729823120000\n    },\n    {\n      \"shipmentNumber\": \"5423423\",\n      \"orderId\": \"14335213\",\n      \"shipmentCreationDate\": \"2023-12-05T06:47:46\",\n      \"deliveryCompanyName\": \"deliveryCompany\",\n      \"dcConnectionName\": \"connectionName\",\n      \"shipmentType\": \"Forward Shipment\",\n      \"dcCharge\": 25,\n      \"currency\": \"TRY\",\n      \"originalWeight\": 100,\n      \"dcUpdatedWeight\": 50,\n      \"status\": \"status\",\n      \"dcInvoiceNumber\": 2162635372\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tryoto.com/rest/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e9bf0d41-4968-443a-8065-1f207aa3bb91",
+    "name": "OTO API V2 Account Transactions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO's platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you're integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.\n\nContact Support:\n Name: OTO Support",
+      "type": "text/plain"
+    }
+  }
+}

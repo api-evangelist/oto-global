@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OTO API V2 Account Authorization API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authorization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Refresh Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/refreshToken",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint is used to obtain a new access_token by providing a valid refresh_token . The access_token is a temporary token with a lifespan of one hour, used to authenticate and authorize all subsequent API requests. Include the access_token in the request headers as: Authorization: Bearer access_token To adhere to security standards, it is recommended to renew the access_token periodically (every hour) to maintain uninterrupted access to the API while minimizing security risks. This endpo"
+        },
+        {
+          "info": {
+            "name": "Health Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/healthCheck"
+          },
+          "docs": "This API endpoint is used to check if the system is working properly"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

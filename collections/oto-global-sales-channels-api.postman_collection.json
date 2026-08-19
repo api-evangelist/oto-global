@@ -1,0 +1,335 @@
+{
+  "item": [
+    {
+      "id": "8942acee-1795-4f2a-a389-d98e27895554",
+      "name": "Sales Channels",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "263952ed-09e4-498d-8faa-4934abf4cfb8",
+          "name": "Sales Channels List",
+          "request": {
+            "name": "Sales Channels List",
+            "description": {
+              "content": "This API endpoint provides a list of all sales channels integrated with OTO. If you have a store with any of these sales channels, you can connect your store to OTO. Use the sales channel's unique code to configure settings through the Sales Channels Config and Sales Channels Activation API endpoints.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "salesChannel",
+                "getSalesChannelsList"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc650b6b-38da-4a6e-8589-60406ca94af3",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "salesChannel",
+                    "getSalesChannelsList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"salesChannelsList\": [\n    {\n      \"name\": \"Adobe Commerce\",\n      \"code\": \"adobeEcommerce\"\n    },\n    {\n      \"name\": \"WooCommerce\",\n      \"code\": \"wooCommerce\"\n    },\n    {\n      \"name\": \"Shopify\",\n      \"code\": \"shopify\"\n    },\n    {\n      \"name\": \"OpenCart\",\n      \"code\": \"opencart\"\n    },\n    {\n      \"name\": \"Store Hippo\",\n      \"code\": \"storehippo\"\n    },\n    {\n      \"name\": \"Foodics\",\n      \"code\": \"foodics\"\n    },\n    {\n      \"name\": \"Tsoft\",\n      \"code\": \"tsoft\"\n    },\n    {\n      \"name\": \"shahbandr\",\n      \"code\": \"shahbandr\"\n    },\n    {\n      \"name\": \"TrendyolInt\",\n      \"code\": \"TrendyolInt\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "989f267e-6f61-436c-ae46-5309e69b5e64",
+          "name": "Sales Channel Config",
+          "request": {
+            "name": "Sales Channel Config",
+            "description": {
+              "content": "Available Packages : Starter Package, Scale Package, Enterprise Package, Marketplaces This API endpoint allows you to view the required store credentials and the template for the sales channels specified in the request, which are needed for the next step: Sales Channel Activation. Retrieve the sales channel configuration template. Use this template to create a valid configuration object, similar to the given exampleJson . This configuration object is then used to activate the sales channel with ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "salesChannel",
+                "getSalesChannelConfig"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eeae2ddf-a750-492d-b599-717c7785edc1",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "salesChannel",
+                    "getSalesChannelConfig"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"shopify\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"shopify\",\n  \"storeURL\": \"\",\n  \"adminApiAccessToken\": \"\",\n  \"active\": true,\n  \"storeName\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77d4f8f6-de18-4c6b-af2e-79382b29aafe",
+          "name": "Sales Channel Activation",
+          "request": {
+            "name": "Sales Channel Activation",
+            "description": {
+              "content": "This API endpoint is used to perform Sales Channels Activation. It enables you to activate a sales channel by providing the required configuration details. Request Parameters: Name Required Type Description code yes string The integration name obtained from the Sales Channels List",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "salesChannel",
+                "salesChannelActivation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c885d3f-641c-409e-ad50-7e92975d1aa0",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "salesChannel",
+                    "salesChannelActivation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"shopify\",\n  \"storeURL\": \"https://shopifytest.myshopify.com\",\n  \"adminApiAccessToken\": \"shopifytoken\",\n  \"active\": true,\n  \"storeName\": \"Shopify Store\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tryoto.com/rest/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a484e30a-5216-4319-b73c-3b2539f657a4",
+    "name": "OTO API V2 Account Sales Channels API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO's platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you're integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.\n\nContact Support:\n Name: OTO Support",
+      "type": "text/plain"
+    }
+  }
+}

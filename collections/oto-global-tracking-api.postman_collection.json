@@ -1,0 +1,509 @@
+{
+  "item": [
+    {
+      "id": "576b5202-5459-45ea-8e84-aa16ff011f44",
+      "name": "Tracking",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "91843aaa-46b6-4d40-9053-97ce6ed9f12e",
+          "name": "Order Tracking",
+          "request": {
+            "name": "Order Tracking",
+            "description": {
+              "content": "This API endpoint enables you to track the real-time status and progress of an order. By using this endpoint, you can retrieve detailed tracking information, including: Current order status (e.g.,pickedUp, outForDelivery, delivered). Shipment details such as carrier, tracking number, and estimated delivery time, print AWB URL. Request Parameters: Name Required Type Description orderId yes (if there is no otoId) string Id of the order that you will track. otoId yes (if there is no orderId) string",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "orderStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ed8ea515-bdbc-466a-8ceb-76512462a12b",
+              "name": "200- PDF",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "orderStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"1234\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"date\": \"2026-04-27 12:42:07\",\n  \"customerAddress\": \"Khayran Al Murrah\",\n  \"totalValue\": 10,\n  \"orderId\": \"OID-23331-9749\",\n  \"trackingUrl\": \"https://app.tryoto.com/otoflex-tracking?enc=dUszSFUzRDZRVnZYWU9LZTBPODV0MG1pWldrU3JSVnh6QWVEYXJCRWN4cz0=\",\n  \"dcTrackingNumber\": \"\",\n  \"deliveryCompany\": \"otoDriverApp\",\n  \"printAWBURL\": \"https://app.tryoto.com/print/awb?enc=eyJjb21wYW55SWQiOiIxNzA2OCIsImlkcyI6WyIzMDUxNDI4MSJdLCJyZXZlcnNlIjp0cnVlfQ==\",\n  \"customerName\": \"redcar  testing\",\n  \"shipmentId\": \"DCA87E10\",\n  \"success\": true,\n  \"otoId\": \"30514281\",\n  \"status\": \"returnShipmentProcessing\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b64154a7-136a-4ead-95ff-cc691c65a364",
+              "name": "401 Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "orderStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"1234\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Jwt is expired\",\n  \"code\": 401\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "68997f2b-7908-4e65-8367-ccfe17ef0be4",
+          "name": "Order History",
+          "request": {
+            "name": "Order History",
+            "description": {
+              "content": "This API endpoint allows you to retrieve the complete history of an order, providing detailed insights into its lifecycle. This includes: Status changes (e.g., pickedUp, arrivedTerminal, delivered). Timestamps for each status update. Actions taken during the order process, such as cancellations or modifications. Request Parameters: Name Required Type Description orderIds yes( if there is no otoIds or shipmentIds) array Ids of the order that you will track. otoIds yes( if there is no orderIds or ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "orderHistory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6ccd3548-f0c7-4b9b-a919-cd1d49fb2cb5",
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "orderHistory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderIds\": [\n    \"2414124\",\n    \"3223523\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"items\": [\n    {\n      \"amount\": 1,\n      \"orderId\": \"OID-23331-9743\",\n      \"trackingURL\": \"https://app.tryoto.com/otoflex-tracking?enc=MUZEMGdSVXNaTkxYWU9LZTBPODV0K1JSYzJYMXlHMnd6QWVEYXJCRWN4cz0=\",\n      \"dcTrackingNumber\": \"\",\n      \"history\": [\n        {\n          \"date\": \"2025-11-30 08:09:54\",\n          \"description\": \"Created by fatmanur yavuz asd\",\n          \"status\": \"new\",\n          \"currentLocation\": {}\n        },\n        {\n          \"date\": \"2025-11-30 08:09:54\",\n          \"description\": \"Created by fatmanur yavuz asd\",\n          \"status\": \"assignedToWarehouse\",\n          \"currentLocation\": {}\n        },\n        {\n          \"date\": \"2025-11-30 08:11:47\",\n          \"description\": \"Order status changed to Inter depot transfer by fatmanur yavuz asd\",\n          \"status\": \"interDepotTransfer\",\n          \"currentLocation\": {}\n        },\n        {\n          \"date\": \"2025-12-07 08:12:37\",\n          \"shipmentId\": \"DERWI87150\",\n          \"description\": \"Shipment created automatically by fatmanur yavuz asd\",\n          \"deliveryCompany\": \"swftbox\",\n          \"status\": \"searchingDriver\",\n          \"currentLocation\": {}\n        },\n        {\n          \"date\": \"2025-12-07 08:12:42\",\n          \"shipmentId\": \"DERWI87150\",\n          \"description\": \"REQUESTED - REQUESTED\",\n          \"deliveryCompany\": \"swftbox\",\n          \"status\": \"shipmentCreated\",\n          \"currentLocation\": {}\n        },\n        {\n          \"date\": \"2025-12-08 10:00:00\",\n          \"shipmentId\": \"DERWI87150\",\n          \"description\": \"REQUESTED - REQUESTED\",\n          \"deliveryCompany\": \"swftbox\",\n          \"status\": \"shipmentCreated\",\n          \"currentLocation\": {}\n        },\n        {\n          \"date\": \"2025-12-09 10:03:17\",\n          \"shipmentId\": \"DERWI87150\",\n          \"description\": \"Order status changed as Delivered by fatmanur yavuz asd\",\n          \"deliveryCompany\": \"swftbox\",\n          \"status\": \"delivered\",\n          \"currentLocation\": {}\n        },\n        {\n          \"date\": \"2025-12-24 08:50:19\",\n          \"shipmentId\": \"F87E6F4E\",\n          \"description\": \"Return shipment created by fatmanur yavuz asd\",\n          \"deliveryCompany\": \"otoDriverApp\",\n          \"status\": \"returnShipmentProcessing\",\n          \"currentLocation\": {}\n        }\n      ],\n      \"deliveryCompany\": \"Swftbox\",\n      \"warehouseName\": \"test123\",\n      \"destinationCountry\": \"SA\",\n      \"destinationCity\": \"Riyadh\",\n      \"shipmentId\": \"F87E6F4E\",\n      \"otoId\": \"22255300\",\n      \"originCity\": \"Madinah\",\n      \"originCountry\": \"SA\",\n      \"returnOrderIds\": [\n        \"OID-23331-9743-R1\"\n      ],\n      \"amount_due\": 0,\n      \"currency\": \"SAR\",\n      \"packageCount\": 1,\n      \"items\": [],\n      \"orderDate\": \"30/11/2025 08:09:07\",\n      \"printAwbUrl\": \"https://app.tryoto.com/print/awb?enc=eyJjb21wYW55SWQiOiIxNzA2OCIsImlkcyI6WyIyMjI1NTMwMCJdLCJyZXZlcnNlIjp0cnVlfQ==\",\n      \"payment_method\": \"paid\",\n      \"status\": \"returnShipmentProcessing\"\n    },\n    {\n      \"amount\": 12,\n      \"orderId\": \"OID-23331-1037\",\n      \"trackingURL\": \"https://app.tryoto.com/otoflex-tracking?enc=UkJFVFJGZ3NFT1RYWU9LZTBPODV0N05IOVlLZmJBbTJ6QWVEYXJCRWN4cz0=\",\n      \"history\": [\n        {\n          \"date\": \"2025-04-02 09:58:33\",\n          \"description\": \"Created by fatmanur yavuz\",\n          \"status\": \"new\",\n          \"currentLocation\": {}\n        },\n        {\n          \"date\": \"2025-04-02 09:58:33\",\n          \"description\": \"Created by fatmanur yavuz\",\n          \"status\": \"assignedToWarehouse\",\n          \"currentLocation\": {}\n        },\n        {\n          \"date\": \"2025-04-20 13:28:54\",\n          \"shipmentId\": \"\",\n          \"description\": \"Order status changed as Delivered by fatmanur yavuz\",\n          \"deliveryCompany\": \"\",\n          \"status\": \"delivered\",\n          \"currentLocation\": {}\n        },\n        {\n          \"date\": \"2025-10-12 09:04:50\",\n          \"shipmentId\": \"765a9bdf\",\n          \"description\": \"Return shipment created automatically by fatmanur yavuz asd\",\n          \"deliveryCompany\": \"otoDriverApp\",\n          \"status\": \"returnShipmentProcessing\",\n          \"currentLocation\": {}\n        }\n      ],\n      \"warehouseName\": \"DefaultWH\",\n      \"destinationCountry\": \"AE\",\n      \"destinationCity\": \"Dubai\",\n      \"shipmentId\": \"765a9bdf\",\n      \"otoId\": \"14965883\",\n      \"originCity\": \"ABU DHABI CITY\",\n      \"originCountry\": \"AE\",\n      \"amount_due\": 12,\n      \"currency\": \"SAR\",\n      \"packageCount\": 1,\n      \"items\": [],\n      \"orderDate\": \"02/04/2025 09:58:24\",\n      \"printAwbUrl\": \"https://app.tryoto.com/print/awb?enc=eyJjb21wYW55SWQiOiIxNzA2OCIsImlkcyI6WyIxNDk2NTg4MyJdLCJyZXZlcnNlIjp0cnVlfQ==\",\n      \"payment_method\": \"cod\",\n      \"status\": \"returnShipmentProcessing\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39172dcb-2e44-4ead-b128-baef7e04acd3",
+          "name": "Track Shipment",
+          "request": {
+            "name": "Track Shipment",
+            "description": {
+              "content": "This API endpoint enables you to track a shipment by providing the tracking number and delivery company name. Without requiring any authorization, it offers detailed shipment information, including tracking URL, real time status updates and status history. If you are a marketplace, you can track your sellers' shipments without requiring additional authorization. Request Parameters: Name Required Type Description trackingNumber yes string The shipment/ tracking number that you wanna track. delive",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "trackShipment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c70c785f-0008-4e6b-8c0b-82e3be70fb02",
+              "name": "200 OK history",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "trackShipment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trackingNumber\": \"290692134777\",\n  \"deliveryCompanyName\": \"smsaecom\",\n  \"statusHistory\": true,\n  \"brandName\": \"test brand\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"trackingUrl\": \"https://www.naqelexpress.com/en/sa/tracking/\",\n  \"success\": true,\n  \"items\": [\n    {\n      \"dcStatus\": \"1\",\n      \"updateStatusDate\": true,\n      \"shipmentId\": \"289812708\",\n      \"otoStatus\": \"pickedUp\",\n      \"success\": true,\n      \"dcUpdateDate\": \"2024-08-15T11:36:00\",\n      \"dcDescription\": \"1 Picked up by Naqel at : JEDDAH\",\n      \"history\": [\n        {\n          \"dcStatus\": \"0\",\n          \"updateStatusDate\": true,\n          \"shipmentId\": \"289812708\",\n          \"otoStatus\": \"shipmentCreated\",\n          \"dcUpdateDate\": \"2024-08-14T15:24:13\",\n          \"dcDescription\": \"0 Waybill created. Shipment has not been received from the retailer\"\n        },\n        {\n          \"dcStatus\": \"0\",\n          \"updateStatusDate\": true,\n          \"shipmentId\": \"289812708\",\n          \"otoStatus\": \"pickedUp\",\n          \"dcUpdateDate\": \"2024-08-14T15:24:13\",\n          \"dcDescription\": \"0 Waybill created. Shipment has not been received from the retailer\",\n          \"currentLocation\": {\n            \"currentCountry\": \"SA\",\n            \"currentCity\": \"Jeddah\",\n            \"currentDistrict\": \"Ar Rawdah\",\n            \"currentBranch\": \"Jeddah Warehouse\"\n          }\n        },\n        {\n          \"dcStatus\": \"1\",\n          \"updateStatusDate\": true,\n          \"shipmentId\": \"289812708\",\n          \"otoStatus\": \"delivered\",\n          \"dcUpdateDate\": \"2024-08-15T11:36:00\",\n          \"dcDescription\": \"Delivered: RIYADH\",\n          \"currentLocation\": {\n            \"currentCountry\": \"SA\",\n            \"currentCity\": \"Riyadh\",\n            \"currentDistrict\": \"As Salam\",\n            \"currentBranch\": \"Riyadh Warehouse\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7324b35e-a8aa-46ea-a34c-49abb5c8704b",
+              "name": "400 invalid format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "trackShipment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trackingNumber\": \"290692134777\",\n  \"deliveryCompanyName\": \"smsaecom\",\n  \"statusHistory\": true,\n  \"brandName\": \"test brand\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"otoErrorCode\": \"OTO1075\",\n  \"otoErrorMessage\": \"Invalid Json format\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0be58bf3-37ef-4d51-aa38-fd9fb4dc10b0",
+              "name": "409 No tracking config",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "trackShipment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trackingNumber\": \"290692134777\",\n  \"deliveryCompanyName\": \"smsaecom\",\n  \"statusHistory\": true,\n  \"brandName\": \"test brand\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"otoErrorCode\": \"OTO1004\",\n  \"otoErrorMessage\": \"There is no available delivery company setting\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tryoto.com/rest/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "04c6f13e-8778-46f1-8908-664cfe6882bb",
+    "name": "OTO API V2 Account Tracking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO's platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you're integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.\n\nContact Support:\n Name: OTO Support",
+      "type": "text/plain"
+    }
+  }
+}

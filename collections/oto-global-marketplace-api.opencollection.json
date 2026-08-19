@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OTO API V2 Account Marketplace API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Marketplace",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Register",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/register",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint is just for marketplaces with multiple vendors . Marketplaces can register their vendors to OTO with this endpoint. It requires a special kind of token provided by OTO. Regular refresh tokens will not work here. If you are a market place you can use register endpoint to create an OTO account for your vendors. Request Parameters: Field Name Type Required Description country string Yes Country tag (e.g., “TR”, “SA”). city string Yes City tag (must match OTO city tags). companyNam"
+        },
+        {
+          "info": {
+            "name": "Client Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/clientInfo"
+          },
+          "docs": "This API endpoint provides detailed information about a vendor's account and its current status. This endpoint returns essential client-related data, including contact details, account balances, and service validity, enabling seamless integration for managing and monitoring client activities. Request Parameters: No request body parameters are required for this GET request. Response: { \"remainingCredit\": 10, \"phone\": \"+966567130000\", \"validityDate\": \"11-01-2028\", \"success\": true, \"name\": \"test Co"
+        },
+        {
+          "info": {
+            "name": "Client Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/clientInfo",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint is just for marketplaces. Marketplaces can register their vendors to OTO with a special kind of token provided by OTO. Regular refresh tokens will not work here. If you are a marketplace and used register endpoint to create an OTO account for your vendors , you can get the information about the client you have registered. Request Parameters: Name Required Type Description email yes string registered email of client"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

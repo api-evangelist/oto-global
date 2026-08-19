@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OTO API V2 Account Products API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/createProduct",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpointallows clients to add new products to the system by providing key product details. This endpoint is essential for catalog management, enabling businesses to define and register products for use in their operations, such as inventory management, sales, and order processing. Request Parameters: Name Required Type Description sku yes string SKU of the product productName yes string Name of the product price yes string Price of the product taxAmount no string Tax Amount of the produ"
+        },
+        {
+          "info": {
+            "name": "Product List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/productList",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint provides a simple and efficient way to retrieve a list of products available in your inventory. This endpoint returns essential product details such as names, images, SKUs, and barcodes, enabling applications to display and manage product information effectively. Request Parameters: Name Required Type Description pageSize no number items per page, default is 100 currentPage no number page numbe to be called, default is 1"
+        },
+        {
+          "info": {
+            "name": "Add Box",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/addBox",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows you to create new boxes with the dimensions you provided. Request Parameters: Name Required Type Description name yes string name of the box, name should be unique length yes double length of the package width yes double width of the package height yes double height of the package"
+        },
+        {
+          "info": {
+            "name": "Update Box",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/updateBox",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You can change the dimension information of an existing box. Since the name is unique, you can change the information of that box by entering the name information in the request."
+        },
+        {
+          "info": {
+            "name": "Get Box",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/getBox"
+          },
+          "docs": "This API endpoint you to retrieve the name, id and dimension information of all boxes currently in your account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

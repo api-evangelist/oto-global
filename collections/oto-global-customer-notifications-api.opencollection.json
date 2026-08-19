@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OTO API V2 Account Customer Notifications API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Notifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Customer Notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/orders/:orderId/customer-notifications",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "This endpoint allows you to retrieve all system-generated customer communication artifacts related to a specific order. It enables you to fully control your customer communication by consuming these artifacts and sending them through your own CRM, ERP, or communication platforms. The API endpoint provides the below customer notifications if generated and still valid. You can configure the actionTypes: Tracking Link Feedback (Rating) Link Undelivered Attempt Link Delivery Slot Selection Link Addr"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

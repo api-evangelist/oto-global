@@ -230,3 +230,9 @@ tools:
 - name: trackDriver
   description: trackDriver
   source_operation: openapi/oto-global-openapi.yml#trackDriver
+deployment:
+  mode: none
+  verified: derived
+  tools: 74
+  checked: '2026-08-12'
+  source: catalog MCP census

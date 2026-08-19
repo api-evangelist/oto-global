@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OTO API V2 Account Webhook API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhook",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/webhook"
+          },
+          "docs": "This endpoint allows you to retrieve a list of all registered webhook definitions. It provides detailed information about each webhook, including its configuration and associated event triggers, enabling you to manage and review your webhook integrations effectively. Note: You can filter by id if you know the id of the webhook. Request Parameters: Name Required Type Description id no string id of the webhook"
+        },
+        {
+          "info": {
+            "name": "webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/webhook",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint enables OTO to send update payloads to the specified URL using the defined method. Optional security measures, such as token authentication and payload validation, can be configured for enhanced security. Request Parameters: Name Required Type Description method yes string POST or PUT url yes string Your endpoint listens to get OTO webhook payload, when order status changes. exp. https://webhook.site/3e53c98a-a089-4ca4-9bc4-df10e5a71e4b secretKey no string With this key message is "
+        },
+        {
+          "info": {
+            "name": "webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/webhook",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows updating an already registered webhook by providing its unique ID. This ensures you can modify existing webhook configurations, such as URL, secretKey, or other parameters, without needing to delete and recreate it. Request Parameters: Name Required Type Description id yes string Id of the webhook record. method yes string POST or PUT url yes string Your endpoint listens to get OTO webhook payload, when order status changes. exp. https://webhook.site/3e53c98a-a089-4ca4-9"
+        },
+        {
+          "info": {
+            "name": "webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/webhook"
+          },
+          "docs": "This API endpoint enables the removal of a registered webhook from the system using its unique ID. This ensures you can effectively manage and clean up webhook configurations that are no longer needed. Request Parameters: Name Required Type Description id yes string Id of the webhook record."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

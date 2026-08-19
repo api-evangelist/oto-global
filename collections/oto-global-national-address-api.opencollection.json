@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OTO API V2 Account National Address API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "National Address",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get NationalAddress From ShortCode",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/getNationalAddressFromShortCode",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint accepts a short address code (also called shortAddressCode or national address short code) and returns the complete national address details for the corresponding location in the Kingdom of Saudi Arabia. It allows you to quickly retrieve full address information from the abbreviated code."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

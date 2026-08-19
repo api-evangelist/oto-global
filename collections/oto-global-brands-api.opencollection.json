@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OTO API V2 Account Brands API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Brands",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get List of Brands (Client Store)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/getBrandList"
+          },
+          "docs": "This API endpoint provides access to a comprehensive list of brand (client store) details. This endpoint enables users to retrieve information about brands associated with their account, including key attributes such as brand name, store identifiers, and other relevant metadata. Request Parameters: No request body parameters are required for this GET request. Response: Upon a successful execution, the server responds with a 200 status code and a JSON object containing the following fields: succe"
+        },
+        {
+          "info": {
+            "name": "Create Brand (Client Store)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/createBrand",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows you to add a new brand (client store) to the system. By using this endpoint, you can define and register a brand with essential details, enabling integration with various systems. Request Parameters: Name Required Type Description storeName yes string The name of the store logo no string The logo URL of the brand defaultWarehouseID no integer The ID of the default warehouse stores no array An array of store objects containing the following fields storeName no string The "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

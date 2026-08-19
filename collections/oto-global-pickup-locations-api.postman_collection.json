@@ -1,0 +1,580 @@
+{
+  "item": [
+    {
+      "id": "ae9de591-1d54-47e1-a7db-63e7b432beee",
+      "name": "Pickup Locations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1edfeb01-f493-4234-962e-fbc0f347393d",
+          "name": "Create Pickup Location",
+          "request": {
+            "name": "Create Pickup Location",
+            "description": {
+              "content": "This API endpoint allows you to define and register a new pickup location within the system. By specifying the location details, you can expand your network of pickup points, improving logistics and delivery workflows. Request Parameters: Name Required Type Description name yes string Name of the pickup location; should be unique. type no string You can enter these values: branch , warehouse . Branch can only be used by enterprise and marketplace packages code yes string Code of the pickup locat",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "createPickupLocation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e4269a87-e6ed-4d5f-8b79-b872d46352e0",
+              "name": "200 warehouse",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "createPickupLocation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"branch\",\n  \"code\": \"code-0211112\",\n  \"name\": \"Location-02 Name11111\",\n  \"mobile\": \"555888777\",\n  \"address\": \"3474, Abi Almahd, 7026, Al Olaya, 12221, Riyadh, Kingdom of Saudi Arabia\",\n  \"contactName\": \"Test Contact\",\n  \"contactEmail\": \"Test Email\",\n  \"lat\": \"26.001\",\n  \"lon\": \"50.001\",\n  \"city\": \"Dammam\",\n  \"country\": \"SA\",\n  \"street\": \"Abi Almahd\",\n  \"district\": \"Al Olaya\",\n  \"buildingNo\": \"3474\",\n  \"secondaryAddressNumber\": \"7026\",\n  \"postcode\": \"12221\",\n  \"servingRadius\": \"10\",\n  \"shortAddressCode\": \"RHOD3474\",\n  \"brandName\": \"Example Seller\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"warhouseId\": \"123\",\n  \"pickupLocationCode\": \"code-01\",\n  \"success\": true,\n  \"message\": \"warehouse has been created\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d42581aa-73ce-4d4d-8805-17363c3c4f20",
+          "name": "Update Pickup Location",
+          "request": {
+            "name": "Update Pickup Location",
+            "description": {
+              "content": "This API endpoint allows you to modify the details of your existing pickup locations efficiently. This endpoint provides a streamlined way to ensure that your pickup location information remains accurate and up to date, enabling smooth and reliable operations. Request Parameters: Name Required Type Description name yes string Name of the pickup location type yes string You can enter these values: branch , warehouse . Branch can only be used by enterprise and marketplace packages code yes string ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "updatePickupLocation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3384cb78-77aa-476c-8cfc-ebcb659dafc2",
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "updatePickupLocation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"warehouse\",\n  \"code\": \"code-02\",\n  \"name\": \"Location-02 Name\",\n  \"mobile\": \"555888777\",\n  \"address\": \"Test warehouse 3539, Al Khalidiyyah Al Janubiyyah, Dammam 32225\",\n  \"contactName\": \"Test Contact\",\n  \"contactEmail\": \"Test Email\",\n  \"lat\": \"26.001\",\n  \"lon\": \"50.001\",\n  \"city\": \"Dammam\",\n  \"district\": \"Latifah Manaf\",\n  \"street\": \"Long Street\",\n  \"state\": \"Eastern Province\",\n  \"country\": \"SA\",\n  \"postcode\": \"77777\",\n  \"servingRadius\": \"10\",\n  \"brandName\": \"Example Seller 2\",\n  \"status\": \"active\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"branchId\": \"1878\",\n  \"pickupLocationCode\": \"code-02\",\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3094c601-5a8b-46b4-9c17-ab1a40e971ee",
+              "name": "400 Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "updatePickupLocation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"warehouse\",\n  \"code\": \"code-02\",\n  \"name\": \"Location-02 Name\",\n  \"mobile\": \"555888777\",\n  \"address\": \"Test warehouse 3539, Al Khalidiyyah Al Janubiyyah, Dammam 32225\",\n  \"contactName\": \"Test Contact\",\n  \"contactEmail\": \"Test Email\",\n  \"lat\": \"26.001\",\n  \"lon\": \"50.001\",\n  \"city\": \"Dammam\",\n  \"district\": \"Latifah Manaf\",\n  \"street\": \"Long Street\",\n  \"state\": \"Eastern Province\",\n  \"country\": \"SA\",\n  \"postcode\": \"77777\",\n  \"servingRadius\": \"10\",\n  \"brandName\": \"Example Seller 2\",\n  \"status\": \"active\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"errorCode\": 5,\n  \"errorMsg\": \"Code, Mobile and Location must be provided\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dea4bdc9-8114-4f25-a7e5-cc71b17582de",
+              "name": "404",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "updatePickupLocation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"warehouse\",\n  \"code\": \"code-02\",\n  \"name\": \"Location-02 Name\",\n  \"mobile\": \"555888777\",\n  \"address\": \"Test warehouse 3539, Al Khalidiyyah Al Janubiyyah, Dammam 32225\",\n  \"contactName\": \"Test Contact\",\n  \"contactEmail\": \"Test Email\",\n  \"lat\": \"26.001\",\n  \"lon\": \"50.001\",\n  \"city\": \"Dammam\",\n  \"district\": \"Latifah Manaf\",\n  \"street\": \"Long Street\",\n  \"state\": \"Eastern Province\",\n  \"country\": \"SA\",\n  \"postcode\": \"77777\",\n  \"servingRadius\": \"10\",\n  \"brandName\": \"Example Seller 2\",\n  \"status\": \"active\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"otoErrorCode\": \"OTO1070\",\n  \"otoErrorMessage\": \"Pickup location code is missing or invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86d67ee2-416d-434a-beeb-025d424abb20",
+          "name": "Get Pickup Location List",
+          "request": {
+            "name": "Get Pickup Location List",
+            "description": {
+              "content": "This API endpoint enables you to retrieve a comprehensive list of pickup locations by specifying a date range and status. This endpoint provides an efficient way to filter and access relevant pickup location data, ensuring streamlined tracking and management. Request Parameters: Name Required Type Description minDate no date Starting Pickup location create date in \"yyyy-mm-dd\" format. (e.g. \"2024-08-01\") maxDate no date Ending Pickup location create date in \"yyyy-mm-dd\" format. (e.g. \"2024-08-05",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "getPickupLocationList"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "minDate",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "maxDate",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae2cbf7e-0783-493c-897f-f60cf627947e",
+              "name": "200 OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "getPickupLocationList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "minDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"warehouses\": [\n    {\n      \"code\": \"code-999\",\n      \"address\": \"Test warehouse 3539, Al Khalidiyyah Al Janubiyyah, Dammam 32225\",\n      \"contactEmail\": \"Test Email\",\n      \"city\": \"Dammam\",\n      \"country\": \"SA\",\n      \"street\": \"Abi Almahd\",\n      \"district\": \"Al Olaya\",\n      \"buildingNo\": \"3474\",\n      \"secondaryAddressNumber\": \"7026\",\n      \"postcode\": \"12221\",\n      \"name\": \"Location Name\",\n      \"contactPerson\": \"Test Contact\",\n      \"lon\": 50.001,\n      \"id\": 17051,\n      \"contactPhone\": \"555888777\",\n      \"lat\": 26.001\n    }\n  ],\n  \"branches\": [\n    {\n      \"code\": \"code-96\",\n      \"address\": \"Test warehouse 3539, Al Khalidiyyah Al Janubiyyah, Dammam 32225\",\n      \"contactEmail\": \"Test Email\",\n      \"district\": \"Al Mughaisilah Dist.\",\n      \"city\": \"Madinah\",\n      \"buildingNo\": \"8089\",\n      \"street\": \"Salam Ibn Salim\",\n      \"secondaryAddressNumber\": \"4314\",\n      \"shortAddressCode\": \"DMAJ8089\",\n      \"postcode\": \"42315\",\n      \"name\": \"Location-02 Name\",\n      \"contactPerson\": \"Test Contact\",\n      \"lon\": 50.001,\n      \"id\": 18203,\n      \"contactPhone\": \"555888777\",\n      \"lat\": 26.002\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef502940-4c22-4fa7-ab4d-de16d69394d2",
+              "name": "400 Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "getPickupLocationList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "minDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"errorCode\": 4,\n  \"errorMsg\": \"maxDate is invalid\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e72b8d22-4f94-4772-8604-c82b7e696afb",
+              "name": "401 Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "getPickupLocationList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "minDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Jwt is expired\",\n  \"code\": 401\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tryoto.com/rest/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "342bb0b3-4c8c-4c33-a7be-2832d3f1d169",
+    "name": "OTO API V2 Account Pickup Locations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO's platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you're integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.\n\nContact Support:\n Name: OTO Support",
+      "type": "text/plain"
+    }
+  }
+}

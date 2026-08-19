@@ -1,0 +1,170 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OTO API V2 Account Carrier Integrations API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Carrier Integrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Delivery Estimation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/getDeliveryEstimation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows you to access estimated delivery dates, times, and other last-mile process details by utilizing the SLA configurations of your shipping partners. By providing key information such as the pickup and customer addresses, you can retrieve precise delivery and pickup date estimates. This capability enhances the accuracy of your shipping operations and proves invaluable for businesses and logistics providers aiming to streamline workflows and deliver reliable delivery timeline"
+        },
+        {
+          "info": {
+            "name": "AI Estimated Delivery Dates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/aiEstimatedDeliveryDates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows you retrieve OTO’s AI-generated estimated pickup and delivery dates . The endpoint is designed solely for prediction purposes —it does not create or update any shipments. The prediction model uses all up-to-date operational data within OTO , including historical delivery patterns, courier performance, service types, regions, and peak-time behavior. Based on this data, it produces a reliable estimate for both pickup and delivery timelines. Request Parameters: Name Require"
+        },
+        {
+          "info": {
+            "name": "Check Coverage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/checkCoverage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows you to verify whether the location provided in your request is within the coverage area defined by your OTO settings, including the coverage configurations for delivery companies and the branches. Request Parameters: Name Required Type Description city yes string City to check coverage lat yes long Latitude lon yes long Longitude pickupLocation no boolean If you pass true, it will list the covered and available pickup locations. pickupLocationCode no string Lists only th"
+        },
+        {
+          "info": {
+            "name": "Available Cities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/availableCities",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint retrieves a list of cities available for delivery based on your coverage settings for active delivery companies you have contracts with. To obtain results, ensure that the delivery companies' coverage areas are configured by adding cities through the OTO UI. Request Parameters: Name Required Type Description page no number Number of page, default is 1 limit no number Number of cities in a single page, default is 100"
+        },
+        {
+          "info": {
+            "name": "Available Time Slots",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/availableTimeslots",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint retrieves the available delivery time slots for delivery companies based on their specified working hours. Request Parameters: Name Required Type Description lat no string Latitude lon no string Longitude serviceType yes string Possible values: bullet , courier packageSize no string"
+        },
+        {
+          "info": {
+            "name": "DC List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/dcList"
+          },
+          "docs": "This API endpoint provides a list of all delivery companies integrated with OTO. If you have a contract with any of these companies, you can connect your account to OTO. Use the company's unique code to configure settings through the DC Activation and DC Config API endpoints. If a delivery company you have a contract with is not listed, please notify us to initiate the integration process."
+        },
+        {
+          "info": {
+            "name": "DC Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/dcConfig",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows you to view the required account credentials and the template for the delivery company specified in the request, which are needed for the next step: DC activation. Retrieve the delivery company configuration template. Use this template to create a valid configuration object, similar to the given exampleJson . This configuration object is then used to activate the delivery company with the DC Activation API endpoint. Request Parameters: Name Required Type Description code"
+        },
+        {
+          "info": {
+            "name": "DC Activation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/dcActivation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint is used to perform Delivery Company (DC) activation. It enables you to activate a delivery company by providing the required configuration details. Request Parameters: Name Required Type Description code yes string The integration name obtained from the DC List. deliveryOptionName yes string A name you assign to easily identify this configuration. brandID no number id of the brand created by Create Brand endpoint settings yes object A configuration object created based on the e"
+        },
+        {
+          "info": {
+            "name": "Get Cities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/getCities",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint is used to retrieve a list of cities of a given country. Request Parameters: Name Required Type Description country yes string The country for which cities are to be retrieved. perPage no integer The number of cities to be displayed per page. Default value is 100, max value is 500. page no integer The page number for pagination. Example Response: { \"getCities\": { \"totalCount\": 1, \"perPage\": 1, \"Cities\": [ { \"name\": \"Riyadh\" } ] } }"
+        },
+        {
+          "info": {
+            "name": "Check DC Branch List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/checkDCBranchList",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint retrieves the available branch list, PUDO (Pick-Up/Drop-Off) points, parcel shops, lockers, and other supported service locations for the selected delivery company. It can be used to obtain the latest carrier location information required for branch deliveries, pickup point selection, return shipments, and other location-based shipping services. The response includes all available service points supported by the carrier based on the provided request parameters. Request Paramete"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

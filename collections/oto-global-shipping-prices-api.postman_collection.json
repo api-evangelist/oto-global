@@ -1,0 +1,485 @@
+{
+  "item": [
+    {
+      "id": "3ab6d54e-b220-46f4-bc29-7074c69bc4ae",
+      "name": "Shipping Prices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5b5f9607-8928-4e13-b6d3-6f15c8aae767",
+          "name": "Check OTO Delivery Fee",
+          "request": {
+            "name": "Check OTO Delivery Fee",
+            "description": {
+              "content": "This API endpoint calculates shipping prices offered by OTO rates. By providing the origin city, destination city, and package details (such as weight and dimensions), the API computes the price based on the provided request parameters. Important Note: The prices returned by this API are applicable only to shipping options available under OTO's contracts. To calculate prices for your own custom contracts, please use the Check Delivery Fee API. You can see the shipping prices of delivery companie",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "checkOTODeliveryFee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "69fd6cae-5267-4aec-a9b0-a66a8320edfb",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "checkOTODeliveryFee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"weight\": \"3\",\n  \"originCity\": \"Riyadh\",\n  \"destinationCity\": \"Jeddah\",\n  \"height\": 30,\n  \"width\": 30,\n  \"length\": 30\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"traceId\": \"63545-73855-176.88.141.22-c4270220-89f8-4fe4-a645-2f82fb5c499d\",\n  \"success\": true,\n  \"deliveryCompany\": [\n    {\n      \"serviceType\": \"sameDay\",\n      \"deliveryOptionName\": \"Deliver Now\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 4.9,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 3,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 3000,\n      \"deliveryOptionId\": 7109,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-17\",\n      \"deliveryCompanyName\": \"delivernow\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 16,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"Same Day of Pickup Date\",\n      \"price\": 16,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/delivery-now.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"3.0 SAR plus 0.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"lockerDelivery\",\n      \"deliveryOptionName\": \"Omni Llama\",\n      \"deliveryType\": \"locker\",\n      \"codCharge\": 8,\n      \"maxOrderValue\": 6000,\n      \"maxCODValue\": 1000,\n      \"deliveryOptionId\": 7252,\n      \"estimatedDeliveryDate\": \"2025-11-17\",\n      \"deliveryCompanyName\": \"omnillama\",\n      \"estimatedPickupDate\": \"2025-11-16\",\n      \"checkAllBranches\": \"https://map.omnillama.net/\",\n      \"returnFee\": 8,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"1to3WorkingDays\",\n      \"price\": 8,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/omni-llama.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"lockerDropOff\"\n    },\n    {\n      \"serviceType\": \"pudo\",\n      \"deliveryOptionName\": \"SPL PUDO\",\n      \"trackingType\": \"excellent\",\n      \"deliveryType\": \"pickupByCustomer\",\n      \"codCharge\": 8,\n      \"maxOrderValue\": 10000,\n      \"maxCODValue\": 5000,\n      \"deliveryOptionId\": 7144,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"splUpds\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"checkAllBranches\": \"https://splonline.com.sa/en/branches/\",\n      \"returnFee\": 13,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"1 to 2 Working Days\",\n      \"price\": 13,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/spl.jpg\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"dropoffOnly\",\n      \"cardOnDeliveryPercentage\": \"8.0 SAR plus 1.75% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"sameDay\",\n      \"deliveryOptionName\": \"Delivery Support\",\n      \"score5\": 4.4,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 3,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 5000,\n      \"deliveryOptionId\": 7417,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"deliverysupport\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 13,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"sameDayPickUp\",\n      \"price\": 13,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/delivery-support.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\"\n    },\n    {\n      \"serviceType\": \"pudo\",\n      \"deliveryOptionName\": \"Aramex PUDO\",\n      \"deliveryType\": \"pickupByCustomer\",\n      \"codCharge\": 6,\n      \"maxOrderValue\": 7000,\n      \"maxCODValue\": 0,\n      \"deliveryOptionId\": 7231,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-21\",\n      \"deliveryCompanyName\": \"aramex\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"checkAllBranches\": \"https://www.aramex.com/sa/en/find-aramex-office\",\n      \"returnFee\": 15,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1to5WorkingDays\",\n      \"price\": 15,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/aramex.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"dropoffOnly\",\n      \"cardOnDeliveryPercentage\": \"6.0 SAR plus 1.75% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"sameDay\",\n      \"deliveryOptionName\": \"Sent\",\n      \"score5\": 4,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 6,\n      \"pickupCutOffTime\": \"11:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 0,\n      \"deliveryOptionId\": 7490,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"sent\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 16,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"sameDayPickUp\",\n      \"price\": 16,\n      \"logo\": \"https://storage.googleapis.com/download/storage/v1/b/oto-v2-files/o/files%2F1%2Fimport%2F6ac47fcf-548c-407f-b474-6a241f459a1b.png?generation=1737624142402900&alt=media\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"6.0 SAR plus 2.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"Roadlink Logistics\",\n      \"score5\": 4.7,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 6,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 2500,\n      \"maxCODValue\": 0,\n      \"deliveryOptionId\": 7990,\n      \"extraWeightPerKg\": 2,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"road-link\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 16,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1to3WorkingDays\",\n      \"price\": 16,\n      \"logo\": \"https://storage.googleapis.com/download/storage/v1/b/oto-v2-files/o/files%2F1%2Fimport%2Fd8fb28f0-2825-472e-9723-57672328ff36.png?generation=1747140104143959&alt=media\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"6.0 SAR plus 2.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"pudo\",\n      \"deliveryOptionName\": \"SMSA PUDO\",\n      \"deliveryType\": \"pickupByCustomer\",\n      \"codCharge\": 8,\n      \"maxOrderValue\": 6000,\n      \"maxCODValue\": 3750,\n      \"deliveryOptionId\": 7326,\n      \"extraWeightPerKg\": 2,\n      \"needToVerifyCrDocStatus\": true,\n      \"estimatedDeliveryDate\": \"2025-11-17\",\n      \"deliveryCompanyName\": \"smsaV2\",\n      \"estimatedPickupDate\": \"2025-11-16\",\n      \"checkAllBranches\": \"https://www.smsaexpress.com/map-location\",\n      \"returnFee\": 16.65,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"1to5WorkingDays\",\n      \"price\": 16.65,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/smsa-logo.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"dropoffOnly\",\n      \"cardOnDeliveryPercentage\": \"8.0 SAR plus 4.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"iMile\",\n      \"score5\": 3.7,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 4,\n      \"pickupCutOffTime\": \"18:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 5000,\n      \"deliveryOptionId\": 7147,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"imile\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 17,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"2to3WorkingDays\",\n      \"price\": 17,\n      \"logo\": \"https://storage.googleapis.com/download/storage/v1/b/oto-v2-files/o/files%2F1%2Fimport%2Fc1261774-f05c-4d74-a279-8dd22bbc4f5d.png?generation=1741461810060293&alt=media\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"4.0 SAR plus 1.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"sameDay\",\n      \"deliveryOptionName\": \"DELIVERIST Same Day\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 4.9,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 3,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 3750,\n      \"maxCODValue\": 2500,\n      \"deliveryOptionId\": 7110,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-20\",\n      \"deliveryCompanyName\": \"deliveristLogestechs\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 17,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"sameDayPickUp\",\n      \"price\": 17,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/deliverist.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"3.0 SAR plus 2.5% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"Shipa Delivery\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 3.5,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 3,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 3750,\n      \"maxCODValue\": 3750,\n      \"deliveryOptionId\": 7098,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-20\",\n      \"deliveryCompanyName\": \"shipaV2\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 17,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1 to 3 Working Days\",\n      \"price\": 17,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/shipa.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"3.0 SAR plus 0.8% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"J&T Express\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 5,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 8,\n      \"pickupCutOffTime\": \"16:00\",\n      \"maxOrderValue\": 6000,\n      \"maxCODValue\": 3000,\n      \"deliveryOptionId\": 7100,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-22\",\n      \"deliveryCompanyName\": \"jtexpress\",\n      \"estimatedPickupDate\": \"2025-11-18\",\n      \"checkAllBranches\": \"https://www.jtexpress.me/KSA/service-points\",\n      \"returnFee\": 18,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1 to 2 Working Days\",\n      \"price\": 18,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/jandt.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"8.0 SAR plus 0.9% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"sameDay\",\n      \"deliveryOptionName\": \"Yamamah\",\n      \"trackingType\": \"excellent\",\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 3,\n      \"pickupCutOffTime\": \"11:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 5000,\n      \"deliveryOptionId\": 8530,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"yamamahLogestechs\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 18,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"Same Day of Pickup Date\",\n      \"price\": 18,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/yamamah-express.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"3.0 SAR plus 2.5% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"Aymakan\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 4.4,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 6,\n      \"pickupCutOffTime\": \"17:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 3000,\n      \"deliveryOptionId\": 7102,\n      \"extraWeightPerKg\": 2,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"aymakan\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 18.9,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1to3WorkingDays\",\n      \"price\": 18.9,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/aymakan.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"6.0 SAR plus 1.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"Thabit Logistics\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 4.5,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 6,\n      \"pickupCutOffTime\": \"13:00\",\n      \"maxOrderValue\": 3750,\n      \"maxCODValue\": 0,\n      \"deliveryOptionId\": 7099,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"thabit\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 19,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1to2WorkingDays\",\n      \"price\": 19,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/thabit.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"6.0 SAR plus 0.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"coldDelivery\",\n      \"deliveryOptionName\": \"Delex\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 3.8,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 8,\n      \"pickupCutOffTime\": \"10:00\",\n      \"maxOrderValue\": 500,\n      \"maxCODValue\": 500,\n      \"deliveryOptionId\": 7113,\n      \"extraWeightPerKg\": 2,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"delexLogestechs\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 19,\n      \"maxFreeWeight\": 12,\n      \"avgDeliveryTime\": \"1to3WorkingDays\",\n      \"price\": 19,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/delex.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"8.0 SAR plus 0.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"sameDay\",\n      \"deliveryOptionName\": \"Linkers Express\",\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 0,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 2500,\n      \"maxCODValue\": 0,\n      \"deliveryOptionId\": 7949,\n      \"extraWeightPerKg\": 10,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"linkers-express\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 19,\n      \"maxFreeWeight\": 2,\n      \"avgDeliveryTime\": \"sameDayPickUp\",\n      \"price\": 19,\n      \"logo\": \"https://storage.googleapis.com/download/storage/v1/b/oto-v2-files/o/files%2F1%2Fimport%2F6e03c097-102f-4716-a99a-c2834824385a.png?generation=1742721672764745&alt=media\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"Aramex\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 4.7,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 6,\n      \"pickupCutOffTime\": \"14:00\",\n      \"maxOrderValue\": 7000,\n      \"maxCODValue\": 3750,\n      \"deliveryOptionId\": 7097,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-22\",\n      \"deliveryCompanyName\": \"aramex\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"checkAllBranches\": \"https://www.aramex.com/sa/en/find-aramex-office\",\n      \"returnFee\": 19.26,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1 to 2 Working Days\",\n      \"price\": 19.26,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/aramex.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickupDropoff\",\n      \"cardOnDeliveryPercentage\": \"6.0 SAR plus 1.75% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"Naqel Express\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 4.6,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 6,\n      \"pickupCutOffTime\": \"16:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 3500,\n      \"deliveryOptionId\": 7112,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-22\",\n      \"deliveryCompanyName\": \"naqel\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 19.8,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1to4WorkingDays\",\n      \"price\": 19.8,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/naqel.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"6.0 SAR plus 0.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"SMSA\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 3.9,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 8,\n      \"maxOrderValue\": 6000,\n      \"maxCODValue\": 3750,\n      \"deliveryOptionId\": 7101,\n      \"extraWeightPerKg\": 1,\n      \"needToVerifyCrDocStatus\": true,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"secom\",\n      \"estimatedPickupDate\": \"2025-11-16\",\n      \"checkAllBranches\": \"https://www.smsaexpress.com/map-location\",\n      \"returnFee\": 19.98,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"1to5WorkingDays\",\n      \"price\": 19.98,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/smsa-logo.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"dropoffOnly\",\n      \"cardOnDeliveryPercentage\": \"8.0 SAR plus 4.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"UPS\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 5,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 8,\n      \"pickupCutOffTime\": \"14:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 2000,\n      \"deliveryOptionId\": 7136,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-17\",\n      \"deliveryCompanyName\": \"ups2\",\n      \"estimatedPickupDate\": \"2025-11-16\",\n      \"returnFee\": 20,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"1to5WorkingDays\",\n      \"price\": 20,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/ups.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"8.0 SAR plus 0.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"coldDelivery\",\n      \"deliveryOptionName\": \"Adwar Cold\",\n      \"score5\": 5,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 6,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 1000,\n      \"maxCODValue\": 1000,\n      \"deliveryOptionId\": 7410,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"adwarLogestechs\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 21,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"1to3WorkingDays\",\n      \"price\": 21,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/adwar.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\"\n    },\n    {\n      \"serviceType\": \"heavyAndBulky\",\n      \"deliveryOptionName\": \"Aramex Heavy & Bulky\",\n      \"score5\": 4.2,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 0,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 0,\n      \"deliveryOptionId\": 7898,\n      \"estimatedDeliveryDate\": \"2025-11-21\",\n      \"deliveryCompanyName\": \"aramex\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 27.26,\n      \"avgDeliveryTime\": \"1 to 2 Working Days\",\n      \"price\": 27.26,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/aramex.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\"\n    },\n    {\n      \"serviceType\": \"heavyAndBulky\",\n      \"deliveryOptionName\": \"Flow PL\",\n      \"trackingType\": \"excellent\",\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 0,\n      \"pickupCutOffTime\": \"13:00\",\n      \"maxOrderValue\": 20000,\n      \"maxCODValue\": 0,\n      \"deliveryOptionId\": 7106,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"flowpl\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 52.2,\n      \"maxFreeWeight\": 30,\n      \"avgDeliveryTime\": \"1to5WorkingDays\",\n      \"price\": 52.2,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/flow.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d349b585-9fd9-4db8-90fc-682fdbfc9620",
+          "name": "Check Delivery Fee",
+          "request": {
+            "name": "Check Delivery Fee",
+            "description": {
+              "content": "This API endpoint calculates contract-based pricing using your own rates. By providing the origin city, destination city, and package details such as weight and dimensions, the API determines the price based on the supplied parameters. Important Note: The prices returned by this API apply exclusively to your own contracts. Request Parameters: Name Required Type Description originCity yes string pickup city destinationCity yes string destination city weight yes number weight of package(kg) totalD",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "checkDeliveryFee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a5562f52-2950-4355-aa57-7d2bf76aacd0",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "checkDeliveryFee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"weight\": \"50\",\n  \"totalDue\": 10,\n  \"originCity\": \"Riyadh\",\n  \"destinationCity\": \"Jeddah\",\n  \"height\": 170,\n  \"width\": 50,\n  \"length\": 50\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"traceId\": \"63545-73855-176.88.141.22-c4270220-89f8-4fe4-a645-2f82fb5c499d\",\n  \"success\": true,\n  \"deliveryCompany\": [\n    {\n      \"serviceType\": \"sameDay\",\n      \"deliveryOptionName\": \"Deliver Now\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 4.9,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 3,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 3000,\n      \"deliveryOptionId\": 7109,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-17\",\n      \"deliveryCompanyName\": \"delivernow\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 16,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"Same Day of Pickup Date\",\n      \"price\": 16,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/delivery-now.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"3.0 SAR plus 0.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"lockerDelivery\",\n      \"deliveryOptionName\": \"Omni Llama\",\n      \"deliveryType\": \"locker\",\n      \"codCharge\": 8,\n      \"maxOrderValue\": 6000,\n      \"maxCODValue\": 1000,\n      \"deliveryOptionId\": 7252,\n      \"estimatedDeliveryDate\": \"2025-11-17\",\n      \"deliveryCompanyName\": \"omnillama\",\n      \"estimatedPickupDate\": \"2025-11-16\",\n      \"checkAllBranches\": \"https://map.omnillama.net/\",\n      \"returnFee\": 8,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"1to3WorkingDays\",\n      \"price\": 8,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/omni-llama.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"lockerDropOff\"\n    },\n    {\n      \"serviceType\": \"pudo\",\n      \"deliveryOptionName\": \"SPL PUDO\",\n      \"trackingType\": \"excellent\",\n      \"deliveryType\": \"pickupByCustomer\",\n      \"codCharge\": 8,\n      \"maxOrderValue\": 10000,\n      \"maxCODValue\": 5000,\n      \"deliveryOptionId\": 7144,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"splUpds\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"checkAllBranches\": \"https://splonline.com.sa/en/branches/\",\n      \"returnFee\": 13,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"1 to 2 Working Days\",\n      \"price\": 13,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/spl.jpg\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"dropoffOnly\",\n      \"cardOnDeliveryPercentage\": \"8.0 SAR plus 1.75% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"sameDay\",\n      \"deliveryOptionName\": \"Delivery Support\",\n      \"score5\": 4.4,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 3,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 5000,\n      \"deliveryOptionId\": 7417,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"deliverysupport\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 13,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"sameDayPickUp\",\n      \"price\": 13,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/delivery-support.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\"\n    },\n    {\n      \"serviceType\": \"pudo\",\n      \"deliveryOptionName\": \"Aramex PUDO\",\n      \"deliveryType\": \"pickupByCustomer\",\n      \"codCharge\": 6,\n      \"maxOrderValue\": 7000,\n      \"maxCODValue\": 0,\n      \"deliveryOptionId\": 7231,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-21\",\n      \"deliveryCompanyName\": \"aramex\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"checkAllBranches\": \"https://www.aramex.com/sa/en/find-aramex-office\",\n      \"returnFee\": 15,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1to5WorkingDays\",\n      \"price\": 15,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/aramex.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"dropoffOnly\",\n      \"cardOnDeliveryPercentage\": \"6.0 SAR plus 1.75% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"sameDay\",\n      \"deliveryOptionName\": \"Sent\",\n      \"score5\": 4,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 6,\n      \"pickupCutOffTime\": \"11:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 0,\n      \"deliveryOptionId\": 7490,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"sent\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 16,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"sameDayPickUp\",\n      \"price\": 16,\n      \"logo\": \"https://storage.googleapis.com/download/storage/v1/b/oto-v2-files/o/files%2F1%2Fimport%2F6ac47fcf-548c-407f-b474-6a241f459a1b.png?generation=1737624142402900&alt=media\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"6.0 SAR plus 2.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"Roadlink Logistics\",\n      \"score5\": 4.7,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 6,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 2500,\n      \"maxCODValue\": 0,\n      \"deliveryOptionId\": 7990,\n      \"extraWeightPerKg\": 2,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"road-link\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 16,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1to3WorkingDays\",\n      \"price\": 16,\n      \"logo\": \"https://storage.googleapis.com/download/storage/v1/b/oto-v2-files/o/files%2F1%2Fimport%2Fd8fb28f0-2825-472e-9723-57672328ff36.png?generation=1747140104143959&alt=media\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"6.0 SAR plus 2.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"pudo\",\n      \"deliveryOptionName\": \"SMSA PUDO\",\n      \"deliveryType\": \"pickupByCustomer\",\n      \"codCharge\": 8,\n      \"maxOrderValue\": 6000,\n      \"maxCODValue\": 3750,\n      \"deliveryOptionId\": 7326,\n      \"extraWeightPerKg\": 2,\n      \"needToVerifyCrDocStatus\": true,\n      \"estimatedDeliveryDate\": \"2025-11-17\",\n      \"deliveryCompanyName\": \"smsaV2\",\n      \"estimatedPickupDate\": \"2025-11-16\",\n      \"checkAllBranches\": \"https://www.smsaexpress.com/map-location\",\n      \"returnFee\": 16.65,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"1to5WorkingDays\",\n      \"price\": 16.65,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/smsa-logo.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"dropoffOnly\",\n      \"cardOnDeliveryPercentage\": \"8.0 SAR plus 4.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"iMile\",\n      \"score5\": 3.7,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 4,\n      \"pickupCutOffTime\": \"18:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 5000,\n      \"deliveryOptionId\": 7147,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"imile\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 17,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"2to3WorkingDays\",\n      \"price\": 17,\n      \"logo\": \"https://storage.googleapis.com/download/storage/v1/b/oto-v2-files/o/files%2F1%2Fimport%2Fc1261774-f05c-4d74-a279-8dd22bbc4f5d.png?generation=1741461810060293&alt=media\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"4.0 SAR plus 1.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"sameDay\",\n      \"deliveryOptionName\": \"DELIVERIST Same Day\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 4.9,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 3,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 3750,\n      \"maxCODValue\": 2500,\n      \"deliveryOptionId\": 7110,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-20\",\n      \"deliveryCompanyName\": \"deliveristLogestechs\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 17,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"sameDayPickUp\",\n      \"price\": 17,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/deliverist.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"3.0 SAR plus 2.5% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"Shipa Delivery\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 3.5,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 3,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 3750,\n      \"maxCODValue\": 3750,\n      \"deliveryOptionId\": 7098,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-20\",\n      \"deliveryCompanyName\": \"shipaV2\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 17,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1 to 3 Working Days\",\n      \"price\": 17,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/shipa.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"3.0 SAR plus 0.8% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"J&T Express\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 5,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 8,\n      \"pickupCutOffTime\": \"16:00\",\n      \"maxOrderValue\": 6000,\n      \"maxCODValue\": 3000,\n      \"deliveryOptionId\": 7100,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-22\",\n      \"deliveryCompanyName\": \"jtexpress\",\n      \"estimatedPickupDate\": \"2025-11-18\",\n      \"checkAllBranches\": \"https://www.jtexpress.me/KSA/service-points\",\n      \"returnFee\": 18,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1 to 2 Working Days\",\n      \"price\": 18,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/jandt.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"8.0 SAR plus 0.9% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"sameDay\",\n      \"deliveryOptionName\": \"Yamamah\",\n      \"trackingType\": \"excellent\",\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 3,\n      \"pickupCutOffTime\": \"11:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 5000,\n      \"deliveryOptionId\": 8530,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"yamamahLogestechs\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 18,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"Same Day of Pickup Date\",\n      \"price\": 18,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/yamamah-express.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"3.0 SAR plus 2.5% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"Aymakan\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 4.4,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 6,\n      \"pickupCutOffTime\": \"17:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 3000,\n      \"deliveryOptionId\": 7102,\n      \"extraWeightPerKg\": 2,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"aymakan\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 18.9,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1to3WorkingDays\",\n      \"price\": 18.9,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/aymakan.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"6.0 SAR plus 1.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"Thabit Logistics\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 4.5,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 6,\n      \"pickupCutOffTime\": \"13:00\",\n      \"maxOrderValue\": 3750,\n      \"maxCODValue\": 0,\n      \"deliveryOptionId\": 7099,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"thabit\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 19,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1to2WorkingDays\",\n      \"price\": 19,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/thabit.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"6.0 SAR plus 0.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"coldDelivery\",\n      \"deliveryOptionName\": \"Delex\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 3.8,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 8,\n      \"pickupCutOffTime\": \"10:00\",\n      \"maxOrderValue\": 500,\n      \"maxCODValue\": 500,\n      \"deliveryOptionId\": 7113,\n      \"extraWeightPerKg\": 2,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"delexLogestechs\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 19,\n      \"maxFreeWeight\": 12,\n      \"avgDeliveryTime\": \"1to3WorkingDays\",\n      \"price\": 19,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/delex.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"8.0 SAR plus 0.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"sameDay\",\n      \"deliveryOptionName\": \"Linkers Express\",\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 0,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 2500,\n      \"maxCODValue\": 0,\n      \"deliveryOptionId\": 7949,\n      \"extraWeightPerKg\": 10,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"linkers-express\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 19,\n      \"maxFreeWeight\": 2,\n      \"avgDeliveryTime\": \"sameDayPickUp\",\n      \"price\": 19,\n      \"logo\": \"https://storage.googleapis.com/download/storage/v1/b/oto-v2-files/o/files%2F1%2Fimport%2F6e03c097-102f-4716-a99a-c2834824385a.png?generation=1742721672764745&alt=media\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"Aramex\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 4.7,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 6,\n      \"pickupCutOffTime\": \"14:00\",\n      \"maxOrderValue\": 7000,\n      \"maxCODValue\": 3750,\n      \"deliveryOptionId\": 7097,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-22\",\n      \"deliveryCompanyName\": \"aramex\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"checkAllBranches\": \"https://www.aramex.com/sa/en/find-aramex-office\",\n      \"returnFee\": 19.26,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1 to 2 Working Days\",\n      \"price\": 19.26,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/aramex.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickupDropoff\",\n      \"cardOnDeliveryPercentage\": \"6.0 SAR plus 1.75% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"Naqel Express\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 4.6,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 6,\n      \"pickupCutOffTime\": \"16:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 3500,\n      \"deliveryOptionId\": 7112,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-22\",\n      \"deliveryCompanyName\": \"naqel\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 19.8,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1to4WorkingDays\",\n      \"price\": 19.8,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/naqel.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"6.0 SAR plus 0.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"SMSA\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 3.9,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 8,\n      \"maxOrderValue\": 6000,\n      \"maxCODValue\": 3750,\n      \"deliveryOptionId\": 7101,\n      \"extraWeightPerKg\": 1,\n      \"needToVerifyCrDocStatus\": true,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"secom\",\n      \"estimatedPickupDate\": \"2025-11-16\",\n      \"checkAllBranches\": \"https://www.smsaexpress.com/map-location\",\n      \"returnFee\": 19.98,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"1to5WorkingDays\",\n      \"price\": 19.98,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/smsa-logo.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"dropoffOnly\",\n      \"cardOnDeliveryPercentage\": \"8.0 SAR plus 4.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"UPS\",\n      \"trackingType\": \"excellent\",\n      \"score5\": 5,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 8,\n      \"pickupCutOffTime\": \"14:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 2000,\n      \"deliveryOptionId\": 7136,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-17\",\n      \"deliveryCompanyName\": \"ups2\",\n      \"estimatedPickupDate\": \"2025-11-16\",\n      \"returnFee\": 20,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"1to5WorkingDays\",\n      \"price\": 20,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/ups.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"8.0 SAR plus 0.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"coldDelivery\",\n      \"deliveryOptionName\": \"Adwar Cold\",\n      \"score5\": 5,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 6,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 1000,\n      \"maxCODValue\": 1000,\n      \"deliveryOptionId\": 7410,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"adwarLogestechs\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 21,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"1to3WorkingDays\",\n      \"price\": 21,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/adwar.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\"\n    },\n    {\n      \"serviceType\": \"heavyAndBulky\",\n      \"deliveryOptionName\": \"Aramex Heavy & Bulky\",\n      \"score5\": 4.2,\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 0,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 0,\n      \"deliveryOptionId\": 7898,\n      \"estimatedDeliveryDate\": \"2025-11-21\",\n      \"deliveryCompanyName\": \"aramex\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 27.26,\n      \"avgDeliveryTime\": \"1 to 2 Working Days\",\n      \"price\": 27.26,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/aramex.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\"\n    },\n    {\n      \"serviceType\": \"heavyAndBulky\",\n      \"deliveryOptionName\": \"Flow PL\",\n      \"trackingType\": \"excellent\",\n      \"deliveryType\": \"toCustomerDoorstep\",\n      \"codCharge\": 0,\n      \"pickupCutOffTime\": \"13:00\",\n      \"maxOrderValue\": 20000,\n      \"maxCODValue\": 0,\n      \"deliveryOptionId\": 7106,\n      \"extraWeightPerKg\": 1,\n      \"estimatedDeliveryDate\": \"2025-11-18\",\n      \"deliveryCompanyName\": \"flowpl\",\n      \"estimatedPickupDate\": \"2025-11-17\",\n      \"returnFee\": 52.2,\n      \"maxFreeWeight\": 30,\n      \"avgDeliveryTime\": \"1to5WorkingDays\",\n      \"price\": 52.2,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/flow.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be48f8ff-836e-4cf9-af7d-3884ac09285b",
+          "name": "Get Delivery Fee",
+          "request": {
+            "name": "Get Delivery Fee",
+            "description": {
+              "content": "This API endpoint calculates the shipping fee for a specific order in OTO. It offers two methods for price calculation: By Order ID: Provide the orderId, and the API will return all possible shipping rates for each defined shipping company. By Delivery Option ID: Provide the deliveryOptionId to calculate the shipping fee for a specific shipping company. You can get this information from checkOTODeliveryFee or from checkDeliveryFee endpoints. Request Parameters: Name Required Type Description ord",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "getDeliveryFee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "371f3f30-391a-472f-b000-6785d4cac5ee",
+              "name": "200 all options",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "getDeliveryFee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"OID-22700-1006\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"deliveryCompany\": [\n    {\n      \"serviceType\": \"pudo\",\n      \"deliveryOptionName\": \"SPL PUDO\",\n      \"trackingType\": \"excellent\",\n      \"codCharge\": 8,\n      \"maxOrderValue\": 10000,\n      \"maxCODValue\": 5000,\n      \"deliveryOptionId\": 6927,\n      \"extraWeightPerKg\": 1,\n      \"deliveryCompanyName\": \"splUpds\",\n      \"returnFee\": 13,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"1 to 2 Working Days\",\n      \"price\": 13,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/spl.jpg\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"dropoffOnly\",\n      \"cardOnDeliveryPercentage\": \"8.0 SAR plus 1.75% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"pudo\",\n      \"deliveryOptionName\": \"SPL PUDO\",\n      \"trackingType\": \"excellent\",\n      \"codCharge\": 8,\n      \"maxOrderValue\": 10000,\n      \"maxCODValue\": 5000,\n      \"deliveryOptionId\": 6925,\n      \"extraWeightPerKg\": 1,\n      \"deliveryCompanyName\": \"splUpds\",\n      \"returnFee\": 14,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"1 to 2 Working Days\",\n      \"price\": 14,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/spl.jpg\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"dropoffOnly\",\n      \"cardOnDeliveryPercentage\": \"8.0 SAR plus 1.75% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"pudo\",\n      \"deliveryOptionName\": \"SPL PUDO\",\n      \"trackingType\": \"excellent\",\n      \"codCharge\": 8,\n      \"maxOrderValue\": 10000,\n      \"maxCODValue\": 5000,\n      \"deliveryOptionId\": 6926,\n      \"extraWeightPerKg\": 1,\n      \"deliveryCompanyName\": \"splUpds\",\n      \"returnFee\": 14,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"1 to 2 Working Days\",\n      \"price\": 14,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/spl.jpg\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"dropoffOnly\",\n      \"cardOnDeliveryPercentage\": \"8.0 SAR plus 1.75% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"Shipa Delivery\",\n      \"trackingType\": \"excellent\",\n      \"codCharge\": 3,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 3750,\n      \"maxCODValue\": 3750,\n      \"deliveryOptionId\": 5552,\n      \"extraWeightPerKg\": 1,\n      \"deliveryCompanyName\": \"shipaV2\",\n      \"returnFee\": 17,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1 to 3 Working Days\",\n      \"price\": 17,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/shipa.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"3.0 SAR plus 0.8% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"Aramex\",\n      \"trackingType\": \"excellent\",\n      \"codCharge\": 6,\n      \"pickupCutOffTime\": \"14:00\",\n      \"maxOrderValue\": 7000,\n      \"maxCODValue\": 5000,\n      \"deliveryOptionId\": 5551,\n      \"extraWeightPerKg\": 1,\n      \"deliveryCompanyName\": \"aramex\",\n      \"returnFee\": 18,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1 to 2 Working Days\",\n      \"price\": 18,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/aramex.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickupDropoff\",\n      \"cardOnDeliveryPercentage\": \"6.0 SAR plus 1.75% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"Shipa Delivery\",\n      \"trackingType\": \"excellent\",\n      \"codCharge\": 3,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 3750,\n      \"maxCODValue\": 3750,\n      \"deliveryOptionId\": 5489,\n      \"extraWeightPerKg\": 1,\n      \"deliveryCompanyName\": \"shipaV2\",\n      \"returnFee\": 18,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1 to 3 Working Days\",\n      \"price\": 18,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/shipa.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"3.0 SAR plus 0.8% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"J&T Express\",\n      \"trackingType\": \"excellent\",\n      \"codCharge\": 8,\n      \"pickupCutOffTime\": \"16:00\",\n      \"maxOrderValue\": 6000,\n      \"maxCODValue\": 3000,\n      \"deliveryOptionId\": 5555,\n      \"extraWeightPerKg\": 1,\n      \"deliveryCompanyName\": \"jtexpress\",\n      \"returnFee\": 18,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1 to 2 Working Days\",\n      \"price\": 18,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/jandt.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"8.0 SAR plus 0.9% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"Aymakan\",\n      \"trackingType\": \"excellent\",\n      \"codCharge\": 6,\n      \"pickupCutOffTime\": \"17:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 3000,\n      \"deliveryOptionId\": 5557,\n      \"extraWeightPerKg\": 2,\n      \"deliveryCompanyName\": \"aymakan\",\n      \"returnFee\": 18,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1to3WorkingDays\",\n      \"price\": 18,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/aymakan.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"6.0 SAR plus 1.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"sameDay\",\n      \"deliveryOptionName\": \"Deliver Now\",\n      \"trackingType\": \"excellent\",\n      \"codCharge\": 3,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 3000,\n      \"deliveryOptionId\": 5564,\n      \"extraWeightPerKg\": 1,\n      \"deliveryCompanyName\": \"delivernow\",\n      \"returnFee\": 18,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"Same Day of Pickup Date\",\n      \"price\": 18,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/delivery-now.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"3.0 SAR plus 0.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"Thabit Logistics\",\n      \"trackingType\": \"excellent\",\n      \"codCharge\": 6,\n      \"pickupCutOffTime\": \"13:00\",\n      \"maxOrderValue\": 3750,\n      \"maxCODValue\": 3750,\n      \"deliveryOptionId\": 5554,\n      \"extraWeightPerKg\": 1,\n      \"deliveryCompanyName\": \"thabit\",\n      \"returnFee\": 19,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1to2WorkingDays\",\n      \"price\": 19,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/thabit.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"6.0 SAR plus 0.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"Aymakan\",\n      \"trackingType\": \"excellent\",\n      \"codCharge\": 6,\n      \"pickupCutOffTime\": \"17:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 3000,\n      \"deliveryOptionId\": 5494,\n      \"extraWeightPerKg\": 2,\n      \"deliveryCompanyName\": \"aymakan\",\n      \"returnFee\": 19,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1to3WorkingDays\",\n      \"price\": 19,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/aymakan.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"6.0 SAR plus 1.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"coldDelivery\",\n      \"deliveryOptionName\": \"Delex\",\n      \"trackingType\": \"excellent\",\n      \"codCharge\": 7,\n      \"pickupCutOffTime\": \"10:00\",\n      \"maxOrderValue\": 500,\n      \"maxCODValue\": 500,\n      \"deliveryOptionId\": 5568,\n      \"extraWeightPerKg\": 2,\n      \"deliveryCompanyName\": \"delexLogestechs\",\n      \"returnFee\": 19,\n      \"maxFreeWeight\": 12,\n      \"avgDeliveryTime\": \"1to3WorkingDays\",\n      \"price\": 19,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/delex.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"7.0 SAR plus 0.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"sameDay\",\n      \"deliveryOptionName\": \"Deliver Now\",\n      \"trackingType\": \"excellent\",\n      \"codCharge\": 3,\n      \"pickupCutOffTime\": \"12:00\",\n      \"maxOrderValue\": 5000,\n      \"maxCODValue\": 3000,\n      \"deliveryOptionId\": 5501,\n      \"extraWeightPerKg\": 1,\n      \"deliveryCompanyName\": \"delivernow\",\n      \"returnFee\": 19,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"Same Day of Pickup Date\",\n      \"price\": 19,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/delivery-now.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"3.0 SAR plus 0.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"Thabit Logistics\",\n      \"trackingType\": \"excellent\",\n      \"codCharge\": 6,\n      \"pickupCutOffTime\": \"13:00\",\n      \"maxOrderValue\": 3750,\n      \"maxCODValue\": 3750,\n      \"deliveryOptionId\": 5491,\n      \"extraWeightPerKg\": 1,\n      \"deliveryCompanyName\": \"thabit\",\n      \"returnFee\": 20,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1to2WorkingDays\",\n      \"price\": 20,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/thabit.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"6.0 SAR plus 0.0% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"J&T Express\",\n      \"trackingType\": \"excellent\",\n      \"codCharge\": 8,\n      \"pickupCutOffTime\": \"16:00\",\n      \"maxOrderValue\": 6000,\n      \"maxCODValue\": 3000,\n      \"deliveryOptionId\": 5492,\n      \"extraWeightPerKg\": 1,\n      \"deliveryCompanyName\": \"jtexpress\",\n      \"returnFee\": 20,\n      \"maxFreeWeight\": 10,\n      \"avgDeliveryTime\": \"1 to 2 Working Days\",\n      \"price\": 20,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/jandt.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"freePickup\",\n      \"cardOnDeliveryPercentage\": \"8.0 SAR plus 0.9% of the amount to be collected\"\n    },\n    {\n      \"serviceType\": \"express\",\n      \"deliveryOptionName\": \"SMSA\",\n      \"trackingType\": \"excellent\",\n      \"codCharge\": 8,\n      \"maxOrderValue\": 6000,\n      \"maxCODValue\": 3750,\n      \"deliveryOptionId\": 5556,\n      \"extraWeightPerKg\": 1,\n      \"deliveryCompanyName\": \"secom\",\n      \"returnFee\": 20,\n      \"maxFreeWeight\": 15,\n      \"avgDeliveryTime\": \"1to5WorkingDays\",\n      \"price\": 20,\n      \"logo\": \"https://storage.googleapis.com/tryoto-public/delivery-logo/smsa-logo.png\",\n      \"currency\": \"SAR\",\n      \"pickupDropoff\": \"dropoffOnly\",\n      \"cardOnDeliveryPercentage\": \"8.0 SAR plus 0.0% of the amount to be collected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad54825e-eb7d-4d5c-8960-d66e087ca1e7",
+              "name": "400 could not find an option with delivery company",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "getDeliveryFee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"OID-22700-1006\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"otoErrorCode\": \"OTO1004\",\n  \"otoErrorMessage\": \"There is no available delivery company setting\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2cfd0ea2-6f49-4935-8f39-5f48de4f69ef",
+          "name": "Get Delivery Options",
+          "request": {
+            "name": "Get Delivery Options",
+            "description": {
+              "content": "This API endpoint allows you to check coverage for your active delivery company contracts by providing either the orderId or the city details. Follow these guidelines: Important: Do not include both orderId and city in the same request, as this will result in an error. Ensure your request contains only one of these parameters to proceed successfully. Request Parameters: Name Required Type Description city no string Check coverage in the city. orderId no string Check coverage for that specific or",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "getDeliveryOptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d2fd142-5687-4064-8edf-25009ad3ce63",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "getDeliveryOptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"options\": [\n    {\n      \"name\": \"Tam\",\n      \"deliveryOptionId\": 4,\n      \"integrationName\": \"tam\"\n    },\n    {\n      \"name\": \"Aymakan\",\n      \"deliveryOptionId\": 20,\n      \"webhookUrl\": \"https://login.tryoto.com/shipmentStatus?token=7NhG6Fhsk8MMoLYBMmMo&dc=aymakan\"\n    },\n    {\n      \"name\": \"Aramex\",\n      \"deliveryOptionId\": 22,\n      \"webhookUrl\": \"https://login.tryoto.com/shipmentStatus?token=TMcFSCSFSD3ctGpIk7wX&dc=aramex\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tryoto.com/rest/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7d714841-3318-4b04-bf08-9da8be75b4e5",
+    "name": "OTO API V2 Account Shipping Prices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO's platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you're integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.\n\nContact Support:\n Name: OTO Support",
+      "type": "text/plain"
+    }
+  }
+}

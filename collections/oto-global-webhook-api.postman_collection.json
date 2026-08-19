@@ -1,0 +1,411 @@
+{
+  "item": [
+    {
+      "id": "217385d6-bc59-4d66-87c5-d29d61d47560",
+      "name": "Webhook",
+      "description": {
+        "content": "WEBHOOK for ORDER There are 3 types of webhook for now, newOrders, orderStatus , shipmentError and walletTransaction. OTO will push updates to the registered webhook endpoint for the orderStatus type whenever an order status changes. This includes statuses such as Processing, Delivered, Returned, an",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7102a8ca-732c-4dd5-b7ff-de43ed73f780",
+          "name": "webhook",
+          "request": {
+            "name": "webhook",
+            "description": {
+              "content": "This endpoint enables OTO to send update payloads to the specified URL using the defined method. Optional security measures, such as token authentication and payload validation, can be configured for enhanced security. Request Parameters: Name Required Type Description method yes string POST or PUT url yes string Your endpoint listens to get OTO webhook payload, when order status changes. exp. https://webhook.site/3e53c98a-a089-4ca4-9bc4-df10e5a71e4b secretKey no string With this key message is ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6ea797ad-bcb3-4237-a45a-145d3d331f7e",
+              "name": "200 webhook-order status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"post\",\n  \"url\": \"https://webhook.site/3e53c98a-a089-4ca4-9bc4-df10e5a71e4b\",\n  \"orderPrefix\": \"fulfillment\",\n  \"timestampFormat\": \"2025-01-01 13:14:34\",\n  \"secretKey\": \"key1234\",\n  \"authorizationKey\": \"authorizationkey123\",\n  \"webhookType\": \"shipmentError\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"id\": \"59\",\n  \"message\": \"webhook has been created\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36fbeda5-94e5-413e-a23d-7f755f4e5ed3",
+          "name": "webhook",
+          "request": {
+            "name": "webhook",
+            "description": {
+              "content": "This endpoint allows you to retrieve a list of all registered webhook definitions. It provides detailed information about each webhook, including its configuration and associated event triggers, enabling you to manage and review your webhook integrations effectively. Note: You can filter by id if you know the id of the webhook. Request Parameters: Name Required Type Description id no string id of the webhook",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4fc2c03-a04b-4c7b-9f3d-2f81749b90a5",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"webhooks\": [\n    {\n      \"method\": \"post\",\n      \"secretKey\": \"secret123\",\n      \"authorizationKey\": \"authorization123\",\n      \"timestampFormat\": \"2025-01-01 10:10:10\",\n      \"id\": 59,\n      \"url\": \"https://webhook.site/3e53c98a-a089-4ca4-9bc4-df10e5a71e4b\",\n      \"orderPrefix\": \"fulfillment\"\n    }\n  ],\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "763b8d62-9b64-43a7-9093-a627d9e2e319",
+          "name": "webhook",
+          "request": {
+            "name": "webhook",
+            "description": {
+              "content": "This API endpoint allows updating an already registered webhook by providing its unique ID. This ensures you can modify existing webhook configurations, such as URL, secretKey, or other parameters, without needing to delete and recreate it. Request Parameters: Name Required Type Description id yes string Id of the webhook record. method yes string POST or PUT url yes string Your endpoint listens to get OTO webhook payload, when order status changes. exp. https://webhook.site/3e53c98a-a089-4ca4-9",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6bc5285a-fee1-487d-b70b-b622d1d80f82",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 59,\n  \"method\": \"post\",\n  \"url\": \"https://webhook.site/3e53c98a-a089-4ca4-9bc4-df10e5a71e4b\",\n  \"orderPrefix\": \"test-2\",\n  \"timestampFormat\": \"2025-01-01 10:10:10\",\n  \"secretKey\": \"secret123\",\n  \"authorizationKey\": \"authorizationkey123\",\n  \"webhookType\": \"orderStatus\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"webhook has been updated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e57bded5-739a-475c-bc8d-322ec0969fb2",
+          "name": "webhook",
+          "request": {
+            "name": "webhook",
+            "description": {
+              "content": "This API endpoint enables the removal of a registered webhook from the system using its unique ID. This ensures you can effectively manage and clean up webhook configurations that are no longer needed. Request Parameters: Name Required Type Description id yes string Id of the webhook record.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rest",
+                "v2",
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88f251dc-3aef-4016-a582-8b34bd12440e",
+              "name": "webhook",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rest",
+                    "v2",
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"webhook has been deleted\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tryoto.com/rest/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e951eabb-33fd-4ac3-82d8-847d41ef5a06",
+    "name": "OTO API V2 Account Webhook API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO's platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you're integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.\n\nContact Support:\n Name: OTO Support",
+      "type": "text/plain"
+    }
+  }
+}

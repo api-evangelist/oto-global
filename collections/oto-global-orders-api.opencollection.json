@@ -1,0 +1,175 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OTO API V2 Account Orders API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/createOrder",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint is a critical component in e-commerce and logistics systems, enabling external applications to initiate and manage new orders seamlessly. This endpoint allows you to submit order details, such as customer information, product data, shipping preferences, and payment methods. For KSA Shipments: If you are providing the sender and receiver short address codes, there is no need to include the city and address information. Note: If you send the createShipment: true parameter and the"
+        },
+        {
+          "info": {
+            "name": "Update Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/updateOrder",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows you update order info with this endpoint before shipment creation. If you created a shipment and need to update an information after that you have to cancel the shipment first then you can update. Request Parameters: Parameter Required Type Description orderId yes string Unique identifier of the Order deliveryOptionId no string Specifies the delivery option to be used for the shipment. customer yes object Customer Data( can not be used together with destinationLocationCo"
+        },
+        {
+          "info": {
+            "name": "Update Order Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/updateOrderStatus",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows you to modify the current status of an order within the system. You can update the order status to \"delivered,\" \"returned,\" if the order does not have an associated shipment. For \"picked up\" there should be an associated shipment. However, if a shipment exists, only statuses for integrator-managed shipments can be updated. Request Parameters: Name Required Type Description orderIds yes string Id of the order/s status yes string status of the shipment(delivered, returned,"
+        },
+        {
+          "info": {
+            "name": "Cancel Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/cancelOrder",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows users to cancel an existing order under specific conditions. It ensures smooth and efficient handling of cancellations while maintaining the integrity of related processes. Important Note: If the order has an associated shipment, it cannot be canceled via this endpoint. Shipment-related restrictions ensure the system prevents conflicts or inconsistencies in ongoing fulfillment processes. Request Parameters: Name Required Type Description orderId yes(if there is no otoId)"
+        },
+        {
+          "info": {
+            "name": "Get Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/orders",
+            "params": [
+              {
+                "name": "perPage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "This API endpoint is designed to provide a comprehensive overview of orders in your system. This endpoint returns detailed information about each order, including pickup locations, order IDs, item details, and current statuses. It enables seamless tracking and management of orders, ensuring better visibility and control. Request Parameters: Name Required Type Description perPage no number Order count in the response. Max limit 100 page no number Pagination number. You can iterate this field to g"
+        },
+        {
+          "info": {
+            "name": "Hold Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/holdOrder",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows you to place an order on hold, temporarily pausing its processing. This is useful for scenarios such as payment verification, inventory issues, or customer requests. Request Parameters: Name Required Type Description orderId yes string Id of the order that you will place on hold. onHoldReason yes string Reason for being an order on hold. onHoldReasonLang yes string Values can be: eng, tr, ar. onHoldComment no string Reason or note explaining why the order is placed on ho"
+        },
+        {
+          "info": {
+            "name": "Unhold Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/unHoldOrder",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows users to release orders that are currently on hold. This endpoint is designed to resume the processing of held orders, making them available for fulfillment or further actions in the order management workflow. Request Parameters: Name Required Type Description orderId yes string The orderId you want to unhold."
+        },
+        {
+          "info": {
+            "name": "Get Order Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/orderDetails",
+            "params": [
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "This API endpoint provides detailed information about a specific order. By using this endpoint, you can retrieve comprehensive data about an order including status updates. Request Parameters: Name Required Type Description orderId yes(if there is no otoId or ref1) string Id of the Order. otoId yes(if there is no orderId or ref1) string A unique id of the order generated by OTO. ref1 yes(if there is no orderId or otoId) string ref1 provided while create order."
+        },
+        {
+          "info": {
+            "name": "Check Order Availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/checkOrderAvailability",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check Order Availability This API endpoint allows you to check the availability of an order based on the provided orderId and associated ruleIds . Request Parameters Existing Order (with OrderID) The user provides an orderId (increment ID) that is already created in OTO. The system checks the availability of the order and returns the list of locations where it can be fulfilled. By default, the API considers all OMS rules while checking availability. Optionally, the user can provide specific OMS "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

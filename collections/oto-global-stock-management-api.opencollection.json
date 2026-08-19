@@ -1,0 +1,146 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OTO API V2 Account Stock Management API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stock Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update Stock Quantity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/updateStockQuantity",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint enables efficient inventory management by allowing you to update the quantity of a SKU in two flexible ways: Adjust : Modify the existing quantity by adding or deducting a specified amount. To decrease the quantity, provide a negative value for qty . For example, setting qty to -5 will deduct 5 units from the current stock. Set : Directly set the quantity on hand to a specific value, replacing the current stock with the provided qty . Request Parameters: Name Required Type Desc"
+        },
+        {
+          "info": {
+            "name": "Check Inventory Stock",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/checkInventoryStock",
+            "params": [
+              {
+                "name": "sku",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "This API endpoint allows you to retrieve real-time stock availability for products at specific locations. It provides detailed information on the quantity of items on hand and forecasted stock for each product at various pickup locations, offering a location-based view of inventory distribution. Request Parameters: Name Required Type Description sku yes string The product's SKU identifier pickupLocationCode no string The code representing the specific location. Response: success : Indicates whet"
+        },
+        {
+          "info": {
+            "name": "Check Global Stock",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/checkGlobalStock",
+            "params": [
+              {
+                "name": "sku",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "This API endpoint provides an overview of total stock availability for SKUs across all locations. This endpoint aggregates stock levels to display a global view, helping businesses understand their overall inventory status. Request Parameters: Name Required Type Description sku yes string The product's SKU identifier Response: success : Indicates whether the request was successful ( true or false ). stock : A dictionary with SKUs as keys, containing global stock details for each product: sku : T"
+        },
+        {
+          "info": {
+            "name": "Create Inventory Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/createInventoryOrder",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint creates inventory order as inbound or outbound for a warehouse or branch location. This API is used mostly to provide the incoming or outgoing bulk items from ERP systems to OTO. Once the order is created the status will be new for the warehouse or branch to accept and process the order. Request Parameters: Name Required Type Description action yes enum \"inbound\": Creates the order as purchase type and sets the ingoing location field \"outbound\": Creates the order as disposal an"
+        },
+        {
+          "info": {
+            "name": "Update Packing Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/updatePackingStatus",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint allows you to update the packing status of an order during the fulfillment process. This endpoint is used to record and track the progress of orders as they move through the packing stage, ensuring accurate status updates for operational visibility. Request Parameters: Name Required Type Description orderId yes string Id of the order that you wanna update packing status packingStatus yes string Packing status value can be packed or picked"
+        },
+        {
+          "info": {
+            "name": "Get Orders Ready For Packing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/getPackingOrders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint retrieves a list of orders that are ready for pick and pack operations. This endpoint is designed to streamline warehouse workflows by providing access to orders that have completed prior processes and are prepared for fulfillment. Request Parameters: Name Required Type Description warehouseCode yes String pickupLocationCode of the warehouse."
+        },
+        {
+          "info": {
+            "name": "Check Available Stores For Pickup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/availableStoresForPickup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API endpoint retrieves a list of physical stores where the requested items are currently available for customer pickup. By providing a list of SKUs with required quantities and a selected city, the endpoint validates stock availability and returns eligible stores that can fulfill the pickup request. The response includes detailed store information such as store name, location coordinates, address details, operating hours by day, and stock status. This endpoint is designed to support omnicha"
+        },
+        {
+          "info": {
+            "name": "Available Cities For Pickup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tryoto.com/rest/v2/rest/v2/availableCitiesForPickup"
+          },
+          "docs": "This API endpoint retrieves a list of cities where in-store pickup is currently supported. It allows marketplaces and merchants to identify eligible cities in which customers can select the pickup option during checkout or order creation. You can enable and disable it. from Warehouse/ Branch form. The response returns a simple list of city names where pickup-enabled stores are available, helping ensure that pickup options are only displayed for supported locations. This endpoint is designed to e"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
