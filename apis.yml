@@ -43,6 +43,16 @@ tags:
 - Shipping
 - Logistics
 - Fulfillment
+- E-Commerce
+- Delivery
+- Carriers
+- Returns
+- Saudi Arabia
+tags_raw:
+- Company
+- Shipping
+- Logistics
+- Fulfillment
 - E-commerce
 - Delivery
 - Carriers
@@ -108,6 +118,8 @@ apis:
   humanURL: https://apis.tryoto.com/
   baseURL: https://api.tryoto.com/rest/v2
   tags:
+  - Customer > Notifications
+  tags_raw:
   - Customer Notifications
   properties:
   - type: OpenAPI
@@ -144,6 +156,8 @@ apis:
   humanURL: https://apis.tryoto.com/
   baseURL: https://api.tryoto.com/rest/v2
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -180,6 +194,8 @@ apis:
   humanURL: https://apis.tryoto.com/
   baseURL: https://api.tryoto.com/rest/v2
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -276,6 +292,8 @@ apis:
   humanURL: https://apis.tryoto.com/
   baseURL: https://api.tryoto.com/rest/v2
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
