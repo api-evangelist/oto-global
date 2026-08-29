@@ -334,6 +334,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/oto-global-capability-edges.yml
+  name: OTO Global Business Capability Map
 - type: DomainSecurity
   url: security/oto-global-domain-security.yml
 - type: Website

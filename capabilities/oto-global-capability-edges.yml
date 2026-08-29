@@ -1,0 +1,64 @@
+slug: oto-global
+provider: OTO Global
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Tracking
+  spec_file: oto-global-tracking-api-openapi.yml
+  capability_id: BC-2510.20
+  capability_id_l1: BC-2510
+  capability_name: Shipment Tracking Management
+  confidence: 0.9
+  evidence: POST /rest/v2/orderStatus 'Order Tracking'; POST /rest/v2/trackShipment 'Track Shipment';
+    POST /rest/v2/orderHistory 'Order History'
+  reason: Operations resolve and return shipment status/history for merchants and customers, which is
+    squarely shipment tracking within visibility management.
+- tag: OTO FLEX
+  spec_file: oto-global-oto-flex-api-openapi.yml
+  capability_id: BC-2420.10
+  capability_id_l1: BC-2420
+  capability_name: Dispatch Management
+  confidence: 0.75
+  evidence: POST /rest/v2/assignDriver  assignDriver; POST /rest/v2/trackDriver  trackDriver
+  reason: Assigning a driver to a delivery job and tracking that driver is dispatch execution for own-fleet/last-mile
+    moves, matching Dispatch Management.
+- tag: Return Shipments
+  spec_file: oto-global-return-shipments-api-openapi.yml
+  capability_id: BC-2460.50
+  capability_id_l1: BC-2460
+  capability_name: Returns and Reverse Operations Management
+  confidence: 0.7
+  evidence: POST /rest/v2/createReturnShipment  Create Return Shipment; POST /rest/v2/getReturnLink  Get
+    Return Link
+  reason: Creation and tracking of return shipments and customer return links implements reverse-logistics
+    handling, matching the vendor's stated 'Return Management – Handle return requests and reverse logistics'.
+- tag: Shipping Label(AWB)
+  spec_file: oto-global-shipping-label-awb-api-openapi.yml
+  capability_id: BC-2500
+  capability_id_l1: BC-2500
+  capability_name: Cargo Documentation Management
+  confidence: 0.7
+  evidence: GET /rest/v2/print/orderId  'Print AWB'
+  reason: Issuance/printing of the air waybill / shipping label is cargo transport documentation. Kept
+    at L1 because a parcel 'AWB label' is not strictly the master/house e-AWB regime of BC-2500.20.
+- tag: Shipping Prices
+  spec_file: oto-global-shipping-prices-api-openapi.yml
+  capability_id: BC-2520.50
+  capability_id_l1: BC-2520
+  capability_name: Rating Engine Operations Management
+  confidence: 0.7
+  evidence: POST /rest/v2/checkDeliveryFee 'Check Delivery Fee'; POST /rest/v2/getDeliveryFee 'Get Delivery
+    Fee'; GET /rest/v2/getDeliveryOptions 'Get Delivery Options'
+  reason: These operations price a freight movement across carrier options, i.e. operation of a rating
+    engine that calculates delivery charges. Alternative reading as shipper quotation keeps confidence
+    moderate.
