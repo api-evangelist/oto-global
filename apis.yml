@@ -130,7 +130,7 @@ apis:
   humanURL: https://apis.tryoto.com/
   baseURL: https://api.tryoto.com/rest/v2
   tags:
-  - Customer > Notifications
+  - Customer Notifications
   tags_raw:
   - Customer Notifications
   properties:
