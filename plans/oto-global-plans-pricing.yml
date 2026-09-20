@@ -1,0 +1,50 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://www.tryoto.com/plans-ksa
+sources:
+- https://www.tryoto.com/plans-ksa
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: tiered-subscription
+published: true
+note: KSA (SAR) pricing page; monthly/annual toggle with 'Save 15%' — only monthly prices shown in text.
+  Some integrations marked 'One-time Fee' without amounts.
+plan_count: 5
+currency: SAR
+plans:
+- name: Free
+  price_text: 0 SAR / month
+  price: 0
+  currency: SAR
+  period: month
+  included_quota: 50 monthly shipments (own rates), 1 user, 1 sales channel connection, OTO COD settlement
+    every 14 days
+- name: Starter
+  price_text: 59 SAR / month
+  price: 59
+  currency: SAR
+  period: month
+  included_quota: 100–1,000 monthly shipments (own rates), 1 user, 3 contracts, up to 5 automation rules,
+    COD settlement every 14 days
+- name: Scale
+  price_text: 279 SAR / month
+  price: 279
+  currency: SAR
+  period: month
+  included_quota: 250–5,000 monthly shipments, 10 users, 7 contracts, up to 10 rules, COD settlement every
+    7 days
+- name: Pro
+  price_text: 1,599 SAR / month
+  price: 1599
+  currency: SAR
+  period: month
+  included_quota: 1,000–10,000 monthly shipments, 50 users, 20 contracts, unlimited automation, COD settlement
+    every 7 days
+- name: Enterprise
+  price_text: Custom pricing
+  period: none
+  included_quota: Custom shipments, unlimited users and contracts
