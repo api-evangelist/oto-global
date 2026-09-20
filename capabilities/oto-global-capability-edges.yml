@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 5
+edge_count: 8
 edges:
 - tag: Tracking
   spec_file: oto-global-tracking-api-openapi.yml
@@ -23,6 +23,38 @@ edges:
     POST /rest/v2/orderHistory 'Order History'
   reason: Operations resolve and return shipment status/history for merchants and customers, which is
     squarely shipment tracking within visibility management.
+- tag: Shipments
+  spec_file: oto-global-shipments-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.85
+  evidence: POST /rest/v2/createShipment  Create Shipment; POST /rest/v2/cancelShipment
+  reason: Creating and cancelling carrier shipments is core transport execution — logistics operations
+    within the supply chain.
+  recovered_from: vertical-automotive-mobility-edges.json
+- tag: Carrier Integrations
+  spec_file: oto-global-carrier-integrations-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.8
+  evidence: POST /rest/v2/getDeliveryEstimation  Get Delivery Estimation; POST /rest/v2/checkCoverage  Check
+    Coverage; POST /rest/v2/availableTimeslots  Available Time Slots; POST /rest/v2/dcActivation  DC Activation
+  reason: Operations query carrier delivery coverage, estimated delivery dates, serviceable cities, delivery
+    timeslots and distribution-centre configuration — transport/logistics execution capability of a multi-carrier
+    shipping platform.
+  recovered_from: vertical-automotive-mobility-edges.json
+- tag: Orders
+  spec_file: oto-global-orders-api-openapi.yml
+  capability_id: BC-520.40
+  capability_id_l1: BC-520
+  capability_name: Order Fulfilment Management
+  confidence: 0.8
+  evidence: Create Order / Update Order Status / Hold Order / Check Order Availability
+  reason: Full order lifecycle capture, status, hold and availability checks feeding fulfilment — order
+    fulfilment orchestration.
+  recovered_from: vertical-automotive-mobility-edges.json
 - tag: OTO FLEX
   spec_file: oto-global-oto-flex-api-openapi.yml
   capability_id: BC-2420.10
