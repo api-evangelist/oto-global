@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: OTO API V2 Account Orders API
+  title: OTO API V2 Orders API
   version: 2.0.0
-  description: 'Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations. With powerful endpoints for creating, updating, and querying shipments, it ensures efficient and reliable communication between your systems and OTO''s platform. Overview We continuously analyze the e-commerce and logistics industries to enhance shipping and fulfillment processes, making them easier for vendors. OTO APIs are designed to automate and simplify key logistics operations, including: 🚀 Order Management – Process, update, and sync orders seamlessly. 🚀 Shipment Management – Create, manage, and track shipments effortlessly. 🚀 Return Management – Handle return requests and reverse logistics smoothly. 🚀 Stock Inventory Management – Keep inventory levels updated in real-time. 🚀 Product Management – Organize, update, and synchronize products efficiently. 🚀 Warehouse Management – Add, update, organize pickup locations. You can find guidance to assist you throughout the integration process here . Base URL: All API requests must be made over HTTPS to the following base endpoint: https://api.tryoto.com Meet our new OTO AI Assistant 🤖— a smart AI agent designed to help you navigate and use our REST API with ease. Whether you''re integrating for the first time or need help troubleshooting a request, our assistant is here to provide instant answers, example json responses, guide you through endpoints, and help you build faster.'
+  description: Introduction OTO REST API provides seamless integration for managing shipments, tracking deliveries, and handling logistics operations.
   contact:
     name: OTO Support
     url: https://help.tryoto.com/en/support/home
@@ -539,7 +539,7 @@ paths:
       summary: Check Order Availability
       tags:
       - Orders
-      description: 'Check Order Availability This API endpoint allows you to check the availability of an order based on the provided orderId and associated ruleIds . Request Parameters Existing Order (with OrderID) The user provides an orderId (increment ID) that is already created in OTO. The system checks the availability of the order and returns the list of locations where it can be fulfilled. By default, the API considers all OMS rules while checking availability. Optionally, the user can provide specific OMS '
+      description: Check Order Availability This API endpoint allows you to check the availability of an order based on the provided orderId and associated ruleIds . Request Parameters Existing Order (with OrderID) The user provides an orderId (increment ID) that is already created in OTO. The system checks the availability of the order and returns the list of locations where it can be fulfilled. By default, the API considers all OMS rules while checking availability. Optionally, the user can provide specific OMS
       requestBody:
         content:
           application/json:

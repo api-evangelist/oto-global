@@ -1,26 +1,7 @@
 {
   "provider": "oto-global",
   "sources": [
-    "oto-global-account-api-openapi.yml",
-    "oto-global-authorization-api-openapi.yml",
-    "oto-global-brands-api-openapi.yml",
-    "oto-global-carrier-integrations-api-openapi.yml",
-    "oto-global-customer-notifications-api-openapi.yml",
-    "oto-global-marketplace-api-openapi.yml",
-    "oto-global-national-address-api-openapi.yml",
-    "oto-global-orders-api-openapi.yml",
-    "oto-global-oto-flex-api-openapi.yml",
-    "oto-global-pickup-locations-api-openapi.yml",
-    "oto-global-products-api-openapi.yml",
-    "oto-global-return-shipments-api-openapi.yml",
-    "oto-global-sales-channels-api-openapi.yml",
-    "oto-global-shipments-api-openapi.yml",
-    "oto-global-shipping-label-awb-api-openapi.yml",
-    "oto-global-shipping-prices-api-openapi.yml",
-    "oto-global-stock-management-api-openapi.yml",
-    "oto-global-tracking-api-openapi.yml",
-    "oto-global-transactions-api-openapi.yml",
-    "oto-global-webhook-api-openapi.yml"
+    "_original/oto-global-openapi.yml"
   ],
   "outputs": [
     "oto-global-account-api-openapi.yml",
@@ -30,8 +11,8 @@
     "oto-global-customer-notifications-api-openapi.yml",
     "oto-global-marketplace-api-openapi.yml",
     "oto-global-national-address-api-openapi.yml",
-    "oto-global-orders-api-openapi.yml",
     "oto-global-oto-flex-api-openapi.yml",
+    "oto-global-orders-api-openapi.yml",
     "oto-global-pickup-locations-api-openapi.yml",
     "oto-global-products-api-openapi.yml",
     "oto-global-return-shipments-api-openapi.yml",
@@ -47,6 +28,31 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "oto-global-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "oto-global-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oto-global-authorization-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oto-global-brands-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oto-global-carrier-integrations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oto-global-customer-notifications-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oto-global-marketplace-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oto-global-national-address-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oto-global-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oto-global-oto-flex-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oto-global-pickup-locations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oto-global-products-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oto-global-return-shipments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oto-global-sales-channels-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oto-global-shipments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oto-global-shipping-label-awb-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oto-global-shipping-prices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oto-global-stock-management-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oto-global-tracking-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oto-global-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "oto-global-webhook-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
