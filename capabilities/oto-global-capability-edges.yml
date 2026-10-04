@@ -3,6 +3,7 @@ provider: OTO Global
 generated_by: planning/capability-mapping/scripts/classify_capabilities.py
 model: claude-opus-5
 frame:
+- Software & Technology
 - Transportation & Logistics
 min_confidence: 0.7
 capability_model:
@@ -11,7 +12,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 8
+edge_count: 9
 edges:
 - tag: Tracking
   spec_file: oto-global-tracking-api-openapi.yml
@@ -64,6 +65,17 @@ edges:
   evidence: POST /rest/v2/assignDriver  assignDriver; POST /rest/v2/trackDriver  trackDriver
   reason: Assigning a driver to a delivery job and tracking that driver is dispatch execution for own-fleet/last-mile
     moves, matching Dispatch Management.
+- tag: Stock Management
+  spec_file: oto-global-stock-management-api-openapi.yml
+  capability_id: BC-530.10
+  capability_id_l1: BC-530
+  capability_name: Stock Level Management
+  confidence: 0.72
+  evidence: POST /rest/v2/updateStockQuantity  Update Stock Quantity; GET /rest/v2/checkInventoryStock  Check
+    Inventory Stock; GET /rest/v2/checkGlobalStock
+  reason: Operations read and update on-hand stock quantities across inventories and stores for a fulfilment
+    platform, which is inventory/stock level management. Some operations (packing status, pickup stores)
+    lean toward order fulfilment, so the L2 is less certain than the L1.
 - tag: Return Shipments
   spec_file: oto-global-return-shipments-api-openapi.yml
   capability_id: BC-2460.50
